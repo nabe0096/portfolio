@@ -938,20 +938,27 @@ footer p {
         --section-padding: 4rem 0;
         --container-padding: 1.5rem;
     }
-    
+
     .py-5 {
         padding-top: 4rem !important;
         padding-bottom: 4rem !important;
     }
-    
+
     .section-title {
         margin-bottom: 3rem;
         font-size: 2rem;
     }
-    
+
     .work-card, .service-item, .achievement-item {
         padding: 2rem 1.5rem;
         margin-bottom: 2rem;
+    }
+
+    /* Hero section fixes for mobile */
+    .hero-bg-image {
+        background-attachment: scroll !important;
+        background-size: cover !important;
+        background-position: center center !important;
     }
     
     .hero-title {

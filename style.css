@@ -960,6 +960,13 @@ footer p {
         background-size: cover !important;
         background-position: center center !important;
     }
+
+    /* YouTube certificate image fix for mobile */
+    img[src="images/gin.jpg"] {
+        max-width: 100% !important;
+        width: 100% !important;
+        height: auto !important;
+    }
     
     .hero-title {
         font-size: 3rem;

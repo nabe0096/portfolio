@@ -148,6 +148,7 @@
     flex: 0 0 auto;
     width: 400px;
     height: 600px;
+    padding-bottom: 40px;
 }
 
 @media (max-width: 768px) {
@@ -159,12 +160,13 @@
     .instagram-reel-item {
         width: 350px;
         height: 550px;
+        padding-bottom: 40px;
     }
 }
 
 .instagram-reel-item iframe {
     width: 100%;
-    height: 100%;
+    height: calc(100% - 50px);
     background: white;
     border-radius: 8px;
     border: 1px solid #dbdbdb;
@@ -967,6 +969,25 @@ footer p {
         width: 100% !important;
         height: auto !important;
     }
+
+    /* Profile section layout for mobile */
+    #about .row {
+        flex-direction: column !important;
+    }
+
+    #about .col-lg-4,
+    #about .col-lg-8 {
+        flex: none !important;
+        width: 100% !important;
+        max-width: 100% !important;
+        text-align: center !important;
+        margin-bottom: 2rem;
+    }
+
+    #about .col-lg-8 p,
+    #about .col-lg-8 .lead {
+        text-align: center !important;
+    }
     
     .hero-title {
         font-size: 3rem;
@@ -1067,6 +1088,7 @@ footer p {
         width: 280px;
         height: 480px;
         flex-shrink: 0;
+        padding-bottom: 40px;
     }
 
     .instagram-scroll-wrapper {

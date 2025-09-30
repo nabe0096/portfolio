@@ -380,10 +380,17 @@ h1, h2, h3, h4, h5, h6 {
     height: 100%;
     background-size: cover;
     background-position: center;
-    background-attachment: fixed;
+    background-attachment: scroll;
     opacity: 0;
     transition: opacity 2s ease-in-out;
     z-index: 1;
+}
+
+/* Desktop only - parallax effect */
+@media (min-width: 992px) {
+    .hero-bg-image {
+        background-attachment: fixed;
+    }
 }
 
 .hero-bg-image.active {
@@ -1024,7 +1031,7 @@ footer p {
     }
 }
 
-/* Mobile specific fixes - moved outside desktop media query */
+/* Mobile specific fixes */
 @media (max-width: 991px) {
     /* Hero section fixes for mobile */
     .hero-bg-image {
@@ -1033,13 +1040,15 @@ footer p {
         background-position: center center !important;
     }
 
-    /* YouTube certificate image fix for mobile */
-    img[src="images/gin.jpg"] {
-        max-width: calc(100% - 1rem) !important;
-        width: calc(100% - 1rem) !important;
+    /* YouTube certificate image fix for mobile - more specific selector */
+    img[src="images/gin.jpg"],
+    .img-fluid[src="images/gin.jpg"] {
+        max-width: calc(100% - 2rem) !important;
+        width: calc(100% - 2rem) !important;
         height: auto !important;
         margin: 0 auto !important;
         display: block !important;
+        box-sizing: border-box !important;
     }
 
     /* Profile section layout for mobile - more specific targeting */

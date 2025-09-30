@@ -1,5 +1,6 @@
 /*==================================================
  *  Modern Portfolio Design - Inspired by Premium LP
+ *  CACHE BUSTER: v20250930-final-mobile-fix
  *==================================================*/
 
 :root {
@@ -1031,24 +1032,30 @@ footer p {
     }
 }
 
-/* Mobile specific fixes */
+/* Mobile specific fixes - CRITICAL OVERRIDES */
 @media (max-width: 991px) {
-    /* Hero section fixes for mobile */
+    /* Hero section fixes for mobile - FORCE SCROLL */
+    .hero-section .hero-bg-image,
+    #hero .hero-bg-image,
+    .hero-bg-image.active,
     .hero-bg-image {
         background-attachment: scroll !important;
         background-size: cover !important;
         background-position: center center !important;
     }
 
-    /* YouTube certificate image fix for mobile - more specific selector */
+    /* YouTube certificate image fix for mobile - FORCE RESPONSIVE */
+    #achievements img[src="images/gin.jpg"],
+    .achievement-item img[src="images/gin.jpg"],
     img[src="images/gin.jpg"],
     .img-fluid[src="images/gin.jpg"] {
-        max-width: calc(100% - 2rem) !important;
-        width: calc(100% - 2rem) !important;
+        max-width: calc(100% - 3rem) !important;
+        width: calc(100% - 3rem) !important;
         height: auto !important;
         margin: 0 auto !important;
         display: block !important;
         box-sizing: border-box !important;
+        object-fit: contain !important;
     }
 
     /* Profile section layout for mobile - more specific targeting */

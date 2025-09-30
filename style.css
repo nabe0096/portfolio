@@ -147,7 +147,7 @@
 .instagram-reel-item {
     flex: 0 0 auto;
     width: 400px;
-    height: 500px;
+    height: 600px;
 }
 
 @media (max-width: 768px) {
@@ -158,7 +158,7 @@
 
     .instagram-reel-item {
         width: 350px;
-        height: 450px;
+        height: 550px;
     }
 }
 
@@ -1065,7 +1065,7 @@ footer p {
 
     .instagram-reel-item {
         width: 280px;
-        height: 380px;
+        height: 480px;
         flex-shrink: 0;
     }
 

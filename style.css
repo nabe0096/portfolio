@@ -683,7 +683,8 @@ section {
     width: 250px;
     height: 250px;
     object-fit: cover;
-    border: 5px solid var(--primary-gold);
+    border: none;
+    border-radius: 50%;
     box-shadow: var(--shadow-heavy);
     transition: all 0.3s ease;
     margin-bottom: 3rem;
@@ -952,8 +953,74 @@ footer p {
     }
 
     .work-card, .service-item, .achievement-item {
-        padding: 2rem 1.5rem;
+        padding: 2rem 0.4rem;
         margin-bottom: 2rem;
+    }
+
+    /* Service item text spacing for mobile */
+    .service-item p {
+        padding-left: 0.1rem !important;
+        padding-right: 0.1rem !important;
+        margin-left: 0 !important;
+        margin-right: 0 !important;
+    }
+
+    /* Service section column spacing for mobile */
+    #services .col-md-6 {
+        padding-left: 0.2rem !important;
+        padding-right: 0.2rem !important;
+    }
+
+    #services .row {
+        margin-left: 0 !important;
+        margin-right: 0 !important;
+    }
+
+    /* Achievements section column spacing for mobile */
+    #achievements .col-md-4 {
+        padding-left: 0.2rem !important;
+        padding-right: 0.2rem !important;
+    }
+
+    #achievements .row {
+        margin-left: 0 !important;
+        margin-right: 0 !important;
+    }
+
+    /* YouTube consulting section spacing for mobile */
+    .col-lg-10.offset-lg-1 {
+        padding-left: 0.2rem !important;
+        padding-right: 0.2rem !important;
+        margin-left: 0 !important;
+        margin-right: 0 !important;
+        width: 100% !important;
+        max-width: 100% !important;
+    }
+
+    /* YouTube consulting text content */
+    .col-lg-10 p,
+    .col-lg-10 .text-white {
+        padding-left: 0.1rem !important;
+        padding-right: 0.1rem !important;
+    }
+}
+
+/* Desktop padding for YouTube consulting section */
+@media (min-width: 992px) {
+    .col-lg-10.offset-lg-1 {
+        padding-left: 3rem;
+        padding-right: 3rem;
+    }
+
+    .col-lg-10 .mb-4 {
+        padding-left: 2rem;
+        padding-right: 2rem;
+    }
+
+    /* Individual consulting results box padding for desktop */
+    .col-lg-10 .mt-4.p-4 {
+        padding: 3rem !important;
+        margin: 2rem 0 !important;
     }
 
     /* Hero section fixes for mobile */
@@ -970,23 +1037,130 @@ footer p {
         height: auto !important;
     }
 
-    /* Profile section layout for mobile */
-    #about .row {
-        flex-direction: column !important;
+    /* Profile section layout for mobile - more specific targeting */
+    #about .row .col-lg-8 {
+        text-align: center !important;
     }
 
-    #about .col-lg-4,
-    #about .col-lg-8 {
-        flex: none !important;
+    #about .row .col-lg-8 * {
+        text-align: center !important;
+    }
+}
+
+/* Global mobile profile text centering */
+.mobile-profile-center {
+    text-align: center !important;
+}
+
+/* Global body text styling - excluding headings */
+p, .text-white, .text-muted, li {
+    font-family: var(--font-primary) !important;
+    font-size: 1rem !important;
+    line-height: 1.7 !important;
+}
+
+/* Mobile body text sizing and spacing */
+@media (max-width: 991px) {
+    p, .text-white, .text-muted, li {
+        font-size: 1rem !important;
+        line-height: 1.7 !important;
+    }
+
+    /* Add proper padding to all sections on mobile EXCEPT profile */
+    .container:not(#about .container),
+    .container-fluid {
+        padding-left: 0.5rem !important;
+        padding-right: 0.5rem !important;
+    }
+
+    /* Specific padding for all text content EXCEPT profile */
+    section:not(#about) p,
+    section:not(#about) .text-white,
+    section:not(#about) .text-center,
+    .text-white:not(#about .text-white),
+    .mb-5:not(#about .mb-5) p,
+    .col-lg-10 p,
+    .col-md-8 p,
+    .offset-lg-2 p {
+        padding-left: 0.5rem !important;
+        padding-right: 0.5rem !important;
+        margin-left: 0 !important;
+        margin-right: 0 !important;
+    }
+
+    /* Profile section - RESET all padding to match philosophy */
+    #about .container,
+    #about .row,
+    #about .col-lg-8,
+    #about .col-lg-8 p,
+    #about .col-lg-8 .lead,
+    #about p,
+    #about .text-white {
+        padding-left: 0 !important;
+        padding-right: 0 !important;
+    }
+
+    /* All sections and divs */
+    section,
+    .mb-5,
+    .row {
+        padding-left: 0.5rem !important;
+        padding-right: 0.5rem !important;
+    }
+
+    /* YouTube and Instagram sections */
+    .embed-responsive-item,
+    .instagram-reel-item,
+    .youtube-shorts-item {
+        margin-left: 0.5rem !important;
+        margin-right: 0.5rem !important;
+    }
+
+    /* YouTube Shorts specific fix for mobile - THIS WAS THE ISSUE */
+    .youtube-shorts-item {
+        width: calc(100% - 1rem) !important;
+        max-width: calc(100% - 1rem) !important;
+        height: auto !important;
+        aspect-ratio: 9/16 !important;
+        margin: 0 auto !important;
+    }
+
+    .youtube-shorts-item iframe {
+        width: 100% !important;
+        height: 100% !important;
+    }
+
+    /* YouTube video container fix for mobile */
+    .embed-responsive,
+    .embed-responsive-16by9 {
+        width: calc(100% - 1rem) !important;
+        margin: 0 auto !important;
+    }
+
+    .embed-responsive-item {
         width: 100% !important;
         max-width: 100% !important;
-        text-align: center !important;
-        margin-bottom: 2rem;
     }
 
+    /* Images and media */
+    img,
+    .img-fluid {
+        padding-left: 0.5rem !important;
+        padding-right: 0.5rem !important;
+    }
+}
+
+/* Additional media query specifically for profile section */
+@media (max-width: 991px) {
+    #about .row .col-lg-8,
+    #about .row .col-lg-8 p,
+    #about .row .col-lg-8 .lead,
+    #about .col-lg-8,
     #about .col-lg-8 p,
     #about .col-lg-8 .lead {
         text-align: center !important;
+        margin-left: auto !important;
+        margin-right: auto !important;
     }
     
     .hero-title {

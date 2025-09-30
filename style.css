@@ -1022,7 +1022,10 @@ footer p {
         padding: 3rem !important;
         margin: 2rem 0 !important;
     }
+}
 
+/* Mobile specific fixes - moved outside desktop media query */
+@media (max-width: 991px) {
     /* Hero section fixes for mobile */
     .hero-bg-image {
         background-attachment: scroll !important;
@@ -1032,9 +1035,11 @@ footer p {
 
     /* YouTube certificate image fix for mobile */
     img[src="images/gin.jpg"] {
-        max-width: 100% !important;
-        width: 100% !important;
+        max-width: calc(100% - 1rem) !important;
+        width: calc(100% - 1rem) !important;
         height: auto !important;
+        margin: 0 auto !important;
+        display: block !important;
     }
 
     /* Profile section layout for mobile - more specific targeting */

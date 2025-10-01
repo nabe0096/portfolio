@@ -1059,7 +1059,8 @@ section {
     .btn-lg.textbook-link-btn,
     .btn-lg.ramen-link-btn,
     .btn-lg.contact-link-btn,
-    .btn-lg.instagram-link-btn {
+    .btn-lg.instagram-link-btn,
+    .btn-lg.blog-link-btn {
         font-size: 0.85rem !important;
         padding: 0.8rem 1.5rem !important;
         white-space: nowrap;

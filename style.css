@@ -292,16 +292,18 @@ h3.other-activities-title {
     overflow-x: auto;
     padding: 10px 0;
     display: flex;
-    justify-content: center;
-    max-width: 100%;
+    justify-content: flex-start;
+    max-width: 900px;
     margin: 0 auto;
+    scroll-snap-type: x mandatory;
+    scroll-behavior: smooth;
 }
 
 .instagram-scroll-wrapper {
     display: flex;
     gap: 20px;
     padding: 0 10px;
-    justify-content: center;
+    justify-content: flex-start;
     width: auto;
     margin: 0 auto;
 }
@@ -311,6 +313,26 @@ h3.other-activities-title {
     width: 400px;
     height: 600px;
     padding-bottom: 40px;
+    scroll-snap-align: center;
+    margin: 0 auto;
+}
+
+.instagram-reel-item.mx-auto {
+    max-width: 400px;
+    width: 100%;
+    display: block;
+}
+
+/* Recipe video grid layout */
+.row.g-3 {
+    max-width: 850px;
+    margin-left: auto !important;
+    margin-right: auto !important;
+}
+
+.row.g-3 .col-md-6 {
+    display: flex;
+    justify-content: center;
 }
 
 @media (max-width: 768px) {
@@ -323,6 +345,14 @@ h3.other-activities-title {
         width: 350px;
         height: 550px;
         padding-bottom: 40px;
+    }
+
+    .row.g-3 .col-md-6.mb-4 {
+        margin-bottom: 1rem !important;
+    }
+
+    .instagram-reel-item.mx-auto {
+        margin-bottom: 0.5rem;
     }
 }
 

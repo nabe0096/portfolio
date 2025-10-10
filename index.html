@@ -38,7 +38,7 @@
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
     
     <!-- Custom Styles -->
-    <link rel="stylesheet" href="style.css?v=20251001f">
+    <link rel="stylesheet" href="style.css?v=20251010auto">
 </head>
 <body>
 
@@ -323,22 +323,30 @@
                                 <img src="images/Firefly_料理動画を撮影しているYouTuber 98688.jpg" alt="レシピ動画撮影イメージ" class="img-fluid rounded shadow-lg" style="max-width: 100%; width: 100%; height: auto; border-radius: 15px;">
                             </div>
                             <p class="text-white text-center mb-4 recipe-video-text">企業向けのレシピ開発、商品PR用のオリジナルレシピ動画制作など幅広く対応。動画のみ納品、私のアカウントで投稿することも可能です。<span style="font-weight: bold; color: #D4AF37;">簡単で美味しい家庭料理から本格料理まで、お客様のニーズに合わせてレシピ動画を作成いたします。</span></p>
-                            <div class="scroll-indicator d-block d-md-none text-center mb-2">
-                                <small class="text-white-50">← スクロールできます →</small>
-                            </div>
-                            <div class="instagram-scroll-container mb-3">
-                                <div class="instagram-scroll-wrapper">
-                                    <div class="instagram-reel-item">
+                            <h5 class="text-white text-center mb-4" style="font-weight: 600;">レシピ動画制作一例</h5>
+                            <div class="row justify-content-center mb-3 g-3">
+                                <div class="col-md-6 mb-4 px-2">
+                                    <div class="instagram-reel-item mx-auto">
                                         <iframe src="https://www.instagram.com/reel/DO-qsDZEsfL/embed" frameborder="0" scrolling="yes" allowtransparency="true" allow="encrypted-media"></iframe>
                                         <p class="text-white text-center mt-2 mb-0">都城市ふるさと納税【公式】</p>
                                     </div>
-                                    <div class="instagram-reel-item">
+                                </div>
+                                <div class="col-md-6 mb-4 px-2">
+                                    <div class="instagram-reel-item mx-auto">
                                         <iframe src="https://www.instagram.com/reel/DHSGkjITtyW/embed" frameborder="0" scrolling="yes" allowtransparency="true" allow="encrypted-media"></iframe>
                                         <p class="text-white text-center mt-2 mb-0">永谷園 松茸の味お吸い物</p>
                                     </div>
-                                    <div class="instagram-reel-item">
+                                </div>
+                                <div class="col-md-6 mb-4 px-2">
+                                    <div class="instagram-reel-item mx-auto">
                                         <iframe src="https://www.instagram.com/reel/DDEJwfmT6Mt/embed" frameborder="0" scrolling="yes" allowtransparency="true" allow="encrypted-media"></iframe>
                                         <p class="text-white text-center mt-2 mb-0">味の素 SIDA</p>
+                                    </div>
+                                </div>
+                                <div class="col-md-6 mb-4 px-2">
+                                    <div class="instagram-reel-item mx-auto">
+                                        <iframe src="https://www.instagram.com/reel/DIyAUh5y9aQ/embed" frameborder="0" scrolling="yes" allowtransparency="true" allow="encrypted-media"></iframe>
+                                        <p class="text-white text-center mt-2 mb-0">濃いめのレモンサワー</p>
                                     </div>
                                 </div>
                             </div>
@@ -517,5 +525,30 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script src="script.js"></script>
+
+    <!-- Instagram auto-scroll animation v20251010-1550 -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const scrollContainer = document.querySelector('.instagram-scroll-container');
+            if (scrollContainer) {
+                let currentIndex = 0;
+                const scrollWidth = 420; // 400px width + 20px gap
+
+                // Auto scroll function
+                function autoScroll() {
+                    currentIndex = (currentIndex + 1) % 4; // 4 videos
+                    scrollContainer.scrollTo({
+                        left: scrollWidth * currentIndex,
+                        behavior: 'smooth'
+                    });
+                }
+
+                // Start auto-scroll after 2 seconds, then every 4 seconds
+                setTimeout(() => {
+                    setInterval(autoScroll, 4000);
+                }, 2000);
+            }
+        });
+    </script>
 </body>
 </html>

@@ -1,0 +1,728 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>サービス料金プラン | Nabe's Portfolio</title>
+    <!-- Updated: 2025-10-10 -->
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="images/bousi.png">
+
+    <!-- Meta Tags -->
+    <meta name="description" content="SNSコンサルティング、レシピ開発、WEBサイト制作など、各種サービスの料金プランをご紹介。">
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@400;700&family=Klee+One:wght@400;600&family=Noto+Sans+JP:wght@300;400;500;700&display=swap" rel="stylesheet">
+
+    <!-- External Libraries -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+
+    <!-- Custom Styles -->
+    <link rel="stylesheet" href="style.css">
+
+    <style>
+        body {
+            background: #0a0a0a;
+        }
+
+        .pricing-hero {
+            background: linear-gradient(135deg, #0a0a0a 0%, #1a1a1a 50%, #2d2d2d 100%);
+            padding: 140px 0 100px;
+            text-align: center;
+            color: white;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .pricing-hero:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background:
+                radial-gradient(circle at 20% 30%, rgba(212, 175, 55, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 80% 70%, rgba(244, 208, 63, 0.08) 0%, transparent 50%);
+        }
+
+        .pricing-hero h1 {
+            font-size: 3.5em;
+            margin-bottom: 25px;
+            font-family: 'Noto Serif JP', serif;
+            background: linear-gradient(135deg, #d4af37 0%, #f4d03f 50%, #ffffff 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            position: relative;
+            z-index: 1;
+        }
+
+        .pricing-hero .subtitle {
+            font-size: 1.3em;
+            opacity: 0.85;
+            position: relative;
+            z-index: 1;
+            letter-spacing: 0.5px;
+        }
+
+        .plan-card {
+            background: linear-gradient(145deg, #1a1a1a 0%, #0f0f0f 100%);
+            border-radius: 24px;
+            padding: 0;
+            margin-bottom: 60px;
+            box-shadow:
+                0 20px 60px rgba(0,0,0,0.5),
+                inset 0 1px 0 rgba(255,255,255,0.05);
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            overflow: hidden;
+            border: none;
+            position: relative;
+        }
+
+        .plan-card:hover {
+            transform: translateY(-10px) scale(1.01);
+            box-shadow:
+                0 30px 80px rgba(0, 0, 0, 0.7),
+                inset 0 1px 0 rgba(255,255,255,0.1);
+        }
+
+        .plan-image {
+            width: 100%;
+            height: 280px;
+            object-fit: cover;
+            border-radius: 0;
+        }
+
+        .plan-content {
+            padding: 50px;
+        }
+
+        .plan-header {
+            border-bottom: 1px solid rgba(212, 175, 55, 0.2);
+            padding-bottom: 30px;
+            margin-bottom: 40px;
+        }
+
+        .plan-number {
+            display: inline-block;
+            background: transparent;
+            color: #d4af37;
+            padding: 10px 0;
+            font-size: 3em;
+            font-weight: 800;
+            margin-bottom: 10px;
+            letter-spacing: 5px;
+            box-shadow: none;
+            border: none;
+            font-style: italic;
+            font-family: 'Georgia', 'Times New Roman', serif;
+            text-transform: uppercase;
+            text-shadow: 0 0 20px rgba(212, 175, 55, 0.5), 0 0 40px rgba(212, 175, 55, 0.3);
+        }
+
+        .plan-num {
+            font-family: 'Trebuchet MS', 'Lucida Sans', sans-serif;
+            font-weight: 700;
+            letter-spacing: -2px;
+            font-style: normal;
+            transform: skewX(-10deg);
+            display: inline-block;
+        }
+
+        .plan-title {
+            font-size: 2.2em;
+            font-weight: 700;
+            margin-top: 0;
+            margin-bottom: 20px;
+            color: #ffffff;
+            line-height: 1.3;
+            font-style: italic;
+        }
+
+        .plan-subtitle {
+            font-size: 1.05em;
+            color: rgba(255,255,255,0.6);
+            margin-top: 0;
+            margin-bottom: 0;
+            letter-spacing: 0.3px;
+        }
+
+        .plan-description {
+            font-size: 1.05em;
+            line-height: 1.9;
+            color: rgba(255,255,255,0.8);
+            margin-bottom: 40px;
+        }
+
+        .plan-section-title {
+            font-size: 1.4em;
+            font-weight: 700;
+            color: #d4af37;
+            margin-top: 40px;
+            margin-bottom: 25px;
+            padding-left: 18px;
+            border-left: 4px solid #d4af37;
+            position: relative;
+        }
+
+        .plan-section-title:first-of-type {
+            margin-top: 0;
+        }
+
+
+        .plan-list {
+            list-style: none;
+            padding: 0;
+            margin-bottom: 40px;
+        }
+
+        .plan-list li {
+            padding: 14px 0;
+            padding-left: 40px;
+            position: relative;
+            line-height: 1.9;
+            color: rgba(255,255,255,0.85);
+            transition: all 0.3s ease;
+        }
+
+        .plan-list li:hover {
+            color: #ffffff;
+            padding-left: 45px;
+        }
+
+        .plan-list li:before {
+            content: "✓";
+            position: absolute;
+            left: 0;
+            color: #d4af37;
+            font-weight: 700;
+            font-size: 1.3em;
+            text-shadow: 0 0 10px rgba(212, 175, 55, 0.5);
+        }
+
+        .pricing-table {
+            background: linear-gradient(135deg, rgba(26,26,26,0.8) 0%, rgba(15,15,15,0.8) 100%);
+            border-radius: 16px;
+            padding: 30px;
+            margin-bottom: 40px;
+            border: 1px solid rgba(212, 175, 55, 0.15);
+            backdrop-filter: blur(10px);
+        }
+
+        .pricing-row {
+            display: flex;
+            justify-content: space-between;
+            padding: 18px 0;
+            border-bottom: 1px solid rgba(212, 175, 55, 0.1);
+            transition: all 0.3s ease;
+        }
+
+        .pricing-row:hover {
+            background: rgba(212, 175, 55, 0.05);
+            padding-left: 10px;
+            padding-right: 10px;
+            margin: 0 -10px;
+        }
+
+        .pricing-row:last-child {
+            border-bottom: none;
+        }
+
+        .pricing-label {
+            font-weight: 600;
+            color: rgba(255,255,255,0.7);
+        }
+
+        .pricing-value {
+            font-weight: 700;
+            color: #d4af37;
+            font-size: 1.15em;
+            text-shadow: 0 0 20px rgba(212, 175, 55, 0.3);
+        }
+
+        .faq-section {
+            background: linear-gradient(135deg, #0a0a0a 0%, #1a1a1a 100%);
+            padding: 100px 0;
+            margin-top: 80px;
+            position: relative;
+        }
+
+        .faq-section:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background:
+                radial-gradient(circle at 30% 20%, rgba(212, 175, 55, 0.05) 0%, transparent 50%),
+                radial-gradient(circle at 70% 80%, rgba(244, 208, 63, 0.03) 0%, transparent 50%);
+        }
+
+        .faq-section h2 {
+            color: #ffffff;
+            position: relative;
+            z-index: 1;
+        }
+
+        .faq-item {
+            background: linear-gradient(145deg, #1a1a1a 0%, #0f0f0f 100%);
+            border-radius: 16px;
+            padding: 30px;
+            margin-bottom: 25px;
+            box-shadow:
+                0 10px 30px rgba(0,0,0,0.3),
+                inset 0 1px 0 rgba(255,255,255,0.05);
+            border: 1px solid rgba(212, 175, 55, 0.1);
+            position: relative;
+            z-index: 1;
+            transition: all 0.3s ease;
+        }
+
+        .faq-item:hover {
+            transform: translateY(-3px);
+            box-shadow:
+                0 15px 40px rgba(0,0,0,0.4),
+                inset 0 1px 0 rgba(255,255,255,0.1);
+            border-color: rgba(212, 175, 55, 0.3);
+        }
+
+        .faq-question {
+            font-size: 1.25em;
+            font-weight: 700;
+            color: #ffffff;
+            margin-bottom: 15px;
+        }
+
+        .faq-question:before {
+            content: "Q：";
+            color: #d4af37;
+            margin-right: 10px;
+            text-shadow: 0 0 10px rgba(212, 175, 55, 0.5);
+        }
+
+        .faq-answer {
+            color: rgba(255,255,255,0.8);
+            line-height: 1.9;
+            padding-left: 40px;
+        }
+
+        .faq-answer:before {
+            content: "A：";
+            color: #d4af37;
+            margin-left: -40px;
+            margin-right: 10px;
+            font-weight: 700;
+            text-shadow: 0 0 10px rgba(212, 175, 55, 0.5);
+        }
+
+        .cta-section {
+            background: linear-gradient(135deg, #0a0a0a 0%, #1a1a1a 50%, #2d2d2d 100%);
+            padding: 100px 0;
+            text-align: center;
+            color: white;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .cta-section:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background:
+                radial-gradient(circle at 50% 50%, rgba(212, 175, 55, 0.1) 0%, transparent 70%);
+        }
+
+        .cta-title {
+            font-size: 3em;
+            margin-bottom: 25px;
+            font-weight: 700;
+            position: relative;
+            z-index: 1;
+            background: linear-gradient(135deg, #ffffff 0%, #d4af37 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .cta-text {
+            font-size: 1.3em;
+            margin-bottom: 50px;
+            opacity: 0.85;
+            position: relative;
+            z-index: 1;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .cta-buttons {
+            position: relative;
+            z-index: 1;
+        }
+
+        .cta-button {
+            padding: 20px 50px;
+            border-radius: 50px;
+            font-size: 1.15em;
+            font-weight: 700;
+            text-decoration: none;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            display: inline-block;
+            letter-spacing: 0.5px;
+        }
+
+        .cta-button-primary {
+            background: linear-gradient(135deg, #d4af37 0%, #f4d03f 100%);
+            color: #000;
+            box-shadow: 0 10px 30px rgba(212, 175, 55, 0.3);
+        }
+
+        .cta-button-primary:hover {
+            transform: translateY(-5px) scale(1.05);
+            box-shadow: 0 20px 40px rgba(212, 175, 55, 0.5);
+            color: #000;
+        }
+
+        .cta-button-secondary {
+            background: transparent;
+            color: white;
+            border: 2px solid rgba(212, 175, 55, 0.5);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+        }
+
+        .cta-button-secondary:hover {
+            background: linear-gradient(135deg, rgba(212, 175, 55, 0.2) 0%, rgba(244, 208, 63, 0.2) 100%);
+            border-color: #d4af37;
+            color: #ffffff;
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(212, 175, 55, 0.2);
+        }
+
+        @media (max-width: 768px) {
+            .pricing-hero h1 {
+                font-size: 2em;
+            }
+
+            .plan-card {
+                padding: 25px;
+            }
+
+            .plan-title {
+                font-size: 1.5em;
+            }
+
+            .cta-title {
+                font-size: 1.8em;
+            }
+
+            .cta-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .cta-button {
+                width: 100%;
+                max-width: 300px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="index.html">
+                <span class="brand-text">NABE's</span>
+                <span class="brand-accent">PORTFOLIO</span>
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html">ホーム</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" href="pricing.html">料金プラン</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html#contact">お問い合わせ</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="pricing-hero">
+        <div class="container">
+            <h1 data-aos="fade-up">🌟 提供サービス一覧</h1>
+            <p class="subtitle" data-aos="fade-up" data-aos-delay="100">あなたのビジネスを加速させる、プロフェッショナルなサポートプラン</p>
+        </div>
+    </section>
+
+    <!-- Pricing Plans -->
+    <section class="py-5">
+        <div class="container" style="max-width: 1000px; padding-left: 20px; padding-right: 20px;">
+
+            <!-- PLAN 1 -->
+            <div class="plan-card" data-aos="fade-up">
+                <img src="https://images.unsplash.com/photo-1611926653458-09294b3142bf?w=800&h=280&fit=crop&crop=center" alt="SNSコンサルティング" class="plan-image">
+                <div class="plan-content">
+                    <div class="plan-header">
+                        <span class="plan-number">PLAN<span class="plan-num">01</span></span>
+                        <h2 class="plan-title">SNSトータルコンサルティングサービス</h2>
+                        <p class="plan-subtitle">個人・企業向け／3ヶ月〜12ヶ月契約プラン</p>
+                    </div>
+
+                <p class="plan-description">
+                    SNSをゼロから伸ばしたい、売上につなげたい、発信を仕事にしたい方向けの長期伴走型サポートです。<br>
+                    YouTube・Instagram・X（旧Twitter）を中心に、運用戦略設計から投稿設計、タイトル添削、アナリティクス分析までトータルで支援します。
+                </p>
+
+                <h3 class="plan-section-title">サポート内容</h3>
+                <ul class="plan-list">
+                    <li>SNS戦略の設計と投稿方針の策定</li>
+                    <li>投稿内容の企画・構成アドバイス</li>
+                    <li>サムネイル・タイトル添削</li>
+                    <li>投稿スケジュールと時間管理のサポート</li>
+                    <li>動画構成や分析ツールの使い方支援</li>
+                    <li>月1〜2回のZoom面談（振り返りと改善）</li>
+                    <li>LINEでの個別相談（平日対応・無制限）</li>
+                </ul>
+
+                <h3 class="plan-section-title">契約期間と費用</h3>
+                <div class="pricing-table">
+                    <div class="pricing-row">
+                        <span class="pricing-label">3ヶ月プラン</span>
+                        <span class="pricing-value">120,000円（税別）〜</span>
+                    </div>
+                    <div class="pricing-row">
+                        <span class="pricing-label">6ヶ月プラン</span>
+                        <span class="pricing-value">200,000円（税別）〜</span>
+                    </div>
+                    <div class="pricing-row">
+                        <span class="pricing-label">12ヶ月プラン</span>
+                        <span class="pricing-value">360,000円（税別）〜</span>
+                    </div>
+                </div>
+
+                <h3 class="plan-section-title" style="margin-top: 40px;">対象者</h3>
+                <p style="color: rgba(255,255,255,0.85); font-size: 1.05em; line-height: 2; margin-bottom: 0;">
+                    SNSを本格的に伸ばしたい個人・副業プレイヤー・インフルエンサー志望の方<br>
+                    社内にSNS人材がいない企業・店舗・地域ブランドなど
+                </p>
+                </div>
+            </div>
+
+            <!-- PLAN 2 -->
+            <div class="plan-card" data-aos="fade-up">
+                <img src="https://images.unsplash.com/photo-1432888498266-38ffec3eaf0a?w=800&h=280&fit=crop&crop=center" alt="SNS立ち上げ" class="plan-image">
+                <div class="plan-content">
+                    <div class="plan-header">
+                        <span class="plan-number">PLAN<span class="plan-num">02</span></span>
+                        <h2 class="plan-title">SNS立ち上げサポート</h2>
+                        <p class="plan-subtitle">これから始める方向けの1ヶ月集中プラン</p>
+                    </div>
+
+                <p class="plan-description">
+                    「何から始めたらいいか分からない」「プロフィール設計も投稿も不安…」という初心者向けの立ち上げ支援です。<br>
+                    SNSを始める土台を1ヶ月で整え、最初の一歩をプロがしっかりサポートします。
+                </p>
+
+                <h3 class="plan-section-title">サポート内容</h3>
+                <ul class="plan-list">
+                    <li>プロフィール＆アカウント設計（文章・構成）</li>
+                    <li>投稿ジャンル・方向性の提案</li>
+                    <li>初期コンテンツの企画・撮影アドバイス</li>
+                    <li>キャプションやハッシュタグのテンプレ提供</li>
+                    <li>初期投稿（3〜5本）の設計＆アドバイス</li>
+                </ul>
+
+                <h3 class="plan-section-title">期間と料金</h3>
+                <div class="pricing-table">
+                    <div class="pricing-row">
+                        <span class="pricing-label">1ヶ月プラン</span>
+                        <span class="pricing-value">55,000円（税別）</span>
+                    </div>
+                </div>
+
+                <h3 class="plan-section-title">納品物</h3>
+                <ul class="plan-list">
+                    <li>SNS立ち上げ設計書（PDF）</li>
+                    <li>初期投稿テンプレート</li>
+                    <li>投稿スケジュール案</li>
+                </ul>
+                </div>
+            </div>
+
+            <!-- PLAN 3 -->
+            <div class="plan-card" data-aos="fade-up">
+                <img src="https://images.unsplash.com/photo-1556910103-1c02745aae4d?w=800&h=280&fit=crop&crop=center" alt="レシピ動画制作" class="plan-image">
+                <div class="plan-content">
+                    <div class="plan-header">
+                        <span class="plan-number">PLAN<span class="plan-num">03</span></span>
+                        <h2 class="plan-title">レシピ動画制作・レシピ開発</h2>
+                        <p class="plan-subtitle">食品メーカー・自治体・地域ブランド向けのプロモーション支援</p>
+                    </div>
+
+                <p class="plan-description">
+                    地元食材や商品をPRしたい企業・自治体様向けに、レシピ開発から撮影・編集・レシピ記事制作まで一括対応。<br>
+                    SNS投稿用のショート動画から、YouTube向けのロング動画まで柔軟に対応可能です。
+                </p>
+
+                <h3 class="plan-section-title">提供内容</h3>
+                <ul class="plan-list">
+                    <li>食材・商品に合わせたレシピ開発・監修（2人前基準）</li>
+                    <li>Instagram・TikTok向け15〜60秒動画制作</li>
+                    <li>YouTube本編動画構成・撮影・編集</li>
+                    <li>サムネイル制作・投稿文作成</li>
+                    <li>レシピ記事（ブログ・PDF納品）</li>
+                </ul>
+
+                <h3 class="plan-section-title">料金目安</h3>
+                <div class="pricing-table">
+                    <div class="pricing-row">
+                        <span class="pricing-label">ショート動画（1本）</span>
+                        <span class="pricing-value">33,000円（税別）〜</span>
+                    </div>
+                    <div class="pricing-row">
+                        <span class="pricing-label">ロング動画（1本）</span>
+                        <span class="pricing-value">55,000円（税別）〜</span>
+                    </div>
+                    <div class="pricing-row">
+                        <span class="pricing-label">レシピ開発・監修（1品）</span>
+                        <span class="pricing-value">22,000円（税別）〜</span>
+                    </div>
+                </div>
+
+                <p style="margin-top: 20px; color: #666; font-size: 0.95em;">
+                    ※ボリュームディスカウント可<br>
+                    ※商用利用・広告出稿用は別途見積もり
+                </p>
+                </div>
+            </div>
+
+            <!-- PLAN 4 -->
+            <div class="plan-card" data-aos="fade-up">
+                <img src="https://images.unsplash.com/photo-1467232004584-a241de8bcf5d?w=800&h=280&fit=crop&crop=center" alt="WEBサイト制作" class="plan-image">
+                <div class="plan-content">
+                    <div class="plan-header">
+                        <span class="plan-number">PLAN<span class="plan-num">04</span></span>
+                        <h2 class="plan-title">低価格WEBサイト制作</h2>
+                        <p class="plan-subtitle">宮崎・鹿児島限定／地域密着・個人事業主や小規模事業者向け</p>
+                    </div>
+
+                <p class="plan-description">
+                    「まずはシンプルなホームページを持ちたい」<br>
+                    「問い合わせ窓口やSNSと連携させたい」<br>
+                    そんな声に応える、低価格スタートプランです。
+                </p>
+
+                <h3 class="plan-section-title">内容例</h3>
+                <ul class="plan-list">
+                    <li>WordPress（SWELL）を用いたオリジナル構築（全5ページ）</li>
+                    <li>レスポンシブ対応（スマホ／タブレット）</li>
+                    <li>お問い合わせフォーム設置</li>
+                    <li>SNS・Googleマップ埋め込み</li>
+                    <li>SEO初期設定</li>
+                </ul>
+
+                <h3 class="plan-section-title">料金目安</h3>
+                <div class="pricing-table">
+                    <div class="pricing-row">
+                        <span class="pricing-label">サイト制作一式</span>
+                        <span class="pricing-value">110,000円（税別）〜</span>
+                    </div>
+                    <div class="pricing-row">
+                        <span class="pricing-label">保守管理（任意）</span>
+                        <span class="pricing-value">月額5,500円（税別）〜</span>
+                    </div>
+                </div>
+
+                <p style="margin-top: 20px; color: #666; font-size: 0.95em;">
+                    ロゴ制作／撮影同行／SNS素材連携：オプションで対応<br>
+                    ※宮崎・鹿児島県内の対面ヒアリング可
+                </p>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="faq-section">
+        <div class="container" style="max-width: 1000px; padding-left: 20px; padding-right: 20px;">
+            <h2 class="text-center mb-5" style="font-size: 2.5em; font-weight: 700;" data-aos="fade-up">📝 よくあるご質問</h2>
+
+            <div class="faq-item" data-aos="fade-up">
+                <div class="faq-question">分割払いは可能ですか？</div>
+                <div class="faq-answer">はい、可能です。3〜12回の分割支払いに対応しております。</div>
+            </div>
+
+            <div class="faq-item" data-aos="fade-up">
+                <div class="faq-question">請求書・法人契約は可能ですか？</div>
+                <div class="faq-answer">可能です。インボイス登録済。PDF請求書／紙対応も可。</div>
+            </div>
+
+            <div class="faq-item" data-aos="fade-up">
+                <div class="faq-question">まずは相談だけでも大丈夫ですか？</div>
+                <div class="faq-answer">もちろんです。無料相談フォームまたは公式LINEより、お気軽にお問い合わせください。</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta-section">
+        <div class="container" style="max-width: 1000px; padding-left: 20px; padding-right: 20px;">
+            <h2 class="cta-title" data-aos="fade-up">お気軽にご相談ください</h2>
+            <p class="cta-text" data-aos="fade-up" data-aos-delay="100">
+                プランの詳細やお見積もりなど、<br class="d-md-none">
+                まずは無料でご相談いただけます
+            </p>
+            <div class="cta-buttons" data-aos="fade-up" data-aos-delay="200">
+                <a href="https://www.nabenokitchen.com/contact/" class="cta-button cta-button-primary" target="_blank">
+                    <i class="fas fa-envelope me-2"></i>お問い合わせフォーム
+                </a>
+                <a href="https://lin.ee/beWMgoL" class="cta-button cta-button-secondary" target="_blank">
+                    <i class="fab fa-line me-2"></i>公式LINE
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-dark text-white text-center py-4">
+        <div class="container">
+            <p class="mb-0">&copy; 2025 Nabe's Portfolio. All Rights Reserved.</p>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        AOS.init({
+            duration: 800,
+            once: true
+        });
+    </script>
+
+</body>
+</html>

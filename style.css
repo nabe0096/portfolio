@@ -721,17 +721,55 @@ h6 {
     opacity: 0;
     filter: blur(20px);
     transform: scale(1.1) translateY(20px);
-    animation: blurFadeIn 2s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+    animation: blurFadeIn 2.5s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+
+    /* Sophisticated Shine Effect */
+    position: relative;
+    background: linear-gradient(135deg,
+            #FFFFFF 0%,
+            #FFFFFF 40%,
+            #F8E7B5 50%,
+            /* Soft Champagne Gold */
+            #FFFFFF 60%,
+            #FFFFFF 100%);
+    background-size: 300% auto;
+    background-clip: text;
+    -webkit-background-clip: text;
+    color: transparent;
+    -webkit-text-fill-color: transparent;
+
+    /* Subtle Glow */
+    text-shadow: 0 0 10px rgba(255, 255, 255, 0.1);
+}
+
+/* Add a separate animation class for the shine to run after entrance */
+.hero-line.shining {
+    animation:
+        blurFadeIn 2.5s cubic-bezier(0.16, 1, 0.3, 1) forwards,
+        sophisticatedShine 8s ease-in-out infinite 3s;
+    /* Slower, more elegant */
 }
 
 .hero-line:nth-child(1) {
     animation-delay: 0.2s;
     margin-bottom: 0.5rem;
-    /* 行間調整 */
 }
 
 .hero-line:nth-child(2) {
     animation-delay: 0.6s;
+}
+
+/* Ensure the shine animation applies correctly with delays */
+.hero-line:nth-child(1).shining {
+    animation:
+        blurFadeIn 2.5s cubic-bezier(0.16, 1, 0.3, 1) forwards 0.2s,
+        sophisticatedShine 8s ease-in-out infinite 3s;
+}
+
+.hero-line:nth-child(2).shining {
+    animation:
+        blurFadeIn 2.5s cubic-bezier(0.16, 1, 0.3, 1) forwards 0.6s,
+        sophisticatedShine 8s ease-in-out infinite 3.5s;
 }
 
 @keyframes blurFadeIn {
@@ -745,6 +783,20 @@ h6 {
         opacity: 1;
         filter: blur(0);
         transform: scale(1) translateY(0);
+    }
+}
+
+@keyframes sophisticatedShine {
+    0% {
+        background-position: 0% 50%;
+    }
+
+    20% {
+        background-position: 100% 50%;
+    }
+
+    100% {
+        background-position: 100% 50%;
     }
 }
 

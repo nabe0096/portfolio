@@ -157,13 +157,38 @@
 
 /* Consulting Result Title */
 .consulting-result-title {
-    font-size: 1.8rem;
+    font-size: 2rem;
+    letter-spacing: 0.04em;
+    padding-top: 0.5rem;
+    position: relative;
+}
+
+.consulting-result-title::after {
+    content: '';
+    display: block;
+    width: 56px;
+    height: 3px;
+    background: linear-gradient(90deg, #D4AF37, #f5d76e, #D4AF37);
+    border-radius: 3px;
+    margin: 1rem auto 0;
 }
 
 @media (max-width: 576px) {
     .consulting-result-title {
-        font-size: 1.1rem;
+        font-size: 1.35rem;
     }
+}
+
+/* Consulting Result Content - constrain text width for readability */
+.consulting-result-box > p,
+.consulting-result-box > .mb-4.text-start {
+    max-width: 640px;
+    margin-left: auto !important;
+    margin-right: auto !important;
+}
+
+.consulting-result-box > p {
+    text-align: left;
 }
 
 /* Consulting Image Container */
@@ -278,17 +303,18 @@ h3.other-activities-title {
 .sns-consulting-title,
 .youtube-consulting-title {
     position: relative;
-    font-size: 1.5rem;
-    font-weight: bold;
+    font-size: 2.2rem;
+    font-weight: 800;
+    letter-spacing: 0.04em;
     background: linear-gradient(135deg, #d4af37, #f4e676);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
-    text-shadow: 0 2px 4px rgba(212, 175, 55, 0.3);
-    padding: 10px 20px;
+    text-shadow: 0 2px 12px rgba(212, 175, 55, 0.35);
+    padding: 12px 24px;
     border-radius: 8px;
     display: inline-block;
-    margin-bottom: 20px;
+    margin-bottom: 28px;
 }
 
 /* Instagram Scroll Container */
@@ -1269,6 +1295,37 @@ section {
     }
 }
 
+/* Activity section text readability - constrain line length for comfortable reading */
+.food-coordinate-section-text,
+.recipe-video-text,
+.youtube-consulting-text,
+.cooking-class-text,
+.article-writing-text,
+.activity-narrow-text {
+    max-width: 540px;
+    margin-left: auto !important;
+    margin-right: auto !important;
+    line-height: 1.85;
+    font-size: 1rem;
+}
+
+/* Furusato (ふるさと納税) image stack */
+.furusato-img-stack {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.5rem;
+    max-width: 720px;
+    margin: 0 auto;
+}
+
+.furusato-img-stack .furusato-img {
+    width: 100%;
+    height: auto;
+    border-radius: 15px;
+    display: block;
+}
+
 /* All button links - shine effect */
 .btn-outline-light {
     position: relative;
@@ -1407,6 +1464,167 @@ section {
 
 .service-item:hover .service-img {
     transform: scale(1.05);
+}
+
+/* Service Image Grid (縦1列・見出し+画像+説明) */
+.service-image-grid {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 5rem;
+    max-width: 720px;
+    margin: 3rem auto 0;
+}
+
+.service-image-grid .service-image-card {
+    width: 100%;
+    text-align: center;
+}
+
+.service-image-grid .service-image-title {
+    color: #D4AF37;
+    font-size: 2.6rem;
+    font-weight: 800;
+    margin-bottom: 2rem;
+    letter-spacing: 0.06em;
+    line-height: 1.25;
+    position: relative;
+    display: inline-block;
+    padding-bottom: 0.7rem;
+    text-shadow: 0 2px 12px rgba(212, 175, 55, 0.25);
+}
+
+.service-image-grid .service-image-title::after {
+    content: '';
+    position: absolute;
+    left: 50%;
+    bottom: 0;
+    transform: translateX(-50%);
+    width: 64px;
+    height: 4px;
+    border-radius: 4px;
+    background: linear-gradient(90deg, #D4AF37 0%, #f5d76e 50%, #D4AF37 100%);
+}
+
+.service-image-grid .service-image-wrap {
+    border-radius: 18px;
+    overflow: hidden;
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.25);
+    transition: transform 0.35s ease, box-shadow 0.35s ease;
+    cursor: zoom-in;
+}
+
+.service-image-grid .service-image-wrap:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 18px 40px rgba(212, 175, 55, 0.3);
+}
+
+.service-image-grid .service-image-wrap img {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+.service-image-grid .service-image-desc {
+    color: var(--text-secondary, #ffffff);
+    font-size: 1rem;
+    line-height: 1.85;
+    margin: 1.75rem auto 0;
+    max-width: 620px;
+    text-align: left;
+}
+
+.service-image-grid .service-image-btn {
+    display: inline-block;
+    margin-top: 1.5rem;
+    min-width: 200px;
+}
+
+@media (max-width: 768px) {
+    .service-image-grid {
+        gap: 4rem;
+        max-width: 92%;
+    }
+    .service-image-grid .service-image-title {
+        font-size: 1.85rem;
+        letter-spacing: 0.04em;
+    }
+    .service-image-grid .service-image-desc {
+        font-size: 0.95rem;
+    }
+}
+
+/* Image Lightbox */
+.image-lightbox {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.92);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 9999;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+    padding: 2rem;
+    cursor: zoom-out;
+}
+
+.image-lightbox.active {
+    opacity: 1;
+    visibility: visible;
+}
+
+.image-lightbox-content {
+    position: relative;
+    max-width: min(960px, 95vw);
+    max-height: 95vh;
+    overflow: auto;
+    border-radius: 12px;
+    -webkit-overflow-scrolling: touch;
+}
+
+.image-lightbox-img {
+    display: block;
+    width: 100%;
+    height: auto;
+    border-radius: 12px;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.6);
+    cursor: default;
+}
+
+.image-lightbox-close {
+    position: fixed;
+    top: 1.5rem;
+    right: 1.5rem;
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    border: 1px solid rgba(255, 255, 255, 0.4);
+    background: rgba(0, 0, 0, 0.5);
+    color: #fff;
+    font-size: 1.6rem;
+    line-height: 1;
+    cursor: pointer;
+    z-index: 10000;
+    transition: background 0.2s ease, transform 0.2s ease;
+}
+
+.image-lightbox-close:hover {
+    background: rgba(255, 255, 255, 0.2);
+    transform: scale(1.05);
+}
+
+@media (max-width: 768px) {
+    .image-lightbox {
+        padding: 1rem;
+    }
+    .image-lightbox-close {
+        top: 0.75rem;
+        right: 0.75rem;
+        width: 42px;
+        height: 42px;
+    }
 }
 
 /* Achievement Items */
@@ -1934,9 +2152,11 @@ li {
     .food-coordinate-title,
     .recipe-creation-title,
     .article-writing-title,
-    .cooking-class-title {
-        font-size: 1.2rem;
-        padding: 8px 15px;
+    .cooking-class-title,
+    .sns-consulting-title,
+    .youtube-consulting-title {
+        font-size: 1.6rem;
+        padding: 10px 18px;
     }
 
     /* Responsive padding */

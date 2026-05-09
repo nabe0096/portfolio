@@ -43,7 +43,7 @@
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
 
     <!-- Custom Styles -->
-    <link rel="stylesheet" href="style.css?v=20260508i">
+    <link rel="stylesheet" href="style.css?v=20260509w">
     <link rel="stylesheet" href="cursor.css?v=20251127">
 </head>
 
@@ -155,12 +155,13 @@
                         <p><span
                                 style="font-weight: bold;">現在は、SNSトータルコーディネーターとして、自身の発信経験をもとに個人や企業のSNS運用をトータルでサポート</span>。企画・撮影・編集・投稿運用・分析まで、発信にまつわる業務を一括で支援しています。
                         </p>
-                        <div class="mt-4 sns-link-container">
-                            <a href="https://lit.link/nabekitchen" class="btn btn-outline-light btn-lg sns-link-btn"
-                                target="_blank" rel="noopener noreferrer"
-                                style="width: 85%; max-width: 500px;">各種SNSリンクはこちら</a>
-                        </div>
                     </div>
+                </div>
+
+                <div class="text-center mt-4 sns-link-container">
+                    <a href="https://lit.link/nabekitchen" class="btn btn-outline-light btn-lg sns-link-btn"
+                        target="_blank" rel="noopener noreferrer"
+                        style="width: 100%; max-width: 720px;">各種SNSリンクはこちら</a>
                 </div>
             </div>
         </section>
@@ -188,6 +189,7 @@
                 </h2>
                 <div class="service-image-grid">
                     <div class="service-image-card" data-aos="fade-up">
+                        <span class="service-num">01</span>
                         <h3 class="service-image-title">動画・画像制作</h3>
                         <div class="service-image-wrap">
                             <img src="images/動画制作.png" alt="動画・画像制作" loading="lazy">
@@ -196,6 +198,7 @@
                         <a href="#recipe-video" class="btn btn-outline-light service-image-btn">実績はこちら</a>
                     </div>
                     <div class="service-image-card" data-aos="fade-up">
+                        <span class="service-num">02</span>
                         <h3 class="service-image-title">レシピ開発・監修</h3>
                         <div class="service-image-wrap">
                             <img src="images/レシピ制作.png" alt="レシピ開発・監修" loading="lazy">
@@ -204,6 +207,7 @@
                         <a href="#recipe-video" class="btn btn-outline-light service-image-btn">実績はこちら</a>
                     </div>
                     <div class="service-image-card" data-aos="fade-up">
+                        <span class="service-num">03</span>
                         <h3 class="service-image-title">SNSコンサルティング</h3>
                         <div class="service-image-wrap">
                             <img src="images/SNSコンサル.png" alt="SNSコンサルティング" loading="lazy">
@@ -212,6 +216,7 @@
                         <a href="#consulting-result" class="btn btn-outline-light service-image-btn">詳細はこちら</a>
                     </div>
                     <div class="service-image-card" data-aos="fade-up">
+                        <span class="service-num">04</span>
                         <h3 class="service-image-title">公式LINE構築</h3>
                         <div class="service-image-wrap">
                             <img src="images/LINE構築.png" alt="公式LINE構築" loading="lazy">
@@ -219,6 +224,7 @@
                         <p class="service-image-desc">顧客とのコミュニケーションを自動化するLINE公式アカウントの構築。リッチメニューやチャットボットの設定で、効率的な顧客対応を実現します。</p>
                     </div>
                     <div class="service-image-card" data-aos="fade-up">
+                        <span class="service-num">05</span>
                         <h3 class="service-image-title">AI活用サポート</h3>
                         <div class="service-image-wrap">
                             <img src="images/AIサポート.png" alt="AI活用サポート" loading="lazy">
@@ -302,22 +308,29 @@
                         </div>
                     </div>
                 </div>
-            </div>
 
-            <!-- YouTube Description -->
-            <div class="text-center mt-4 mb-4">
-                <p class="text-white">YouTubeでは料理初心者の男性でも作ってみたいと思わせる「ちょっとお洒落な男飯」をコンセプトに発信中</p>
+                <!-- YouTube Description -->
+                <div class="text-center mt-4 mb-2">
+                    <p class="text-white">YouTubeでは料理初心者の男性でも作ってみたいと思わせる「ちょっとお洒落な男飯」をコンセプトに発信中</p>
+                </div>
             </div>
+        </section>
 
-            <!-- Other Activities Section -->
-            <div class="text-center mt-5 mb-4">
-                <h3 class="text-white other-activities-title" style="font-size: 2.5rem;">その他活動</h3>
+        <!-- Other Activities Section -->
+        <section id="other-activities" class="py-5">
+            <div class="container">
+                <h2 class="section-title text-center">
+                    <span class="english-subtitle">OTHER ACTIVITIES</span>
+                    <span class="japanese-title">その他活動</span>
+                </h2>
             </div>
 
             <!-- Food Coordinate Category -->
             <div class="mb-5">
-                <div class="text-center">
-                    <h4 class="food-coordinate-title">フードコーディネート</h4>
+                <div class="row">
+                    <div class="col-lg-6 offset-lg-3">
+                        <h4 class="food-coordinate-title">フードコーディネート</h4>
+                    </div>
                 </div>
                 <div class="row mb-4">
                     <div class="col-lg-6 offset-lg-3">
@@ -338,8 +351,10 @@
 
             <!-- Recipe Video Creation Category -->
             <div class="mb-5">
-                <div class="text-center">
-                    <h4 id="recipe-video" class="recipe-creation-title">レシピ動画制作</h4>
+                <div class="row">
+                    <div class="col-lg-6 offset-lg-3">
+                        <h4 id="recipe-video" class="recipe-creation-title">レシピ動画制作</h4>
+                    </div>
                 </div>
                 <div class="row mb-4">
                     <div class="col-lg-6 offset-lg-3 mb-4">
@@ -427,8 +442,10 @@
 
             <!-- Article Writing Category -->
             <div class="mb-5">
-                <div class="text-center">
-                    <h4 class="article-writing-title">記事執筆</h4>
+                <div class="row">
+                    <div class="col-lg-6 offset-lg-3">
+                        <h4 class="article-writing-title">記事執筆</h4>
+                    </div>
                 </div>
                 <div class="row mb-4">
                     <div class="col-lg-6 offset-lg-3">
@@ -447,8 +464,10 @@
 
             <!-- Cooking Class Category -->
             <div class="mb-5">
-                <div class="text-center">
-                    <h4 class="cooking-class-title">料理教室</h4>
+                <div class="row">
+                    <div class="col-lg-6 offset-lg-3">
+                        <h4 class="cooking-class-title">料理教室</h4>
+                    </div>
                 </div>
                 <div class="row mb-4">
                     <div class="col-lg-6 offset-lg-3 text-center mb-3">
@@ -477,13 +496,15 @@
 
             <!-- YouTube Consulting Category -->
             <div class="mb-5">
-                <div class="text-center">
-                    <h4 class="youtube-consulting-title">YouTubeコンサルティング（その他SNSも可能）</h4>
+                <div class="row">
+                    <div class="col-lg-6 offset-lg-3">
+                        <h4 class="youtube-consulting-title">YouTubeコンサルティング（その他SNSも可能）</h4>
+                    </div>
                 </div>
                 <div class="row mb-4">
                     <div class="col-lg-6 offset-lg-3">
                         <div class="text-center mb-4">
-                            <img src="images/Firefly_パソコンで企業と打ち合わせしている 98688.jpg" alt="コンサルティングイメージ"
+                            <img src="images/運用サポート.png" alt="コンサルティングイメージ"
                                 class="img-fluid rounded shadow-lg"
                                 style="max-width: 100%; width: 100%; height: auto; border-radius: 15px;">
                         </div>
@@ -491,29 +512,10 @@
                             自社・個人チャンネルの立ち上げから、再生回数の伸び悩み、動画ネタの相談まで──YouTubeや各種SNSに関するお悩みを解決します。<br>また「まだチャンネルを持っていないが、店舗用SNSを始めたい」という方には、<span
                                 style="font-weight: bold; color: #D4AF37;">立ち上げから正しい方向性を一緒に作り上げるプランもご用意しています。</span></p>
 
-                        <div class="row g-4 service-achievement-boxes">
-                            <div class="col-md-6 mb-3">
-                                <div class="service-achievement-box">
-                                    <h5 class="text-gold text-center mb-4">サービス内容</h5>
-                                    <ul class="text-white service-achievement-list">
-                                        <li>動画撮影・編集代行</li>
-                                        <li>月数回のZOOMミーティング</li>
-                                        <li>動画ネタ提案・撮影指導</li>
-                                        <li>チャンネル設計・コンセプト作成</li>
-                                        <li>実店舗・商品・公式LINEへの誘導設計</li>
-                                    </ul>
-                                </div>
-                            </div>
-                            <div class="col-md-6 mb-3">
-                                <div class="service-achievement-box">
-                                    <h5 class="text-gold text-center mb-4">実績</h5>
-                                    <ul class="text-white service-achievement-list">
-                                        <li>飲食店様：集客成功・登録者増加</li>
-                                        <li>個人様：2ヶ月で登録者1,000人達成</li>
-                                        <li>サブチャンネル：83日で1万人達成</li>
-                                        <li>動画作成500本以上の経験</li>
-                                        <li>5年間のYouTube、SNS運用ノウハウ</li>
-                                    </ul>
+                        <div class="row mt-2">
+                            <div class="col-lg-6 offset-lg-3">
+                                <div class="service-image-wrap">
+                                    <img src="images/実績.png" alt="実績" class="img-fluid" loading="lazy" style="width: 100%; height: auto;">
                                 </div>
                             </div>
                         </div>
@@ -530,7 +532,7 @@
                                 </div>
                                 <a href="https://www.youtube.com/@%E6%B7%B1%E5%A4%9C%E3%81%AE%E3%82%89%E3%83%BC%E3%82%81%E3%82%93%E9%A3%9F%E5%A0%82/videos"
                                     target="_blank" class="btn btn-outline-light btn-lg mt-4 ramen-link-btn"
-                                    style="width: 85%; max-width: 500px;">
+                                    style="width: 100%; max-width: 720px;">
                                     深夜のらーめん食堂
                                 </a>
                             </div>
@@ -594,12 +596,12 @@
                             <div class="text-center mt-4">
                                 <a href="https://nabe0096.github.io/textbook/"
                                     class="btn btn-outline-light btn-lg textbook-link-btn" target="_blank"
-                                    rel="noopener noreferrer" style="width: 85%; max-width: 500px;">記事で学びたい方はこちら</a>
+                                    rel="noopener noreferrer" style="width: 100%; max-width: 720px;">記事で学びたい方はこちら</a>
                             </div>
                             <div class="text-center mt-3">
                                 <a href="https://nabenoblog.com/" class="btn btn-outline-light btn-lg blog-link-btn"
                                     target="_blank" rel="noopener noreferrer"
-                                    style="width: 85%; max-width: 500px;">SNS攻略無料ブログ</a>
+                                    style="width: 100%; max-width: 720px;">SNS攻略無料ブログ</a>
                             </div>
                         </div>
 
@@ -616,15 +618,18 @@
 
         <section id="contact" class="py-5">
             <div class="container text-center">
-                <h2 class="section-title">CONTACT</h2>
+                <h2 class="section-title text-center">
+                    <span class="english-subtitle">CONTACT</span>
+                    <span class="japanese-title">お問い合わせ</span>
+                </h2>
                 <p class="lead mb-4">お仕事のご依頼、ご相談は<br>下記お問い合わせフォームよりお気軽にご連絡ください。<br>Instagram DMからも可能です。</p>
                 <a href="https://www.nabenokitchen.com/contact/"
                     class="btn btn-outline-light btn-lg contact-link-btn mb-3" target="_blank"
-                    style="width: 85%; max-width: 500px;">お問い合わせはこちら</a>
+                    style="width: 100%; max-width: 720px;">お問い合わせはこちら</a>
                 <br>
                 <a href="https://www.instagram.com/nabeno_kitchen/"
                     class="btn btn-outline-light btn-lg instagram-link-btn" target="_blank"
-                    style="width: 85%; max-width: 500px;">Instagramはこちら</a>
+                    style="width: 100%; max-width: 720px;">Instagramはこちら</a>
             </div>
         </section>
     </main>

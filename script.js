@@ -194,5 +194,24 @@ document.addEventListener('DOMContentLoaded', () => {
         document.querySelector('[data-reel-track]')
     );
 
+    // 左右ボタン
+    document.querySelectorAll('.movie-carousel, .reel-carousel').forEach((carousel) => {
+        const track = carousel.querySelector('.movie-track, .reel-track');
+        if (!track) return;
+        const prevBtn = carousel.querySelector('[data-carousel-prev]');
+        const nextBtn = carousel.querySelector('[data-carousel-next]');
+        const getCardWidth = () => {
+            const card = track.firstElementChild;
+            if (!card) return 300;
+            return card.offsetWidth + parseInt(getComputedStyle(track).gap || 18);
+        };
+        if (prevBtn) prevBtn.addEventListener('click', () => {
+            track.scrollBy({ left: -getCardWidth(), behavior: 'smooth' });
+        });
+        if (nextBtn) nextBtn.addEventListener('click', () => {
+            track.scrollBy({ left: getCardWidth(), behavior: 'smooth' });
+        });
+    });
+
     updateChrome();
 });

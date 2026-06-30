@@ -169,7 +169,15 @@ document.addEventListener('DOMContentLoaded', () => {
         carousel.addEventListener('mouseleave', resumeAutoScroll);
         carousel.addEventListener('focusin', pauseAutoScroll);
         carousel.addEventListener('focusout', resumeAutoScroll);
-        track.addEventListener('touchstart', pauseAutoScrollBriefly, { passive: true });
+        track.addEventListener('touchstart', pauseAutoScroll, { passive: true });
+        track.addEventListener('touchend', () => {
+            autoScrollLeft = track.scrollLeft;
+            resumeTimer = window.setTimeout(resumeAutoScroll, 2500);
+        }, { passive: true });
+        track.addEventListener('touchcancel', () => {
+            autoScrollLeft = track.scrollLeft;
+            resumeTimer = window.setTimeout(resumeAutoScroll, 2500);
+        }, { passive: true });
         track.addEventListener('wheel', pauseAutoScrollBriefly, { passive: true });
 
         requestAnimationFrame(stepAutoScroll);

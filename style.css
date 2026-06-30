@@ -1005,8 +1005,10 @@ em.gold {
     gap: 18px;
     padding: 4px max(24px, calc((100vw - 1120px) / 2)) 18px;
     overflow-x: auto;
-    scroll-snap-type: none;
-    scroll-behavior: auto;
+    scroll-snap-type: x mandatory;
+    scroll-behavior: smooth;
+    -webkit-overflow-scrolling: touch;
+    touch-action: pan-x;
     scrollbar-width: thin;
     scrollbar-color: var(--gold) rgba(26, 26, 26, 0.08);
 }
@@ -1029,6 +1031,7 @@ em.gold {
     position: relative;
     flex: 0 0 min(640px, calc(100vw - 52px));
     aspect-ratio: 16 / 9;
+    scroll-snap-align: start;
     overflow: hidden;
     border-radius: 8px;
     background: #111;
@@ -1097,8 +1100,10 @@ em.gold {
     gap: 18px;
     padding: 4px max(24px, calc((100vw - 1120px) / 2)) 18px;
     overflow-x: auto;
-    scroll-snap-type: none;
-    scroll-behavior: auto;
+    scroll-snap-type: x mandatory;
+    scroll-behavior: smooth;
+    -webkit-overflow-scrolling: touch;
+    touch-action: pan-x;
     scrollbar-width: thin;
     scrollbar-color: var(--gold) rgba(26, 26, 26, 0.08);
 }
@@ -1121,7 +1126,7 @@ em.gold {
     flex: 0 0 min(430px, calc(100vw - 52px));
     height: 640px;
     overflow: hidden;
-    scroll-snap-align: none;
+    scroll-snap-align: start;
     border: 1px solid var(--line);
     border-radius: 8px;
     background: #fff;
@@ -1320,7 +1325,7 @@ em.gold {
     .service-grid,
     .activity-grid,
     .movie-grid {
-        grid-template-columns: 1fr 1fr;
+        grid-template-columns: 1fr;
     }
 
     .service-card:nth-child(n) {
@@ -1332,8 +1337,8 @@ em.gold {
     }
 
     .activity-card img {
-        min-height: 230px;
-        aspect-ratio: 16 / 10;
+        min-height: 200px;
+        aspect-ratio: 16 / 9;
     }
 }
 

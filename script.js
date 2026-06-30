@@ -194,19 +194,67 @@ document.addEventListener('DOMContentLoaded', () => {
         document.querySelector('[data-reel-track]')
     );
 
-    // activity-carousel ボタン
+    // activity-carousel
     const activityCarousel = document.querySelector('.activity-carousel');
     const activityTrack = document.querySelector('.activity-track');
     const activityPrev = document.querySelector('[data-activity-prev]');
     const activityNext = document.querySelector('[data-activity-next]');
     if (activityTrack && activityPrev && activityNext) {
-        const getActivityCardWidth = () => {
+        const isMobileCarousel = () => window.matchMedia('(max-width: 620px)').matches;
+        let currentActivityIndex = 0;
+
+        const getCards = () => [...activityTrack.children];
+
+        const getCardStep = () => {
             const card = activityTrack.firstElementChild;
-            if (!card) return 400;
-            return card.offsetWidth + parseInt(getComputedStyle(activityTrack).gap || 18);
+            if (!card) return 300;
+            const gap = parseInt(getComputedStyle(activityTrack).gap) || 14;
+            return card.offsetWidth + gap;
         };
-        activityPrev.addEventListener('click', () => activityTrack.scrollBy({ left: -getActivityCardWidth(), behavior: 'smooth' }));
-        activityNext.addEventListener('click', () => activityTrack.scrollBy({ left: getActivityCardWidth(), behavior: 'smooth' }));
+
+        const goToActivity = (index) => {
+            const cards = getCards();
+            currentActivityIndex = Math.max(0, Math.min(index, cards.length - 1));
+            if (isMobileCarousel()) {
+                activityTrack.style.transform = `translateX(-${currentActivityIndex * getCardStep()}px)`;
+            } else {
+                activityTrack.style.transform = '';
+                const card = cards[currentActivityIndex];
+                if (card) card.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'start' });
+                else activityTrack.scrollBy({ left: (index - currentActivityIndex) * getCardStep(), behavior: 'smooth' });
+            }
+        };
+
+        activityPrev.addEventListener('click', () => {
+            if (isMobileCarousel()) goToActivity(currentActivityIndex - 1);
+            else activityTrack.scrollBy({ left: -getCardStep(), behavior: 'smooth' });
+        });
+        activityNext.addEventListener('click', () => {
+            if (isMobileCarousel()) goToActivity(currentActivityIndex + 1);
+            else activityTrack.scrollBy({ left: getCardStep(), behavior: 'smooth' });
+        });
+
+        // スワイプ（スマホ用）
+        let touchStartX = 0, touchStartY = 0;
+        activityTrack.addEventListener('touchstart', (e) => {
+            touchStartX = e.touches[0].clientX;
+            touchStartY = e.touches[0].clientY;
+        }, { passive: true });
+        activityTrack.addEventListener('touchend', (e) => {
+            if (!isMobileCarousel()) return;
+            const dx = e.changedTouches[0].clientX - touchStartX;
+            const dy = Math.abs(e.changedTouches[0].clientY - touchStartY);
+            if (Math.abs(dx) > dy && Math.abs(dx) > 40) {
+                goToActivity(currentActivityIndex + (dx < 0 ? 1 : -1));
+            }
+        }, { passive: true });
+
+        window.addEventListener('resize', () => {
+            if (!isMobileCarousel()) {
+                activityTrack.style.transform = '';
+                currentActivityIndex = 0;
+            }
+        });
     }
 
     // 左右ボタン

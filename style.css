@@ -1646,7 +1646,7 @@ em.gold {
     /* 動画 */
     .reel-carousel { margin-left: -20px; margin-right: -20px; overflow: visible; }
     .reel-track { gap: 14px; padding-left: 20px; padding-right: 20px; }
-    .reel-card { flex-basis: calc(100vw - 56px); height: 720px; }
+    .reel-card { flex-basis: calc(100vw - 56px); height: 860px; }
     .instagram-showcase { margin-top: 40px; }
 
     /* コンタクト */

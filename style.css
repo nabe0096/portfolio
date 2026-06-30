@@ -1170,7 +1170,7 @@ em.gold {
 
 .reel-card {
     flex: 0 0 min(430px, calc(100vw - 52px));
-    height: 640px;
+    height: 800px;
     overflow: hidden;
     scroll-snap-align: start;
     border: 1px solid var(--line);
@@ -1646,7 +1646,7 @@ em.gold {
     /* 動画 */
     .reel-carousel { margin-left: -20px; margin-right: -20px; overflow: visible; }
     .reel-track { gap: 14px; padding-left: 20px; padding-right: 20px; }
-    .reel-card { flex-basis: calc(100vw - 56px); height: 560px; }
+    .reel-card { flex-basis: calc(100vw - 56px); height: 720px; }
     .instagram-showcase { margin-top: 40px; }
 
     /* コンタクト */

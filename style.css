@@ -1523,8 +1523,8 @@ em.gold {
     .works,
     .case-study,
     .media-section {
-        padding-left: 20px;
-        padding-right: 20px;
+        padding-left: 28px;
+        padding-right: 28px;
     }
 
 
@@ -1558,7 +1558,7 @@ em.gold {
     /* セクション共通余白 */
     :root {
         --section: 72px;
-        --container: min(100vw - 40px, 540px);
+        --container: min(100vw - 56px, 540px);
     }
 
     /* サイドパディング */
@@ -1568,8 +1568,8 @@ em.gold {
     .case-study,
     .media-section,
     .about {
-        padding-left: 20px;
-        padding-right: 20px;
+        padding-left: 28px;
+        padding-right: 28px;
     }
 
     /* ヘッダー */

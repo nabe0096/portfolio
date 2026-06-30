@@ -855,11 +855,17 @@ em.gold {
     letter-spacing: 0.12em;
 }
 
+.num-unit {
+    font-size: 0.6em;
+    vertical-align: baseline;
+}
+
 .numbers strong {
     display: block;
     margin: 9px 0 8px;
     color: var(--gold);
     font-family: var(--serif);
+    white-space: nowrap;
     font-size: clamp(1.65rem, 3vw, 3rem);
     line-height: 1.05;
 }

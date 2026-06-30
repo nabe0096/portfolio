@@ -1008,11 +1008,21 @@ em.gold {
 .carousel-btn-prev { left: 12px; }
 .carousel-btn-next { right: 12px; }
 
+@media (max-width: 620px) {
+    .carousel-btn {
+        width: 36px;
+        height: 36px;
+        font-size: 1.3rem;
+    }
+    .carousel-btn-prev { left: 6px; }
+    .carousel-btn-next { right: 6px; }
+}
+
 .movie-carousel {
     position: relative;
     margin-left: calc(max(24px, calc((100vw - 1120px) / 2)) * -1);
     margin-right: calc(max(24px, calc((100vw - 1120px) / 2)) * -1);
-    overflow: hidden;
+    overflow: visible;
 }
 
 .movie-carousel::before,
@@ -1107,7 +1117,7 @@ em.gold {
     position: relative;
     margin-left: calc(max(24px, calc((100vw - 1120px) / 2)) * -1);
     margin-right: calc(max(24px, calc((100vw - 1120px) / 2)) * -1);
-    overflow: hidden;
+    overflow: visible;
 }
 
 .reel-carousel::before,

@@ -1434,7 +1434,7 @@ em.gold {
     }
 
     .hero-title {
-        font-size: clamp(2.35rem, 11vw, 4.4rem);
+        font-size: clamp(1.9rem, 8vw, 3rem);
         line-height: 1.45;
     }
 
@@ -1545,7 +1545,7 @@ em.gold {
     .section-heading h2,
     .philosophy-copy h2,
     .contact-inner h2 {
-        font-size: clamp(2rem, 11vw, 3.3rem);
+        font-size: clamp(1.5rem, 6.5vw, 2rem);
     }
 
     .service-grid,
@@ -1615,5 +1615,28 @@ em.gold {
         height: 48px;
         right: 16px;
         bottom: 16px;
+    }
+
+    .feature-copy h3,
+    .case-copy h3,
+    .activity-card h3 {
+        font-size: 1.15rem;
+    }
+
+    .subsection-heading h3 {
+        font-size: 1.1rem;
+    }
+
+    .about-name {
+        font-size: 1.2rem;
+    }
+
+    .numbers strong {
+        font-size: clamp(1.4rem, 7vw, 2rem);
+    }
+
+    .hero-lead {
+        font-size: 0.92rem;
+        line-height: 2;
     }
 }

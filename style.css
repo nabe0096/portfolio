@@ -910,6 +910,27 @@ em.gold {
     overflow: visible;
 }
 
+.activity-carousel::before,
+.activity-carousel::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    width: 80px;
+    z-index: 2;
+    pointer-events: none;
+}
+
+.activity-carousel::before {
+    left: 0;
+    background: linear-gradient(to right, var(--warm) 0%, transparent 100%);
+}
+
+.activity-carousel::after {
+    right: 0;
+    background: linear-gradient(to left, var(--warm) 0%, transparent 100%);
+}
+
 .activity-track {
     display: flex;
     align-items: flex-start;
@@ -1719,7 +1740,6 @@ em.gold {
     .feature-copy p,
     .case-copy p { font-size: 0.88rem; line-height: 1.95; }
     .activity-carousel { margin-left: -20px; margin-right: -20px; overflow: visible; }
-    .activity-carousel .carousel-btn { display: none; }
     .activity-track { padding-left: 20px; padding-right: 20px; gap: 14px; }
     .activity-card { flex: 0 0 calc(100vw - 56px); }
     .activity-body { padding: 18px 18px 20px; gap: 8px; }

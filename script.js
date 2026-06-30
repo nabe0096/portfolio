@@ -194,7 +194,7 @@ document.addEventListener('DOMContentLoaded', () => {
         document.querySelector('[data-reel-track]')
     );
 
-    // activity-carousel ボタン + 自動スクロール
+    // activity-carousel ボタン
     const activityCarousel = document.querySelector('.activity-carousel');
     const activityTrack = document.querySelector('.activity-track');
     const activityPrev = document.querySelector('[data-activity-prev]');
@@ -207,34 +207,6 @@ document.addEventListener('DOMContentLoaded', () => {
         };
         activityPrev.addEventListener('click', () => activityTrack.scrollBy({ left: -getActivityCardWidth(), behavior: 'smooth' }));
         activityNext.addEventListener('click', () => activityTrack.scrollBy({ left: getActivityCardWidth(), behavior: 'smooth' }));
-    }
-
-    // activity 無限自動スクロール
-    if (activityCarousel && activityTrack && !prefersReducedMotion) {
-        // カードを複製して無限ループ
-        const origCards = [...activityTrack.children];
-        origCards.forEach(card => {
-            const clone = card.cloneNode(true);
-            clone.setAttribute('aria-hidden', 'true');
-            activityTrack.appendChild(clone);
-        });
-
-        let autoPos = 0;
-        let lastT = 0;
-        const SPEED = 14;
-
-        const stepActivity = (t) => {
-            if (!lastT) lastT = t;
-            const dt = t - lastT;
-            lastT = t;
-            const halfWidth = activityTrack.scrollWidth / 2;
-            autoPos += (dt / 1000) * SPEED;
-            if (autoPos >= halfWidth) autoPos -= halfWidth;
-            activityTrack.scrollLeft = autoPos;
-            requestAnimationFrame(stepActivity);
-        };
-
-        requestAnimationFrame(stepActivity);
     }
 
     // 左右ボタン

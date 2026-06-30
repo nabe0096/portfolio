@@ -116,8 +116,10 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
+    const isTouchDevice = window.matchMedia('(hover: none) and (pointer: coarse)').matches;
+
     const setupAutoCarousel = (carousel, track) => {
-        if (!carousel || !track || prefersReducedMotion) return;
+        if (!carousel || !track || prefersReducedMotion || isTouchDevice) return;
 
         let resumeTimer;
         let isPaused = false;

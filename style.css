@@ -752,6 +752,7 @@ em.gold {
 .service-card i {
     color: var(--gold);
     font-size: 1.6rem;
+    text-align: center;
 }
 
 .service-card h3 {
@@ -761,6 +762,7 @@ em.gold {
     font-size: clamp(1rem, 1.6vw, 1.2rem);
     font-weight: 500;
     line-height: 1.4;
+    text-align: center;
 }
 
 .service-card p {

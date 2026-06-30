@@ -732,7 +732,7 @@ em.gold {
     grid-template-rows: auto auto;
     align-items: center;
     column-gap: 28px;
-    row-gap: 6px;
+    row-gap: 14px;
     padding: 28px 36px;
     overflow: hidden;
     border: 1px solid var(--line);

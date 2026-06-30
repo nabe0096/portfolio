@@ -1184,6 +1184,9 @@ em.gold {
     height: 100%;
     border: 0;
     background: #fff;
+    overflow: hidden;
+    touch-action: pan-x;
+    overscroll-behavior: none;
 }
 
 .contact {

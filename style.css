@@ -282,8 +282,13 @@ a {
     display: flex;
     flex-wrap: wrap;
     align-items: center;
+    justify-content: center;
     gap: 20px;
     margin-top: 48px;
+}
+
+.feature-links .button {
+    min-width: 280px;
 }
 
 .button {
@@ -462,6 +467,7 @@ a {
 .section-heading .section-kicker::before {
     display: none;
 }
+
 
 .section-heading h2,
 .philosophy-copy h2,
@@ -842,7 +848,7 @@ em.gold {
 .numbers strong {
     display: block;
     margin: 9px 0 8px;
-    color: var(--ink);
+    color: var(--gold);
     font-family: var(--serif);
     font-size: clamp(1.65rem, 3vw, 3rem);
     line-height: 1.05;
@@ -885,7 +891,7 @@ em.gold {
 .feature-copy h3,
 .case-copy h3,
 .activity-card h3 {
-    margin: 0;
+    margin: 0 0 16px;
     color: var(--ink);
     font-family: var(--serif);
     font-size: clamp(1rem, 1.6vw, 1.25rem);
@@ -896,6 +902,10 @@ em.gold {
 }
 
 .feature-copy p,
+.case-copy .section-kicker {
+    text-align: center;
+}
+
 .case-copy p,
 .activity-card p {
     margin: 0;
@@ -1074,6 +1084,35 @@ em.gold {
     align-items: center;
 }
 
+.case-layout-stack {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: clamp(28px, 4vw, 52px);
+    max-width: 760px;
+    margin: 0 auto;
+}
+
+.case-layout-stack .case-image {
+    width: 100%;
+}
+
+.case-layout-stack .case-copy {
+    width: 100%;
+    text-align: center;
+}
+
+.case-layout-stack .case-copy .section-kicker,
+.case-layout-stack .case-copy h3,
+.case-layout-stack .case-copy .case-list-label {
+    text-align: center;
+}
+
+.case-layout-stack .case-copy p,
+.case-layout-stack .case-copy .case-list {
+    text-align: left;
+}
+
 .case-image {
     padding: 12px;
     border: 1px solid var(--line);
@@ -1096,21 +1135,18 @@ em.gold {
 }
 
 .case-list li {
-    position: relative;
-    padding-left: 24px;
+    display: flex;
+    align-items: baseline;
+    gap: 10px;
     color: var(--text);
     font-weight: 700;
 }
 
 .case-list li::before {
-    content: "";
-    position: absolute;
-    top: 0.82em;
-    left: 0;
-    width: 8px;
-    height: 8px;
-    border-radius: 50%;
-    background: var(--gold);
+    content: "—";
+    color: var(--gold);
+    font-weight: 400;
+    flex-shrink: 0;
 }
 
 .media-section {
@@ -1233,12 +1269,96 @@ em.gold {
 }
 
 .instagram-showcase {
-    margin-top: clamp(48px, 7vw, 82px);
+    margin-top: 0;
+}
+
+.section-divider {
+    width: 100%;
+    height: 1px;
+    background: linear-gradient(to right, transparent 0%, var(--gold) 30%, var(--gold) 70%, transparent 100%);
+    margin: clamp(48px, 7vw, 80px) 0 clamp(40px, 6vw, 68px);
+    opacity: 0.45;
+}
+
+.subsection-label {
+    font-family: var(--serif);
+    font-size: clamp(1rem, 2vw, 1.25rem);
+    font-weight: 700;
+    color: var(--ink);
+    margin: 0 0 8px;
+    text-align: center;
+}
+
+.activity-scroll-hint {
+    text-align: center;
+    font-size: 0.72rem;
+    color: var(--muted);
+    margin: 0 0 18px;
+    letter-spacing: 0.04em;
+}
+
+@keyframes nudge-left {
+    0%, 100% { transform: translateX(0); }
+    50% { transform: translateX(-4px); }
+}
+@keyframes nudge-right {
+    0%, 100% { transform: translateX(0); }
+    50% { transform: translateX(4px); }
+}
+
+.scroll-arrow:first-child {
+    display: inline-block;
+    animation: nudge-left 1.2s ease-in-out infinite;
+}
+.scroll-arrow:last-child {
+    display: inline-block;
+    animation: nudge-right 1.2s ease-in-out infinite;
 }
 
 .subsection-heading {
     max-width: 720px;
     margin-bottom: 24px;
+}
+
+.case-list-label {
+    margin: 0 0 16px;
+    font-family: var(--serif);
+    font-size: 1.15rem;
+    font-weight: 700;
+    color: var(--ink);
+    text-align: center;
+    letter-spacing: 0.06em;
+}
+
+.case-divider {
+    margin: 28px 0 24px;
+}
+
+.case-note {
+    margin-top: 44px !important;
+    font-size: 0.8rem !important;
+    color: var(--muted);
+    line-height: 1.9 !important;
+    border: 1px solid var(--gold);
+    border-radius: 6px;
+    padding: 16px 20px;
+    background: linear-gradient(135deg, rgba(180,152,96,0.06) 0%, rgba(180,152,96,0.02) 100%);
+    position: relative;
+}
+
+.subsection-desc {
+    margin: 12px 0 0;
+    color: var(--muted);
+    font-size: 0.92rem;
+    line-height: 2.0;
+}
+
+.subsection-btn {
+    margin-top: 20px;
+    min-width: 0;
+    padding: 0 32px;
+    min-height: 48px;
+    font-size: 0.88rem;
 }
 
 .subsection-heading .section-kicker {
@@ -1764,11 +1884,14 @@ em.gold {
     .feature-work { gap: 24px; }
     .feature-copy { padding: 0; }
     .feature-copy h3,
-    .case-copy h3 { font-size: 1.05rem; line-height: 1.6; }
+    .case-copy .section-kicker { text-align: center; }
+    .case-copy h3 { font-size: 0.92rem; line-height: 1.6; }
     .feature-copy p,
     .case-copy p { font-size: 0.88rem; line-height: 1.95; }
     .activity-carousel { margin-left: -20px; margin-right: -20px; overflow: hidden; }
-    .activity-carousel .carousel-btn { display: none; }
+    .activity-carousel .carousel-btn { display: flex; width: 34px; height: 34px; font-size: 1.2rem; top: 32%; }
+    .activity-carousel .carousel-btn-prev { left: 4px; }
+    .activity-carousel .carousel-btn-next { right: 4px; }
     .activity-carousel::before, .activity-carousel::after { display: none; }
     .activity-track {
         overflow: visible;
@@ -1788,7 +1911,7 @@ em.gold {
     .activity-card h3 { font-size: 1rem; }
     .activity-card p { font-size: 0.86rem; line-height: 1.9; }
     .feature-image img { aspect-ratio: 16 / 10; }
-    .case-list li { font-size: 0.86rem; padding: 10px 0; }
+    .case-list li { font-size: 0.86rem; padding: 6px 0; }
 
     /* 小見出し */
     .subsection-heading { margin-bottom: 20px; }
@@ -1798,7 +1921,8 @@ em.gold {
     .reel-carousel { margin-left: -20px; margin-right: -20px; overflow: visible; }
     .reel-track { gap: 14px; padding-left: 20px; padding-right: 20px; }
     .reel-card { flex-basis: calc(100vw - 56px); height: 860px; }
-    .instagram-showcase { margin-top: 40px; }
+    .instagram-showcase { margin-top: 0; }
+    .section-divider { margin: 40px 0 32px; }
 
     /* コンタクト */
     .contact { min-height: 560px; }

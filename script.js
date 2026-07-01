@@ -5,9 +5,25 @@ document.addEventListener('DOMContentLoaded', () => {
         const canvas = document.querySelector('.hero-particles');
         if (!canvas) return;
         const ctx = canvas.getContext('2d');
-        let W, H, dpr, particles = [];
+        const isMobile = window.matchMedia('(max-width: 620px)').matches;
+        const COUNT = isMobile ? 20 : 55;
+        let W, H, dpr, particles = [], rafId = null, isVisible = true;
+
         const GOLD = [[180, 152, 96], [210, 185, 120], [255, 223, 140]];
-        const COUNT = 55;
+
+        const rand = (min, max) => Math.random() * (max - min) + min;
+
+        const make = () => ({
+            x: rand(0, W),
+            y: rand(H * 0.3, H),
+            r: isMobile ? rand(1.2, 2.5) : rand(1.5, 3.5),
+            vy: isMobile ? rand(0.2, 0.5) : rand(0.3, 0.8),
+            vx: rand(-0.1, 0.1),
+            alpha: 0,
+            fadeIn: rand(0.004, 0.01),
+            life: rand(0.4, 0.8),
+            color: GOLD[Math.floor(Math.random() * GOLD.length)],
+        });
 
         const resize = () => {
             dpr = window.devicePixelRatio || 1;
@@ -15,62 +31,46 @@ document.addEventListener('DOMContentLoaded', () => {
             H = canvas.offsetHeight;
             canvas.width = W * dpr;
             canvas.height = H * dpr;
-            ctx.scale(dpr, dpr);
+            ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
         };
-        window.addEventListener('resize', () => {
-            resize();
+
+        const initParticles = () => {
             particles = [];
             for (let i = 0; i < COUNT; i++) {
                 const p = make();
                 p.y = rand(0, H);
-                p.alpha = rand(0, 0.7);
+                p.alpha = rand(0, 0.6);
                 particles.push(p);
             }
-        });
-        resize();
-
-        const rand = (min, max) => Math.random() * (max - min) + min;
-
-        const make = () => ({
-            x: rand(0, W),
-            y: rand(H * 0.3, H),
-            r: rand(1.5, 3.5),
-            vy: rand(0.3, 0.8),
-            vx: rand(-0.15, 0.15),
-            alpha: 0,
-            fadeIn: rand(0.005, 0.014),
-            life: rand(0.55, 1),
-            color: GOLD[Math.floor(Math.random() * GOLD.length)],
-        });
-
-        for (let i = 0; i < COUNT; i++) {
-            const p = make();
-            p.y = rand(0, H);
-            p.alpha = rand(0, 0.7);
-            particles.push(p);
-        }
+        };
 
         const tick = () => {
+            if (!isVisible) { rafId = null; return; }
             ctx.clearRect(0, 0, W, H);
             particles.forEach((p, i) => {
                 p.y -= p.vy;
                 p.x += p.vx;
                 if (p.alpha < p.life) p.alpha += p.fadeIn;
                 else p.alpha = Math.max(0, p.alpha - p.fadeIn * 0.5);
-
-                if (p.y < -10 || p.alpha <= 0) {
-                    particles[i] = make();
-                    return;
-                }
-
+                if (p.y < -10 || p.alpha <= 0) { particles[i] = make(); return; }
                 ctx.beginPath();
                 ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
                 ctx.fillStyle = `rgba(${p.color[0]},${p.color[1]},${p.color[2]},${p.alpha})`;
                 ctx.fill();
             });
-            requestAnimationFrame(tick);
+            rafId = requestAnimationFrame(tick);
         };
-        tick();
+
+        // ヒーローが見えないときは停止
+        new IntersectionObserver((entries) => {
+            isVisible = entries[0].isIntersecting;
+            if (isVisible && !rafId) rafId = requestAnimationFrame(tick);
+        }, { threshold: 0 }).observe(canvas.closest('.hero') || canvas);
+
+        window.addEventListener('resize', () => { resize(); initParticles(); });
+        resize();
+        initParticles();
+        rafId = requestAnimationFrame(tick);
     })();
     const header = document.querySelector('[data-header]');
     const nav = document.querySelector('[data-nav]');

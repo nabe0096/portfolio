@@ -30,13 +30,11 @@
 html {
     scroll-behavior: smooth;
     overflow-x: hidden;
-    overflow-y: scroll;
 }
 
 body {
     margin: 0;
     overflow-x: hidden;
-    overscroll-behavior: none;
     background: var(--paper);
     color: var(--text);
     font-family: var(--sans);
@@ -45,10 +43,6 @@ body {
     letter-spacing: 0.04em;
     -webkit-font-smoothing: antialiased;
     text-rendering: optimizeLegibility;
-}
-
-main {
-    overflow-x: hidden;
 }
 
 img,
@@ -2141,7 +2135,7 @@ em.gold {
     .case-copy h3 { font-size: 0.92rem; line-height: 1.6; }
     .feature-copy p,
     .case-copy p { font-size: 0.88rem; line-height: 1.95; }
-    .activity-carousel { margin-left: -20px; margin-right: -20px; overflow: hidden; }
+    .activity-carousel { margin-left: -20px; margin-right: -20px; overflow: hidden; overflow: clip; }
     .activity-carousel .carousel-btn { display: flex; width: 34px; height: 34px; font-size: 1.2rem; top: 32%; }
     .activity-carousel .carousel-btn-prev { left: 4px; }
     .activity-carousel .carousel-btn-next { right: 4px; }
@@ -2170,8 +2164,8 @@ em.gold {
     .subsection-heading h3 { font-size: 1.05rem; }
 
     /* 動画 */
-    .reel-carousel { margin-left: -20px; margin-right: -20px; overflow: hidden; }
-    .movie-carousel { margin-left: -20px; margin-right: -20px; overflow: hidden; }
+    .reel-carousel { margin-left: -20px; margin-right: -20px; overflow: hidden; overflow: clip; }
+    .movie-carousel { margin-left: -20px; margin-right: -20px; overflow: hidden; overflow: clip; }
     .reel-track { gap: 14px; padding-left: 20px; padding-right: 20px; }
     .reel-card { flex-basis: calc(100vw - 56px); height: 860px; }
     .instagram-showcase { margin-top: 0; }

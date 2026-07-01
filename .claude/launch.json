@@ -1,0 +1,11 @@
+{
+  "version": "0.0.1",
+  "configurations": [
+    {
+      "name": "miyakonojo-gourmet-preview",
+      "runtimeExecutable": "bash",
+      "runtimeArgs": ["-c", "cd '/Users/watanabejirou/Desktop/株式会社なべ/制作部/都城グルメ応援企画' && python3 -m http.server 8420"],
+      "port": 8420
+    }
+  ]
+}

@@ -826,6 +826,25 @@ em.gold {
     line-height: 1.9;
 }
 
+.service-card .text-link {
+    grid-column: 1 / -1;
+    justify-self: center;
+    width: 100%;
+    text-align: center;
+    margin-top: 4px;
+    color: var(--gold);
+    border-color: var(--gold);
+}
+
+.service-card .text-link::after {
+    background: var(--gold);
+}
+
+.service-card .text-link:hover {
+    color: #fff;
+    border-color: var(--gold);
+}
+
 .card-number {
     position: absolute;
     top: 50%;

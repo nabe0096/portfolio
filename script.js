@@ -27,8 +27,10 @@ document.addEventListener('DOMContentLoaded', () => {
 
         const resize = () => {
             dpr = window.devicePixelRatio || 1;
-            W = canvas.offsetWidth;
-            H = canvas.offsetHeight;
+            const newW = canvas.offsetWidth;
+            const newH = canvas.offsetHeight;
+            if (newW === W && newH === H) return;
+            W = newW; H = newH;
             canvas.width = W * dpr;
             canvas.height = H * dpr;
             ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
@@ -67,7 +69,12 @@ document.addEventListener('DOMContentLoaded', () => {
             if (isVisible && !rafId) rafId = requestAnimationFrame(tick);
         }, { threshold: 0 }).observe(canvas.closest('.hero') || canvas);
 
-        window.addEventListener('resize', () => { resize(); initParticles(); });
+        // resizeはcanvasサイズ調整のみ（パーティクル再生成しない）
+        let resizeTimer;
+        window.addEventListener('resize', () => {
+            clearTimeout(resizeTimer);
+            resizeTimer = setTimeout(resize, 200);
+        });
         resize();
         initParticles();
         rafId = requestAnimationFrame(tick);

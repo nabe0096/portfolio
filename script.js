@@ -289,7 +289,8 @@ document.addEventListener('DOMContentLoaded', () => {
             const cards = getCards();
             currentActivityIndex = Math.max(0, Math.min(index, cards.length - 1));
             if (isMobileCarousel()) {
-                activityTrack.style.transform = `translateX(-${currentActivityIndex * getCardStep()}px)`;
+                activityTrack.style.transform = '';
+                activityTrack.scrollLeft = currentActivityIndex * getCardStep();
             } else {
                 activityTrack.style.transform = '';
                 const card = cards[currentActivityIndex];
@@ -323,8 +324,9 @@ document.addEventListener('DOMContentLoaded', () => {
         }, { passive: true });
 
         window.addEventListener('resize', () => {
+            activityTrack.style.transform = '';
             if (!isMobileCarousel()) {
-                activityTrack.style.transform = '';
+                activityTrack.scrollLeft = 0;
                 currentActivityIndex = 0;
             }
         });

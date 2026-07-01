@@ -30,20 +30,25 @@
 html {
     scroll-behavior: smooth;
     overflow-x: hidden;
+    overflow-y: scroll;
 }
 
 body {
     margin: 0;
     overflow-x: hidden;
+    overscroll-behavior: none;
     background: var(--paper);
     color: var(--text);
     font-family: var(--sans);
     font-size: 16px;
     line-height: 1.9;
     letter-spacing: 0.04em;
-    overflow-x: hidden;
     -webkit-font-smoothing: antialiased;
     text-rendering: optimizeLegibility;
+}
+
+main {
+    overflow-x: hidden;
 }
 
 img,
@@ -213,6 +218,15 @@ a {
     background: var(--ink);
 }
 
+.hero-particles {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+    pointer-events: none;
+}
+
 .hero-media,
 .hero-shade {
     position: absolute;
@@ -222,11 +236,18 @@ a {
 .hero-media img {
     width: 100%;
     height: 116%;
-    transform: translateY(-5%);
     object-position: center;
+    transform-origin: center center;
+    animation: hero-ken-burns 20s ease-in-out infinite alternate;
+}
+
+@keyframes hero-ken-burns {
+    0%   { transform: translateY(-5%) scale(1)    translate(0%, 0%); }
+    100% { transform: translateY(-5%) scale(1.08) translate(-1.5%, 1%); }
 }
 
 .hero-shade {
+    z-index: 0;
     background:
         linear-gradient(90deg, rgba(10, 10, 10, 0.78) 0%, rgba(10, 10, 10, 0.5) 45%, rgba(10, 10, 10, 0.2) 100%),
         linear-gradient(180deg, rgba(10, 10, 10, 0.08) 62%, rgba(10, 10, 10, 0.34) 100%);
@@ -2133,7 +2154,6 @@ em.gold {
         padding-left: 20px;
         padding-right: 20px;
         gap: 14px;
-        will-change: transform;
         transition: transform 0.35s cubic-bezier(0.25, 0.46, 0.45, 0.94);
     }
     .activity-thumb-video iframe { display: none; }
@@ -2150,7 +2170,8 @@ em.gold {
     .subsection-heading h3 { font-size: 1.05rem; }
 
     /* 動画 */
-    .reel-carousel { margin-left: -20px; margin-right: -20px; overflow: visible; }
+    .reel-carousel { margin-left: -20px; margin-right: -20px; overflow: hidden; }
+    .movie-carousel { margin-left: -20px; margin-right: -20px; overflow: hidden; }
     .reel-track { gap: 14px; padding-left: 20px; padding-right: 20px; }
     .reel-card { flex-basis: calc(100vw - 56px); height: 860px; }
     .instagram-showcase { margin-top: 0; }

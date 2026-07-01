@@ -1,3 +1,63 @@
+// ゴールドパーティクル
+(function () {
+    const canvas = document.querySelector('.hero-particles');
+    if (!canvas) return;
+    const ctx = canvas.getContext('2d');
+    let W, H, particles = [];
+    const GOLD = [[180, 152, 96], [210, 185, 120], [255, 223, 140]];
+    const COUNT = 55;
+
+    const resize = () => {
+        W = canvas.width = canvas.offsetWidth;
+        H = canvas.height = canvas.offsetHeight;
+    };
+    window.addEventListener('resize', resize);
+    resize();
+
+    const rand = (min, max) => Math.random() * (max - min) + min;
+
+    const make = () => ({
+        x: rand(0, W),
+        y: rand(H * 0.3, H),
+        r: rand(1, 2.8),
+        vy: rand(0.25, 0.7),
+        vx: rand(-0.15, 0.15),
+        alpha: 0,
+        fadeIn: rand(0.004, 0.012),
+        life: rand(0.5, 1),
+        color: GOLD[Math.floor(Math.random() * GOLD.length)],
+    });
+
+    for (let i = 0; i < COUNT; i++) {
+        const p = make();
+        p.y = rand(0, H);
+        p.alpha = rand(0, 0.7);
+        particles.push(p);
+    }
+
+    const tick = () => {
+        ctx.clearRect(0, 0, W, H);
+        particles.forEach((p, i) => {
+            p.y -= p.vy;
+            p.x += p.vx;
+            if (p.alpha < p.life) p.alpha += p.fadeIn;
+            else p.alpha = Math.max(0, p.alpha - p.fadeIn * 0.5);
+
+            if (p.y < -10 || p.alpha <= 0) {
+                particles[i] = make();
+                return;
+            }
+
+            ctx.beginPath();
+            ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
+            ctx.fillStyle = `rgba(${p.color[0]},${p.color[1]},${p.color[2]},${p.alpha})`;
+            ctx.fill();
+        });
+        requestAnimationFrame(tick);
+    };
+    tick();
+})();
+
 document.addEventListener('DOMContentLoaded', () => {
     const header = document.querySelector('[data-header]');
     const nav = document.querySelector('[data-nav]');

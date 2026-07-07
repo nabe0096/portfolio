@@ -2,10 +2,34 @@
   "version": "0.0.1",
   "configurations": [
     {
+      "name": "kitahara-preview",
+      "runtimeExecutable": "bash",
+      "runtimeArgs": ["-c", "cd '/Users/watanabejirou/Desktop/株式会社なべ/制作部/kitahararikusou' && python3 -m http.server 8963"],
+      "port": 8963
+    },
+    {
       "name": "miyakonojo-gourmet-preview",
       "runtimeExecutable": "bash",
       "runtimeArgs": ["-c", "cd '/Users/watanabejirou/Desktop/株式会社なべ/制作部/都城グルメ応援企画' && python3 -m http.server 8420"],
       "port": 8420
+    },
+    {
+      "name": "cafe-sample",
+      "runtimeExecutable": "bash",
+      "runtimeArgs": ["-c", "cd '/Users/watanabejirou/Desktop/株式会社なべ/制作部/ホームページサンプルページ' && python3 -m http.server 8931"],
+      "port": 8931
+    },
+    {
+      "name": "kasayama-sample",
+      "runtimeExecutable": "bash",
+      "runtimeArgs": ["-c", "cd '/Users/watanabejirou/Desktop/株式会社なべ/制作部/ホームページサンプル/サンプル（笠山建築板金）' && python3 -m http.server 8957"],
+      "port": 8957
+    },
+    {
+      "name": "izakaya-sample",
+      "runtimeExecutable": "bash",
+      "runtimeArgs": ["-c", "cd '/Users/watanabejirou/Desktop/株式会社なべ/制作部/サンプル（居酒屋）' && python3 -m http.server 8944"],
+      "port": 8944
     }
   ]
 }

@@ -620,6 +620,54 @@ em.gold {
     line-height: 1.9;
 }
 
+.about-video-heading {
+    margin-top: 64px;
+    text-align: center;
+}
+
+.about-video-heading .section-kicker {
+    margin-bottom: 0;
+}
+
+.about-video-caption {
+    margin-top: 20px;
+    text-align: center;
+    font-family: var(--sans);
+    font-size: 0.95rem;
+    color: var(--muted);
+    line-height: 1.9;
+    letter-spacing: 0.04em;
+}
+
+.about-video-heading h3 {
+    font-family: var(--serif);
+    font-size: clamp(1.4rem, 3vw, 2rem);
+    font-weight: 500;
+    letter-spacing: 0.12em;
+    color: var(--ink);
+    margin: 2px 0 0;
+}
+
+.about-video {
+    margin-top: 28px;
+    display: flex;
+    justify-content: center;
+}
+
+.about-video iframe {
+    width: 320px;
+    height: 568px;
+    border: none;
+    border-radius: 16px;
+}
+
+@media (max-width: 620px) {
+    .about-video iframe {
+        width: 260px;
+        height: 462px;
+    }
+}
+
 .about-body .text-link {
     display: flex;
     min-width: 280px;

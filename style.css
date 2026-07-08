@@ -629,6 +629,19 @@ em.gold {
     margin-bottom: 0;
 }
 
+.service-catch {
+    display: block;
+    margin-top: 24px;
+    margin-bottom: 8px;
+    font-family: 'Cormorant Garamond', var(--serif);
+    font-size: clamp(1.3rem, 2.5vw, 1.7rem);
+    font-weight: 700;
+    font-style: italic;
+    letter-spacing: 0.06em;
+    line-height: 1.5;
+    text-align: center;
+}
+
 .about-video-caption {
     margin-top: 20px;
     text-align: center;
@@ -2253,4 +2266,20 @@ em.gold {
 
     /* その他 */
     .back-to-top { width: 44px; height: 44px; right: 14px; bottom: 14px; }
+}
+
+/*==================================================
+  温色背景セクション：極細ストライプ＋淡い金の光
+==================================================*/
+
+.philosophy,
+.about,
+.works {
+    background:
+        radial-gradient(ellipse 900px 480px at 88% -5%, rgba(184, 155, 94, 0.10), transparent 62%),
+        radial-gradient(ellipse 700px 420px at 8% 105%, rgba(184, 155, 94, 0.07), transparent 60%),
+        repeating-linear-gradient(-45deg, rgba(184, 155, 94, 0.05) 0 1px, transparent 1px 13px),
+        var(--warm);
+    border-top: 1px solid rgba(184, 155, 94, 0.18);
+    border-bottom: 1px solid rgba(184, 155, 94, 0.18);
 }

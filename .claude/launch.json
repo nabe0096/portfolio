@@ -2,6 +2,12 @@
   "version": "0.0.1",
   "configurations": [
     {
+      "name": "portfolio-preview",
+      "runtimeExecutable": "bash",
+      "runtimeArgs": ["-c", "cd '/Users/watanabejirou/Desktop/株式会社なべ/制作部/ポートフォリオサイト' && python3 -m http.server 8899"],
+      "port": 8899
+    },
+    {
       "name": "kitahara-preview",
       "runtimeExecutable": "bash",
       "runtimeArgs": ["-c", "cd '/Users/watanabejirou/Desktop/株式会社なべ/制作部/kitahararikusou' && python3 -m http.server 8963"],
@@ -16,7 +22,7 @@
     {
       "name": "cafe-sample",
       "runtimeExecutable": "bash",
-      "runtimeArgs": ["-c", "cd '/Users/watanabejirou/Desktop/株式会社なべ/制作部/ホームページサンプルページ' && python3 -m http.server 8931"],
+      "runtimeArgs": ["-c", "cd '/Users/watanabejirou/Desktop/株式会社なべ/制作部/ホームページサンプル/サンプル（カフェ）' && python3 -m http.server 8931"],
       "port": 8931
     },
     {
@@ -28,8 +34,14 @@
     {
       "name": "izakaya-sample",
       "runtimeExecutable": "bash",
-      "runtimeArgs": ["-c", "cd '/Users/watanabejirou/Desktop/株式会社なべ/制作部/サンプル（居酒屋）' && python3 -m http.server 8944"],
+      "runtimeArgs": ["-c", "cd '/Users/watanabejirou/Desktop/株式会社なべ/制作部/ホームページサンプル/サンプル（居酒屋）' && python3 -m http.server 8944"],
       "port": 8944
+    },
+    {
+      "name": "kenchiku-sample",
+      "runtimeExecutable": "bash",
+      "runtimeArgs": ["-c", "cd '/Users/watanabejirou/Desktop/株式会社なべ/制作部/ホームページサンプル/サンプル（建築・リフォーム）' && python3 -m http.server 8975"],
+      "port": 8975
     }
   ]
 }

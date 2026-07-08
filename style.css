@@ -496,6 +496,7 @@ a {
     font-weight: 500;
     line-height: 1.5;
     letter-spacing: 0.12em;
+    padding-left: 0.12em;
 }
 
 .about-image-strip {
@@ -2161,7 +2162,7 @@ em.gold {
 
     /* キッカー */
     .eyebrow,
-    .section-kicker { font-size: 0.65rem; letter-spacing: 0.16em; }
+    .section-kicker { font-size: 0.65rem; letter-spacing: 0.16em; padding-left: 0.16em; text-indent: 0; }
     .eyebrow::before,
     .section-kicker::before { width: 24px; margin-right: 8px; }
 

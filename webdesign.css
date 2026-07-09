@@ -599,7 +599,7 @@
     font-weight: 600;
     letter-spacing: 0.06em;
     line-height: 1.8;
-    color: var(--ink);
+    color: var(--gold);
 }
 
 .wd-benefit p {
@@ -685,7 +685,7 @@
     line-height: 1.7;
 }
 
-.wd-work p {
+.wd-work-body > p:not(.wd-work-cat) {
     margin: 0 0 20px;
     font-size: 0.9rem;
     line-height: 2;
@@ -909,6 +909,39 @@
 
 .wd-area-body p:last-child {
     margin-bottom: 0;
+}
+
+.wd-creator-section {
+    background:
+        radial-gradient(ellipse 900px 480px at 88% -5%, rgba(184, 155, 94, 0.10), transparent 62%),
+        radial-gradient(ellipse 700px 420px at 8% 105%, rgba(184, 155, 94, 0.07), transparent 60%),
+        repeating-linear-gradient(-45deg, rgba(184, 155, 94, 0.05) 0 1px, transparent 1px 13px),
+        var(--warm);
+    border-top: 1px solid rgba(184, 155, 94, 0.18);
+    border-bottom: 1px solid rgba(184, 155, 94, 0.18);
+}
+
+.wd-creator-section .section > .section-heading:first-child {
+    margin-bottom: clamp(22px, 3vw, 30px);
+}
+
+.wd-creator-icon {
+    width: clamp(112px, 16vw, 156px);
+    margin: 0 auto clamp(22px, 3vw, 30px);
+}
+
+.wd-creator-icon img {
+    display: block;
+    width: 100%;
+    height: auto;
+    border-radius: 50%;
+    box-shadow: var(--soft-shadow);
+}
+
+.wd-creator-actions {
+    display: flex;
+    justify-content: center;
+    margin-top: clamp(24px, 4vw, 34px);
 }
 
 .wd-area-grid {

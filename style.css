@@ -676,6 +676,8 @@ em.gold {
     margin-top: 28px;
     display: flex;
     justify-content: center;
+    gap: 24px;
+    flex-wrap: wrap;
 }
 
 .about-video iframe {
@@ -686,6 +688,10 @@ em.gold {
 }
 
 @media (max-width: 620px) {
+    .about-video {
+        gap: 18px;
+    }
+
     .about-video iframe {
         width: 260px;
         height: 462px;

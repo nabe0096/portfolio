@@ -1086,7 +1086,7 @@ em.gold {
 
 .activity-carousel::before,
 .activity-carousel::after {
-    content: '';
+    content: none;
     position: absolute;
     top: 0;
     bottom: 0;
@@ -1114,7 +1114,8 @@ em.gold {
     scroll-behavior: smooth;
     touch-action: pan-x;
     -webkit-overflow-scrolling: touch;
-    padding-bottom: 8px;
+    padding: 0 52px 8px;
+    scroll-padding-inline: 52px;
 }
 
 .activity-track::-webkit-scrollbar { display: none; }
@@ -1185,6 +1186,35 @@ em.gold {
     object-fit: cover;
     display: block;
     transition: transform 0.4s ease;
+}
+
+.activity-thumb-gallery {
+    position: relative;
+    display: block;
+    padding: 0;
+    border: 0;
+    background: none;
+    cursor: pointer;
+}
+
+.activity-gallery-label {
+    position: absolute;
+    right: 14px;
+    bottom: 14px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 34px;
+    padding: 0 16px;
+    border-radius: 999px;
+    background: rgba(255, 255, 255, 0.92);
+    color: var(--ink);
+    font-family: var(--sans);
+    font-size: 0.78rem;
+    font-weight: 600;
+    letter-spacing: 0.06em;
+    box-shadow: 0 8px 22px rgba(26, 26, 26, 0.16);
+    pointer-events: none;
 }
 
 .activity-card:hover .activity-thumb img {

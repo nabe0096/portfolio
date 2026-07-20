@@ -363,33 +363,59 @@ document.addEventListener('DOMContentLoaded', () => {
     // フォトギャラリー ライトボックス
     const lightbox = document.getElementById('collab-lightbox');
     const lightboxImg = lightbox?.querySelector('.lightbox-img');
+    const galleryButtons = [...document.querySelectorAll('[data-gallery-open]')];
     const thumbs = [...document.querySelectorAll('.gallery-thumb')];
+    const galleries = new Map();
+    let activeGallery = [];
     let currentPhoto = 0;
 
-    const photos = thumbs.map(t => t.src);
+    document.querySelectorAll('[data-gallery-source]').forEach((source) => {
+        const galleryId = source.dataset.gallerySource;
+        if (!galleryId) return;
+        galleries.set(galleryId, [...source.querySelectorAll('img')].map((img) => ({
+            src: img.src,
+            alt: img.alt || '',
+        })));
+    });
 
-    const openLightbox = (index) => {
+    thumbs.forEach((thumb) => {
+        const galleryId = thumb.dataset.galleryItem || 'collab';
+        const items = galleries.get(galleryId) || [];
+        items.push({ src: thumb.src, alt: thumb.alt || '' });
+        galleries.set(galleryId, items);
+    });
+
+    const openLightbox = (galleryId = 'collab', index = 0) => {
+        activeGallery = galleries.get(galleryId) || [];
+        if (!lightbox || !lightboxImg || !activeGallery.length) return;
         currentPhoto = index;
-        lightboxImg.src = photos[currentPhoto];
+        lightboxImg.src = activeGallery[currentPhoto].src;
+        lightboxImg.alt = activeGallery[currentPhoto].alt;
         lightbox.classList.add('is-open');
+        lightbox.setAttribute('aria-hidden', 'false');
         document.body.style.overflow = 'hidden';
     };
 
     const closeLightbox = () => {
         lightbox.classList.remove('is-open');
+        lightbox.setAttribute('aria-hidden', 'true');
         document.body.style.overflow = '';
     };
 
     const showPhoto = (index) => {
-        currentPhoto = (index + photos.length) % photos.length;
-        lightboxImg.src = photos[currentPhoto];
+        if (!activeGallery.length) return;
+        currentPhoto = (index + activeGallery.length) % activeGallery.length;
+        lightboxImg.src = activeGallery[currentPhoto].src;
+        lightboxImg.alt = activeGallery[currentPhoto].alt;
     };
 
     thumbs.forEach((thumb, i) => {
-        thumb.addEventListener('click', () => openLightbox(i));
+        thumb.addEventListener('click', () => openLightbox(thumb.dataset.galleryItem || 'collab', i));
     });
 
-    document.querySelector('.gallery-open-btn')?.addEventListener('click', () => openLightbox(0));
+    galleryButtons.forEach((button) => {
+        button.addEventListener('click', () => openLightbox(button.dataset.galleryOpen || 'collab', 0));
+    });
     lightbox?.querySelector('.lightbox-close')?.addEventListener('click', closeLightbox);
     lightbox?.querySelector('.lightbox-prev')?.addEventListener('click', () => showPhoto(currentPhoto - 1));
     lightbox?.querySelector('.lightbox-next')?.addEventListener('click', () => showPhoto(currentPhoto + 1));

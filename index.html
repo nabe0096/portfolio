@@ -23,7 +23,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;700&family=Noto+Serif+JP:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link rel="stylesheet" href="style.css?v=20260709-service-redesign">
+    <link rel="stylesheet" href="style.css?v=20260720-activity-gallery">
 </head>
 
 <body>
@@ -178,13 +178,13 @@
                 </article>
                 <article class="service-card reveal">
                     <figure class="service-card-media">
-                        <img src="images/service-cooking-catering.png" alt="料理教室・出張料理サービスのイメージ" loading="lazy">
+                        <img src="images/service-cooking-catering.png" alt="料理教室サービスのイメージ" loading="lazy">
                     </figure>
                     <div class="service-card-body">
                         <span class="card-number" aria-hidden="true">05</span>
                         <p class="service-eyebrow"><i class="fa-solid fa-utensils" aria-hidden="true"></i>Cooking &amp; Catering</p>
-                        <h3>料理教室・出張料理</h3>
-                        <p>個人・グループ向けの料理教室やイベントでの出張料理、フードコーディネートに対応。<em class="gold">テレビ番組のフードコーディネート担当経験もあります。</em></p>
+                        <h3>料理教室</h3>
+                        <p>個人・グループ向けの料理教室や、イベントでのフードコーディネートに対応。<em class="gold">テレビ番組のフードコーディネート担当経験もあります。</em></p>
                         <div class="service-links">
                             <a href="https://www.instagram.com/reels/C7V5NP_xyY8/" target="_blank" rel="noopener noreferrer" class="text-link">料理教室の様子はこちら</a>
                             <a href="#tvcm" class="text-link">フードコーディネート実績はこちら</a>
@@ -306,9 +306,24 @@
                         </div>
                         <div class="activity-body">
                             <p class="section-kicker">Lesson</p>
-                            <h3>料理教室・出張料理</h3>
+                            <h3>料理教室</h3>
                             <p>都城市で活動するママパーティーさんからご依頼をいただき料理教室を開催。<em class="gold">たくさんの方にご参加いただき、とても楽しい会になりました。</em></p>
                             <a class="text-link" href="https://www.instagram.com/reel/C7V5NP_xyY8/" target="_blank" rel="noopener noreferrer">当日の様子はこちら</a>
+                        </div>
+                    </article>
+                    <article class="activity-card reveal">
+                        <button class="activity-thumb activity-thumb-gallery" type="button" data-gallery-open="ih-lesson" aria-label="IH料理教室の写真を見る">
+                            <img src="images/集合写真.jpg" alt="IH料理教室の集合写真" loading="lazy">
+                            <span class="activity-gallery-label">写真を見る</span>
+                        </button>
+                        <div class="activity-body">
+                            <p class="section-kicker">Lesson / Event</p>
+                            <h3>IHの魅力を伝える料理教室</h3>
+                            <p>九州電力送配電様ときりしまフォーラム様の企画で、<em class="gold">IHクッキングヒーターの魅力を体験できる料理教室</em>を開催しました。火を使わない安心感や調理のしやすさをお伝えしながら、参加者の皆さまと楽しくクッキング。事後アンケートでは、<em class="gold">満足度100%</em>の評価をいただきました。</p>
+                            <div class="activity-gallery-source" data-gallery-source="ih-lesson" hidden>
+                                <img src="images/集合写真.jpg" alt="IH料理教室の集合写真">
+                                <img src="images/俯瞰写真.jpg" alt="IH料理教室で作った料理">
+                            </div>
                         </div>
                     </article>
                 </div>
@@ -330,10 +345,10 @@
                     <p>企業や自治体と連携したコラボ企画やイベントの立案・プロデュースも承っております。</p>
                     <div class="photo-gallery">
                         <div class="photo-thumbs">
-                            <img src="images/池田市長1.JPG" class="gallery-thumb" data-index="0" alt="池田市長との写真1" loading="lazy">
-                            <img src="images/池田市長2.JPG" class="gallery-thumb" data-index="1" alt="池田市長との写真2" loading="lazy">
+                            <img src="images/池田市長1.JPG" class="gallery-thumb" data-gallery-item="collab" data-index="0" alt="池田市長との写真1" loading="lazy">
+                            <img src="images/池田市長2.JPG" class="gallery-thumb" data-gallery-item="collab" data-index="1" alt="池田市長との写真2" loading="lazy">
                         </div>
-                        <button class="gallery-open-btn">フォトギャラリーを見る</button>
+                        <button class="gallery-open-btn" data-gallery-open="collab">フォトギャラリーを見る</button>
                     </div>
                 </div>
             </div>
@@ -472,7 +487,7 @@
         <p class="footer-copy">&copy; 2026 Nabe's Portfolio. All Rights Reserved.</p>
     </footer>
 
-    <script src="script.js?v=20260701-e"></script>
+    <script src="script.js?v=20260720-activity-gallery"></script>
 </body>
 
 </html>

@@ -23,8 +23,8 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;700&family=Noto+Serif+JP:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link rel="stylesheet" href="style.css?v=20260708-g">
-    <link rel="stylesheet" href="webdesign.css?v=20260724-b">
+    <link rel="stylesheet" href="style.css?v=20260725-header">
+    <link rel="stylesheet" href="webdesign.css?v=20260725-flow-c">
     <script type="application/ld+json">
     {
         "@context": "https://schema.org",
@@ -59,14 +59,14 @@
         </button>
         <nav class="site-nav" data-nav>
             <a href="index.html">ホーム</a>
-            <a href="#price">料金プラン</a>
+            <a href="#price">料金</a>
             <a href="#features">特徴</a>
-            <a href="#merits">ホームページのメリット</a>
+            <a href="#merits">HPのメリット</a>
             <a href="#works">制作事例</a>
             <a href="#flow">制作の流れ</a>
             <a href="#area">対応エリア</a>
-            <a href="#faq">よくある質問</a>
-            <a href="#contact-cta">お問い合わせ</a>
+            <a href="#faq">FAQ</a>
+            <a href="#contact-cta">問い合わせ</a>
         </nav>
     </header>
 
@@ -154,7 +154,7 @@
 
         <!-- 料金プラン -->
         <section id="price" class="section">
-            <div class="section-heading reveal">
+            <div class="section-heading wd-flow-heading reveal">
                 <p class="section-kicker">Monthly Plan</p>
                 <h2 style="font-size: clamp(1rem, 5.2vw, 1.8rem);"><span style="display: inline-block;">撮影も、管理も。</span><br><span style="display: inline-block;">ぜんぶ月額に含めています。</span></h2>
             </div>
@@ -619,16 +619,16 @@
 
         <!-- 制作の流れ -->
         <section id="flow" class="section">
-            <div class="section-heading reveal">
+            <div class="section-heading wd-flow-heading reveal">
                 <p class="section-kicker">Flow</p>
                 <h2>ご相談から公開までの流れ</h2>
             </div>
-            <figure class="wd-section-photo">
-                <img src="images/web-design-flow.jpg" alt="ご相談から公開までの制作工程を整理したデスク写真" loading="lazy">
-            </figure>
             <div class="wd-flow-list">
                 <div class="wd-step reveal">
                     <span class="wd-step-num" aria-hidden="true">STEP<strong>01</strong></span>
+                    <figure class="wd-step-visual">
+                        <img src="images/web-design-flow-contact.svg" alt="お問い合わせのイメージ" loading="lazy">
+                    </figure>
                     <div>
                         <h3>お問い合わせ</h3>
                         <p><a class="wd-inline-form-link" href="https://forms.gle/Ai7gxsnFKvWsfHKQA" target="_blank" rel="noopener noreferrer">Googleフォーム</a>からご相談ください。まだ内容が決まっていない段階でも構いません。</p>
@@ -636,6 +636,9 @@
                 </div>
                 <div class="wd-step reveal">
                     <span class="wd-step-num" aria-hidden="true">STEP<strong>02</strong></span>
+                    <figure class="wd-step-visual">
+                        <img src="images/web-design-flow-hearing.svg" alt="ヒアリングのイメージ" loading="lazy">
+                    </figure>
                     <div>
                         <h3>ヒアリング</h3>
                         <p>事業内容、ホームページを作る目的、掲載したい情報、ご希望のデザインなどをお伺いします。</p>
@@ -643,6 +646,9 @@
                 </div>
                 <div class="wd-step reveal">
                     <span class="wd-step-num" aria-hidden="true">STEP<strong>03</strong></span>
+                    <figure class="wd-step-visual">
+                        <img src="images/web-design-flow-photo.svg" alt="訪問・写真撮影のイメージ" loading="lazy">
+                    </figure>
                     <div>
                         <h3>訪問・写真撮影</h3>
                         <p>店舗や事務所へ直接お伺いし、商品、料理、サービス、店内、スタッフなど、ホームページに必要な写真を撮影します。</p>
@@ -650,6 +656,9 @@
                 </div>
                 <div class="wd-step reveal">
                     <span class="wd-step-num" aria-hidden="true">STEP<strong>04</strong></span>
+                    <figure class="wd-step-visual">
+                        <img src="images/web-design-flow-design.svg" alt="構成・デザイン制作のイメージ" loading="lazy">
+                    </figure>
                     <div>
                         <h3>構成・デザイン制作</h3>
                         <p>ヒアリング内容と撮影素材をもとに、ページ構成、文章、デザインを制作します。</p>
@@ -657,6 +666,9 @@
                 </div>
                 <div class="wd-step reveal">
                     <span class="wd-step-num" aria-hidden="true">STEP<strong>05</strong></span>
+                    <figure class="wd-step-visual">
+                        <img src="images/web-design-flow-check.svg" alt="内容確認のイメージ" loading="lazy">
+                    </figure>
                     <div>
                         <h3>内容のご確認</h3>
                         <p>完成前に内容をご確認いただき、必要な箇所を調整します。</p>
@@ -664,6 +676,9 @@
                 </div>
                 <div class="wd-step reveal">
                     <span class="wd-step-num" aria-hidden="true">STEP<strong>06</strong></span>
+                    <figure class="wd-step-visual">
+                        <img src="images/web-design-flow-launch.svg" alt="公開のイメージ" loading="lazy">
+                    </figure>
                     <div>
                         <h3>公開</h3>
                         <p>ドメインやサーバーを設定し、ホームページを公開します。</p>
@@ -671,6 +686,9 @@
                 </div>
                 <div class="wd-step reveal">
                     <span class="wd-step-num" aria-hidden="true">STEP<strong>07</strong></span>
+                    <figure class="wd-step-visual">
+                        <img src="images/web-design-flow-support.svg" alt="管理・サポートのイメージ" loading="lazy">
+                    </figure>
                     <div>
                         <h3>管理・サポート</h3>
                         <p>公開後も、ドメイン・サーバー管理や、契約内容に応じたページ変更などに対応します。</p>

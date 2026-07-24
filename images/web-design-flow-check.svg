@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 220" role="img" aria-labelledby="title">
+  <title id="title">内容確認のイメージ</title>
+  <rect width="320" height="220" rx="26" fill="#fafaf8"/>
+  <rect x="68" y="54" width="184" height="124" rx="16" fill="#fff" stroke="#d8c393" stroke-width="3"/>
+  <path d="M95 87h75m-75 28h113m-113 28h71" fill="none" stroke="#d8c393" stroke-width="7" stroke-linecap="round"/>
+  <circle cx="225" cy="142" r="36" fill="#3f4a3c"/>
+  <path d="M207 142l13 13 27-30" fill="none" stroke="#fff" stroke-width="8" stroke-linecap="round" stroke-linejoin="round"/>
+  <circle cx="83" cy="55" r="10" fill="#b89b5e"/>
+  <path d="M72 45c8-13 25-10 30 2" fill="none" stroke="#1a1a1a" stroke-width="4" stroke-linecap="round"/>
+</svg>

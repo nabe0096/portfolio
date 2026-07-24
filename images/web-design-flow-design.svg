@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 220" role="img" aria-labelledby="title">
+  <title id="title">構成・デザイン制作のイメージ</title>
+  <rect width="320" height="220" rx="26" fill="#fafaf8"/>
+  <rect x="64" y="58" width="192" height="122" rx="16" fill="#fff" stroke="#d8c393" stroke-width="3"/>
+  <rect x="85" y="84" width="66" height="48" rx="8" fill="#f0eadf"/>
+  <rect x="169" y="84" width="66" height="20" rx="6" fill="#3f4a3c"/>
+  <rect x="169" y="118" width="66" height="14" rx="5" fill="#d8c393"/>
+  <rect x="85" y="146" width="150" height="11" rx="5" fill="#f0eadf"/>
+  <path d="M129 109l20-18 23 34 17-14 33 30H96l33-32Z" fill="#b89b5e"/>
+  <path d="M245 52l16-16 23 23-16 16-26 10 3-33Z" fill="#1a1a1a"/>
+  <path d="M257 48l14 14" stroke="#cbb27c" stroke-width="4" stroke-linecap="round"/>
+</svg>

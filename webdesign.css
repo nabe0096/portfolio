@@ -781,69 +781,120 @@
 
 /* ---------- 制作の流れ ---------- */
 
+.wd-flow-heading h2 {
+    max-width: 100%;
+    margin-right: auto;
+    margin-left: auto;
+    overflow-wrap: anywhere;
+    word-break: normal;
+}
+
 .wd-flow-list {
-    max-width: 680px;
+    width: 100%;
+    max-width: 1120px;
     margin: 0 auto;
     display: grid;
-    gap: 0;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 28px 32px;
 }
 
 .wd-step {
     position: relative;
-    display: grid;
-    grid-template-columns: 96px 1fr;
-    gap: clamp(18px, 3vw, 30px);
-    padding: 26px 0;
+    display: flex;
+    flex-direction: column;
+    min-height: 100%;
+    min-width: 0;
+    padding: 30px clamp(20px, 2.4vw, 28px) 28px;
+    overflow: visible;
+    border: 1px solid var(--line);
+    border-radius: 8px;
+    background: var(--card);
+    box-shadow: var(--soft-shadow);
 }
 
 .wd-step:not(:last-child)::after {
     content: "";
     position: absolute;
-    left: 47px;
-    top: 78px;
-    bottom: -8px;
-    width: 1px;
-    background: rgba(184, 155, 94, 0.35);
+    right: -24px;
+    top: 50%;
+    width: 16px;
+    height: 16px;
+    border-top: 3px solid var(--gold);
+    border-right: 3px solid var(--gold);
+    transform: translateY(-50%) rotate(45deg);
+    opacity: 0.78;
+    z-index: 2;
+}
+
+.wd-step:nth-child(3n)::after,
+.wd-step:last-child::after {
+    display: none;
 }
 
 .wd-step-num {
-    display: grid;
-    place-content: center;
+    display: block;
     text-align: center;
-    width: 94px;
-    height: 52px;
-    border: 1px solid rgba(184, 155, 94, 0.5);
-    border-radius: 8px;
-    background: var(--card);
+    width: fit-content;
+    margin-bottom: 16px;
     font-family: var(--serif);
-    color: var(--gold);
+    color: var(--ink);
     font-size: 0.72rem;
     font-weight: 700;
     letter-spacing: 0.16em;
-    line-height: 1.4;
+    line-height: 1.1;
     position: relative;
     z-index: 1;
 }
 
+.wd-step-num::before {
+    content: "";
+    display: block;
+    width: 58px;
+    height: 8px;
+    margin-bottom: 8px;
+    border-radius: 0 0 999px 999px;
+    background: var(--gold);
+}
+
 .wd-step-num strong {
-    font-size: 1.15rem;
-    letter-spacing: 0.08em;
+    display: block;
+    margin-top: 3px;
+    font-family: var(--sans);
+    font-size: clamp(2.6rem, 5vw, 3.4rem);
+    font-weight: 700;
+    letter-spacing: 0;
+    color: var(--green);
+}
+
+.wd-step-visual {
+    display: grid;
+    place-items: center;
+    min-height: 150px;
+    margin: 0 0 22px;
+}
+
+.wd-step-visual img {
+    width: min(100%, 240px);
+    height: auto;
+    object-fit: contain;
 }
 
 .wd-step h3 {
-    margin: 4px 0 8px;
+    margin: auto 0 12px;
     font-family: var(--serif);
-    font-size: 1.1rem;
+    font-size: clamp(1rem, 2vw, 1.18rem);
     font-weight: 600;
     letter-spacing: 0.08em;
     color: var(--ink);
+    overflow-wrap: anywhere;
 }
 
 .wd-step p {
     margin: 0;
-    font-size: 0.92rem;
-    line-height: 2.05;
+    font-size: 0.9rem;
+    line-height: 2;
     color: var(--text);
+    overflow-wrap: anywhere;
 }
 
 /* ---------- 月額管理 ---------- */
@@ -1134,6 +1185,19 @@
     .wd-variation-grid {
         grid-template-columns: repeat(3, 1fr);
     }
+
+    .wd-flow-list {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .wd-step:nth-child(3n)::after {
+        display: block;
+    }
+
+    .wd-step:nth-child(2n)::after,
+    .wd-step:last-child::after {
+        display: none;
+    }
 }
 
 @media (max-width: 900px) {
@@ -1286,19 +1350,45 @@
         font-size: 0.92rem;
     }
 
+    .wd-flow-list {
+        grid-template-columns: 1fr;
+        gap: 18px;
+    }
+
+    .wd-flow-heading h2 {
+        max-width: 11.5em;
+        font-size: clamp(1.35rem, 7vw, 1.7rem);
+        letter-spacing: 0.06em;
+        padding-left: 0.06em;
+        line-height: 1.65;
+    }
+
     .wd-step {
-        grid-template-columns: 78px 1fr;
-        padding: 22px 0;
+        padding: 24px 20px;
     }
 
     .wd-step:not(:last-child)::after {
-        left: 38px;
-        top: 72px;
+        right: auto;
+        top: auto;
+        left: 50%;
+        bottom: -14px;
+        width: 14px;
+        height: 14px;
+        transform: translateX(-50%) rotate(135deg);
+        display: block;
     }
 
-    .wd-step-num {
-        width: 76px;
-        height: 46px;
+    .wd-step:last-child::after {
+        display: none;
+    }
+
+    .wd-step-visual {
+        min-height: 132px;
+        margin-bottom: 18px;
+    }
+
+    .wd-step-visual img {
+        width: min(100%, 210px);
     }
 
     .wd-works-disclaimer {

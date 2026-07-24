@@ -2,6 +2,24 @@
   "version": "0.0.1",
   "configurations": [
     {
+      "name": "hibinone-preview",
+      "runtimeExecutable": "bash",
+      "runtimeArgs": ["-c", "cd '/Users/watanabejirou/Desktop/株式会社なべ/制作部/【0円】ホームページ制作/ヒビノネ写真館/site' && python3 -m http.server 8971"],
+      "port": 8971
+    },
+    {
+      "name": "tabi-therapist-lp",
+      "runtimeExecutable": "bash",
+      "runtimeArgs": ["-c", "cd '/Users/watanabejirou/Desktop/株式会社なべ/制作部/【0円】ホームページ制作/旅するセラピスト（山口さん）/site' && python3 -m http.server 8917"],
+      "port": 8917
+    },
+    {
+      "name": "textbook-preview",
+      "runtimeExecutable": "bash",
+      "runtimeArgs": ["-c", "cd '/Users/watanabejirou/Desktop/株式会社なべ/制作部/教科書LP' && python3 -m http.server 8905"],
+      "port": 8905
+    },
+    {
       "name": "portfolio-preview",
       "runtimeExecutable": "bash",
       "runtimeArgs": ["-c", "cd '/Users/watanabejirou/Desktop/株式会社なべ/制作部/ポートフォリオサイト' && python3 -m http.server 8899"],
@@ -54,6 +72,30 @@
       "runtimeExecutable": "bash",
       "runtimeArgs": ["-c", "cd '/Users/watanabejirou/Desktop/株式会社なべ/制作部/ホームページサンプル/サンプル（ラーメン屋）' && python3 -m http.server 8934"],
       "port": 8934
+    },
+    {
+      "name": "hoikuen-sample",
+      "runtimeExecutable": "bash",
+      "runtimeArgs": ["-c", "cd '/Users/watanabejirou/Desktop/株式会社なべ/制作部/ホームページサンプル/サンプル（保育園）' && python3 -m http.server 8926"],
+      "port": 8926
+    },
+    {
+      "name": "panya-sample",
+      "runtimeExecutable": "bash",
+      "runtimeArgs": ["-c", "cd '/Users/watanabejirou/Desktop/株式会社なべ/制作部/ホームページサンプル/サンプル（パン屋さん）' && python3 -m http.server 8948"],
+      "port": 8948
+    },
+    {
+      "name": "futsal-dev",
+      "runtimeExecutable": "bash",
+      "runtimeArgs": ["-c", "cd '/Users/watanabejirou/Desktop/株式会社なべ/制作部/futsal-attendance' && npm run dev -- -p 3009"],
+      "port": 3009
+    },
+    {
+      "name": "futsal-demo",
+      "runtimeExecutable": "bash",
+      "runtimeArgs": ["-c", "cd '/Users/watanabejirou/Desktop/株式会社なべ/制作部/futsal-attendance-demo' && npm run dev -- -p 3010"],
+      "port": 3010
     }
   ]
 }

@@ -1323,6 +1323,466 @@
     }
 }
 
+/* ---------- 料金プラン ---------- */
+
+.wd-price-flags {
+    list-style: none;
+    max-width: 880px;
+    margin: 0 auto clamp(34px, 5vw, 50px);
+    padding: 0;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px 12px;
+}
+
+.wd-price-flags li {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 9px 18px;
+    border: 1px solid rgba(184, 155, 94, 0.45);
+    border-radius: 999px;
+    background: rgba(184, 155, 94, 0.08);
+    font-size: 0.84rem;
+    font-weight: 500;
+    letter-spacing: 0.04em;
+    color: var(--ink);
+    line-height: 1.6;
+}
+
+.wd-price-flags li i {
+    flex: none;
+    color: var(--gold);
+    font-size: 0.85rem;
+}
+
+.wd-price-grid {
+    max-width: 980px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: clamp(16px, 2.5vw, 24px);
+    align-items: stretch;
+}
+
+.wd-price-card {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    padding: clamp(30px, 3.8vw, 40px) clamp(22px, 3vw, 30px) clamp(26px, 3.4vw, 34px);
+    background: var(--card);
+    border: 1px solid var(--line);
+    border-top: 3px solid rgba(184, 155, 94, 0.65);
+    border-radius: 12px;
+    box-shadow: var(--soft-shadow);
+    text-align: center;
+}
+
+.wd-price-card--featured {
+    border-color: rgba(184, 155, 94, 0.55);
+    border-top-color: var(--gold);
+    box-shadow: var(--shadow);
+}
+
+.wd-price-badge {
+    position: absolute;
+    top: -13px;
+    left: 50%;
+    transform: translateX(-50%);
+    padding: 5px 18px;
+    border-radius: 999px;
+    background: var(--gold);
+    color: #fff;
+    font-size: 0.7rem;
+    font-weight: 700;
+    letter-spacing: 0.18em;
+    white-space: nowrap;
+}
+
+.wd-price-plan {
+    margin: 0 0 10px;
+    font-size: 0.82rem;
+    font-weight: 700;
+    letter-spacing: 0.28em;
+    text-indent: 0.28em;
+    color: var(--gold);
+}
+
+.wd-price-pages {
+    margin: 0 0 20px;
+    padding-bottom: 18px;
+    border-bottom: 1px solid var(--line);
+    font-family: var(--serif);
+    font-size: 0.92rem;
+    letter-spacing: 0.08em;
+    color: var(--ink);
+}
+
+.wd-price-pages strong {
+    font-size: 1.4rem;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+    margin-right: 2px;
+}
+
+.wd-price-amount {
+    margin: 0;
+    font-family: var(--serif);
+    color: var(--gold);
+    line-height: 1;
+}
+
+.wd-price-amount strong {
+    font-size: clamp(2.5rem, 4.6vw, 3.1rem);
+    font-weight: 600;
+    letter-spacing: 0.01em;
+}
+
+.wd-price-amount span {
+    font-size: clamp(1rem, 2vw, 1.25rem);
+    letter-spacing: 0.1em;
+    margin-left: 2px;
+}
+
+.wd-price-tax {
+    margin: 10px 0 0;
+    font-size: 0.78rem;
+    letter-spacing: 0.12em;
+    color: var(--muted);
+}
+
+.wd-price-desc {
+    flex: 1;
+    margin: 20px 0 0;
+    padding-top: 18px;
+    border-top: 1px solid var(--line);
+    text-align: left;
+    font-size: 0.88rem;
+    line-height: 2;
+    color: var(--text);
+}
+
+/* 全プラン共通 */
+
+.wd-price-common {
+    max-width: 980px;
+    margin: clamp(38px, 5vw, 58px) auto 0;
+    padding: clamp(28px, 4vw, 42px) clamp(22px, 3.4vw, 38px);
+    background:
+        radial-gradient(ellipse 700px 380px at 90% -10%, rgba(184, 155, 94, 0.10), transparent 62%),
+        repeating-linear-gradient(-45deg, rgba(184, 155, 94, 0.05) 0 1px, transparent 1px 13px),
+        var(--warm);
+    border: 1px solid rgba(184, 155, 94, 0.25);
+    border-radius: 14px;
+}
+
+.wd-price-common-title {
+    margin: 0 0 clamp(20px, 3vw, 28px);
+    text-align: center;
+    font-family: var(--serif);
+    font-size: clamp(1.1rem, 2.2vw, 1.3rem);
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    color: var(--ink);
+}
+
+.wd-price-common-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 14px;
+}
+
+.wd-price-common-col {
+    padding: 20px 18px;
+    background: var(--card);
+    border: 1px solid var(--line);
+    border-radius: 10px;
+}
+
+.wd-price-common-cat {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin: 0 0 14px;
+    font-family: var(--serif);
+    font-size: 0.98rem;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    color: var(--ink);
+}
+
+.wd-price-common-cat i {
+    flex: none;
+    width: 32px;
+    height: 32px;
+    display: grid;
+    place-content: center;
+    border-radius: 50%;
+    background: rgba(184, 155, 94, 0.12);
+    color: var(--gold);
+    font-size: 0.82rem;
+}
+
+.wd-price-common-col ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: grid;
+    gap: 10px;
+}
+
+.wd-price-common-col li {
+    position: relative;
+    padding-left: 16px;
+    font-size: 0.86rem;
+    line-height: 1.9;
+    color: var(--text);
+}
+
+.wd-price-common-col li::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 12px;
+    width: 8px;
+    height: 1px;
+    background: var(--gold);
+}
+
+.wd-price-common-note {
+    margin: 18px 0 0;
+    text-align: center;
+    font-size: 0.8rem;
+    line-height: 1.9;
+    color: var(--muted);
+}
+
+/* 締めのコピー・CTA */
+
+.wd-price-conclusion {
+    max-width: 680px;
+    margin: clamp(38px, 5vw, 56px) auto 0;
+    text-align: center;
+}
+
+.wd-price-conclusion-title {
+    margin: 0 0 16px;
+    font-family: var(--serif);
+    font-size: clamp(1.15rem, 2.6vw, 1.5rem);
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    color: var(--ink);
+}
+
+.wd-price-conclusion p:not(.wd-price-conclusion-title) {
+    margin: 0;
+    line-height: 2.15;
+}
+
+.wd-price-cta {
+    display: flex;
+    justify-content: center;
+    margin-top: clamp(30px, 4vw, 44px);
+}
+
+@media (max-width: 1024px) {
+    .wd-price-common-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 900px) {
+    .wd-price-grid {
+        grid-template-columns: 1fr;
+        max-width: 480px;
+        gap: 24px;
+    }
+
+    .wd-price-card {
+        padding: 30px 24px 26px;
+    }
+}
+
+@media (max-width: 620px) {
+    .wd-price-flags {
+        gap: 8px;
+    }
+
+    .wd-price-flags li {
+        padding: 8px 14px;
+        font-size: 0.78rem;
+    }
+
+    .wd-price-common-grid {
+        grid-template-columns: 1fr;
+        gap: 10px;
+    }
+
+    .wd-price-common {
+        padding: 24px 18px;
+    }
+
+    .wd-price-desc {
+        font-size: 0.86rem;
+    }
+}
+
+/* ---------- 制作会社との違い（比較表） ---------- */
+
+.wd-vs-wrap {
+    max-width: 900px;
+    margin: 0 auto;
+    border: 1px solid var(--line);
+    border-radius: 12px;
+    overflow: hidden;
+    background: var(--card);
+    box-shadow: var(--soft-shadow);
+}
+
+.wd-vs {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.9rem;
+}
+
+.wd-vs-corner {
+    width: 22%;
+    background: var(--warm);
+    border-bottom: 1px solid var(--line);
+}
+
+.wd-vs thead th {
+    width: 39%;
+    padding: 15px 20px;
+    background: var(--warm);
+    border-bottom: 1px solid var(--line);
+    text-align: left;
+    font-size: 0.78rem;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    color: var(--muted);
+}
+
+.wd-vs thead th.is-mine {
+    background: var(--gold);
+    border-bottom-color: var(--gold);
+    color: #fff;
+    font-family: var(--serif);
+    font-size: 0.92rem;
+    letter-spacing: 0.08em;
+}
+
+.wd-vs tbody th {
+    padding: 18px 20px;
+    background: rgba(184, 155, 94, 0.05);
+    border-bottom: 1px solid var(--line);
+    text-align: left;
+    white-space: nowrap;
+    font-family: var(--serif);
+    font-size: 0.92rem;
+    font-weight: 600;
+    letter-spacing: 0.06em;
+    color: var(--ink);
+}
+
+.wd-vs tbody td {
+    padding: 18px 20px;
+    border-bottom: 1px solid var(--line);
+    vertical-align: top;
+    line-height: 1.9;
+    color: var(--muted);
+}
+
+.wd-vs tbody td.is-mine {
+    background: rgba(184, 155, 94, 0.08);
+    color: var(--ink);
+    font-weight: 500;
+}
+
+.wd-vs tbody tr:last-child th,
+.wd-vs tbody tr:last-child td {
+    border-bottom: none;
+}
+
+.wd-vs-note {
+    max-width: 720px;
+    margin: clamp(30px, 4vw, 44px) auto 0;
+    line-height: 2.15;
+}
+
+.wd-vs-note p {
+    margin: 0;
+}
+
+@media (max-width: 760px) {
+    .wd-vs-wrap {
+        border: none;
+        border-radius: 0;
+        overflow: visible;
+        background: none;
+        box-shadow: none;
+    }
+
+    .wd-vs,
+    .wd-vs tbody,
+    .wd-vs tr,
+    .wd-vs th,
+    .wd-vs td {
+        display: block;
+        width: auto;
+    }
+
+    .wd-vs thead {
+        display: none;
+    }
+
+    .wd-vs tbody tr {
+        margin-bottom: 14px;
+        background: var(--card);
+        border: 1px solid var(--line);
+        border-radius: 10px;
+        overflow: hidden;
+        box-shadow: var(--soft-shadow);
+    }
+
+    .wd-vs tbody tr:last-child {
+        margin-bottom: 0;
+    }
+
+    .wd-vs tbody th {
+        padding: 12px 18px;
+        background: rgba(184, 155, 94, 0.12);
+        white-space: normal;
+        font-size: 0.95rem;
+    }
+
+    .wd-vs tbody td {
+        padding: 14px 18px;
+        font-size: 0.88rem;
+        line-height: 1.85;
+    }
+
+    .wd-vs tbody td::before {
+        content: attr(data-label);
+        display: block;
+        margin-bottom: 4px;
+        font-size: 0.68rem;
+        font-weight: 700;
+        letter-spacing: 0.1em;
+        color: var(--gold);
+    }
+
+    .wd-vs tbody tr:last-child th,
+    .wd-vs tbody tr:last-child td {
+        border-bottom: 1px solid var(--line);
+    }
+
+    .wd-vs tbody tr td:last-child {
+        border-bottom: none;
+    }
+}
+
 /* ---------- アニメーション抑制 ---------- */
 
 @media (prefers-reduced-motion: reduce) {

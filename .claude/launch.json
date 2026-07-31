@@ -2,6 +2,18 @@
   "version": "0.0.1",
   "configurations": [
     {
+      "name": "koodori-preview",
+      "runtimeExecutable": "bash",
+      "runtimeArgs": ["-c", "cd '/Users/watanabejirou/Desktop/株式会社なべ/制作部/【0円】ホームページ制作/鼓舞' && python3 -m http.server 8981"],
+      "port": 8981
+    },
+    {
+      "name": "font-sample",
+      "runtimeExecutable": "bash",
+      "runtimeArgs": ["-c", "cd '/private/tmp/claude-501/-Users-watanabejirou-Desktop----------------------/50aea535-7e85-49f9-ab98-bb722e780373/scratchpad/fontsample' && python3 -m http.server 8988"],
+      "port": 8988
+    },
+    {
       "name": "hibinone-preview",
       "runtimeExecutable": "bash",
       "runtimeArgs": ["-c", "cd '/Users/watanabejirou/Desktop/株式会社なべ/制作部/【0円】ホームページ制作/ヒビノネ写真館/site' && python3 -m http.server 8971"],
@@ -12,6 +24,12 @@
       "runtimeExecutable": "bash",
       "runtimeArgs": ["-c", "cd '/Users/watanabejirou/Desktop/株式会社なべ/制作部/【0円】ホームページ制作/旅するセラピスト（山口さん）/site' && python3 -m http.server 8917"],
       "port": 8917
+    },
+    {
+      "name": "sns-portfolio-preview",
+      "runtimeExecutable": "bash",
+      "runtimeArgs": ["-c", "cd '/Users/watanabejirou/Desktop/株式会社なべ/制作部/SNSポートフォリオサイト' && python3 -m http.server 8907"],
+      "port": 8907
     },
     {
       "name": "textbook-preview",

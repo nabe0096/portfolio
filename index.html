@@ -23,7 +23,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;700&family=Noto+Serif+JP:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link rel="stylesheet" href="style.css?v=20260720-activity-gallery">
+    <link rel="stylesheet" href="style.css?v=20260803-gallery-zoom">
 </head>
 
 <body>
@@ -323,6 +323,9 @@
                             <div class="activity-gallery-source" data-gallery-source="ih-lesson" hidden>
                                 <img src="images/集合写真.jpg" alt="IH料理教室の集合写真">
                                 <img src="images/俯瞰写真.jpg" alt="IH料理教室で作った料理">
+                                <!-- きりしまフォーラム様の掲載許可が下りたら、下の1行のコメントを外す（2026-08-03 許可申請中）
+                                <img src="images/きりしまフォーラム8月号.jpg" alt="IHクッキング教室のイベントレポート紙面" data-caption="引用：きりしまフォーラム8月号">
+                                -->
                             </div>
                         </div>
                     </article>
@@ -358,7 +361,15 @@
                 <button class="lightbox-close" aria-label="閉じる">&#10005;</button>
                 <button class="lightbox-prev" aria-label="前へ">&#8249;</button>
                 <button class="lightbox-next" aria-label="次へ">&#8250;</button>
-                <img class="lightbox-img" src="" alt="">
+                <button class="lightbox-zoom" type="button" aria-label="拡大する" aria-pressed="false">
+                    <i class="fa-solid fa-magnifying-glass-plus" aria-hidden="true"></i>
+                </button>
+                <figure class="lightbox-figure">
+                    <div class="lightbox-stage">
+                        <img class="lightbox-img" src="" alt="">
+                    </div>
+                    <figcaption class="lightbox-caption" hidden></figcaption>
+                </figure>
             </div>
         </section>
 
@@ -487,7 +498,7 @@
         <p class="footer-copy">&copy; 2026 Nabe's Portfolio. All Rights Reserved.</p>
     </footer>
 
-    <script src="script.js?v=20260720-activity-gallery"></script>
+    <script src="script.js?v=20260803-gallery-zoom"></script>
 </body>
 
 </html>

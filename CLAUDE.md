@@ -4,7 +4,7 @@
 
 | 項目 | 内容 |
 |---|---|
-| 公開URL | https://nabenokitchen.com |
+| 公開URL | https://nabe0096.github.io/portfolio/ ※nabenokitchen.comは現在レシピサイトに使用中（2026-07-31確認） |
 | GitHubリポジトリ | https://github.com/nabe0096/portfolio |
 | ホスティング | GitHub Pages |
 

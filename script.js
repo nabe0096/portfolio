@@ -363,6 +363,10 @@ document.addEventListener('DOMContentLoaded', () => {
     // フォトギャラリー ライトボックス
     const lightbox = document.getElementById('collab-lightbox');
     const lightboxImg = lightbox?.querySelector('.lightbox-img');
+    const lightboxCaption = lightbox?.querySelector('.lightbox-caption');
+    const lightboxFigure = lightbox?.querySelector('.lightbox-figure');
+    const lightboxStage = lightbox?.querySelector('.lightbox-stage');
+    const lightboxZoom = lightbox?.querySelector('.lightbox-zoom');
     const galleryButtons = [...document.querySelectorAll('[data-gallery-open]')];
     const thumbs = [...document.querySelectorAll('.gallery-thumb')];
     const galleries = new Map();
@@ -375,28 +379,57 @@ document.addEventListener('DOMContentLoaded', () => {
         galleries.set(galleryId, [...source.querySelectorAll('img')].map((img) => ({
             src: img.src,
             alt: img.alt || '',
+            caption: img.dataset.caption || '',
         })));
     });
 
     thumbs.forEach((thumb) => {
         const galleryId = thumb.dataset.galleryItem || 'collab';
         const items = galleries.get(galleryId) || [];
-        items.push({ src: thumb.src, alt: thumb.alt || '' });
+        items.push({ src: thumb.src, alt: thumb.alt || '', caption: thumb.dataset.caption || '' });
         galleries.set(galleryId, items);
     });
+
+    const setZoom = (zoomed) => {
+        if (!lightboxFigure) return;
+        lightboxFigure.classList.toggle('is-zoomed', zoomed);
+        if (lightboxZoom) {
+            lightboxZoom.setAttribute('aria-pressed', String(zoomed));
+            lightboxZoom.setAttribute('aria-label', zoomed ? '拡大をやめる' : '拡大する');
+            const icon = lightboxZoom.querySelector('i');
+            if (icon) icon.className = zoomed
+                ? 'fa-solid fa-magnifying-glass-minus'
+                : 'fa-solid fa-magnifying-glass-plus';
+        }
+        if (lightboxStage && !zoomed) {
+            lightboxStage.scrollTo(0, 0);
+        }
+    };
+
+    const renderPhoto = () => {
+        const photo = activeGallery[currentPhoto];
+        if (!photo) return;
+        setZoom(false);
+        lightboxImg.src = photo.src;
+        lightboxImg.alt = photo.alt;
+        if (lightboxCaption) {
+            lightboxCaption.textContent = photo.caption || '';
+            lightboxCaption.hidden = !photo.caption;
+        }
+    };
 
     const openLightbox = (galleryId = 'collab', index = 0) => {
         activeGallery = galleries.get(galleryId) || [];
         if (!lightbox || !lightboxImg || !activeGallery.length) return;
         currentPhoto = index;
-        lightboxImg.src = activeGallery[currentPhoto].src;
-        lightboxImg.alt = activeGallery[currentPhoto].alt;
+        renderPhoto();
         lightbox.classList.add('is-open');
         lightbox.setAttribute('aria-hidden', 'false');
         document.body.style.overflow = 'hidden';
     };
 
     const closeLightbox = () => {
+        setZoom(false);
         lightbox.classList.remove('is-open');
         lightbox.setAttribute('aria-hidden', 'true');
         document.body.style.overflow = '';
@@ -405,8 +438,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const showPhoto = (index) => {
         if (!activeGallery.length) return;
         currentPhoto = (index + activeGallery.length) % activeGallery.length;
-        lightboxImg.src = activeGallery[currentPhoto].src;
-        lightboxImg.alt = activeGallery[currentPhoto].alt;
+        renderPhoto();
     };
 
     thumbs.forEach((thumb, i) => {
@@ -416,6 +448,13 @@ document.addEventListener('DOMContentLoaded', () => {
     galleryButtons.forEach((button) => {
         button.addEventListener('click', () => openLightbox(button.dataset.galleryOpen || 'collab', 0));
     });
+    lightboxZoom?.addEventListener('click', () => {
+        setZoom(!lightboxFigure.classList.contains('is-zoomed'));
+    });
+    lightboxImg?.addEventListener('click', () => {
+        setZoom(!lightboxFigure.classList.contains('is-zoomed'));
+    });
+
     lightbox?.querySelector('.lightbox-close')?.addEventListener('click', closeLightbox);
     lightbox?.querySelector('.lightbox-prev')?.addEventListener('click', () => showPhoto(currentPhoto - 1));
     lightbox?.querySelector('.lightbox-next')?.addEventListener('click', () => showPhoto(currentPhoto + 1));

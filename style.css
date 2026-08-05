@@ -313,8 +313,8 @@ a {
     min-width: min(380px, 100%);
 }
 
-.hero .hero-actions .button-light {
-    border-color: var(--gold);
+.hero .hero-sns {
+    margin-top: 44px;
 }
 
 .button {
@@ -2499,6 +2499,7 @@ em.gold {
     .hero-actions { gap: 12px; margin-top: 32px; }
     .hero-sns-label { margin-top: 36px; font-size: 0.85rem; }
     .hero-sns { gap: 14px; margin-top: 12px; }
+    .hero .hero-sns { margin-top: 32px; }
     .hero-sns a { width: 46px; height: 46px; font-size: 1.15rem; }
     .hero-sns a.sns-recipe img { width: 27px; height: 27px; }
 

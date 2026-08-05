@@ -277,12 +277,12 @@ a {
     max-width: 900px;
     margin: 0;
     color: #fff;
-    font-family: var(--serif);
-    font-size: clamp(2.4rem, 5.4vw, 4.6rem);
-    font-weight: 500;
+    font-family: "Shippori Mincho B1", var(--serif);
+    font-size: clamp(2.7rem, 6vw, 5.1rem);
+    font-weight: 700;
     line-height: 1.42;
     letter-spacing: 0.08em;
-    text-shadow: 0 2px 30px rgba(0, 0, 0, 0.35);
+    text-shadow: 0 3px 22px rgba(0, 0, 0, 0.55), 0 0 1px rgba(255, 255, 255, 0.55);
 }
 
 .hero-lead {
@@ -307,6 +307,14 @@ a {
 
 .feature-links .button {
     min-width: 280px;
+}
+
+.hero-actions .button {
+    min-width: min(380px, 100%);
+}
+
+.hero .hero-actions .button-light {
+    border-color: var(--gold);
 }
 
 .button {
@@ -393,6 +401,87 @@ a {
 .contact .button-light:hover {
     color: var(--ink);
     border-color: #fff;
+}
+
+.hero-sns-label {
+    margin: 44px 0 0;
+    color: rgba(255, 255, 255, 0.92);
+    font-family: var(--serif);
+    font-size: 0.9rem;
+    font-weight: 500;
+    letter-spacing: 0.14em;
+    text-align: center;
+    text-shadow: 0 2px 12px rgba(0, 0, 0, 0.4);
+}
+
+.hero-sns-label--ink {
+    color: var(--ink);
+    text-shadow: none;
+}
+
+.hero-sns {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    gap: 18px;
+    margin-top: 16px;
+}
+
+.hero-sns a {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 54px;
+    height: 54px;
+    border-radius: 50%;
+    border: 1px solid rgba(255, 255, 255, 0.45);
+    background: rgba(26, 26, 26, 0.3);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    color: #fff;
+    text-decoration: none;
+    font-size: 1.25rem;
+    transition: transform 0.4s var(--ease), border-color 0.4s var(--ease), color 0.4s var(--ease), background 0.4s var(--ease);
+}
+
+.hero-sns a:hover {
+    transform: translateY(-4px);
+    border-color: var(--gold);
+    color: var(--gold);
+    background: rgba(26, 26, 26, 0.5);
+}
+
+.hero-sns a.sns-recipe img {
+    width: 30px;
+    height: 30px;
+    object-fit: contain;
+    transition: filter 0.4s var(--ease);
+}
+
+.hero-sns a.sns-recipe:hover img {
+    /* 白→ゴールド（--gold相当）に変換 */
+    filter: brightness(0) saturate(100%) invert(67%) sepia(26%) saturate(614%) hue-rotate(2deg) brightness(93%) contrast(87%);
+}
+
+/* 明るい背景用バリエーション（実績ブロックなど） */
+.hero-sns--light a {
+    border-color: rgba(26, 26, 26, 0.35);
+    background: rgba(26, 26, 26, 0.04);
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
+    color: var(--ink);
+}
+
+.hero-sns--light a:hover {
+    border-color: var(--gold);
+    color: var(--gold);
+    background: rgba(184, 155, 94, 0.1);
+}
+
+/* フッター配置時の余白調整 */
+.site-footer .hero-sns {
+    margin: 48px 0;
 }
 
 .hero-stats {
@@ -498,6 +587,10 @@ a {
     line-height: 1.5;
     letter-spacing: 0.12em;
     padding-left: 0.12em;
+}
+
+.about .section-heading {
+    margin-bottom: clamp(20px, 3vw, 32px);
 }
 
 .about-image-strip {
@@ -2292,7 +2385,7 @@ em.gold {
     }
 
     .hero-title {
-        font-size: clamp(1.9rem, 8vw, 3rem);
+        font-size: clamp(2.1rem, 8.8vw, 3.3rem);
         line-height: 1.45;
     }
 
@@ -2401,9 +2494,13 @@ em.gold {
 
     /* ヒーロー */
     .hero { min-height: 700px; }
-    .hero-title { font-size: clamp(1.7rem, 7.5vw, 2.4rem); line-height: 1.5; }
+    .hero-title { font-size: clamp(1.9rem, 8.3vw, 2.7rem); line-height: 1.5; }
     .hero-lead { font-size: 0.9rem; line-height: 2.0; letter-spacing: 0.04em; margin-top: 20px; }
     .hero-actions { gap: 12px; margin-top: 32px; }
+    .hero-sns-label { margin-top: 36px; font-size: 0.85rem; }
+    .hero-sns { gap: 14px; margin-top: 12px; }
+    .hero-sns a { width: 46px; height: 46px; font-size: 1.15rem; }
+    .hero-sns a.sns-recipe img { width: 27px; height: 27px; }
 
     /* セクション見出し */
     .section-heading { margin-bottom: 36px; }

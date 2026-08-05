@@ -313,13 +313,23 @@ a {
     min-width: min(380px, 100%);
 }
 
-.hero .hero-sns {
-    margin-top: 44px;
+/* ヒーロー内は左揃えで軸を統一 */
+.hero .hero-actions {
+    justify-content: flex-start;
 }
 
-/* ヒーローのゴールドボタン：白縁で引き締める */
+.hero .hero-actions .button {
+    min-width: min(280px, 100%);
+}
+
+.hero .hero-sns {
+    /* ボタン2つ分の幅（280px×2＋gap20px）の中央にアイコンを揃える */
+    width: min(580px, 100%);
+    margin-top: 44px;
+    justify-content: center;
+}
+
 .hero .hero-actions .button-dark {
-    border: 1px solid rgba(255, 255, 255, 0.9);
     box-shadow: 0 8px 24px rgba(0, 0, 0, 0.25);
 }
 
@@ -2393,6 +2403,11 @@ em.gold {
     .hero-title {
         font-size: clamp(2.1rem, 8.8vw, 3.3rem);
         line-height: 1.45;
+    }
+
+    /* モバイルは縦積み・中央揃えに戻す */
+    .hero .hero-sns {
+        justify-content: center;
     }
 
     .hero-actions,

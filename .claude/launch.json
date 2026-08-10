@@ -104,6 +104,12 @@
       "port": 8948
     },
     {
+      "name": "yakyu-sample",
+      "runtimeExecutable": "bash",
+      "runtimeArgs": ["-c", "cd '/Users/watanabejirou/Desktop/株式会社なべ/制作部/ホームページサンプル/サンプル（少年野球チーム）' && python3 -m http.server 8961"],
+      "port": 8961
+    },
+    {
       "name": "futsal-dev",
       "runtimeExecutable": "bash",
       "runtimeArgs": ["-c", "cd '/Users/watanabejirou/Desktop/株式会社なべ/制作部/futsal-attendance' && npm run dev -- -p 3009"],

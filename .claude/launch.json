@@ -2,124 +2,24 @@
   "version": "0.0.1",
   "configurations": [
     {
-      "name": "koodori-preview",
-      "runtimeExecutable": "bash",
-      "runtimeArgs": ["-c", "cd '/Users/watanabejirou/Desktop/株式会社なべ/制作部/【0円】ホームページ制作/鼓舞' && python3 -m http.server 8981"],
-      "port": 8981
+      "name": "kaigo-sample",
+      "runtimeExecutable": "sh",
+      "runtimeArgs": [
+        "-c",
+        "python3 -m http.server \"$PORT\" --directory '/Users/watanabejirou/Desktop/株式会社なべ/制作部/ホームページサンプル/サンプル（介護施設・採用）'"
+      ],
+      "port": 8931,
+      "autoPort": true
     },
     {
-      "name": "font-sample",
-      "runtimeExecutable": "bash",
-      "runtimeArgs": ["-c", "cd '/private/tmp/claude-501/-Users-watanabejirou-Desktop----------------------/50aea535-7e85-49f9-ab98-bb722e780373/scratchpad/fontsample' && python3 -m http.server 8988"],
-      "port": 8988
-    },
-    {
-      "name": "hibinone-preview",
-      "runtimeExecutable": "bash",
-      "runtimeArgs": ["-c", "cd '/Users/watanabejirou/Desktop/株式会社なべ/制作部/【0円】ホームページ制作/ヒビノネ写真館/site' && python3 -m http.server 8971"],
-      "port": 8971
-    },
-    {
-      "name": "tabi-therapist-lp",
-      "runtimeExecutable": "bash",
-      "runtimeArgs": ["-c", "cd '/Users/watanabejirou/Desktop/株式会社なべ/制作部/【0円】ホームページ制作/旅するセラピスト（山口さん）/site' && python3 -m http.server 8917"],
-      "port": 8917
-    },
-    {
-      "name": "sns-portfolio-preview",
-      "runtimeExecutable": "bash",
-      "runtimeArgs": ["-c", "cd '/Users/watanabejirou/Desktop/株式会社なべ/制作部/SNSポートフォリオサイト' && python3 -m http.server 8907"],
-      "port": 8907
-    },
-    {
-      "name": "textbook-preview",
-      "runtimeExecutable": "bash",
-      "runtimeArgs": ["-c", "cd '/Users/watanabejirou/Desktop/株式会社なべ/制作部/教科書LP' && python3 -m http.server 8905"],
-      "port": 8905
-    },
-    {
-      "name": "portfolio-preview",
-      "runtimeExecutable": "bash",
-      "runtimeArgs": ["-c", "cd '/Users/watanabejirou/Desktop/株式会社なべ/制作部/ポートフォリオサイト' && python3 -m http.server 8899"],
-      "port": 8899
-    },
-    {
-      "name": "kitahara-preview",
-      "runtimeExecutable": "bash",
-      "runtimeArgs": ["-c", "cd '/Users/watanabejirou/Desktop/株式会社なべ/制作部/kitahararikusou' && python3 -m http.server 8963"],
-      "port": 8963
-    },
-    {
-      "name": "miyakonojo-gourmet-preview",
-      "runtimeExecutable": "bash",
-      "runtimeArgs": ["-c", "cd '/Users/watanabejirou/Desktop/株式会社なべ/制作部/都城グルメ応援企画' && python3 -m http.server 8420"],
-      "port": 8420
-    },
-    {
-      "name": "cafe-sample",
-      "runtimeExecutable": "bash",
-      "runtimeArgs": ["-c", "cd '/Users/watanabejirou/Desktop/株式会社なべ/制作部/ホームページサンプル/サンプル（カフェ）' && python3 -m http.server 8931"],
-      "port": 8931
-    },
-    {
-      "name": "kasayama-sample",
-      "runtimeExecutable": "bash",
-      "runtimeArgs": ["-c", "cd '/Users/watanabejirou/Desktop/株式会社なべ/制作部/ホームページサンプル/サンプル（笠山建築板金）' && python3 -m http.server 8957"],
-      "port": 8957
-    },
-    {
-      "name": "izakaya-sample",
-      "runtimeExecutable": "bash",
-      "runtimeArgs": ["-c", "cd '/Users/watanabejirou/Desktop/株式会社なべ/制作部/ホームページサンプル/サンプル（居酒屋）' && python3 -m http.server 8944"],
-      "port": 8944
-    },
-    {
-      "name": "kenchiku-sample",
-      "runtimeExecutable": "bash",
-      "runtimeArgs": ["-c", "cd '/Users/watanabejirou/Desktop/株式会社なべ/制作部/ホームページサンプル/サンプル（建築・リフォーム）' && python3 -m http.server 8975"],
-      "port": 8975
-    },
-    {
-      "name": "biyoshitsu-sample",
-      "runtimeExecutable": "bash",
-      "runtimeArgs": ["-c", "cd '/Users/watanabejirou/Desktop/株式会社なべ/制作部/ホームページサンプル/サンプル（美容室）' && python3 -m http.server 8952"],
-      "port": 8952
-    },
-    {
-      "name": "ramen-sample",
-      "runtimeExecutable": "bash",
-      "runtimeArgs": ["-c", "cd '/Users/watanabejirou/Desktop/株式会社なべ/制作部/ホームページサンプル/サンプル（ラーメン屋）' && python3 -m http.server 8934"],
-      "port": 8934
-    },
-    {
-      "name": "hoikuen-sample",
-      "runtimeExecutable": "bash",
-      "runtimeArgs": ["-c", "cd '/Users/watanabejirou/Desktop/株式会社なべ/制作部/ホームページサンプル/サンプル（保育園）' && python3 -m http.server 8926"],
-      "port": 8926
-    },
-    {
-      "name": "panya-sample",
-      "runtimeExecutable": "bash",
-      "runtimeArgs": ["-c", "cd '/Users/watanabejirou/Desktop/株式会社なべ/制作部/ホームページサンプル/サンプル（パン屋さん）' && python3 -m http.server 8948"],
-      "port": 8948
-    },
-    {
-      "name": "yakyu-sample",
-      "runtimeExecutable": "bash",
-      "runtimeArgs": ["-c", "cd '/Users/watanabejirou/Desktop/株式会社なべ/制作部/ホームページサンプル/サンプル（少年野球チーム）' && python3 -m http.server 8961"],
-      "port": 8961
-    },
-    {
-      "name": "futsal-dev",
-      "runtimeExecutable": "bash",
-      "runtimeArgs": ["-c", "cd '/Users/watanabejirou/Desktop/株式会社なべ/制作部/futsal-attendance' && npm run dev -- -p 3009"],
-      "port": 3009
-    },
-    {
-      "name": "futsal-demo",
-      "runtimeExecutable": "bash",
-      "runtimeArgs": ["-c", "cd '/Users/watanabejirou/Desktop/株式会社なべ/制作部/futsal-attendance-demo' && npm run dev -- -p 3010"],
-      "port": 3010
+      "name": "title-cooker-pro",
+      "runtimeExecutable": "sh",
+      "runtimeArgs": [
+        "-c",
+        "python3 -m http.server \"$PORT\" --directory '/Users/watanabejirou/Desktop/株式会社なべ/発信部/タイトルクッカーPro'"
+      ],
+      "port": 8934,
+      "autoPort": true
     }
   ]
 }

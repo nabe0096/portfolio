@@ -2,6 +2,15 @@
   "version": "0.0.1",
   "configurations": [
     {
+      "name": "hibinone-preview",
+      "runtimeExecutable": "bash",
+      "runtimeArgs": [
+        "-c",
+        "cd '/Users/watanabejirou/Desktop/株式会社なべ/制作部/【0円】ホームページ制作/ヒビノネ写真館/site' && python3 -m http.server 8971"
+      ],
+      "port": 8971
+    },
+    {
       "name": "kaigo-sample",
       "runtimeExecutable": "sh",
       "runtimeArgs": [
@@ -19,6 +28,26 @@
         "python3 -m http.server \"$PORT\" --directory '/Users/watanabejirou/Desktop/株式会社なべ/発信部/タイトルクッカーPro'"
       ],
       "port": 8934,
+      "autoPort": true
+    },
+    {
+      "name": "mj-gourmet",
+      "runtimeExecutable": "sh",
+      "runtimeArgs": [
+        "-c",
+        "python3 -m http.server \"$PORT\" --directory '/Users/watanabejirou/Desktop/株式会社なべ/制作部/都城グルメ応援企画'"
+      ],
+      "port": 8940,
+      "autoPort": true
+    },
+    {
+      "name": "burgerhouseu",
+      "runtimeExecutable": "sh",
+      "runtimeArgs": [
+        "-c",
+        "python3 -m http.server \"$PORT\" --directory '/Users/watanabejirou/Desktop/株式会社なべ/制作部/【0円】ホームページ制作/BURGER HOUSE U/site'"
+      ],
+      "port": 8951,
       "autoPort": true
     }
   ]

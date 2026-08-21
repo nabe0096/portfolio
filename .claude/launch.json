@@ -2,52 +2,25 @@
   "version": "0.0.1",
   "configurations": [
     {
-      "name": "hibinone-preview",
-      "runtimeExecutable": "bash",
+      "name": "monaforca-design-sample",
+      "runtimeExecutable": "python3",
       "runtimeArgs": [
-        "-c",
-        "cd '/Users/watanabejirou/Desktop/株式会社なべ/制作部/【0円】ホームページ制作/ヒビノネ写真館/site' && python3 -m http.server 8971"
+        "-m",
+        "http.server",
+        "8931",
+        "--directory",
+        "/Users/watanabejirou/Desktop/株式会社なべ/制作部/MONAFORCA/デザイン案"
       ],
-      "port": 8971
+      "port": 8931
     },
     {
-      "name": "kaigo-sample",
+      "name": "portfolio",
       "runtimeExecutable": "sh",
       "runtimeArgs": [
         "-c",
-        "python3 -m http.server \"$PORT\" --directory '/Users/watanabejirou/Desktop/株式会社なべ/制作部/ホームページサンプル/サンプル（介護施設・採用）'"
+        "python3 -m http.server \"$PORT\" --directory '/Users/watanabejirou/Desktop/株式会社なべ/制作部/ポートフォリオサイト'"
       ],
-      "port": 8931,
-      "autoPort": true
-    },
-    {
-      "name": "title-cooker-pro",
-      "runtimeExecutable": "sh",
-      "runtimeArgs": [
-        "-c",
-        "python3 -m http.server \"$PORT\" --directory '/Users/watanabejirou/Desktop/株式会社なべ/発信部/タイトルクッカーPro'"
-      ],
-      "port": 8934,
-      "autoPort": true
-    },
-    {
-      "name": "mj-gourmet",
-      "runtimeExecutable": "sh",
-      "runtimeArgs": [
-        "-c",
-        "python3 -m http.server \"$PORT\" --directory '/Users/watanabejirou/Desktop/株式会社なべ/制作部/都城グルメ応援企画'"
-      ],
-      "port": 8940,
-      "autoPort": true
-    },
-    {
-      "name": "burgerhouseu",
-      "runtimeExecutable": "sh",
-      "runtimeArgs": [
-        "-c",
-        "python3 -m http.server \"$PORT\" --directory '/Users/watanabejirou/Desktop/株式会社なべ/制作部/【0円】ホームページ制作/BURGER HOUSE U/site'"
-      ],
-      "port": 8951,
+      "port": 8960,
       "autoPort": true
     }
   ]

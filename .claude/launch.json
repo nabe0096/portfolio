@@ -22,6 +22,15 @@
       ],
       "port": 8960,
       "autoPort": true
+    },
+    {
+      "name": "futsal-dev",
+      "runtimeExecutable": "sh",
+      "runtimeArgs": [
+        "-c",
+        "cd '/Users/watanabejirou/Desktop/株式会社なべ/制作部/futsal-attendance' && npm run dev -- -p 3009"
+      ],
+      "port": 3009
     }
   ]
 }

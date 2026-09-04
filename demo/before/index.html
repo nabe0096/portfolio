@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>なべの料理教室｜包丁を握ったことがない人専門・都城市</title>
+<meta name="description" content="都城市で毎週土曜に開催している、初心者向けの男飯料理教室。包丁を握ったことがない人専門。手ぶらでOK、1回3,000円。">
+<style>
+:root{
+  --bg:#fdf8f2;
+  --card:#ffffff;
+  --ink:#3d332c;
+  --ink-soft:#6d6058;
+  --accent:#e8703a;
+  --accent-dark:#c9541f;
+  --accent-soft:#fbeadf;
+  --line:#ecdfd3;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{
+  background:var(--bg);
+  color:var(--ink);
+  font-family:"Hiragino Maru Gothic ProN","ヒラギノ丸ゴ ProN",'Hiragino Sans','Yu Gothic',sans-serif;
+  line-height:1.9;
+  font-size:16px;
+  -webkit-text-size-adjust:100%;
+}
+.wrap{width:100%;max-width:720px;margin:0 auto;padding:0 20px}
+
+/* ヘッダー */
+header{
+  background:linear-gradient(170deg,#ffd9a8 0%,#ffb27a 55%,#f89b63 100%);
+  padding:56px 0 48px;
+  text-align:center;
+  position:relative;
+  overflow:hidden;
+}
+header::after{
+  content:"";
+  position:absolute;left:0;right:0;bottom:-1px;height:28px;
+  background:var(--bg);
+  border-radius:50% 50% 0 0 / 100% 100% 0 0;
+}
+.logo{
+  display:inline-block;
+  font-size:13px;
+  letter-spacing:.18em;
+  background:rgba(255,255,255,.75);
+  color:var(--accent-dark);
+  padding:6px 16px;
+  border-radius:999px;
+  margin-bottom:18px;
+  font-weight:700;
+}
+header h1{
+  font-size:30px;
+  line-height:1.5;
+  letter-spacing:.02em;
+  color:#5a3419;
+  text-shadow:0 1px 0 rgba(255,255,255,.5);
+}
+header p{
+  margin-top:14px;
+  font-size:16px;
+  color:#6b4326;
+  font-weight:600;
+}
+
+/* 共通セクション */
+section{padding:44px 0}
+h2{
+  font-size:22px;
+  text-align:center;
+  margin-bottom:8px;
+  letter-spacing:.03em;
+}
+h2 .mark{color:var(--accent)}
+.lead{
+  text-align:center;
+  color:var(--ink-soft);
+  font-size:15px;
+  margin-bottom:26px;
+}
+
+/* イントロ */
+.intro{
+  background:var(--card);
+  border:1px solid var(--line);
+  border-radius:18px;
+  padding:26px 22px;
+  font-size:16px;
+  box-shadow:0 6px 20px rgba(200,150,110,.08);
+}
+.intro strong{color:var(--accent-dark)}
+
+/* 売りカード */
+.points{display:grid;gap:16px}
+.point{
+  background:var(--card);
+  border:1px solid var(--line);
+  border-radius:18px;
+  padding:22px 20px;
+  box-shadow:0 6px 20px rgba(200,150,110,.08);
+}
+.point .icon{font-size:30px;line-height:1;display:block;margin-bottom:10px}
+.point h3{font-size:18px;margin-bottom:6px;color:var(--accent-dark)}
+.point p{font-size:15px;color:var(--ink-soft)}
+
+/* 開催概要 */
+.info{
+  background:var(--card);
+  border:1px solid var(--line);
+  border-radius:18px;
+  overflow:hidden;
+  box-shadow:0 6px 20px rgba(200,150,110,.08);
+}
+.info dl{display:block}
+.info .row{
+  display:flex;
+  gap:14px;
+  padding:16px 20px;
+  border-bottom:1px solid var(--line);
+  align-items:baseline;
+}
+.info .row:last-child{border-bottom:none}
+.info dt{
+  flex:0 0 84px;
+  font-size:13px;
+  font-weight:700;
+  color:#fff;
+  background:var(--accent);
+  border-radius:999px;
+  text-align:center;
+  padding:2px 0;
+}
+.info dd{flex:1;font-size:16px}
+.price{font-size:24px;font-weight:800;color:var(--accent-dark)}
+.price small{font-size:13px;font-weight:600;color:var(--ink-soft);margin-left:4px}
+
+/* 流れ */
+.steps{counter-reset:step;display:grid;gap:14px}
+.step{
+  background:var(--card);
+  border:1px solid var(--line);
+  border-radius:18px;
+  padding:18px 20px 18px 60px;
+  position:relative;
+  box-shadow:0 6px 20px rgba(200,150,110,.08);
+}
+.step::before{
+  counter-increment:step;
+  content:counter(step);
+  position:absolute;left:18px;top:18px;
+  width:28px;height:28px;border-radius:50%;
+  background:var(--accent-soft);
+  color:var(--accent-dark);
+  font-weight:800;font-size:14px;
+  display:flex;align-items:center;justify-content:center;
+}
+.step h3{font-size:16px;margin-bottom:2px}
+.step p{font-size:14px;color:var(--ink-soft)}
+
+/* 連絡先 */
+.contact{
+  background:var(--accent-soft);
+  border-radius:22px;
+  padding:32px 22px;
+  text-align:center;
+  border:1px solid #f4d5bf;
+}
+.contact p{font-size:15px;color:#7a4b2c;margin-bottom:18px}
+.btn{
+  display:inline-block;
+  background:var(--accent);
+  color:#fff;
+  text-decoration:none;
+  font-weight:700;
+  font-size:17px;
+  padding:16px 30px;
+  border-radius:999px;
+  box-shadow:0 6px 16px rgba(232,112,58,.35);
+  word-break:break-all;
+}
+.btn:hover{background:var(--accent-dark)}
+.note{margin-top:16px;font-size:13px;color:#8a5c3c}
+
+footer{
+  text-align:center;
+  padding:30px 0 40px;
+  font-size:13px;
+  color:var(--ink-soft);
+}
+
+@media (min-width:640px){
+  header h1{font-size:36px}
+  section{padding:56px 0}
+  .points{grid-template-columns:1fr 1fr}
+}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap">
+    <span class="logo">宮崎県都城市・毎週土曜</span>
+    <h1>なべの料理教室</h1>
+    <p>包丁を握ったことがない人専門の、男飯教室です。</p>
+  </div>
+</header>
+
+<main>
+
+  <section>
+    <div class="wrap">
+      <div class="intro">
+        <p>「料理をやってみたいけど、何から始めればいいか分からない」<br>
+        そんな方のための教室です。</p>
+        <p style="margin-top:14px">包丁の持ち方、野菜の切り方、火の入れ方。<strong>本当に一番最初のところ</strong>から、隣で一緒にやります。うまくできなくて当たり前。失敗しても笑って進める、そんな時間にしています。</p>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap">
+      <h2>この教室の<span class="mark">3つの特徴</span></h2>
+      <p class="lead">初めての方が、安心して来られるように。</p>
+      <div class="points">
+        <div class="point">
+          <span class="icon">🔰</span>
+          <h3>初心者だけの教室</h3>
+          <p>参加者は全員、包丁を握ったことがない方。経験者と比べられる心配はありません。</p>
+        </div>
+        <div class="point">
+          <span class="icon">🎒</span>
+          <h3>手ぶらでOK</h3>
+          <p>包丁もエプロンも材料も、こちらで全部用意します。持ち物は必要ありません。</p>
+        </div>
+        <div class="point">
+          <span class="icon">🍚</span>
+          <h3>作るのは「男飯」</h3>
+          <p>難しい料理はやりません。作ってすぐ食べたくなる、ガツンとうまい家庭料理を。</p>
+        </div>
+        <div class="point">
+          <span class="icon">🤝</span>
+          <h3>ひとり参加が中心</h3>
+          <p>おひとりでの参加が大半です。気を使わず、自分のペースで手を動かせます。</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap">
+      <h2>開催<span class="mark">概要</span></h2>
+      <p class="lead">はじめての方も、この内容だけ見ればOKです。</p>
+      <div class="info">
+        <dl>
+          <div class="row"><dt>開催日</dt><dd>毎週土曜日</dd></div>
+          <div class="row"><dt>場所</dt><dd>宮崎県都城市<br><span style="font-size:14px;color:var(--ink-soft)">※詳しい場所はお申し込み後にご案内します</span></dd></div>
+          <div class="row"><dt>対象</dt><dd>料理がまったくの初めての方</dd></div>
+          <div class="row"><dt>持ち物</dt><dd>なし（手ぶらでお越しください）</dd></div>
+          <div class="row"><dt>参加費</dt><dd><span class="price">3,000円<small>／1回</small></span></dd></div>
+        </dl>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap">
+      <h2>当日の<span class="mark">流れ</span></h2>
+      <p class="lead">だいたいこんな時間になります。</p>
+      <div class="steps">
+        <div class="step">
+          <h3>手を洗って、道具にさわる</h3>
+          <p>包丁の持ち方から。まずは緊張をほぐすところから始めます。</p>
+        </div>
+        <div class="step">
+          <h3>切って、焼いて、味をつける</h3>
+          <p>隣で一緒にやります。分からなくなったら、その場で何度でも聞いてください。</p>
+        </div>
+        <div class="step">
+          <h3>できたてを食べる</h3>
+          <p>自分で作った料理を、その場で。ここが一番おいしい瞬間です。</p>
+        </div>
+        <div class="step">
+          <h3>家でもう一度作れるように</h3>
+          <p>作り方のメモをお渡しします。帰ってから再現できて、はじめて身についたと言えるので。</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap">
+      <div class="contact">
+        <h2>参加のお申し込み・ご質問</h2>
+        <p>「こんなことも聞いていいのかな」という質問こそ大歓迎です。<br>お気軽にメールしてください。</p>
+        <a class="btn" href="mailto:nabe@example.com?subject=料理教室について">nabe@example.com</a>
+        <p class="note">お名前・希望の日程・気になっていることを書いていただけると、ご案内がスムーズです。</p>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="wrap">© なべの料理教室</div>
+</footer>
+
+</body>
+</html>

@@ -31,6 +31,15 @@
         "cd '/Users/watanabejirou/Desktop/株式会社なべ/制作部/futsal-attendance' && npm run dev -- -p 3009"
       ],
       "port": 3009
+    },
+    {
+      "name": "futsal-demo",
+      "runtimeExecutable": "bash",
+      "runtimeArgs": [
+        "-lc",
+        "cd '/Users/watanabejirou/Desktop/株式会社なべ/制作部/futsal-attendance-demo' && npm run dev -- -p 3009"
+      ],
+      "port": 3009
     }
   ]
 }

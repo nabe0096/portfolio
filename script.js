@@ -498,8 +498,10 @@ document.addEventListener('DOMContentLoaded', () => {
         goTo(index);
     }
 
+    let inView = false;
+
     function start() {
-        if (timer || stopped || reduce.matches || !mq.matches) return;
+        if (timer || stopped || reduce.matches || !mq.matches || !inView) return;
         timer = setInterval(tick, 4500);
     }
 
@@ -528,6 +530,19 @@ document.addEventListener('DOMContentLoaded', () => {
             index = 0;
         }
     });
+
+    if ('IntersectionObserver' in window) {
+        new IntersectionObserver(function (entries) {
+            inView = entries[0].isIntersecting;
+            if (inView) {
+                start();
+            } else {
+                stop();
+            }
+        }, { threshold: 0.35 }).observe(track);
+    } else {
+        inView = true;
+    }
 
     document.addEventListener('visibilitychange', function () {
         if (document.hidden) {

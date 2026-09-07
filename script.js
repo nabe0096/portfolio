@@ -470,3 +470,72 @@ document.addEventListener('DOMContentLoaded', () => {
         if (e.key === 'ArrowRight') showPhoto(currentPhoto + 1);
     });
 });
+
+/* ショートフィルム：スマホ幅で横に自動スクロール（操作したら停止） */
+(function () {
+    const track = document.querySelector('[data-autoscroll]');
+    if (!track) return;
+
+    const items = Array.from(track.querySelectorAll('iframe'));
+    if (items.length < 2) return;
+
+    const mq = window.matchMedia('(max-width: 900px)');
+    const reduce = window.matchMedia('(prefers-reduced-motion: reduce)');
+    let timer = null;
+    let index = 0;
+    let stopped = false;
+
+    function goTo(i) {
+        const el = items[i];
+        if (!el) return;
+        const left = el.offsetLeft - (track.clientWidth - el.clientWidth) / 2;
+        track.scrollTo({ left: left, behavior: 'smooth' });
+    }
+
+    function tick() {
+        if (stopped || document.hidden) return;
+        index = (index + 1) % items.length;
+        goTo(index);
+    }
+
+    function start() {
+        if (timer || stopped || reduce.matches || !mq.matches) return;
+        timer = setInterval(tick, 4500);
+    }
+
+    function stop() {
+        if (timer) {
+            clearInterval(timer);
+            timer = null;
+        }
+    }
+
+    function stopForGood() {
+        stopped = true;
+        stop();
+    }
+
+    ['pointerdown', 'touchstart', 'wheel'].forEach(function (ev) {
+        track.addEventListener(ev, stopForGood, { passive: true });
+    });
+
+    mq.addEventListener('change', function () {
+        if (mq.matches) {
+            start();
+        } else {
+            stop();
+            track.scrollTo({ left: 0 });
+            index = 0;
+        }
+    });
+
+    document.addEventListener('visibilitychange', function () {
+        if (document.hidden) {
+            stop();
+        } else {
+            start();
+        }
+    });
+
+    start();
+})();

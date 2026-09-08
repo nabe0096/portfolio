@@ -2795,3 +2795,7 @@ em.gold {
     width: 100%;
     height: auto;
 }
+
+.about-mission-title { margin-bottom: 0 !important; }
+.about-mission-image { margin-top: 22px; }
+.about-mission-body { margin-top: 26px !important; }

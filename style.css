@@ -2673,3 +2673,125 @@ em.gold {
     border-top: 1px solid rgba(184, 155, 94, 0.18);
     border-bottom: 1px solid rgba(184, 155, 94, 0.18);
 }
+
+
+/* ==== 企業向け料金への導線（2026-09-09） ==== */
+.hero-trust {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px 0;
+    margin: 30px 0 0;
+    padding: 0;
+    list-style: none;
+}
+
+.hero-trust li {
+    position: relative;
+    padding: 0 18px;
+    font-size: 0.8rem;
+    letter-spacing: 0.06em;
+    color: rgba(255, 255, 255, 0.78);
+}
+
+.hero-trust li:first-child {
+    padding-left: 0;
+}
+
+.hero-trust li + li::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 50%;
+    width: 1px;
+    height: 12px;
+    background: rgba(255, 255, 255, 0.35);
+    transform: translateY(-50%);
+}
+
+.hero-trust a {
+    color: inherit;
+    text-decoration: none;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.25);
+    transition: color 0.3s var(--ease), border-color 0.3s var(--ease);
+}
+
+.hero-trust a:hover {
+    color: var(--gold-light);
+    border-color: var(--gold-light);
+}
+
+.service-price {
+    margin: 16px 0 0 !important;
+    padding: 10px 14px;
+    border-left: 2px solid var(--gold);
+    background: rgba(184, 155, 94, 0.08);
+    color: var(--ink) !important;
+    font-family: var(--serif);
+    font-size: 0.88rem !important;
+    font-weight: 500;
+    letter-spacing: 0.04em;
+    line-height: 1.8 !important;
+}
+
+.service-pricing-cta {
+    margin: clamp(28px, 4vw, 44px) auto 0;
+    padding: clamp(26px, 3.5vw, 40px);
+    background: var(--ink);
+    border-radius: 12px;
+    text-align: center;
+    box-shadow: var(--shadow);
+}
+
+.service-pricing-cta p {
+    margin: 0 0 18px;
+    color: rgba(255, 255, 255, 0.85);
+    font-size: 0.92rem;
+    letter-spacing: 0.06em;
+}
+
+@media (max-width: 640px) {
+    .hero-trust li {
+        padding: 0 10px 0 0;
+    }
+
+    .hero-trust li + li::before {
+        display: none;
+    }
+
+    .hero-trust li::after {
+        content: "／";
+        margin-left: 10px;
+        color: rgba(255, 255, 255, 0.35);
+    }
+
+    .hero-trust li:last-child::after {
+        content: "";
+    }
+}
+
+
+/* ==== 都城グルメ応援プロジェクトの画像（2026-09-09） ==== */
+.about-mission-image {
+    max-width: 880px;
+    margin: 32px auto 0;
+}
+
+.about-mission-image a {
+    display: block;
+    border-radius: 12px;
+    overflow: hidden;
+    border: 1px solid var(--line);
+    box-shadow: var(--shadow);
+    transition: transform 0.5s var(--ease), box-shadow 0.5s var(--ease);
+}
+
+.about-mission-image a:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 28px 80px rgba(39, 32, 22, 0.16);
+}
+
+.about-mission-image img {
+    display: block;
+    width: 100%;
+    height: auto;
+}

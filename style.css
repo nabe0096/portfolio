@@ -2799,3 +2799,13 @@ em.gold {
 .about-mission-title { margin-bottom: 0 !important; }
 .about-mission-image { margin-top: 22px; }
 .about-mission-body { margin-top: 26px !important; }
+
+/* 市長コラボの実動画（Instagram埋め込み）。2026-09-19 社長指示でフォトギャラリーの下に設置 */
+/* 親が flex+align-items:center のため、幅を明示しないと中身の最小幅まで縮む */
+.collab-reel{margin:34px auto 0;width:min(400px,100%);text-align:center}
+.collab-reel-label{font-size:.82rem;letter-spacing:.14em;color:#b08d57;margin-bottom:12px}
+.collab-reel-frame{position:relative;width:100%;padding-top:178%;border-radius:10px;overflow:hidden;box-shadow:0 10px 30px rgba(0,0,0,.12);background:#f4f1ea}
+.collab-reel-frame iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
+.collab-reel-link{display:inline-block;margin-top:14px;font-size:.84rem;color:#b08d57;text-decoration:none;border-bottom:1px solid rgba(176,141,87,.45);padding-bottom:2px}
+.collab-reel-link:hover{opacity:.75}
+@media(max-width:600px){.collab-reel{width:100%}.collab-reel-frame{padding-top:186%}}

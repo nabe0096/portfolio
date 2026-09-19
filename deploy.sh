@@ -15,5 +15,5 @@ Co-Authored-By: Claude <noreply@anthropic.com>"
 git push origin main
 
 echo "✅ アップロード完了！"
-echo "🌐 サイトURL: https://nabenokitchen.com"
+echo "🌐 サイトURL: https://nabe0096.github.io/portfolio/"
 echo "🕐 サイトの更新には1-2分かかる場合があります"

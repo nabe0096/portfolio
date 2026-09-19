@@ -393,14 +393,6 @@
                         </div>
                         <button class="gallery-open-btn" data-gallery-open="collab">フォトギャラリーを見る</button>
                     </div>
-                    <!-- 実際のコラボ動画（池田市長 公式Instagram「池ちゃんねる」） 2026-09-19 -->
-                    <div class="collab-reel">
-                        <p class="collab-reel-label">実際のコラボ動画</p>
-                        <div class="collab-reel-frame">
-                            <iframe src="https://www.instagram.com/reel/Ddc_rYogIVl/embed/" title="都城市 池田市長とのコラボ動画" loading="lazy" frameborder="0" scrolling="no" allowtransparency="true" allowfullscreen></iframe>
-                        </div>
-                        <a class="collab-reel-link" href="https://www.instagram.com/reel/Ddc_rYogIVl/" target="_blank" rel="noopener">Instagramで見る</a>
-                    </div>
                 </div>
             </div>
 

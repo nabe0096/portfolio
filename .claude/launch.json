@@ -1,6 +1,64 @@
 {
   "version": "0.0.1",
   "configurations": [
-    { "name": "portfolio-static", "runtimeExecutable": "python3", "runtimeArgs": ["-m", "http.server", "8765"], "port": 8765 }
+    {
+      "name": "portfolio-static",
+      "runtimeExecutable": "python3",
+      "runtimeArgs": [
+        "-m",
+        "http.server",
+        "8765"
+      ],
+      "port": 8765
+    },
+    {
+      "name": "marushin-hp",
+      "runtimeExecutable": "/opt/homebrew/bin/python3",
+      "runtimeArgs": [
+        "-m",
+        "http.server",
+        "8791",
+        "--bind",
+        "127.0.0.1",
+        "--directory",
+        "/Users/watanabejirou/Desktop/株式会社なべ/制作部/【0円】ホームページ制作/丸新ラーメン/site"
+      ],
+      "port": 8791
+    },
+    {
+      "name": "burger-phone",
+      "runtimeExecutable": "/opt/homebrew/bin/python3",
+      "runtimeArgs": [
+        "/private/tmp/claude-501/-Users-watanabejirou-Desktop----------------------/c27a9b38-40e2-4e74-9c81-3d403d64d340/scratchpad/tools/serve_range.py",
+        "8793",
+        "/private/tmp/claude-501/-Users-watanabejirou-Desktop----------------------/c27a9b38-40e2-4e74-9c81-3d403d64d340/scratchpad/serve"
+      ],
+      "port": 8793
+    },
+    {
+      "name": "mj-gourmet",
+      "runtimeExecutable": "/opt/homebrew/bin/python3",
+      "runtimeArgs": [
+        "-m",
+        "http.server",
+        "8420",
+        "--bind",
+        "127.0.0.1",
+        "--directory",
+        "/Users/watanabejirou/Desktop/株式会社なべ/制作部/都城グルメ応援企画"
+      ],
+      "port": 8420
+    },
+    {
+      "name": "marushin-phone",
+      "runtimeExecutable": "/opt/homebrew/bin/python3",
+      "runtimeArgs": [
+        "/Users/watanabejirou/Desktop/株式会社なべ/制作部/【0円】ホームページ制作/丸新ラーメン/_build/lan_server.py",
+        "8792",
+        "/Users/watanabejirou/Desktop/株式会社なべ/制作部/【0円】ホームページ制作/丸新ラーメン"
+      ],
+      "port": 8792,
+      "url": "http://localhost:8792"
+    }
   ]
 }

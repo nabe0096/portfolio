@@ -2945,6 +2945,14 @@ em.gold {
     opacity: 0.85;
 }
 
+/* 本の表紙は縦長の枠で、ほかの写真と高さを揃える（表紙 530×750） */
+.event-photos img.event-photo-book {
+    width: calc((100% - 40px) / 5 * 0.75 * 530 / 750);
+    aspect-ratio: 530 / 750;
+    object-position: center;
+    border-radius: 2px;
+}
+
 /* 写真が1枚だけの行は大きめに */
 .event-photos img:only-child {
     width: min(420px, 100%);
@@ -3037,6 +3045,10 @@ em.gold {
 
     .event-photos img:only-child {
         width: 100%;
+    }
+
+    .event-photos img.event-photo-book {
+        width: calc((100% - 16px) / 3 * 0.75 * 530 / 750);
     }
 
     .event-detail .collab-reel {

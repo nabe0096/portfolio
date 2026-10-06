@@ -448,6 +448,20 @@ document.addEventListener('DOMContentLoaded', () => {
     galleryButtons.forEach((button) => {
         button.addEventListener('click', () => openLightbox(button.dataset.galleryOpen || 'collab', 0));
     });
+
+    // イベント一覧：開いた行の写真を押すと、その写真から拡大表示する
+    document.querySelectorAll('.event-photos[data-gallery-source]').forEach((source) => {
+        const galleryId = source.dataset.gallerySource;
+        source.querySelectorAll('img').forEach((img, i) => {
+            img.addEventListener('click', () => openLightbox(galleryId, i));
+            img.addEventListener('keydown', (e) => {
+                if (e.key === 'Enter' || e.key === ' ') {
+                    e.preventDefault();
+                    openLightbox(galleryId, i);
+                }
+            });
+        });
+    });
     lightboxZoom?.addEventListener('click', () => {
         setZoom(!lightboxFigure.classList.contains('is-zoomed'));
     });
@@ -553,4 +567,18 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     start();
+})();
+
+/* イベント一覧：#tvcm などのリンクで来たら、その行を開く */
+(function () {
+    const openFromHash = () => {
+        if (!location.hash) return;
+        const row = document.getElementById(decodeURIComponent(location.hash.slice(1)));
+        if (row && row.tagName === 'DETAILS') row.open = true;
+    };
+    window.addEventListener('hashchange', openFromHash);
+    document.querySelectorAll('a[href^="#"]').forEach((link) => {
+        link.addEventListener('click', () => setTimeout(openFromHash, 0));
+    });
+    openFromHash();
 })();

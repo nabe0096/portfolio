@@ -2812,3 +2812,239 @@ em.gold {
 .collab-reel-link{display:inline-block;margin-top:14px;font-size:.84rem;color:#b08d57;text-decoration:none;border-bottom:1px solid rgba(176,141,87,.45);padding-bottom:2px}
 .collab-reel-link:hover{opacity:.75}
 @media(max-width:600px){.collab-reel{width:100%}.collab-reel-frame{padding-top:186%}}
+
+/*==================================================
+  イベント・コラボの実績：お知らせ欄の形 2026-10-06
+  日付＋一文の行を新しい順に並べ、押すと写真と説明が開く
+==================================================*/
+.events-head {
+    text-align: center;
+}
+
+.event-box {
+    max-width: 880px;
+    margin: 24px auto 0;
+    border: 1px solid var(--line);
+    border-radius: 10px;
+    background: #fff;
+    box-shadow: var(--soft-shadow);
+    overflow: hidden;
+}
+
+.event-row + .event-row {
+    border-top: 1px solid var(--line);
+}
+
+.event-row summary {
+    position: relative;
+    display: flex;
+    align-items: baseline;
+    gap: 28px;
+    padding: 20px 64px 20px 28px;
+    cursor: pointer;
+    list-style: none;
+    transition: background 0.2s ease;
+}
+
+.event-row summary::-webkit-details-marker {
+    display: none;
+}
+
+.event-row summary:hover,
+.event-row[open] summary {
+    background: var(--warm);
+}
+
+/* 右端の＋／− */
+.event-row summary::before,
+.event-row summary::after {
+    content: "";
+    position: absolute;
+    top: 50%;
+    right: 28px;
+    width: 13px;
+    height: 1.5px;
+    background: var(--gold);
+    transition: transform 0.25s ease;
+}
+
+.event-row summary::after {
+    transform: rotate(90deg);
+}
+
+.event-row[open] summary::after {
+    transform: rotate(0deg);
+}
+
+.event-date {
+    flex: 0 0 auto;
+    min-width: 5.6em;
+    font-family: var(--serif);
+    font-size: 0.9rem;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    color: var(--gold);
+}
+
+.event-title {
+    font-size: 0.95rem;
+    line-height: 1.75;
+    color: var(--ink);
+}
+
+.event-row summary:hover .event-title {
+    text-decoration: underline;
+    text-decoration-color: rgba(184, 155, 94, 0.6);
+    text-underline-offset: 4px;
+}
+
+.event-detail {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 14px;
+    padding: 6px 28px 28px;
+    background: var(--warm);
+}
+
+/* 写真・動画・リンクは中央、説明文は読みやすさ優先で左揃えのまま横いっぱい */
+.event-detail > p {
+    align-self: stretch;
+}
+
+.event-detail > p.event-quote {
+    text-align: center;
+}
+
+.event-detail p {
+    margin: 0;
+    font-size: 0.88rem;
+    line-height: 1.95;
+    color: var(--muted);
+}
+
+.event-photos {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px;
+    width: 100%;
+}
+
+.event-photos img {
+    width: calc((100% - 40px) / 5);
+    aspect-ratio: 4 / 3;
+    object-fit: cover;
+    object-position: center 30%;
+    border-radius: 6px;
+    cursor: zoom-in;
+    transition: opacity 0.2s ease;
+}
+
+.event-photos img:hover {
+    opacity: 0.85;
+}
+
+/* 写真が1枚だけの行は大きめに */
+.event-photos img:only-child {
+    width: min(420px, 100%);
+}
+
+.event-detail p.event-quote {
+    font-family: var(--serif);
+    font-size: 1.02rem;
+    font-weight: 700;
+    color: var(--gold);
+}
+
+.event-detail > p.event-links {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 6px 20px;
+}
+
+.event-links a {
+    font-size: 0.84rem;
+    color: var(--gold);
+    text-decoration: none;
+    border-bottom: 1px solid rgba(184, 155, 94, 0.45);
+    padding-bottom: 1px;
+}
+
+.event-video {
+    width: min(560px, 100%);
+    aspect-ratio: 16 / 9;
+    border-radius: 6px;
+    overflow: hidden;
+    background: #000;
+}
+
+.event-video iframe {
+    width: 100%;
+    height: 100%;
+    border: 0;
+}
+
+.event-detail .collab-reel {
+    margin: 4px 0 0;
+    width: min(340px, 100%);
+}
+
+.events-cta {
+    margin-top: clamp(32px, 4vw, 44px);
+    text-align: center;
+}
+
+.events-cta p {
+    margin: 0 0 18px;
+    font-size: 0.9rem;
+    color: var(--muted);
+}
+
+/* スマホ：日付を一文の上に置く */
+@media (max-width: 620px) {
+    .event-row summary {
+        flex-direction: column;
+        gap: 2px;
+        padding: 16px 48px 16px 18px;
+    }
+
+    .event-row summary::before,
+    .event-row summary::after {
+        right: 18px;
+    }
+
+    .event-date {
+        font-size: 0.82rem;
+    }
+
+    .event-title {
+        font-size: 0.9rem;
+    }
+
+    .event-detail {
+        padding: 4px 18px 22px;
+    }
+
+    .event-photos {
+        gap: 8px;
+    }
+
+    .event-photos img {
+        width: calc((100% - 16px) / 3);
+    }
+
+    .event-photos img:only-child {
+        width: 100%;
+    }
+
+    .event-detail .collab-reel {
+        width: 100%;
+    }
+}
+
+/* 言葉のまとまりの途中で折り返さない（スマホの泣き別れ防止） */
+.events .nb {
+    display: inline-block;
+}

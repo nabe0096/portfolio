@@ -582,3 +582,47 @@ document.addEventListener('DOMContentLoaded', () => {
     });
     openFromHash();
 })();
+
+/* トップの背景動画：画面の幅で横長／縦長を選び、再生できたら表示。別タブ・画面外では止める */
+(function () {
+    var v = document.querySelector('.hero-video');
+    if (!v) return;
+    var reduce = window.matchMedia('(prefers-reduced-motion: reduce)');
+    var sp = window.matchMedia('(max-width: 700px)');
+
+    var load = function () {
+        var src = sp.matches ? v.dataset.srcSp : v.dataset.srcPc;
+        if (v.getAttribute('src') === src) return;
+        if (sp.matches && v.dataset.posterSp) v.setAttribute('poster', v.dataset.posterSp);
+        v.setAttribute('src', src);
+        v.load();
+        if (!reduce.matches) {
+            var p = v.play();
+            if (p && p.catch) p.catch(function () {});
+        }
+    };
+    v.addEventListener('playing', function () { v.classList.add('is-ready'); });
+    v.addEventListener('loadeddata', function () { if (reduce.matches) v.classList.add('is-ready'); });
+
+    if (reduce.matches) {
+        v.classList.add('is-ready');       // ポスターだけ
+        return;
+    }
+    load();
+    sp.addEventListener('change', load);
+
+    var hero = v.closest('.hero');
+    var inView = true;
+    var apply = function () {
+        if (document.hidden || !inView) { v.pause(); return; }
+        var p = v.play();
+        if (p && p.catch) p.catch(function () {});
+    };
+    document.addEventListener('visibilitychange', apply);
+    if ('IntersectionObserver' in window && hero) {
+        new IntersectionObserver(function (es) {
+            inView = es[0].isIntersecting;
+            apply();
+        }, { threshold: 0.05 }).observe(hero);
+    }
+})();

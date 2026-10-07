@@ -3088,3 +3088,78 @@ em.gold {
 @media (prefers-reduced-motion: reduce) {
     .hero-video { opacity: 1; }
 }
+
+
+/* 2026-10-07 3つの無料メルマガ（お問い合わせの上） */
+.newsletter .subsection-desc { margin-top: 14px; }
+.nl-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: clamp(18px, 2.4vw, 32px);
+}
+.nl-card {
+    display: flex;
+    flex-direction: column;
+    background: var(--card);
+    border: 1px solid rgba(184, 155, 94, 0.28);
+    border-radius: 4px;
+    overflow: hidden;
+    color: var(--text);
+    text-decoration: none;
+    transition: transform 0.5s var(--ease), box-shadow 0.5s var(--ease), border-color 0.5s var(--ease);
+}
+.nl-card:hover {
+    transform: translateY(-4px);
+    border-color: var(--gold);
+    box-shadow: 0 18px 38px rgba(26, 26, 26, 0.10);
+}
+.nl-card img {
+    display: block;
+    width: 100%;
+    height: auto;
+    aspect-ratio: 16 / 9;
+    object-fit: cover;
+}
+.nl-body {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    padding: 22px 24px 24px;
+}
+.nl-tag {
+    margin: 0;
+    color: var(--gold);
+    font-size: 0.8rem;
+    letter-spacing: 0.08em;
+}
+.nl-body h3 {
+    margin: 8px 0 0;
+    color: var(--ink);
+    font-family: var(--serif);
+    font-size: 1.25rem;
+    font-weight: 600;
+    letter-spacing: 0.06em;
+}
+.nl-desc {
+    flex: 1;
+    margin: 10px 0 0;
+    color: var(--muted);
+    font-size: 0.9rem;
+    line-height: 1.9;
+    text-wrap: balance;
+    word-break: auto-phrase;
+}
+.nl-more {
+    align-self: flex-start;
+    margin-top: 16px;
+    padding-bottom: 2px;
+    border-bottom: 1px solid var(--gold);
+    color: var(--gold);
+    font-family: var(--serif);
+    font-size: 0.88rem;
+    letter-spacing: 0.1em;
+}
+.nl-more::after { content: " →"; }
+@media (max-width: 900px) {
+    .nl-grid { grid-template-columns: 1fr; max-width: 520px; margin: 0 auto; }
+}

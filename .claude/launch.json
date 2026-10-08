@@ -59,6 +59,15 @@
       ],
       "port": 8792,
       "url": "http://localhost:8792"
+    },
+    {
+      "name": "nabe-ask",
+      "runtimeExecutable": "/bin/zsh",
+      "runtimeArgs": [
+        "-c",
+        "cd '/Users/watanabejirou/Desktop/株式会社なべ/制作部/なべに聞く/worker' && '/Users/watanabejirou/.nvm/versions/node/v22.17.0/bin/npx' wrangler dev --port 8787 --ip 127.0.0.1"
+      ],
+      "port": 8787
     }
   ]
 }

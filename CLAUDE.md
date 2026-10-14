@@ -34,6 +34,16 @@ bash deploy.sh
 | cursor.css | カーソルエフェクト |
 | deploy.sh | デプロイスクリプト |
 | images/ | 画像フォルダ |
+| links/ | **なべのリンク帳**（社長がスマホでリンクをコピーする道具・noindex・2026-10-15）。https://nabe0096.github.io/portfolio/links/ |
+
+---
+
+## なべのリンク帳（links/）
+
+- 中身は `links/index.html` の `links-data`（JSON）だけを直す。①レシピ／②SNS攻略／教材／お仕事の4区分。①②のリンクを同じ区分に混ぜない
+- 計測つき（`track`）の「貼る場所」の値は、受け取る側に登録済みのものだけ使う：`bot`＝なべ君AIの PLACES（`../なべに聞く/worker/src/index.mjs`）、`daidokoro`／`sns`＝Rondo の `SUBSCRIBE_SRC_JA`（`../Rondo/rondo-dist/src/worker.mjs`）。新しい値を足したら同じ作業で登録して公開する
+- 登録漏れは毎朝の健康診断 `_メンテナンススクリプト/system_audit/checks/link_hub.py` が見つける（手で確かめるなら `python3 checks/link_hub.py` が `[]`）
+- 新しいSNS・サイト・LP・教材を作ったら、ここにも1行足して `bash deploy.sh`
 
 ---
 

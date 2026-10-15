@@ -5,3 +5,5 @@
 _drafts/
 # Claude Codeの開発用設定（ローカルパスを含む。公開しない）
 .claude/
+# Cloudflare(wrangler)の作業用キャッシュ（アカウント情報を含む。公開しない・2026-10-15）
+.wrangler/

@@ -1,8 +1,6 @@
 {
   "name": "なべのリンク帳",
   "short_name": "リンク帳",
-  "start_url": "./",
-  "scope": "./",
   "display": "standalone",
   "background_color": "#f6ecd9",
   "theme_color": "#f6ecd9",

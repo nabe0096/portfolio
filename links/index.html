@@ -79,6 +79,16 @@ h2{font-size:17px; margin:0; padding-left:10px; border-left:5px solid var(--c,#8
   font:inherit; font-size:13px; font-weight:700; cursor:pointer; white-space:nowrap}
 .pick .arr{display:inline-block; transition:transform .15s}
 .card.open-v .pick .arr{transform:rotate(180deg)}
+/* 計測つき：スマホは「名前」と「貼る場所／すぐコピー」の2段（ボタン3つ横並びだと名前が数文字幅になる・10/19） */
+@media (max-width:519px){
+  .item.trk{flex-wrap:wrap; row-gap:6px}
+  .item.trk .main{flex:1 1 calc(100% - 44px)}
+  .item.trk .pick, .item.trk .cp{flex:1 1 0; min-width:0; height:38px; padding:0}
+  .item.trk .cp{border:1.5px solid transparent}
+  .item.trk .pick{margin-left:50px}
+  body.editing .item.trk{flex-wrap:nowrap}
+  body.editing .item.trk .main{flex:1 1 auto}
+}
 .vars{display:none; background:var(--var-bg); border-top:1px solid var(--line); padding:6px 8px 8px 10px}
 .card.open-v .vars{display:block}
 .vnote{margin:4px 0 6px; font-size:12px; color:var(--muted)}
@@ -168,7 +178,7 @@ body.editing .card{-webkit-user-select:none; user-select:none}
     <img src="icon-180.png" alt="">
     <div class="hd-tx">
       <h1>なべのリンク帳</h1>
-      <p class="lead">押すとコピー。<b>計測つき</b>は貼る場所を選んでコピー。</p>
+      <p class="lead">押すとコピー。<b>計測つき</b>は「コピー」で汎用、「貼る場所」で場所ごと。</p>
     </div>
     <button type="button" class="editbtn" id="editbtn" hidden>編集</button>
   </header>
@@ -405,12 +415,14 @@ body.editing .card{-webkit-user-select:none; user-select:none}
         (p[0] === "qr" ? '<button type="button" class="qrb" data-qr="' + esc(u) + '">QR</button>' : "") +
         '<button type="button" class="cp" data-copy="' + esc(u) + '">コピー</button></div>';
     }).join("");
-    return '<div class="card" data-id="' + esc(it.id) + '" data-key="' + esc(key) + '"><div class="item">' + DRAG +
+    return '<div class="card" data-id="' + esc(it.id) + '" data-key="' + esc(key) + '"><div class="item trk">' + DRAG +
       '<button type="button" class="main" data-toggle="1" aria-expanded="false">' + badge(it) +
       '<span class="tx"><b>' + esc(it.name) + '<span class="tag">計測つき</span>' + nw + '</b><small>' + esc(it.sub || short(it.url)) + "</small></span></button>" +
       '<a class="open" href="' + esc(it.url) + '" target="_blank" rel="noopener" aria-label="' + esc(it.name) + 'を開く">' + OPEN + "</a>" +
-      '<button type="button" class="pick" data-toggle="1">貼る場所 <span class="arr">▾</span></button>' + delBtn(it) + "</div>" +
-      '<div class="vars"><p class="vnote">貼る場所を選んでコピー。登録・購入の通知に、その場所の名前が出ます。</p>' + rows + "</div></div>";
+      '<button type="button" class="pick" data-toggle="1">貼る場所 <span class="arr">▾</span></button>' +
+      // すぐコピー＝どこにでも貼れる汎用（裸のURLにはせず ?src=other。通知には「その他」と出る・10/19 社長）
+      '<button type="button" class="cp" data-copy="' + esc(withSrc(it.url, "other")) + '" aria-label="' + esc(it.name) + 'をすぐコピー（どこでも使える）">コピー</button>' + delBtn(it) + "</div>" +
+      '<div class="vars"><p class="vnote">貼る場所を選んでコピー。登録・購入の通知に、その場所の名前が出ます。右の「コピー」はどこでも使える汎用（通知には「その他」と出ます）。</p>' + rows + "</div></div>";
   }
   function trashHtml(){
     var del = DOC.deleted || [];

@@ -44,7 +44,8 @@ bash deploy.sh
 - ①レシピ／②SNS攻略／教材／お仕事の4区分。①②のリンクを同じ区分に混ぜない
 - 計測つき（`track`）の「貼る場所」（`places`・ここが正本）の値は、受け取る側に登録済みのものだけ使う：`bot`＝なべの秘密基地の PLACES（`../なべの秘密基地/worker/src/index.mjs`）、`daidokoro`／`sns`＝Rondo の `SUBSCRIBE_SRC_JA`（`../Rondo/rondo-dist/src/worker.mjs`）。新しい値を足したら同じ作業で登録して公開する
 - 登録漏れは毎朝の健康診断 `_メンテナンススクリプト/system_audit/checks/link_hub.py` が見つける（手で確かめるなら `python3 checks/link_hub.py` が `[]`）
-- 新しいSNS・サイト・LP・教材を作ったら、保存先にも足す（`sync.py pull` → `links-data` に1行 → `sync.py push` → `bash deploy.sh`）
+- 新しいSNS・サイト・LPを作ったら、保存先にも足す（`sync.py pull` → `links-data` に1行 → `sync.py push` → `bash deploy.sh`）
+- **教材の区分は自動（2026-10-20〜）**：正本は `発信部/有料教材/有料教材台帳.json`。`../なべのリンク帳/kyozai_sync.py` が1時間おきに全教材の販売ページ＋本編を並べ、鍵の入った端末だけに「社長用」（本編をパスワードなしで開くURL）を出す。教材のリンクを手で足さない。社長用の中身（鍵つきURL・パスワード）はページの `links-data` や公開の一覧に絶対に入れない
 
 ---
 

@@ -19,17 +19,17 @@
 :root{
   --bg:#f6ecd9; --card:#fffaf1; --ink:#2b2118; --muted:#7a6a58; --line:#e6d6bb;
   --chip:#efe0c4; --chip-on:#2b2118; --chip-on-ink:#fffaf1; --brand:#c8382c; --ok:#2e7d4f;
-  --var-bg:#f8efdf; --shadow:0 1px 2px rgba(60,40,10,.07);
+  --var-bg:#f8efdf; --shadow:0 1px 2px rgba(60,40,10,.07); --priv-bg:#fff4f2; --priv-line:#f1c9c3;
 }
 @media (prefers-color-scheme: dark){
   :root:not([data-theme="light"]){
     --bg:#1e1914; --card:#2a231c; --ink:#f3e9da; --muted:#b9a68e; --line:#3d3328;
-    --chip:#3a2f24; --chip-on:#f3e9da; --chip-on-ink:#1e1914; --var-bg:#241e18; --shadow:none;
+    --chip:#3a2f24; --chip-on:#f3e9da; --chip-on-ink:#1e1914; --var-bg:#241e18; --shadow:none; --priv-bg:#2a1a18; --priv-line:#5a2f2a;
   }
 }
 :root[data-theme="dark"]{
   --bg:#1e1914; --card:#2a231c; --ink:#f3e9da; --muted:#b9a68e; --line:#3d3328;
-  --chip:#3a2f24; --chip-on:#f3e9da; --chip-on-ink:#1e1914; --var-bg:#241e18; --shadow:none;
+  --chip:#3a2f24; --chip-on:#f3e9da; --chip-on-ink:#1e1914; --var-bg:#241e18; --shadow:none; --priv-bg:#2a1a18; --priv-line:#5a2f2a;
 }
 *{box-sizing:border-box}
 html{-webkit-text-size-adjust:100%}
@@ -135,6 +135,9 @@ body.editing .item .open, body.editing .item .cp, body.editing .item .pick, body
   color:var(--muted); font:inherit; font-size:14px; font-weight:700; cursor:pointer}
 body.editing .addhere{display:block}
 .newtag{display:inline-block; font-size:10.5px; font-weight:700; color:#fff; background:var(--brand); border-radius:4px; padding:0 4px; margin-left:4px; vertical-align:2px; line-height:1.5}
+/* 2026-10-20 社長だけの「本編（パスワードなし）」。鍵の入った端末にだけ出る */
+.priv{background:var(--priv-bg); border:1px solid var(--priv-line); border-radius:16px; padding:12px 10px 4px}
+.priv .tx small{white-space:normal}
 .trash{display:none}
 body.editing .trash{display:block}
 .trash .item{opacity:.75}
@@ -264,10 +267,10 @@ body.editing .card{-webkit-user-select:none; user-select:none}
       "groups": [
         { "title": "よく貼るもの（計測つき）", "items": [
           {"id": "recipe01", "name": "なべの秘密基地。", "url": "https://www.nabenokitchen.com/bot/", "sub": "なべ君AI・レシピ相談とお気に入り保存", "badge": "基地", "bg": "#6b4423", "kw": "なべ君ai ボット bot 秘密基地 ひみつきち", "track": "bot"},
-          {"id": "recipe02", "name": "なべのだいどころ。メルマガ", "url": "https://www.nabenokitchen.com/lp/daidokoro/", "sub": "2日に1回レシピが届く無料メルマガ", "badge": "メール", "bg": "#c8382c", "kw": "メルマガ lp だいどころ 登録", "track": "daidokoro"}
+          {"id": "recipe03", "name": "YouTube", "url": "https://www.youtube.com/@nabekitchen", "sub": "なべのだいどころ。@nabekitchen", "badge": "YT", "bg": "#e62117"}
         ]},
         { "title": "SNS", "items": [
-          {"id": "recipe03", "name": "YouTube", "url": "https://www.youtube.com/@nabekitchen", "sub": "なべのだいどころ。@nabekitchen", "badge": "YT", "bg": "#e62117"},
+          {"id": "recipe02", "name": "なべのだいどころ。メルマガ", "url": "https://www.nabenokitchen.com/lp/daidokoro/", "sub": "2日に1回レシピが届く無料メルマガ", "badge": "メール", "bg": "#c8382c", "kw": "メルマガ lp だいどころ 登録", "track": "daidokoro"},
           {"id": "recipe04", "name": "Instagram", "url": "https://www.instagram.com/nabeno_kitchen/", "sub": "@nabeno_kitchen", "badge": "IG", "bg": "linear-gradient(135deg,#f9a03f,#d62976 55%,#7b3fe4)"},
           {"id": "recipe05", "name": "TikTok", "url": "https://www.tiktok.com/@nabekitchen", "sub": "@nabekitchen", "badge": "TT", "bg": "#111111"},
           {"id": "recipe06", "name": "Threads", "url": "https://www.threads.com/@nabeno_kitchen", "sub": "@nabeno_kitchen", "badge": "Th", "bg": "#111111"},
@@ -301,14 +304,29 @@ body.editing .card{-webkit-user-select:none; user-select:none}
       ]
     },
     {
-      "id": "kyouzai", "chip": "教材", "title": "教材（②の商品）", "color": "#3d6b4f", "sub": "販売ページ。貼る場所を選ぶと、売れた通知に「どこから」が出ます。",
+      "id": "kyouzai", "chip": "教材", "title": "教材（②の商品）", "color": "#3d6b4f", "sub": "販売ページ（計測つき）と本編（パスワードが要るURL）。新しい教材は自動で載ります。",
       "groups": [
-        { "title": "", "items": [
-          {"id": "kyouzai01", "name": "はじめてのClaude Codeの教科書", "url": "https://nabenoblog.com/claudecode-textbook/", "sub": "販売ページ", "badge": "教材", "bg": "#3d6b4f", "kw": "claude code クロード 教科書", "track": "sns"},
-          {"id": "kyouzai02", "name": "AI活用の教科書", "url": "https://nabenoblog.com/ai-textbook/", "sub": "動画1本、しゃべるだけ", "badge": "教材", "bg": "#3d6b4f", "kw": "ai 教科書", "track": "sns"},
-          {"id": "kyouzai03", "name": "Wセット（YouTube・Instagramの教科書）", "url": "https://nabenoblog.com/limited-edition-double-set/", "sub": "販売ページ", "badge": "教材", "bg": "#3d6b4f", "kw": "youtube instagram 教科書 セット", "track": "sns"},
-          {"id": "kyouzai04", "name": "Instagramの教科書", "url": "https://nabenoblog.com/instagram-textbook-sales-page/", "sub": "販売ページ", "badge": "教材", "bg": "#3d6b4f", "kw": "instagram インスタ 教科書", "track": "sns"},
-          {"id": "kyouzai05", "name": "Brain（AI活用）", "url": "https://brain-market.com/u/jamaican0906/a/b5IzM5UjMgoTZsNWa0JXY", "sub": "Brainで販売中の記事", "badge": "Brain", "bg": "#4a4a4a", "kw": "ブレイン ai"}
+        { "title": "AIを学ぶ", "items": [
+          {"id": "tb_aikyozai_s", "name": "AI活用の教科書", "url": "https://nabenoblog.com/ai-textbook/", "sub": "販売ページ・動画1本、しゃべるだけ", "badge": "教材", "bg": "#3d6b4f", "kw": "ai 教科書 動画1本 販売", "track": "sns"},
+          {"id": "tb_aikyozai_h1", "name": "AI活用の教科書【本編】", "url": "https://nabenoblog.com/ai-textbook-honpen/", "sub": "本編（パスワードが要る）", "badge": "本編", "bg": "#8a5a2b", "kw": "ai 教科書 動画1本 本編", "added": "2026-10-20"},
+          {"id": "tb_claudecode_s", "name": "はじめてのClaude Codeの教科書", "url": "https://nabenoblog.com/claudecode-textbook/", "sub": "販売ページ", "badge": "教材", "bg": "#3d6b4f", "kw": "claude code クロード 教科書 販売", "track": "sns"},
+          {"id": "tb_claudecode_h1", "name": "はじめてのClaude Codeの教科書【本編】", "url": "https://nabenoblog.com/claudecode-textbook-honpen/", "sub": "本編（パスワードが要る）", "badge": "本編", "bg": "#8a5a2b", "kw": "claude code クロード 教科書 本編", "added": "2026-10-20"}
+        ]},
+        { "title": "SNSを学ぶ", "items": [
+          {"id": "tb_youtube_s", "name": "YouTubeの教科書", "url": "https://nabenoblog.com/youtube-strategy-articles/", "sub": "販売ページ", "badge": "教材", "bg": "#3d6b4f", "kw": "youtube ユーチューブ 教科書 販売", "track": "sns", "added": "2026-10-20"},
+          {"id": "tb_youtube_h1", "name": "YouTubeの教科書【本編】", "url": "https://nabenoblog.com/nabeno-note/", "sub": "本編（パスワードが要る）", "badge": "本編", "bg": "#8a5a2b", "kw": "youtube ユーチューブ 教科書 本編", "added": "2026-10-20"},
+          {"id": "tb_instagram_s", "name": "Instagramの教科書", "url": "https://nabenoblog.com/instagram-textbook-sales-page/", "sub": "販売ページ", "badge": "教材", "bg": "#3d6b4f", "kw": "instagram インスタ 教科書 販売", "track": "sns"},
+          {"id": "tb_instagram_h1", "name": "Instagramの教科書【本編】", "url": "https://nabenoblog.com/instagram-textbook/", "sub": "本編（パスワードが要る）", "badge": "本編", "bg": "#8a5a2b", "kw": "instagram インスタ 教科書 本編", "added": "2026-10-20"},
+          {"id": "tb_ytig_set_s", "name": "Wセット（YouTube・Instagramの教科書）", "url": "https://nabenoblog.com/limited-edition-double-set/", "sub": "販売ページ・本編はYouTube・Instagramの教科書", "badge": "教材", "bg": "#3d6b4f", "kw": "youtube instagram 教科書 セット 販売", "track": "sns"}
+        ]},
+        { "title": "便利ツール", "items": [
+          {"id": "tb_wpkyokasho_s", "name": "AI×WordPressの教科書", "url": "https://nabenoblog.com/ai-wordpress-textbook/", "sub": "販売ページ", "badge": "教材", "bg": "#3d6b4f", "kw": "wordpress ワードプレス 教科書 販売", "track": "sns", "added": "2026-10-20"},
+          {"id": "tb_wpkyokasho_h1", "name": "AI×WordPressの教科書【本編】", "url": "https://nabenoblog.com/ai-wordpress-textbook-honpen/", "sub": "本編（パスワードが要る）", "badge": "本編", "bg": "#8a5a2b", "kw": "wordpress ワードプレス 教科書 本編", "added": "2026-10-20"},
+          {"id": "tb_hanashite_s", "name": "ハナシテ", "url": "https://nabenoblog.com/hanashite/", "sub": "販売ページ・Macの音声入力アプリ", "badge": "教材", "bg": "#3d6b4f", "kw": "ハナシテ 音声入力 アプリ mac 販売", "track": "sns", "added": "2026-10-20"},
+          {"id": "tb_hanashite_h1", "name": "ハナシテ【本編】", "url": "https://nabenoblog.com/hanashite-honpen/", "sub": "本編（パスワードが要る）", "badge": "本編", "bg": "#8a5a2b", "kw": "ハナシテ 音声入力 アプリ mac 本編", "added": "2026-10-20"}
+        ]},
+        { "title": "Brain", "items": [
+          {"id": "tb_brain_ai_s", "name": "Brain（AI活用）", "url": "https://brain-market.com/u/jamaican0906/a/b5IzM5UjMgoTZsNWa0JXY", "sub": "Brainで販売中の記事", "badge": "Brain", "bg": "#4a4a4a", "kw": "ブレイン ai 販売"}
         ]}
       ]
     },
@@ -350,6 +368,10 @@ body.editing .card{-webkit-user-select:none; user-select:none}
   var hk = /(?:^#|&)k=([A-Za-z0-9_-]{16,})/.exec(location.hash);
   if (hk) store.set(KEY_KEY, hk[1]);
   var KEY = store.get(KEY_KEY);
+  // 社長だけの「本編（パスワードなし）」（2026-10-20 社長「パスワードなしで入れる私用のところ」）。
+  // 鍵のある端末だけが保存先（/api/private）へ取りに行き、この端末の中にだけ控える。鍵の無い人には何も届かない
+  var PRIV_KEY = "nabelinks_priv", PRIV = null, PRIV_API = API.replace(/\/links$/, "/private");
+  if (KEY) { try { PRIV = JSON.parse(store.get(PRIV_KEY) || "null"); } catch (e) {} } else store.set(PRIV_KEY, null);
   var editing = false;
 
   var BRANDS = [
@@ -397,6 +419,8 @@ body.editing .card{-webkit-user-select:none; user-select:none}
   function badge(it){
     return '<span class="badge" style="background:' + esc(it.bg || "#888") + '">' + esc(it.badge || "") + "</span>";
   }
+  // 「【本編】」を行の途中で割らない（スマホで「【本／編】」と泣き別れしないように・2026-10-20）
+  function nm(s){ return esc(s).replace(/【本編】/g, '<span style="white-space:nowrap">【本編】</span>'); }
   function delBtn(it){ return '<button type="button" class="del" data-del="' + esc(it.id) + '">削除</button>'; }
   function itemHtml(it){
     var key = (it.name + " " + (it.sub || "") + " " + it.url + " " + (it.kw || "")).toLowerCase();
@@ -404,7 +428,7 @@ body.editing .card{-webkit-user-select:none; user-select:none}
     if (!it.track) {
       return '<div class="card" data-id="' + esc(it.id) + '" data-key="' + esc(key) + '"><div class="item">' + DRAG +
         '<button type="button" class="main" data-copy="' + esc(it.url) + '">' + badge(it) +
-        '<span class="tx"><b>' + esc(it.name) + nw + "</b><small>" + esc(it.sub ? it.sub + "・" + short(it.url) : short(it.url)) + "</small></span></button>" +
+        '<span class="tx"><b>' + nm(it.name) + nw + "</b><small>" + esc(it.sub ? it.sub + "・" + short(it.url) : short(it.url)) + "</small></span></button>" +
         '<a class="open" href="' + esc(it.url) + '" target="_blank" rel="noopener" aria-label="' + esc(it.name) + 'を開く">' + OPEN + "</a>" +
         '<button type="button" class="cp" data-copy="' + esc(it.url) + '">コピー</button>' + delBtn(it) + "</div></div>";
     }
@@ -417,12 +441,29 @@ body.editing .card{-webkit-user-select:none; user-select:none}
     }).join("");
     return '<div class="card" data-id="' + esc(it.id) + '" data-key="' + esc(key) + '"><div class="item trk">' + DRAG +
       '<button type="button" class="main" data-toggle="1" aria-expanded="false">' + badge(it) +
-      '<span class="tx"><b>' + esc(it.name) + '<span class="tag">計測つき</span>' + nw + '</b><small>' + esc(it.sub || short(it.url)) + "</small></span></button>" +
+      '<span class="tx"><b>' + nm(it.name) + '<span class="tag">計測つき</span>' + nw + '</b><small>' + esc(it.sub || short(it.url)) + "</small></span></button>" +
       '<a class="open" href="' + esc(it.url) + '" target="_blank" rel="noopener" aria-label="' + esc(it.name) + 'を開く">' + OPEN + "</a>" +
       '<button type="button" class="pick" data-toggle="1">貼る場所 <span class="arr">▾</span></button>' +
       // すぐコピー＝どこにでも貼れる汎用（裸のURLにはせず ?src=other。通知には「その他」と出る・10/19 社長）
       '<button type="button" class="cp" data-copy="' + esc(withSrc(it.url, "other")) + '" aria-label="' + esc(it.name) + 'をすぐコピー（どこでも使える）">コピー</button>' + delBtn(it) + "</div>" +
       '<div class="vars"><p class="vnote">貼る場所を選んでコピー。登録・購入の通知に、その場所の名前が出ます。右の「コピー」はどこでも使える汎用（通知には「その他」と出ます）。</p>' + rows + "</div></div>";
+  }
+  function privItemHtml(it){
+    var key = (it.name + " " + (it.sub || "") + " " + it.url + " " + (it.kw || "")).toLowerCase();
+    return '<div class="card" data-key="' + esc(key) + '"><div class="item">' +
+      '<button type="button" class="main" data-copy="' + esc(it.url) + '">' + badge(it) +
+      '<span class="tx"><b>' + nm(it.name) + "</b><small>" + esc(it.sub || "") + "</small></span></button>" +
+      '<a class="open" href="' + esc(it.url) + '" target="_blank" rel="noopener" aria-label="' + esc(it.name) + 'を開く">' + OPEN + "</a>" +
+      '<button type="button" class="cp" data-copy="' + esc(it.url) + '">コピー</button></div></div>';
+  }
+  function privHtml(P){
+    return P.map(function(s){
+      return '<section class="priv" data-cat="' + esc(s.id) + '" style="--c:' + esc(s.color) + '"><h2>' + esc(s.title) + "</h2>" +
+        (s.sub ? '<p class="sec-sub">' + esc(s.sub) + "</p>" : "") +
+        s.groups.map(function(g){
+          return '<div class="grp">' + (g.title ? '<p class="gt">' + esc(g.title) + "</p>" : "") + '<div class="pitems">' + g.items.map(privItemHtml).join("") + "</div></div>";
+        }).join("") + "</section>";
+    }).join("");
   }
   function trashHtml(){
     var del = DOC.deleted || [];
@@ -434,15 +475,15 @@ body.editing .card{-webkit-user-select:none; user-select:none}
       }).join("") + "</section>";
   }
   function render(){
-    var S = DOC.sections;
-    $("chips").innerHTML = [["all", "すべて"]].concat(S.map(function(s){ return [s.id, s.chip]; })).map(function(c){
+    var S = DOC.sections, P = (KEY && PRIV && PRIV.sections) ? PRIV.sections : [];
+    $("chips").innerHTML = [["all", "すべて"]].concat(P.concat(S).map(function(s){ return [s.id, s.chip]; })).map(function(c){
       return '<button type="button" class="chip" data-cat="' + esc(c[0]) + '" aria-pressed="false">' + esc(c[1]) + "</button>";
     }).join("");
     $("list").innerHTML =
       '<div class="editbar"><button type="button" class="btn primary" data-addform="">＋ リンクを追加</button>' +
       '<button type="button" class="btn" data-keyqr="1">スマホでも編集する（QR）</button>' +
       "<p>リンクを押すと名前・ひとこと・URLを直せます。左の点々をつかむと好きな場所へ動かせます。見出しは鉛筆で直せます。削除は「削除」→「本当に削除」の2回押し（一番下の「削除したリンク」から戻せます）。</p></div>" +
-      S.map(function(s){
+      privHtml(P) + S.map(function(s){
         return '<section data-cat="' + esc(s.id) + '" style="--c:' + esc(s.color) + '"><h2>' + esc(s.title) +
           '<button type="button" class="pen" data-editsec="' + esc(s.id) + '" aria-label="見出しを直す">' + PEN + "</button></h2>" +
           (s.sub ? '<p class="sec-sub">' + esc(s.sub) + "</p>" : "") +
@@ -772,6 +813,18 @@ body.editing .card{-webkit-user-select:none; user-select:none}
     if (/(?:^#|&)qr=1/.test(location.hash)) showKeyQr();
   }
   fetch(API, { cache: "no-store" }).then(function(r){ return r.json(); }).then(function(j){ if (j && j.ok && j.doc) setDoc(j.doc); }).catch(function(){});
+  if (KEY) {
+    fetch(PRIV_API, { cache: "no-store", headers: { "Authorization": "Bearer " + KEY } }).then(function(r){
+      if (r.status === 401) { store.set(PRIV_KEY, null); if (PRIV) { PRIV = null; render(); apply(); } return null; }
+      return r.json();
+    }).then(function(j){
+      if (!j || !j.ok) return;
+      var s = JSON.stringify(j.doc || null);
+      store.set(PRIV_KEY, j.doc ? s : null);
+      if (s === JSON.stringify(PRIV)) return;
+      PRIV = j.doc; render(); apply();
+    }).catch(function(){});
+  }
 })();
 </script>
 </body>

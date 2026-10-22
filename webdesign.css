@@ -4,6 +4,11 @@
   このページ固有のスタイルのみ定義する（wd- プレフィックス）
 ==================================================*/
 
+/* 見出しの泣き別れ防止：文節ごとに <span class="wd-nb"> で囲み、文節の途中では折り返さない */
+.wd-nb {
+    display: inline-block;
+}
+
 /* ---------- ヒーロー ---------- */
 
 .wd-hero {
@@ -1879,6 +1884,76 @@
 
     .wd-vs tbody tr td:last-child {
         border-bottom: none;
+    }
+}
+
+/* ---------- 文字サイズとタップ領域 ----------
+  英字の小見出しは12px以上、スマホの日本語の文字は14px以上、タップできる所は高さ36px以上にそろえる */
+
+.wd-work-cat,
+.wd-price-badge {
+    font-size: 0.75rem;
+}
+
+.wd-breadcrumb a {
+    display: inline-block;
+    padding: 10px 0;
+    margin: -10px 0;
+}
+
+.site-header .site-logo {
+    padding-block: 8px;
+}
+
+@media (max-width: 620px) {
+    .eyebrow,
+    .section-kicker {
+        font-size: 0.75rem;
+        letter-spacing: 0.14em;
+        padding-left: 0.14em;
+    }
+
+    .wd-vs tbody td::before {
+        font-size: 0.75rem;
+    }
+
+    .wd-price-badge {
+        letter-spacing: 0.12em;
+    }
+
+    .wd-price-badge,
+    .wd-price-flags li,
+    .wd-breadcrumb,
+    .wd-support-note,
+    .wd-works-disclaimer,
+    .wd-area-card .wd-area-note,
+    .wd-price-common-note,
+    .wd-price-common-col li,
+    .wd-price-desc,
+    .wd-price-tax,
+    .wd-variation span,
+    .footer-copy {
+        font-size: 0.875rem;
+    }
+
+    .wd-support-note em.gold,
+    .wd-support-note .wd-inline-form-link {
+        font-size: inherit;
+    }
+
+    /* ほかの見出しと同じく画面幅に合わせて縮め、細いスマホで3〜4行に割れないようにする */
+    #zero-plan h2,
+    #features h2,
+    #variations h2,
+    #area h2 {
+        font-size: clamp(1rem, 5.6vw, 1.4rem);
+    }
+}
+
+/* 幅320px前後の小さいスマホで「ホームページ制作まで。」が枠で切れないように */
+@media (max-width: 359px) {
+    .wd-hero-title {
+        font-size: 7.2vw;
     }
 }
 

@@ -633,6 +633,15 @@
     box-shadow: var(--shadow);
 }
 
+/* 2列のとき、事例が奇数なら最後の1枚を中央に置く */
+@media (min-width: 901px) {
+    .wd-work:last-child:nth-child(odd) {
+        grid-column: 1 / -1;
+        justify-self: center;
+        width: calc((100% - clamp(20px, 3vw, 30px)) / 2);
+    }
+}
+
 /*
   サムネイル差し替え方法：
   .wd-work-shot の中の .wd-mock-placeholder を削除し、

@@ -808,9 +808,12 @@ body.editing .card{-webkit-user-select:none; user-select:none}
 
   render();
   apply();
-  if (KEY) {
-    $("editbtn").hidden = false;
-    if (/(?:^#|&)qr=1/.test(location.hash)) showKeyQr();
+  if (KEY) $("editbtn").hidden = false;
+  // 2026-10-26 社長「最初にこのQRコードが出るのいらない。そのまま普通にサイト表示して」→ 開いたときにはQRを出さない
+  //（QRは編集中の「スマホでも編集する（QR）」から出す）。アドレスに残った印（qr=1）も消す。鍵（k=）は残す
+  if (/(?:^#|&)qr=1/.test(location.hash) && window.history && history.replaceState) {
+    var h2 = location.hash.replace(/^#/, "").split("&").filter(function(x){ return x && x !== "qr=1"; }).join("&");
+    history.replaceState(null, "", location.pathname + location.search + (h2 ? "#" + h2 : ""));
   }
   fetch(API, { cache: "no-store" }).then(function(r){ return r.json(); }).then(function(j){ if (j && j.ok && j.doc) setDoc(j.doc); }).catch(function(){});
   if (KEY) {

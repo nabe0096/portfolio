@@ -3163,3 +3163,6 @@ em.gold {
 @media (max-width: 900px) {
     .nl-grid { grid-template-columns: 1fr; max-width: 520px; margin: 0 auto; }
 }
+
+/* 2026-11-09 活動実績「なべの秘密基地。」：画面3枚を並べた横長の画像なので、どの幅でも横長のまま全部見せる */
+.feature-image.feature-image--wide img { aspect-ratio: 16 / 10; object-fit: cover; }

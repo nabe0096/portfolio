@@ -29,6 +29,7 @@ bash deploy.sh
 |---|---|
 | index.html | メインページ |
 | pricing.html | 料金ページ |
+| naraigoto-app.html / naraigoto.css | **習い事の出欠・連絡アプリの紹介ページ**（アプリ・ツール開発の実績・2026-11-09）。**「AIで作った」とは書かない（2026-11-09 社長「AIで作ったとすると価値が薄くなる。アプリ制作・ツール開発として出す」）。** 画面と動画は `images/naraigoto/`（お試し版 SAMPLE FC＝架空。元は `../出欠アプリ_お試し版/ご紹介資料/`）。料金・実在のクラブ名・暗証番号・ご紹介PDF（担当者の本名入り）へのリンクは載せない。トップは #works の `#naraigoto-app` から入る（AI活用サポートのカードからはつながない） |
 | style.css | スタイル |
 | script.js | JavaScript |
 | cursor.css | カーソルエフェクト |

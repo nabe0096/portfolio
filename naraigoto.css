@@ -388,30 +388,30 @@
 
 .na-points b { color: var(--ink); font-weight: 700; }
 
-/* ---------- AI活用 ---------- */
-.na-ai {
+/* ---------- 開発について ---------- */
+.na-dev {
     background: var(--ink);
     color: #fff;
 }
 
-.na-ai .section-heading h2 { color: #fff; }
+.na-dev .section-heading h2 { color: #fff; }
 
-.na-ai .na-lead { color: rgba(255, 255, 255, 0.82); }
+.na-dev .na-lead { color: rgba(255, 255, 255, 0.82); }
 
-.na-ai-grid {
+.na-dev-grid {
     display: grid;
     grid-template-columns: repeat(2, minmax(0, 1fr));
     gap: 20px;
 }
 
-.na-ai-card {
+.na-dev-card {
     padding: 28px 26px 30px;
     border: 1px solid rgba(255, 255, 255, 0.14);
     border-radius: 6px;
     background: rgba(255, 255, 255, 0.04);
 }
 
-.na-ai-num {
+.na-dev-num {
     display: block;
     margin-bottom: 8px;
     color: var(--gold-light);
@@ -421,7 +421,7 @@
     line-height: 1.2;
 }
 
-.na-ai-card h3 {
+.na-dev-card h3 {
     margin: 0 0 10px;
     font-family: var(--serif);
     font-size: 1.1rem;
@@ -430,14 +430,14 @@
     letter-spacing: 0.08em;
 }
 
-.na-ai-card p {
+.na-dev-card p {
     margin: 0;
     color: rgba(255, 255, 255, 0.8);
     font-size: 0.92rem;
     line-height: 2;
 }
 
-.na-ai-close {
+.na-dev-close {
     max-width: 720px;
     margin: clamp(36px, 5vw, 56px) auto 0;
     color: #fff;
@@ -448,7 +448,7 @@
     letter-spacing: 0.08em;
 }
 
-.na-ai-close em { color: var(--gold-light); font-style: normal; }
+.na-dev-close em { color: var(--gold-light); font-style: normal; }
 
 /* ---------- 合わせられるところ・安心 ---------- */
 .na-two {
@@ -497,7 +497,7 @@
     .na-hero-actions .button { flex: 1 1 100%; min-width: 0; }
 
     .na-pairs,
-    .na-ai-grid,
+    .na-dev-grid,
     .na-two { grid-template-columns: 1fr; }
 
     .na-feature { grid-template-columns: 1fr; gap: 26px; }
@@ -515,5 +515,5 @@
     .contact .contact-actions .button { min-width: 0; padding: 0 28px; }
 
     .na-box,
-    .na-ai-card { padding: 24px 20px 26px; }
+    .na-dev-card { padding: 24px 20px 26px; }
 }

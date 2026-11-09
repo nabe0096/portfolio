@@ -183,60 +183,67 @@
 
 .na-band { background: var(--warm); }
 
-/* ---------- 悩み → 解決 ---------- */
-.na-pairs {
+/* ---------- 悩み → 解決（画面つきのカード） ---------- */
+.na-cards {
     display: grid;
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: 20px;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 22px;
     margin: 0;
     padding: 0;
     list-style: none;
 }
 
-.na-pair {
-    padding: 24px 24px 26px;
+.na-card {
+    overflow: hidden;
+    padding-bottom: 22px;
     border: 1px solid var(--line);
-    border-radius: 6px;
+    border-radius: 8px;
     background: var(--card);
     box-shadow: var(--soft-shadow);
+    text-align: center;
 }
 
-.na-pair:last-child:nth-child(odd) { grid-column: 1 / -1; }
-
-.na-pair small {
-    display: block;
-    margin-bottom: 4px;
-    font-size: 0.72rem;
-    letter-spacing: 0.14em;
+.na-card figure {
+    margin: 0 0 18px;
+    aspect-ratio: 4 / 3;
+    overflow: hidden;
+    border-bottom: 1px solid var(--line);
+    background: #fff;
 }
 
-.na-q {
-    margin: 0;
+.na-card figure img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center top;
+}
+
+.na-card figure img.is-bottom { object-position: center bottom; }
+.na-card figure img.is-left { object-position: left center; }
+
+.na-card-q {
+    margin: 0 16px 6px;
     color: var(--muted);
-    font-size: 0.95rem;
-    line-height: 1.85;
+    font-size: 0.82rem;
+    line-height: 1.7;
 }
 
-.na-arrow {
-    display: block;
-    margin: 10px 0;
-    color: var(--gold);
-    font-size: 0.9rem;
-    line-height: 1;
+.na-card-q::before {
+    content: "\f00d";
+    margin-right: 6px;
+    color: var(--brick);
+    font-family: "Font Awesome 6 Free";
+    font-weight: 900;
 }
 
-.na-a {
-    margin: 0;
+.na-card-a {
+    margin: 0 16px;
     color: var(--ink);
-    font-size: 1rem;
-    line-height: 1.9;
-}
-
-.na-a small { color: var(--gold); font-weight: 700; }
-
-.na-a b {
-    font-weight: 700;
-    background: linear-gradient(transparent 62%, rgba(203, 178, 124, 0.42) 62%);
+    font-family: var(--serif);
+    font-size: 1.12rem;
+    font-weight: 600;
+    line-height: 1.7;
+    letter-spacing: 0.06em;
 }
 
 /* ---------- 動画 ---------- */
@@ -300,93 +307,27 @@
     white-space: nowrap;
 }
 
-.na-feature {
+.na-gallery {
     display: grid;
-    grid-template-columns: minmax(0, 0.8fr) minmax(0, 1.2fr);
-    gap: clamp(28px, 5vw, 72px);
-    align-items: center;
-    margin-bottom: clamp(48px, 7vw, 84px);
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: clamp(14px, 2.4vw, 30px);
 }
 
-.na-feature:last-child { margin-bottom: 0; }
+.na-gallery figure { margin: 0; }
 
-.na-feature.is-flip .na-feature-media { order: 2; }
+.na-gallery .na-phone { border-width: 5px; border-radius: 22px; }
+.na-gallery .na-phone img { border-radius: 17px; }
 
-.na-feature-media { min-width: 0; }
-
-.na-feature-media .na-phone {
-    width: min(100%, 250px);
-    margin: 0 auto;
-}
-
-.na-feature-media .na-shot {
-    width: min(100%, 400px);
-    margin: 0 auto;
-}
-
-.na-feature-media .na-shot + .na-shot { margin-top: 14px; }
-
-.na-duo {
-    display: grid;
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: 14px;
-    align-items: start;
-    max-width: 420px;
-    margin: 0 auto;
-}
-
-.na-duo .na-phone { width: 100%; border-width: 5px; border-radius: 22px; }
-.na-duo .na-phone img { border-radius: 17px; }
-
-.na-feature-copy h3 {
-    margin: 0 0 16px;
+.na-gallery figcaption {
+    margin-top: 12px;
     color: var(--ink);
     font-family: var(--serif);
-    font-size: clamp(1.2rem, 4.4vw, 1.6rem);
-    font-weight: 500;
-    line-height: 1.65;
-    letter-spacing: 0.08em;
-}
-
-.na-feature-copy h3 em {
-    color: var(--gold);
-    font-style: normal;
-}
-
-.na-feature-copy > p {
-    margin: 0 0 18px;
-    color: var(--muted);
     font-size: 0.95rem;
-    line-height: 2;
+    font-weight: 500;
+    line-height: 1.7;
+    text-align: center;
+    letter-spacing: 0.04em;
 }
-
-.na-points {
-    margin: 0;
-    padding: 0;
-    list-style: none;
-}
-
-.na-points li {
-    position: relative;
-    padding: 9px 0 9px 26px;
-    border-bottom: 1px solid var(--line);
-    color: var(--text);
-    font-size: 0.93rem;
-    line-height: 1.85;
-}
-
-.na-points li::before {
-    content: "";
-    position: absolute;
-    left: 4px;
-    top: 1.25em;
-    width: 9px;
-    height: 9px;
-    border-radius: 50%;
-    background: var(--gold);
-}
-
-.na-points b { color: var(--ink); font-weight: 700; }
 
 /* ---------- 開発について ---------- */
 .na-dev {
@@ -398,84 +339,52 @@
 
 .na-dev .na-lead { color: rgba(255, 255, 255, 0.82); }
 
-.na-dev-grid {
+/* ---------- アイコンのタイル ---------- */
+.na-tiles {
     display: grid;
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: 20px;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 18px;
 }
 
-.na-dev-card {
-    padding: 28px 26px 30px;
+.na-tile {
+    padding: 30px 14px 28px;
     border: 1px solid rgba(255, 255, 255, 0.14);
-    border-radius: 6px;
+    border-radius: 8px;
     background: rgba(255, 255, 255, 0.04);
-}
-
-.na-dev-num {
-    display: block;
-    margin-bottom: 8px;
-    color: var(--gold-light);
-    font-family: var(--serif);
-    font-size: 1.5rem;
-    letter-spacing: 0.1em;
-    line-height: 1.2;
-}
-
-.na-dev-card h3 {
-    margin: 0 0 10px;
-    font-family: var(--serif);
-    font-size: 1.1rem;
-    font-weight: 500;
-    line-height: 1.7;
-    letter-spacing: 0.08em;
-}
-
-.na-dev-card p {
-    margin: 0;
-    color: rgba(255, 255, 255, 0.8);
-    font-size: 0.92rem;
-    line-height: 2;
-}
-
-.na-dev-close {
-    max-width: 720px;
-    margin: clamp(36px, 5vw, 56px) auto 0;
-    color: #fff;
-    font-family: var(--serif);
-    font-size: clamp(1rem, 3.6vw, 1.2rem);
-    line-height: 2.1;
     text-align: center;
-    letter-spacing: 0.08em;
 }
 
-.na-dev-close em { color: var(--gold-light); font-style: normal; }
-
-/* ---------- 合わせられるところ・安心 ---------- */
-.na-two {
-    display: grid;
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: 24px;
+.na-tile i {
+    display: block;
+    margin-bottom: 14px;
+    color: var(--gold-light);
+    font-size: 2rem;
 }
 
-.na-box {
-    padding: 30px 28px 32px;
-    border: 1px solid var(--line);
-    border-radius: 6px;
+.na-tile h3 {
+    margin: 0;
+    font-family: var(--serif);
+    font-size: 1.08rem;
+    font-weight: 500;
+    line-height: 1.75;
+    letter-spacing: 0.06em;
+}
+
+.na-tile p {
+    margin: 8px 0 0;
+    color: var(--muted);
+    font-size: 0.84rem;
+    line-height: 1.75;
+}
+
+.na-tiles--light .na-tile {
+    border-color: var(--line);
     background: var(--card);
     box-shadow: var(--soft-shadow);
 }
 
-.na-box h3 {
-    margin: 0 0 14px;
-    color: var(--ink);
-    font-family: var(--serif);
-    font-size: 1.15rem;
-    font-weight: 500;
-    line-height: 1.7;
-    letter-spacing: 0.08em;
-}
-
-.na-box h3 i { margin-right: 10px; color: var(--gold); }
+.na-tiles--light .na-tile i { color: var(--gold); }
+.na-tiles--light .na-tile h3 { color: var(--ink); }
 
 .na-note {
     max-width: 720px;
@@ -496,24 +405,39 @@
 
     .na-hero-actions .button { flex: 1 1 100%; min-width: 0; }
 
-    .na-pairs,
-    .na-dev-grid,
-    .na-two { grid-template-columns: 1fr; }
+    .na-cards { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; }
 
-    .na-feature { grid-template-columns: 1fr; gap: 26px; }
+    .na-card { padding-bottom: 16px; }
 
-    .na-feature.is-flip .na-feature-media { order: 0; }
+    .na-card figure { margin-bottom: 12px; }
+
+    .na-card-q { margin: 0 10px 4px; font-size: 0.75rem; }
+
+    .na-card-a { margin: 0 10px; font-size: 0.95rem; letter-spacing: 0.02em; }
+
+    .na-gallery { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 22px 14px; }
+
+    .na-gallery figcaption { font-size: 0.86rem; }
+
+    .na-tiles { grid-template-columns: 1fr; gap: 12px; }
+
+    .na-tiles--light { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+
+    .na-tile { padding: 22px 10px 20px; }
+
+    .na-tile h3 { font-size: 0.98rem; }
+
+    .na-tile h3 br { display: none; }
+
+    .na-tiles--light .na-tile h3 br { display: inline; }
+
+    .na-tiles--light .na-tile h3 { font-size: 0.9rem; letter-spacing: 0; }
 
     .na-videos { grid-template-columns: minmax(0, 250px); }
-
-    .na-pair { padding: 20px 18px 22px; }
 
     .na-group-title { flex-wrap: wrap; gap: 8px 12px; }
 
     .na-group-title::after { display: none; }
 
     .contact .contact-actions .button { min-width: 0; padding: 0 28px; }
-
-    .na-box,
-    .na-dev-card { padding: 24px 20px 26px; }
 }

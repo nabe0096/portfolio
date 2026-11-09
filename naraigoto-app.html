@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>習い事の出欠・連絡アプリ｜AI活用の開発実績｜なべのだいどころ。</title>
+    <meta name="description" content="子どもの習い事の「予定の連絡」と「出欠確認」をスマホひとつにまとめたアプリです。企画から開発・公開・運用まで、AIを活用してひとりで作りました。実際の画面と動画でご紹介します。">
+    <meta name="author" content="なべ">
+    <link rel="canonical" href="https://nabe0096.github.io/portfolio/naraigoto-app.html">
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="習い事の出欠・連絡アプリ｜AI活用の開発実績｜なべのだいどころ。">
+    <meta property="og:description" content="子どもの習い事の連絡も、出欠も、スマホひとつで。AIを活用してひとりで作ったアプリを、実際の画面と動画でご紹介します。">
+    <meta property="og:image" content="https://nabe0096.github.io/portfolio/images/naraigoto/cover.jpg">
+    <meta property="og:url" content="https://nabe0096.github.io/portfolio/naraigoto-app.html">
+    <meta property="og:site_name" content="Nabe's Portfolio">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="習い事の出欠・連絡アプリ｜AI活用の開発実績｜なべのだいどころ。">
+    <meta name="twitter:description" content="子どもの習い事の連絡も、出欠も、スマホひとつで。AIを活用してひとりで作ったアプリです。">
+    <meta name="twitter:image" content="https://nabe0096.github.io/portfolio/images/naraigoto/cover.jpg">
+    <link rel="icon" type="image/png" href="images/bousi.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;700&family=Noto+Serif+JP:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css?v=20260725-header">
+    <link rel="stylesheet" href="naraigoto.css?v=20261109">
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+            { "@type": "ListItem", "position": 1, "name": "ホーム", "item": "https://nabe0096.github.io/portfolio/" },
+            { "@type": "ListItem", "position": 2, "name": "習い事の出欠・連絡アプリ", "item": "https://nabe0096.github.io/portfolio/naraigoto-app.html" }
+        ]
+    }
+    </script>
+</head>
+
+<body>
+    <header class="site-header" data-header>
+        <a class="site-logo" href="index.html" aria-label="Nabe's Portfolio トップページへ">
+            <span>NABE'S</span>
+            <span>PORTFOLIO</span>
+        </a>
+        <button class="nav-toggle" type="button" aria-label="メニューを開く" aria-expanded="false" data-nav-toggle>
+            <span></span>
+            <span></span>
+        </button>
+        <nav class="site-nav" data-nav>
+            <a href="index.html">ホーム</a>
+            <a href="#problems">できること</a>
+            <a href="#movie">動画</a>
+            <a href="#features">画面と機能</a>
+            <a href="#ai">AI活用</a>
+            <a href="#custom">カスタマイズ</a>
+            <a href="#contact-cta">お問い合わせ</a>
+        </nav>
+    </header>
+
+    <main>
+        <!-- ファーストビュー -->
+        <section id="na-hero" class="na-hero">
+            <div class="na-hero-inner">
+                <div>
+                    <p class="eyebrow reveal">AI × App Development</p>
+                    <h1 class="na-hero-title reveal"><span class="nb">習い事の連絡も、</span><br><span class="nb">出欠も、</span><span class="nb">スマホひとつで。</span></h1>
+                    <p class="na-hero-lead reveal">
+                        スポーツクラブ・教室・スクールなど、子どもの習い事のために作った「予定の連絡」と「出欠確認」のアプリです。
+                        企画から開発、公開後の運用まで、AIを活用して私ひとりで作りました。
+                        子ども50人以上のクラブで、実際に毎日使われています。
+                    </p>
+                    <ul class="na-hero-chips reveal">
+                        <li>予定はカレンダーで</li>
+                        <li>出欠はタップで回答</li>
+                        <li>集計は自動</li>
+                        <li>インストール不要</li>
+                    </ul>
+                    <div class="na-hero-actions reveal">
+                        <a class="button button-dark" href="#movie">動画で見る</a>
+                        <a class="button button-light" href="#contact-cta">相談・お試しはこちら</a>
+                    </div>
+                </div>
+                <div class="na-hero-phones reveal">
+                    <figure>
+                        <figcaption>保護者のページ</figcaption>
+                        <div class="na-phone"><img src="images/naraigoto/02_parent_top.webp" alt="保護者のページ。出欠確認のお知らせと予定のカレンダーが並ぶ" width="780" height="1688"></div>
+                    </figure>
+                    <figure>
+                        <figcaption>先生・コーチのページ</figcaption>
+                        <div class="na-phone"><img src="images/naraigoto/07_staff_top.webp" alt="先生・コーチのページ。予定の登録やスタッフの出欠をまとめて見られる" width="780" height="1688"></div>
+                    </figure>
+                </div>
+            </div>
+        </section>
+
+        <!-- パンくず -->
+        <nav class="na-breadcrumb" aria-label="パンくずリスト">
+            <ol>
+                <li><a href="index.html">ホーム</a></li>
+                <li>習い事の出欠・連絡アプリ</li>
+            </ol>
+        </nav>
+
+        <!-- 悩み → 解決 -->
+        <section id="problems" class="section">
+            <div class="section-heading na-heading reveal">
+                <p class="section-kicker">Problems &amp; Solutions</p>
+                <h2><span class="nb">毎週の「連絡」と</span><span class="nb">「数える手間」を、</span><br><span class="nb">アプリが代わりに</span><span class="nb">やります。</span></h2>
+                <p class="na-lead">習い事の先生・コーチ・代表の方が、練習やレッスンの外で抱えている手間を減らすために作りました。</p>
+            </div>
+            <ul class="na-pairs">
+                <li class="na-pair reveal">
+                    <p class="na-q"><small>いま困っていること</small>「出欠をLINEで聞くと、返事が流れて、数えるのが大変」</p>
+                    <i class="fa-solid fa-arrow-down na-arrow" aria-hidden="true"></i>
+                    <p class="na-a"><small>このアプリなら</small>保護者は<b>名前をタップするだけ</b>で回答。参加・不参加の人数は<b>自動で集計</b>されます。</p>
+                </li>
+                <li class="na-pair reveal">
+                    <p class="na-q"><small>いま困っていること</small>「1か月の予定表を紙で配っても、途中で場所や時間が変わってしまう」</p>
+                    <i class="fa-solid fa-arrow-down na-arrow" aria-hidden="true"></i>
+                    <p class="na-a"><small>このアプリなら</small>変わったら<b>アプリで直すだけ</b>。保護者はいつでも最新の予定を見られて、<b>紙の配り直しはいりません</b>。</p>
+                </li>
+                <li class="na-pair reveal">
+                    <p class="na-q"><small>いま困っていること</small>「練習やレッスンの時間・場所を、何度も聞かれる」</p>
+                    <i class="fa-solid fa-arrow-down na-arrow" aria-hidden="true"></i>
+                    <p class="na-a"><small>このアプリなら</small>予定は<b>カレンダー</b>に。時間・場所・持ち物まで、<b>いつでも見られます</b>。</p>
+                </li>
+                <li class="na-pair reveal">
+                    <p class="na-q"><small>いま困っていること</small>「当日、先生やコーチが何人そろうのか分からない」</p>
+                    <i class="fa-solid fa-arrow-down na-arrow" aria-hidden="true"></i>
+                    <p class="na-a"><small>このアプリなら</small><b>先生・コーチ専用のページ</b>で〇△✕。だれが来るか<b>ひと目で分かります</b>。</p>
+                </li>
+                <li class="na-pair reveal">
+                    <p class="na-q"><small>いま困っていること</small>「大会やイベントのお弁当の注文を、紙やLINEで集めている」</p>
+                    <i class="fa-solid fa-arrow-down na-arrow" aria-hidden="true"></i>
+                    <p class="na-a"><small>このアプリなら</small>予定に<b>お弁当の注文</b>をつけるだけ。個数と<b>合計金額も自動で計算</b>します。</p>
+                </li>
+            </ul>
+        </section>
+
+        <!-- 動画 -->
+        <div class="na-band">
+            <section id="movie" class="section">
+                <div class="section-heading na-heading reveal">
+                    <p class="section-kicker">Movie</p>
+                    <h2><span class="nb">実際の画面を、</span><span class="nb">動画でご覧ください。</span></h2>
+                    <p class="na-lead">画面を押すと再生できます。見本のサッカークラブ「SAMPLE FC」の画面です（音は出ません）。</p>
+                </div>
+                <div class="na-videos reveal">
+                    <figure>
+                        <div class="na-phone">
+                            <video controls playsinline muted preload="none" poster="images/naraigoto/parent-poster.jpg" width="720" height="1280" aria-label="保護者のページの紹介動画">
+                                <source src="images/naraigoto/parent.mp4" type="video/mp4">
+                            </video>
+                        </div>
+                        <figcaption>保護者のページ<small>約1分</small></figcaption>
+                    </figure>
+                    <figure>
+                        <div class="na-phone">
+                            <video controls playsinline muted preload="none" poster="images/naraigoto/staff-poster.jpg" width="720" height="1280" aria-label="先生・コーチのページの紹介動画">
+                                <source src="images/naraigoto/staff.mp4" type="video/mp4">
+                            </video>
+                        </div>
+                        <figcaption>先生・コーチのページ<small>約45秒</small></figcaption>
+                    </figure>
+                </div>
+            </section>
+        </div>
+
+        <!-- 画面と機能 -->
+        <section id="features" class="section">
+            <div class="section-heading na-heading reveal">
+                <p class="section-kicker">Features</p>
+                <h2><span class="nb">使う人ごとに、</span><span class="nb">ページを分けています。</span></h2>
+                <p class="na-lead">保護者のページ、先生・コーチのページ、名簿。それぞれ別の暗証番号（4桁）で入るので、保護者が先生・コーチのページや名簿を見ることはありません。</p>
+            </div>
+
+            <h3 class="na-group-title"><span>保護者</span>保護者のページ</h3>
+
+            <div class="na-feature reveal">
+                <div class="na-feature-media">
+                    <div class="na-shot"><img src="images/naraigoto/03_calendar.webp" alt="予定のカレンダー。予定のある日に印が付く" width="732" height="690" loading="lazy"></div>
+                    <div class="na-shot"><img src="images/naraigoto/05b_card_practice.webp" alt="1日ごとの予定のカード。時間・場所・連絡事項が1枚にまとまっている" width="732" height="656" loading="lazy"></div>
+                </div>
+                <div class="na-feature-copy">
+                    <h3><span class="nb">予定は<em>カレンダーで</em>、</span><span class="nb">ひと目でわかる。</span></h3>
+                    <p>「次の練習はいつ？」「どこでやるの？」と聞かれることが減ります。</p>
+                    <ul class="na-points">
+                        <li><b>日付をタップ</b>すると、その日の予定へジャンプ</li>
+                        <li>時間・場所・持ち物は<b>1枚のカード</b>に</li>
+                        <li>場所や時間が変わっても、<b>直せばすぐ全員に最新の予定</b>が届く</li>
+                        <li>「共有」ボタンで<b>LINEにそのまま送れる</b></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="na-feature is-flip reveal">
+                <div class="na-feature-media">
+                    <div class="na-duo">
+                        <div class="na-phone"><img src="images/naraigoto/06_attend.webp" alt="大会の出欠確認の画面" width="780" height="1688" loading="lazy"></div>
+                        <div class="na-phone"><img src="images/naraigoto/06b_attend_list.webp" alt="子どもの名前をタップして参加・不参加を答える画面" width="780" height="1688" loading="lazy"></div>
+                    </div>
+                </div>
+                <div class="na-feature-copy">
+                    <h3><span class="nb">出欠は、</span><span class="nb"><em>名前をタップして</em></span><span class="nb">答えるだけ。</span></h3>
+                    <p>先生・コーチが作った「出欠確認」のリンクをLINEで送るだけ。保護者はスマホで答えます。</p>
+                    <ul class="na-points">
+                        <li>お子さんの名前をタップして、<b>「参加」「不参加」「未定」</b>を選ぶ</li>
+                        <li>「前日に熱が下がれば参加します」など、<b>ひとこと添えられる</b></li>
+                        <li><b>何度でも変更OK</b>。締め切りまでの日数も表示</li>
+                        <li>締め切りを過ぎると、<b>自動で回答を止める</b></li>
+                    </ul>
+                </div>
+            </div>
+
+            <h3 class="na-group-title"><span>先生・コーチ</span>先生・コーチのページ</h3>
+
+            <div class="na-feature reveal">
+                <div class="na-feature-media">
+                    <div class="na-phone"><img src="images/naraigoto/10_aggregate.webp" alt="出欠確認の集計。参加・不参加・未定・未回答に自動で分かれる" width="780" height="1688" loading="lazy"></div>
+                </div>
+                <div class="na-feature-copy">
+                    <h3><span class="nb">出欠の集計は、</span><span class="nb"><em>もう終わっています。</em></span></h3>
+                    <p>保護者が答えた瞬間に、先生・コーチのページで数がそろいます。数える作業はいりません。</p>
+                    <ul class="na-points">
+                        <li><b>参加・不参加・未定・未回答</b>に自動で分かれる</li>
+                        <li><b>まだ答えていない子</b>がすぐ分かる</li>
+                        <li>名前を<b>まとめてコピー</b>して、大会・発表会の申込書に貼れる</li>
+                        <li>保護者の<b>ひとこと</b>も一緒に見られる</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="na-feature is-flip reveal">
+                <div class="na-feature-media">
+                    <div class="na-duo">
+                        <div class="na-phone"><img src="images/naraigoto/09_add_form.webp" alt="予定の登録画面。日付・時間・会場・学年を選ぶ" width="780" height="1688" loading="lazy"></div>
+                        <div class="na-phone"><img src="images/naraigoto/08_staff_card.webp" alt="予定ごとに先生・コーチの出欠が〇△✕で並ぶ画面" width="732" height="1440" loading="lazy"></div>
+                    </div>
+                </div>
+                <div class="na-feature-copy">
+                    <h3><span class="nb">予定の登録は、</span><span class="nb"><em>スマホで1分。</em></span></h3>
+                    <p>入れた予定は、すぐに保護者のカレンダーに出ます。先生・コーチ同士の出欠も、同じページで取れます。</p>
+                    <ul class="na-points">
+                        <li>会場は<b>よく使う場所から選ぶ</b>だけ。「コピー」で同じような予定もすぐ作れる</li>
+                        <li><b>保護者への連絡</b>と<b>先生・コーチだけのメモ</b>を分けて書ける</li>
+                        <li>プリント（PDF・画像）の添付や、地図のリンクも</li>
+                        <li>先生・コーチは予定ごとに<b>〇△✕</b>で出欠。「20分遅れます」などのメモも残せる</li>
+                    </ul>
+                </div>
+            </div>
+
+            <h3 class="na-group-title"><span>運営</span>運営を助ける機能</h3>
+
+            <div class="na-feature reveal">
+                <div class="na-feature-media">
+                    <div class="na-phone"><img src="images/naraigoto/11_players.webp" alt="学年ごとに並ぶ名簿の画面" width="780" height="1688" loading="lazy"></div>
+                </div>
+                <div class="na-feature-copy">
+                    <h3><span class="nb">名簿も、</span><span class="nb"><em>アプリの中に。</em></span></h3>
+                    <p>名簿があるから、出欠確認の対象選びも、誕生日のお祝いも自動でできます。</p>
+                    <ul class="na-points">
+                        <li><b>学年ごと</b>に並ぶ名簿。ふりがな・誕生日も入れられる</li>
+                        <li>名前を並べて貼るだけで<b>まとめて登録</b></li>
+                        <li><b>今月の誕生日</b>と<b>新しく入った仲間</b>を、保護者のページで自動で紹介</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="na-feature is-flip reveal">
+                <div class="na-feature-media">
+                    <div class="na-duo">
+                        <div class="na-shot"><img src="images/naraigoto/cup_bento_sum.webp" alt="お弁当の注文の一覧と合計金額" width="732" height="1132" loading="lazy"></div>
+                        <div class="na-phone"><img src="images/naraigoto/12b_tsunagu_items.webp" alt="用品のゆずりあい掲示板。写真つきで並ぶ" width="780" height="1688" loading="lazy"></div>
+                    </div>
+                </div>
+                <div class="na-feature-copy">
+                    <h3><span class="nb"><em>お弁当の注文</em>も、</span><span class="nb"><em>ゆずりあい</em>も。</span></h3>
+                    <p>連絡と出欠のほかにも、習い事の運営でよくある手間をアプリにまとめました。</p>
+                    <ul class="na-points">
+                        <li>大会やイベントの予定に、メニューと締め切りをつけるだけ。<b>個数と合計金額は自動で計算</b></li>
+                        <li>サイズアウトしたウェアや道具を写真つきで載せる<b>用品のゆずりあい掲示板</b></li>
+                        <li>入会時の<b>規約・お約束</b>と、<b>はじめての方ガイド</b>をいつでも確認できる</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- AI活用 -->
+        <div class="na-ai">
+            <section id="ai" class="section">
+                <div class="section-heading na-heading reveal">
+                    <p class="section-kicker">Built with AI</p>
+                    <h2><span class="nb">AIを活用すれば、</span><br><span class="nb">ここまで</span><span class="nb">ひとりで作れます。</span></h2>
+                    <p class="na-lead">このアプリは、開発会社に外注せず、AIと対話しながら私ひとりで作りました。「現場で本当に困っていること」を知っている人が、そのまま形にできる時代になっています。</p>
+                </div>
+                <div class="na-ai-grid">
+                    <div class="na-ai-card reveal">
+                        <span class="na-ai-num" aria-hidden="true">01</span>
+                        <h3>企画から運用まで、ひとりで</h3>
+                        <p>画面の設計、プログラム、データの保存先、公開、公開後の改善まで。分業せずに一貫して進めるので、話が早く、費用も抑えられます。</p>
+                    </div>
+                    <div class="na-ai-card reveal">
+                        <span class="na-ai-num" aria-hidden="true">02</span>
+                        <h3>現場の声を、すぐ形に</h3>
+                        <p>「イベントの参加人数を家族ごとに集計したい」といった要望が出たら、短い期間で機能を足して公開。使いながら育てていけます。</p>
+                    </div>
+                    <div class="na-ai-card reveal">
+                        <span class="na-ai-num" aria-hidden="true">03</span>
+                        <h3>実際に、毎日使われている</h3>
+                        <p>見本ではなく、子ども50人以上のクラブで保護者と先生・コーチが毎日使っているアプリです。使われる中で見つかった不便を直し続けています。</p>
+                    </div>
+                    <div class="na-ai-card reveal">
+                        <span class="na-ai-num" aria-hidden="true">04</span>
+                        <h3>習い事が変わっても使える</h3>
+                        <p>サッカークラブ向けに作ったものを、和太鼓のチーム向けに言葉や区分を入れ替えた版も作りました。土台を活かして、別の現場へ広げられます。</p>
+                    </div>
+                </div>
+                <p class="na-ai-close reveal"><span class="nb">「うちの仕事にも、</span><span class="nb">こういう仕組みがほしい」</span><br><span class="nb">そんなご相談から、</span><span class="nb"><em>一緒に形にします。</em></span></p>
+            </section>
+        </div>
+
+        <!-- カスタマイズ・安心 -->
+        <section id="custom" class="section">
+            <div class="section-heading na-heading reveal">
+                <p class="section-kicker">Customize</p>
+                <h2><span class="nb">あなたの習い事に合わせて、</span><br><span class="nb">アプリの中を</span><span class="nb">調整できます。</span></h2>
+            </div>
+            <div class="na-two">
+                <div class="na-box reveal">
+                    <h3><i class="fa-solid fa-sliders" aria-hidden="true"></i>教室に合わせられるところ</h3>
+                    <ul class="na-points">
+                        <li><b>呼び方</b>（例：選手→生徒、コーチ→先生、練習→レッスン）</li>
+                        <li><b>学年・クラス・コース</b>の区分、会場の候補</li>
+                        <li>お弁当の注文・ゆずりあい掲示板など、<b>使う機能を選ぶ</b></li>
+                        <li>教室の<b>名前・ロゴ・色</b></li>
+                    </ul>
+                </div>
+                <div class="na-box reveal">
+                    <h3><i class="fa-solid fa-shield-halved" aria-hidden="true"></i>安心して使えます</h3>
+                    <ul class="na-points">
+                        <li><b>インストール不要</b>。URLを開くだけ。iPhoneでもAndroidでも</li>
+                        <li><b>ホーム画面に追加</b>すると、アイコンからアプリのように開ける</li>
+                        <li>ページごとに<b>4桁の暗証番号</b>。何度も間違えると自動でロック</li>
+                        <li>データは<b>教室ごとに別</b>。ほかの教室と混ざりません</li>
+                    </ul>
+                </div>
+            </div>
+            <p class="na-note">※このページの画面と動画の「SAMPLE FC」と、その子ども・コーチは、お試し用の架空のクラブです。</p>
+        </section>
+
+        <!-- 最後のCTA -->
+        <section id="contact-cta" class="contact">
+            <div class="contact-media" aria-hidden="true">
+                <img src="images/main2.jpg" alt="" loading="lazy">
+            </div>
+            <div class="contact-inner reveal">
+                <p class="section-kicker">Contact</p>
+                <h2><span class="nb">まずは、</span><span class="nb">お試し版を</span><span class="nb">触ってみませんか。</span></h2>
+                <p>見本のクラブ「SAMPLE FC」で、保護者のページも先生・コーチのページも実際に操作できるお試し版をご用意しています。<br><em class="gold">ご希望の方に、URLと暗証番号をお伝えします。</em><br>「うちの教室ならこうしたい」「別の仕事でもAIで仕組みを作りたい」といったご相談も、お気軽にどうぞ。</p>
+                <div class="contact-actions">
+                    <a class="button button-dark" href="https://www.nabenokitchen.com/contact/" target="_blank" rel="noopener noreferrer">お問い合わせはこちら</a>
+                    <a class="button button-light" href="index.html">トップへ戻る</a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <button class="back-to-top" id="back-to-top" type="button" aria-label="ページ上部へ戻る">
+        <i class="fa-solid fa-arrow-up"></i>
+    </button>
+
+    <footer class="site-footer">
+        <p class="footer-title">SNSで想いを届ける</p>
+        <p class="footer-brand">なべのだいどころ。</p>
+        <p class="footer-copy">&copy; 2026 Nabe's Portfolio. All Rights Reserved.</p>
+    </footer>
+
+    <script src="script.js?v=20261006-noparticles"></script>
+</body>
+
+</html>

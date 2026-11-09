@@ -1,0 +1,519 @@
+/*==================================================
+  習い事の出欠・連絡アプリ 紹介ページ（naraigoto-app.html）
+  style.css の変数・共通部品（.section / .section-heading / .button / .contact）を使う
+==================================================*/
+
+.nb { display: inline-block; }
+
+/* ---------- ヒーロー ---------- */
+.na-hero {
+    position: relative;
+    overflow: hidden;
+    background:
+        radial-gradient(900px 520px at 82% 30%, rgba(184, 155, 94, 0.22), transparent 70%),
+        linear-gradient(160deg, #1a1a1a 0%, #221d16 60%, #2b2218 100%);
+    color: #fff;
+    padding: 150px 0 96px;
+}
+
+.na-hero-inner {
+    width: var(--container);
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: minmax(0, 1.1fr) minmax(0, 0.9fr);
+    gap: clamp(32px, 5vw, 72px);
+    align-items: center;
+}
+
+.na-hero-title {
+    margin: 0;
+    font-family: var(--serif);
+    font-size: clamp(1.9rem, 4.4vw, 3.2rem);
+    font-weight: 600;
+    line-height: 1.5;
+    letter-spacing: 0.08em;
+}
+
+.na-hero-lead {
+    margin: 26px 0 0;
+    max-width: 560px;
+    color: rgba(255, 255, 255, 0.86);
+    font-size: 0.98rem;
+    line-height: 2.05;
+}
+
+.na-hero-chips {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin: 26px 0 0;
+    padding: 0;
+    list-style: none;
+}
+
+.na-hero-chips li {
+    padding: 5px 14px;
+    border: 1px solid rgba(203, 178, 124, 0.55);
+    border-radius: 999px;
+    color: var(--gold-light);
+    font-size: 0.8rem;
+    letter-spacing: 0.06em;
+    line-height: 1.7;
+}
+
+.na-hero-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 14px;
+    margin-top: 36px;
+}
+
+.na-hero .button-light {
+    color: #fff;
+    border-color: rgba(255, 255, 255, 0.7);
+}
+
+.na-hero .button-light::before { background: #fff; }
+
+.na-hero .button-light:hover {
+    color: var(--ink);
+    border-color: #fff;
+}
+
+.na-hero-phones {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    gap: clamp(12px, 2vw, 22px);
+}
+
+.na-hero-phones figure {
+    margin: 0;
+    width: min(46%, 220px);
+}
+
+.na-hero-phones figure:last-child { margin-top: 44px; }
+
+.na-hero-phones figcaption {
+    margin-bottom: 10px;
+    color: rgba(255, 255, 255, 0.82);
+    font-size: 0.78rem;
+    text-align: center;
+    letter-spacing: 0.08em;
+}
+
+/* ---------- スマホの枠 ---------- */
+.na-phone {
+    overflow: hidden;
+    border: 6px solid #15171c;
+    border-radius: 26px;
+    background: #15171c;
+    box-shadow: 0 24px 60px rgba(20, 16, 10, 0.28);
+}
+
+.na-phone img,
+.na-phone video {
+    display: block;
+    width: 100%;
+    height: auto;
+    border-radius: 20px;
+}
+
+/* 画面の一部を切り出した画像 */
+.na-shot {
+    overflow: hidden;
+    border: 1px solid var(--line);
+    border-radius: 14px;
+    background: #fff;
+    box-shadow: var(--soft-shadow);
+}
+
+.na-shot img {
+    display: block;
+    width: 100%;
+    height: auto;
+}
+
+.na-cap {
+    margin: 10px 0 0;
+    color: var(--muted);
+    font-size: 0.78rem;
+    line-height: 1.7;
+    text-align: center;
+}
+
+/* ---------- パンくず ---------- */
+.na-breadcrumb {
+    width: var(--container);
+    margin: 18px auto 0;
+    color: var(--muted);
+    font-size: 0.78rem;
+    letter-spacing: 0.06em;
+}
+
+.na-breadcrumb ol {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.na-breadcrumb li + li::before {
+    content: "/";
+    margin-right: 6px;
+    color: rgba(26, 26, 26, 0.3);
+}
+
+.na-breadcrumb a { text-decoration: none; }
+.na-breadcrumb a:hover { color: var(--gold); }
+
+/* ---------- 共通 ---------- */
+.na-heading h2 { font-size: clamp(1.3rem, 5vw, 2.1rem); letter-spacing: 0.08em; }
+
+.na-lead {
+    max-width: 720px;
+    margin: 22px auto 0;
+    color: var(--muted);
+    font-size: 0.95rem;
+    line-height: 2;
+    text-align: left;
+}
+
+.na-band { background: var(--warm); }
+
+/* ---------- 悩み → 解決 ---------- */
+.na-pairs {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 20px;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.na-pair {
+    padding: 24px 24px 26px;
+    border: 1px solid var(--line);
+    border-radius: 6px;
+    background: var(--card);
+    box-shadow: var(--soft-shadow);
+}
+
+.na-pair:last-child:nth-child(odd) { grid-column: 1 / -1; }
+
+.na-pair small {
+    display: block;
+    margin-bottom: 4px;
+    font-size: 0.72rem;
+    letter-spacing: 0.14em;
+}
+
+.na-q {
+    margin: 0;
+    color: var(--muted);
+    font-size: 0.95rem;
+    line-height: 1.85;
+}
+
+.na-arrow {
+    display: block;
+    margin: 10px 0;
+    color: var(--gold);
+    font-size: 0.9rem;
+    line-height: 1;
+}
+
+.na-a {
+    margin: 0;
+    color: var(--ink);
+    font-size: 1rem;
+    line-height: 1.9;
+}
+
+.na-a small { color: var(--gold); font-weight: 700; }
+
+.na-a b {
+    font-weight: 700;
+    background: linear-gradient(transparent 62%, rgba(203, 178, 124, 0.42) 62%);
+}
+
+/* ---------- 動画 ---------- */
+.na-videos {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 280px));
+    justify-content: center;
+    gap: clamp(20px, 5vw, 64px);
+}
+
+.na-videos figure { margin: 0; }
+
+.na-videos figcaption {
+    margin-top: 14px;
+    color: var(--ink);
+    font-family: var(--serif);
+    font-size: 1rem;
+    text-align: center;
+    letter-spacing: 0.08em;
+}
+
+.na-videos figcaption small {
+    display: block;
+    color: var(--muted);
+    font-family: var(--sans);
+    font-size: 0.78rem;
+}
+
+.na-phone video { aspect-ratio: 9 / 16; background: #15171c; }
+
+/* ---------- 機能紹介 ---------- */
+.na-group-title {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    margin: clamp(56px, 8vw, 96px) 0 clamp(28px, 4vw, 44px);
+    color: var(--ink);
+    font-family: var(--serif);
+    font-size: clamp(1.1rem, 3.6vw, 1.45rem);
+    font-weight: 500;
+    letter-spacing: 0.1em;
+}
+
+.na-group-title:first-of-type { margin-top: 0; }
+
+.na-group-title::after {
+    content: "";
+    flex: 1;
+    height: 1px;
+    background: var(--line);
+}
+
+.na-group-title span {
+    padding: 3px 12px;
+    border-radius: 2px;
+    background: var(--ink);
+    color: #fff;
+    font-family: var(--sans);
+    font-size: 0.72rem;
+    letter-spacing: 0.14em;
+    white-space: nowrap;
+}
+
+.na-feature {
+    display: grid;
+    grid-template-columns: minmax(0, 0.8fr) minmax(0, 1.2fr);
+    gap: clamp(28px, 5vw, 72px);
+    align-items: center;
+    margin-bottom: clamp(48px, 7vw, 84px);
+}
+
+.na-feature:last-child { margin-bottom: 0; }
+
+.na-feature.is-flip .na-feature-media { order: 2; }
+
+.na-feature-media { min-width: 0; }
+
+.na-feature-media .na-phone {
+    width: min(100%, 250px);
+    margin: 0 auto;
+}
+
+.na-feature-media .na-shot {
+    width: min(100%, 400px);
+    margin: 0 auto;
+}
+
+.na-feature-media .na-shot + .na-shot { margin-top: 14px; }
+
+.na-duo {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 14px;
+    align-items: start;
+    max-width: 420px;
+    margin: 0 auto;
+}
+
+.na-duo .na-phone { width: 100%; border-width: 5px; border-radius: 22px; }
+.na-duo .na-phone img { border-radius: 17px; }
+
+.na-feature-copy h3 {
+    margin: 0 0 16px;
+    color: var(--ink);
+    font-family: var(--serif);
+    font-size: clamp(1.2rem, 4.4vw, 1.6rem);
+    font-weight: 500;
+    line-height: 1.65;
+    letter-spacing: 0.08em;
+}
+
+.na-feature-copy h3 em {
+    color: var(--gold);
+    font-style: normal;
+}
+
+.na-feature-copy > p {
+    margin: 0 0 18px;
+    color: var(--muted);
+    font-size: 0.95rem;
+    line-height: 2;
+}
+
+.na-points {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.na-points li {
+    position: relative;
+    padding: 9px 0 9px 26px;
+    border-bottom: 1px solid var(--line);
+    color: var(--text);
+    font-size: 0.93rem;
+    line-height: 1.85;
+}
+
+.na-points li::before {
+    content: "";
+    position: absolute;
+    left: 4px;
+    top: 1.25em;
+    width: 9px;
+    height: 9px;
+    border-radius: 50%;
+    background: var(--gold);
+}
+
+.na-points b { color: var(--ink); font-weight: 700; }
+
+/* ---------- AI活用 ---------- */
+.na-ai {
+    background: var(--ink);
+    color: #fff;
+}
+
+.na-ai .section-heading h2 { color: #fff; }
+
+.na-ai .na-lead { color: rgba(255, 255, 255, 0.82); }
+
+.na-ai-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 20px;
+}
+
+.na-ai-card {
+    padding: 28px 26px 30px;
+    border: 1px solid rgba(255, 255, 255, 0.14);
+    border-radius: 6px;
+    background: rgba(255, 255, 255, 0.04);
+}
+
+.na-ai-num {
+    display: block;
+    margin-bottom: 8px;
+    color: var(--gold-light);
+    font-family: var(--serif);
+    font-size: 1.5rem;
+    letter-spacing: 0.1em;
+    line-height: 1.2;
+}
+
+.na-ai-card h3 {
+    margin: 0 0 10px;
+    font-family: var(--serif);
+    font-size: 1.1rem;
+    font-weight: 500;
+    line-height: 1.7;
+    letter-spacing: 0.08em;
+}
+
+.na-ai-card p {
+    margin: 0;
+    color: rgba(255, 255, 255, 0.8);
+    font-size: 0.92rem;
+    line-height: 2;
+}
+
+.na-ai-close {
+    max-width: 720px;
+    margin: clamp(36px, 5vw, 56px) auto 0;
+    color: #fff;
+    font-family: var(--serif);
+    font-size: clamp(1rem, 3.6vw, 1.2rem);
+    line-height: 2.1;
+    text-align: center;
+    letter-spacing: 0.08em;
+}
+
+.na-ai-close em { color: var(--gold-light); font-style: normal; }
+
+/* ---------- 合わせられるところ・安心 ---------- */
+.na-two {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 24px;
+}
+
+.na-box {
+    padding: 30px 28px 32px;
+    border: 1px solid var(--line);
+    border-radius: 6px;
+    background: var(--card);
+    box-shadow: var(--soft-shadow);
+}
+
+.na-box h3 {
+    margin: 0 0 14px;
+    color: var(--ink);
+    font-family: var(--serif);
+    font-size: 1.15rem;
+    font-weight: 500;
+    line-height: 1.7;
+    letter-spacing: 0.08em;
+}
+
+.na-box h3 i { margin-right: 10px; color: var(--gold); }
+
+.na-note {
+    max-width: 720px;
+    margin: 28px auto 0;
+    color: var(--muted);
+    font-size: 0.8rem;
+    line-height: 1.9;
+    text-align: center;
+}
+
+/* ---------- スマホ ---------- */
+@media (max-width: 860px) {
+    .na-hero { padding: 120px 0 64px; }
+
+    .na-hero-inner { grid-template-columns: 1fr; }
+
+    .na-hero-phones figure { width: min(44%, 190px); }
+
+    .na-hero-actions .button { flex: 1 1 100%; min-width: 0; }
+
+    .na-pairs,
+    .na-ai-grid,
+    .na-two { grid-template-columns: 1fr; }
+
+    .na-feature { grid-template-columns: 1fr; gap: 26px; }
+
+    .na-feature.is-flip .na-feature-media { order: 0; }
+
+    .na-videos { grid-template-columns: minmax(0, 250px); }
+
+    .na-pair { padding: 20px 18px 22px; }
+
+    .na-group-title { flex-wrap: wrap; gap: 8px 12px; }
+
+    .na-group-title::after { display: none; }
+
+    .contact .contact-actions .button { min-width: 0; padding: 0 28px; }
+
+    .na-box,
+    .na-ai-card { padding: 24px 20px 26px; }
+}

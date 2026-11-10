@@ -3177,10 +3177,11 @@ em.gold {
 .movies-cta { margin-top: clamp(48px, 7vw, 80px); }
 
 .footer-nl { margin: 0 auto 30px; padding-top: 26px; max-width: 760px; border-top: 1px solid rgba(255, 255, 255, 0.12); scroll-margin-top: 100px; }
-.footer-nl-title { margin: 0 0 12px !important; color: rgba(255, 255, 255, 0.5); font-size: 0.78rem; letter-spacing: 0.18em; }
+.footer-nl-title { margin: 0 auto 12px !important; padding-left: 0.18em; color: rgba(255, 255, 255, 0.5); font-size: 0.78rem; letter-spacing: 0.18em; }
 .footer-nl ul { display: flex; flex-wrap: wrap; justify-content: center; gap: 10px 30px; margin: 0; padding: 0; list-style: none; }
-.footer-nl a { display: inline-flex; flex-direction: column; gap: 3px; padding: 6px 4px; color: rgba(255, 255, 255, 0.86); font-size: 0.92rem; text-decoration: underline; text-decoration-color: rgba(201, 169, 110, 0.6); text-underline-offset: 5px; transition: color 0.2s ease; }
+.footer-nl a { display: inline-flex; flex-direction: column; gap: 3px; padding: 6px 4px; color: rgba(255, 255, 255, 0.86); font-size: 0.92rem; text-decoration: none; transition: color 0.2s ease; }
 .footer-nl a:hover { color: var(--gold-light); }
+.footer-nl a strong { font-weight: 500; text-decoration: underline; text-decoration-color: rgba(201, 169, 110, 0.6); text-underline-offset: 5px; }
 .footer-nl a span { color: rgba(255, 255, 255, 0.45); font-size: 0.75rem; text-decoration: none; display: inline-block; }
 
 /* スマホ・タブレット：画面の下に相談ボタンを出したままにする（PCは上のメニューにあるので出さない） */
@@ -3203,4 +3204,5 @@ em.gold {
     .section-kicker { font-size: 0.75rem !important; }
     .service-eyebrow { font-size: 0.75rem !important; }
     .more-videos .button { min-width: 0; width: min(320px, calc(100vw - 48px)); }
+    .eyebrow, .about-tags span, .numbers span, .numbers small, .activity-scroll-hint, .activity-scroll-hint span { font-size: 0.75rem !important; }
 }

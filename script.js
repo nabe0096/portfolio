@@ -626,3 +626,38 @@ document.addEventListener('DOMContentLoaded', () => {
         }, { threshold: 0.05 }).observe(hero);
     }
 })();
+
+
+/* 2026-11-10 動画は最初の3本だけ読み込み、ボタンを押したら残りを出す（ページを軽くする） */
+(function () {
+    document.querySelectorAll('[data-more-videos]').forEach(function (btn) {
+        btn.addEventListener('click', function () {
+            var wrap = btn.closest('.more-videos');
+            var carousel = wrap && wrap.previousElementSibling;
+            if (!carousel) return;
+            carousel.querySelectorAll('[data-more-card]').forEach(function (card) {
+                var f = card.querySelector('iframe[data-src]');
+                if (f) { f.setAttribute('src', f.dataset.src); f.removeAttribute('data-src'); }
+                card.hidden = false;
+            });
+            wrap.remove();
+        });
+    });
+})();
+
+/* 2026-11-10 スマホ：最初の画面を過ぎたら相談ボタンを下に出し、お問い合わせの章とフッターでは隠す */
+(function () {
+    var cta = document.getElementById('sticky-cta');
+    var hero = document.getElementById('hero');
+    if (!cta || !hero) return;
+    var pastHero = false, nearEnd = false;
+    var apply = function () { cta.classList.toggle('is-visible', pastHero && !nearEnd); };
+    if (!('IntersectionObserver' in window)) { cta.classList.add('is-visible'); return; }
+    new IntersectionObserver(function (es) { pastHero = !es[0].isIntersecting; apply(); }, { threshold: 0.2 }).observe(hero);
+    var seen = new Set();
+    var endObs = new IntersectionObserver(function (es) {
+        es.forEach(function (e) { if (e.isIntersecting) seen.add(e.target); else seen.delete(e.target); });
+        nearEnd = seen.size > 0; apply();
+    }, { threshold: 0.15 });
+    [document.getElementById('contact'), document.querySelector('.site-footer')].forEach(function (el) { if (el) endObs.observe(el); });
+})();

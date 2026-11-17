@@ -118,10 +118,10 @@ p,li{text-wrap:pretty;line-break:strict}
 @media(prefers-reduced-motion:reduce){.js .rv{opacity:1;transform:none;transition:none}.wow,.float{animation:none!important}}
 
 /* ---------- 数字 ---------- */
-.nums{display:grid;grid-template-columns:repeat(2,1fr);gap:14px;margin-top:26px}
+.nums{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px;margin-top:26px}
 .num{background:var(--white);border:var(--bd);border-radius:14px 5px 12px 4px;box-shadow:var(--sh);padding:14px 10px 12px;text-align:center}
 .num:first-child{grid-column:1/-1;background:var(--ink);color:#fff;box-shadow:5px 5px 0 var(--red)}
-.num b{display:block;font-weight:900;line-height:1.1;font-size:clamp(28px,8.4vw,44px);letter-spacing:-.01em}
+.num b{display:block;font-weight:900;line-height:1.1;font-size:clamp(24px,7.2vw,44px);letter-spacing:-.01em}
 .num:first-child b{font-size:clamp(46px,14vw,76px);color:var(--yellow)}
 .num b{white-space:nowrap}
 .num b small{font-size:max(12px,.42em);margin-left:2px}
@@ -292,6 +292,61 @@ p,li{text-wrap:pretty;line-break:strict}
 .lb button{position:absolute;width:48px;height:48px;border-radius:50%;border:var(--bd);background:var(--yellow);font-size:20px;font-weight:900;cursor:pointer;font-family:inherit}
 .lb-x{top:14px;right:14px}.lb-p{left:10px;top:50%;translate:0 -50%}.lb-n{right:10px;top:50%;translate:0 -50%}
 
+/* ===== 文字を減らすための部品（タブ・小窓・開閉） ===== */
+.tabs-bar{display:flex;gap:8px;overflow-x:auto;padding:4px 4px 8px;margin:22px -4px 0;scrollbar-width:none}
+.tabs-bar::-webkit-scrollbar{display:none}
+.tab{flex:0 0 auto;border:var(--bd);border-radius:999px;padding:6px 16px;font-weight:900;font-size:14px;background:var(--white);color:var(--ink);white-space:nowrap;min-height:44px;box-shadow:3px 3px 0 var(--ink);cursor:pointer;font-family:inherit;display:inline-flex;align-items:center;gap:8px}
+.tab[aria-selected="true"]{background:var(--ink);color:#fff;box-shadow:3px 3px 0 var(--red)}
+.tab[aria-selected="true"] i{color:var(--yellow)}
+.tab i{color:var(--red)}
+.tabp{margin-top:14px}
+.tabp[hidden]{display:none}
+.tabp-lead{font-weight:700;font-size:14px;max-width:44em}
+.tabp .chip{margin-top:10px;background:var(--white)}
+/* サービスの札 */
+.tiles{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px;margin-top:26px}
+.tile{position:relative;text-align:left;background:var(--white);border:var(--bd);border-radius:14px 5px 12px 4px;box-shadow:4px 4px 0 var(--ink);overflow:hidden;padding:0;font-family:inherit;color:inherit;cursor:pointer;display:flex;flex-direction:column;transition:transform .15s,box-shadow .15s}
+.tile:active{transform:translate(3px,3px);box-shadow:1px 1px 0 var(--ink)}
+@media(hover:hover){.tile:hover{transform:translate(3px,3px);box-shadow:1px 1px 0 var(--ink)}}
+.tile-img{position:relative;display:block;aspect-ratio:16/9;border-bottom:var(--bd);background:var(--sky)}
+.tile-img img{width:100%;height:100%;object-fit:cover}
+.tile-no{position:absolute;left:6px;top:6px;background:var(--yellow);border:2px solid var(--ink);border-radius:50%;width:32px;height:32px;display:grid;place-items:center;font-weight:900;font-size:13px;transform:rotate(-8deg)}
+.tile:nth-child(3n+2) .tile-no{background:var(--pink)}.tile:nth-child(3n) .tile-no{background:var(--sky)}
+.tile-body{display:flex;flex-direction:column;gap:2px;padding:8px 10px 10px;flex:1}
+.tile-t{font-weight:900;font-size:15px;line-height:1.35}
+@media(max-width:379px){.tile-t{font-size:14px}.tile-body{padding:8px 8px 10px}}
+.tile-c{font-weight:700;font-size:12px;line-height:1.5}
+.tile-more{margin-top:auto;padding-top:4px;font-weight:900;font-size:12px;color:var(--red);display:flex;align-items:center;gap:4px}
+.tile:last-child:nth-child(odd){grid-column:1/-1;flex-direction:row}
+.tile:last-child:nth-child(odd) .tile-img{flex:0 0 50%;border-bottom:0;border-right:var(--bd)}
+.tile:last-child:nth-child(odd) .tile-body{justify-content:center}
+.tiles-hint{margin-top:12px;font-weight:800;font-size:12px;text-align:center}
+@media(min-width:800px){.tiles{grid-template-columns:repeat(4,minmax(0,1fr));gap:20px}.tile-t{font-size:17px}.tile-c{font-size:13px}.tile-body{padding:12px 14px 14px}.tile:last-child:nth-child(odd){grid-column:auto;flex-direction:column}.tile:last-child:nth-child(odd) .tile-img{flex:none;border-right:0;border-bottom:var(--bd)}}
+.svc-data{display:none}
+@media(min-width:900px){.hint--sp{display:none}}
+/* 小窓 */
+.dlg{border:var(--bd);border-radius:18px 6px 16px 5px;padding:0;width:min(92vw,520px);max-height:88vh;box-shadow:8px 8px 0 var(--ink);background:var(--white);color:var(--ink);overflow:auto;margin:auto}
+.dlg::backdrop{background:rgba(25,25,27,.72)}
+.dlg-x{position:absolute;top:8px;right:8px;z-index:2;width:44px;height:44px;border-radius:50%;border:var(--bd);background:var(--yellow);font-size:18px;font-weight:900;cursor:pointer;font-family:inherit;box-shadow:2px 2px 0 var(--ink)}
+.dlg-img{aspect-ratio:16/9;border-bottom:var(--bd);background:var(--sky)}
+.dlg-img img{width:100%;height:100%;object-fit:cover}
+.dlg-body{padding:16px 16px 20px;display:grid;gap:10px}
+.dlg-body h3{font-weight:900;font-size:22px;line-height:1.4}
+.dlg-body p{font-size:15px}
+.dlg-body ul{list-style:none;display:grid;gap:6px}
+.dlg-body li{text-wrap:balance;word-break:auto-phrase;position:relative;padding-left:24px;font-weight:700;font-size:14px;line-height:1.6}
+.dlg-body li::before{content:"\f00c";font-family:"Font Awesome 6 Free";font-weight:900;position:absolute;left:0;top:.1em;color:var(--red);font-size:14px}
+.dlg-links{display:flex;flex-wrap:wrap;gap:8px}
+.dlg-body .btn{width:100%;margin-top:4px}
+/* 実績3つ：スマホは横に送る */
+@media(max-width:899px){.feat{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;gap:16px;padding:6px 6px 14px;margin:20px -6px 0;-webkit-overflow-scrolling:touch}.feat-item{flex:0 0 min(80%,300px);scroll-snap-align:start;display:flex;flex-direction:column}.feat-img--cover{aspect-ratio:16/10}.feat-img--cover img{object-position:50% 78%}}
+/* 経歴の札 */
+.facts{list-style:none;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px}
+.facts li{background:var(--paper);border:var(--bd);border-radius:12px 4px 10px 4px;padding:8px 4px;text-align:center;font-weight:800;font-size:12px;line-height:1.4;box-shadow:3px 3px 0 var(--ink)}
+.facts b{display:block;font-weight:900;font-size:clamp(18px,5.4vw,24px);line-height:1.2;color:var(--red);white-space:nowrap}
+.facts b small{font-size:12px;color:var(--ink);margin-left:1px}
+.about-text .facts+p{margin-top:16px}
+
 .draft{background:var(--ink);color:var(--yellow);text-align:center;font-weight:800;font-size:12px;padding:4px 8px}
 
 /* ===== ホームページ制作ページ用 ===== */
@@ -301,167 +356,129 @@ p,li{text-wrap:pretty;line-break:strict}
 .crumb{font-weight:800;font-size:12px;padding:10px 0;border-bottom:2px solid var(--ink);background:var(--white)}
 .crumb ol{list-style:none;display:flex;gap:8px;align-items:center}
 .crumb li+li::before{content:"›";margin-right:8px}
-.sec-img{margin-top:22px;border:var(--bd);border-radius:16px 6px 14px 5px;box-shadow:6px 6px 0 var(--ink);overflow:hidden;background:var(--sky);aspect-ratio:16/9;max-width:640px}
+.sec-img{position:relative;margin-top:22px;border:var(--bd);border-radius:16px 6px 14px 5px;box-shadow:6px 6px 0 var(--ink);overflow:hidden;background:var(--sky);aspect-ratio:16/9;max-width:640px}
 .sec-img img{width:100%;height:100%;object-fit:cover}
-.two{display:grid;gap:22px;margin-top:8px}
-@media(min-width:900px){.two{grid-template-columns:1fr 1fr;gap:44px;align-items:center}.two .sec-img{margin-top:0;max-width:none}}
-.body p{font-size:15px}.body p+p{margin-top:12px}
-.plan p,.bene p,.step p,.col li,.sns-col li{word-break:auto-phrase}
-.sec-lead,.hero--wd .hero-lead,.answer--long{word-break:normal}
-.answer--long{text-wrap:pretty}
-.fine{margin-top:16px;font-size:12px;font-weight:700;opacity:.85}
+.two{display:grid;grid-template-columns:minmax(0,1fr);gap:18px;margin-top:8px}
+.two>*{min-width:0}
+@media(min-width:900px){.two{grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:44px;align-items:center}.two .sec-img{margin-top:0;max-width:none}}
+.fine{margin-top:14px;font-size:12px;font-weight:700;opacity:.85}
 .inl{font-weight:800;text-decoration:underline;text-underline-offset:3px;text-decoration-thickness:2px;text-decoration-color:var(--red)}
+.lead2{margin-top:14px;font-weight:800;font-size:clamp(15px,4.2vw,18px);line-height:1.7;text-wrap:balance;word-break:auto-phrase}
+/* お悩み */
+.wants{list-style:none;display:grid;gap:10px;margin-top:22px}
+.wants li{position:relative;background:var(--white);border:var(--bd);border-radius:999px;padding:8px 14px 8px 46px;font-weight:800;font-size:14px;line-height:1.5;box-shadow:3px 3px 0 var(--ink);word-break:auto-phrase}
+.wants li::before{content:"？";position:absolute;left:10px;top:50%;translate:0 -50%;width:26px;height:26px;border-radius:50%;background:var(--red);color:#fff;display:grid;place-items:center;font-weight:900;font-size:14px;border:2px solid var(--ink)}
+@media(min-width:760px){.wants{grid-template-columns:repeat(2,minmax(0,1fr))}}
 /* 0円 */
-.zero{display:grid;gap:20px;margin-top:22px}
-.zero-fig{justify-self:center;position:relative;width:min(74vw,250px);aspect-ratio:1;border-radius:50%;background:var(--red);color:#fff;border:4px solid var(--ink);box-shadow:8px 8px 0 var(--ink);display:grid;place-content:center;text-align:center;transform:rotate(-5deg)}
-.zero-fig small{font-weight:900;font-size:16px;line-height:1;letter-spacing:.06em}
-.zero-fig b{font-weight:900;font-size:118px;line-height:.95;text-shadow:4px 4px 0 var(--ink)}
-.zero-fig b span{font-size:40px;margin-left:2px}
-.note{background:var(--white);border:var(--bd);border-radius:14px 5px 12px 4px;box-shadow:var(--sh);padding:16px 16px}
-.note-t{font-weight:900;display:flex;gap:8px;align-items:center;margin-bottom:6px}
-.note-t i{color:var(--red)}
-.note p{font-size:14px}.note p+p{margin-top:8px}
-@media(min-width:900px){.zero{grid-template-columns:280px 1fr;align-items:center;gap:44px}.zero-fig{width:250px}}
+.zero-badge{position:absolute;left:10px;bottom:10px;width:112px;height:112px;border-radius:50%;background:var(--red);color:#fff;border:3px solid var(--ink);box-shadow:4px 4px 0 var(--ink);display:grid;place-content:center;text-align:center;transform:rotate(-8deg)}
+.zero-badge small{font-weight:900;font-size:12px;line-height:1.1}
+.zero-badge b{font-weight:900;font-size:50px;line-height:.95;text-shadow:3px 3px 0 var(--ink);white-space:nowrap}
+.zero-badge b span{font-size:20px;margin-left:1px}
+@media(min-width:900px){.zero-badge{width:140px;height:140px}.zero-badge b{font-size:64px}}
 /* 料金 */
-.flags{list-style:none;display:grid;gap:10px;margin-top:20px}
-.flags li{background:var(--white);border:var(--bd);border-radius:999px;padding:8px 16px;font-weight:800;font-size:14px;display:flex;gap:10px;align-items:center;box-shadow:3px 3px 0 var(--ink)}
-.flags i{color:var(--red);width:1.2em;text-align:center}
-@media(min-width:900px){.flags{grid-template-columns:repeat(3,1fr)}.flags li{justify-content:center}}
-.plans{display:grid;gap:24px;margin-top:30px}
-.plan{position:relative;background:var(--white);border:var(--bd);border-radius:16px 6px 14px 5px;box-shadow:6px 6px 0 var(--ink);padding:20px 18px 20px;text-align:center}
-.plan--hot{background:var(--yellow);box-shadow:8px 8px 0 var(--red)}
-.plan-badge{position:absolute;top:-16px;right:12px;background:var(--red);color:#fff;border:var(--bd);border-radius:999px;padding:1px 16px;font-weight:900;font-size:14px;transform:rotate(6deg);box-shadow:3px 3px 0 var(--ink)}
-.plan-en{font-weight:900;font-size:13px;letter-spacing:.16em;color:var(--red)}
-.plan-pages{display:inline-block;margin-top:6px;background:var(--ink);color:#fff;border-radius:999px;padding:2px 16px;font-weight:800;font-size:14px}
-.plan-pages b{font-size:19px;font-weight:900;color:var(--yellow);margin-right:2px}
-.plan-price{font-weight:900;line-height:1.1;margin-top:10px;white-space:nowrap}
-.plan-price b{font-size:clamp(44px,13vw,56px);letter-spacing:-.01em}
-.plan-price span{font-size:20px;margin-left:2px}
-.plan-tax{font-weight:800;font-size:12px}
-.plan p.plan-desc{font-size:14px;text-align:left;margin-top:10px}
-@media(min-width:900px){.plans{grid-template-columns:repeat(3,1fr);align-items:stretch}.plan-price b{font-size:52px}}
-.common{margin-top:34px;background:var(--white);border:var(--bd);border-radius:16px 6px 14px 5px;box-shadow:6px 6px 0 var(--ink);padding:20px 16px}
-.common-t{font-weight:900;font-size:clamp(17px,4.8vw,22px);text-align:center;line-height:1.5}
-.cols{display:grid;gap:16px;margin-top:16px}
-.col-t{font-weight:900;display:flex;gap:8px;align-items:center;border-bottom:2px solid var(--ink);padding-bottom:4px}
-.col-t i{color:var(--red)}
-.col ul{list-style:none;margin-top:8px;display:grid;gap:4px}
-.col li{text-wrap:balance;position:relative;padding-left:22px;font-size:14px;font-weight:700}
-.col li::before{content:"\f00c";font-family:"Font Awesome 6 Free";font-weight:900;position:absolute;left:0;top:.05em;color:var(--red);font-size:13px}
-@media(min-width:700px){.cols{grid-template-columns:repeat(2,1fr);gap:22px}}
-@media(min-width:1000px){.cols{grid-template-columns:repeat(4,1fr)}.common{padding:26px 28px}}
-.concl{margin-top:30px;background:var(--ink);color:#fff;border-radius:16px 5px 14px 4px;box-shadow:5px 5px 0 var(--red);padding:20px 18px}
-.concl-t{font-weight:900;font-size:clamp(19px,5.4vw,26px);line-height:1.5;color:var(--yellow)}
-.concl p+p{margin-top:8px;font-size:14px}
-.concl .mk{background:none;color:var(--yellow)}
+.plans{display:grid;gap:18px;margin-top:26px}
+.plan{position:relative;background:var(--white);border:var(--bd);border-radius:16px 6px 14px 5px;box-shadow:5px 5px 0 var(--ink);padding:14px 16px;display:grid;grid-template-columns:1fr auto;grid-template-areas:'en price' 'pages price' 'desc desc';gap:2px 10px;align-items:center}
+.plan--hot{background:var(--yellow);box-shadow:6px 6px 0 var(--red)}
+.plan-badge{position:absolute;top:-14px;right:12px;background:var(--red);color:#fff;border:var(--bd);border-radius:999px;padding:0 14px;font-weight:900;font-size:13px;transform:rotate(6deg);box-shadow:2px 2px 0 var(--ink)}
+.plan-en{grid-area:en;font-weight:900;font-size:12px;letter-spacing:.16em;color:var(--red);line-height:1.2}
+.plan-pages{grid-area:pages;font-weight:900;font-size:16px;white-space:nowrap}
+.plan-pages b{font-size:24px;margin-right:2px}
+.plan-price{grid-area:price;font-weight:900;line-height:1.05;white-space:nowrap;text-align:right}
+.plan-price b{font-size:clamp(34px,10vw,42px);letter-spacing:-.01em}
+.plan-price span{font-size:15px;margin-left:1px}
+.plan-price small{display:block;font-size:12px;font-weight:800}
+.plan-desc{grid-area:desc;font-size:13px;font-weight:700;border-top:2px dashed var(--ink);margin-top:8px;padding-top:6px;word-break:auto-phrase}
+@media(min-width:900px){.plans{grid-template-columns:repeat(3,1fr);gap:22px}}
+/* 開閉 */
+.acc{margin-top:22px;border:var(--bd);border-radius:16px 6px 14px 5px;box-shadow:6px 6px 0 var(--ink);background:var(--white);overflow:hidden}
+.acc-t{font-weight:900;font-size:16px;text-align:center;background:var(--ink);color:#fff;padding:8px 12px;line-height:1.5}
+.acc details+details,.acc-t+details{border-top:2px solid var(--ink)}
+.acc-t+details{border-top:0}
+.acc summary{list-style:none;cursor:pointer;display:grid;grid-template-columns:auto 1fr auto;gap:10px;align-items:center;padding:12px 14px;font-weight:800;line-height:1.5;word-break:auto-phrase}
+.acc summary::-webkit-details-marker{display:none}
+.acc summary>i{width:34px;height:34px;border-radius:50%;background:var(--yellow);border:2px solid var(--ink);display:grid;place-items:center;font-size:15px}
+.acc--q summary::before{content:"Q";width:30px;height:30px;border-radius:50%;background:var(--ink);color:var(--yellow);display:grid;place-items:center;font-weight:900;font-size:15px}
+.acc summary::after{content:"+";width:30px;height:30px;border:2px solid var(--ink);border-radius:50%;display:grid;place-items:center;font-weight:900;background:var(--yellow);font-size:18px;line-height:1}
+.acc details[open] summary::after{content:"−";background:var(--red);color:#fff}
+.acc details[open] summary{background:var(--paper)}
+.acc summary small{display:block;font-size:12px;font-weight:700;opacity:.8}
+.acc-b{padding:4px 16px 16px 58px;font-size:14px}
+.acc-b ul{list-style:none;display:grid;gap:4px}
+.acc-b li{text-wrap:balance;position:relative;padding-left:22px;font-weight:700}
+.acc-b li::before{content:"\f00c";font-family:"Font Awesome 6 Free";font-weight:900;position:absolute;left:0;top:.05em;color:var(--red);font-size:13px}
+.acc-b p+p{margin-top:6px}
+.acc--plain{box-shadow:none;border-width:2px;margin-top:16px}
+.acc--plain summary{grid-template-columns:1fr auto;font-size:13px;padding:8px 12px}
+.acc--plain .acc-b{padding:2px 14px 12px;font-size:12px;font-weight:700}
+@media(min-width:760px){.acc summary{padding:14px 20px;font-size:16px}.acc-b{padding:4px 28px 20px 64px}}
+.banner{margin-top:22px;background:var(--ink);color:#fff;border-radius:16px 5px 14px 4px;box-shadow:5px 5px 0 var(--red);padding:14px 16px;font-weight:900;font-size:clamp(16px,4.6vw,21px);line-height:1.6;text-align:center;text-wrap:balance}
+.banner b{color:var(--yellow)}
 /* 比較 */
-.vs{display:grid;gap:16px;margin-top:26px}
-.vs-row{background:var(--white);border:var(--bd);border-radius:14px 5px 12px 4px;box-shadow:var(--sh);overflow:hidden}
-.vs-row h3{background:var(--ink);color:#fff;font-weight:900;font-size:15px;padding:6px 14px}
-.vs-a,.vs-b{padding:10px 14px;font-size:14px;font-weight:700;line-height:1.6}
-.vs-a{border-bottom:2px dashed var(--ink)}
-.vs-b{background:var(--yellow);font-weight:900;font-size:15px}
-.vs-a small,.vs-b small{display:block;font-size:12px;font-weight:900;letter-spacing:.02em;opacity:.75}
-.vs-b small{color:var(--red);opacity:1}
-.vs-head{display:none}
-@media(min-width:800px){
-  .vs{gap:0;border:var(--bd);border-radius:16px 6px 14px 5px;box-shadow:6px 6px 0 var(--ink);overflow:hidden;background:var(--white)}
-  .vs-row,.vs-head{display:grid;grid-template-columns:170px 1fr 1fr;border:0;border-radius:0;box-shadow:none;border-top:2px solid var(--ink)}
-  .vs-head{border-top:0;font-weight:900;text-align:center}
-  .vs-head span{padding:10px 14px}.vs-head span:nth-child(2){background:#eee6d3}.vs-head span:nth-child(3){background:var(--red);color:#fff}
-  .vs-row h3{display:grid;align-items:center}
-  .vs-a{border-bottom:0;border-right:2px dashed var(--ink)}
-  .vs-a,.vs-b{display:grid;align-items:center;padding:14px 18px}
-  .vs-a small,.vs-b small{display:none}
-}
-.vs-note{margin-top:24px;font-size:15px}
-/* 理由・メリット */
-.grid3{display:grid;gap:22px;margin-top:28px}
-.reason,.bene{position:relative;background:var(--white);border:var(--bd);border-radius:16px 6px 14px 5px;box-shadow:6px 6px 0 var(--ink);padding:26px 16px 18px}
-.reason h3,.bene h3{font-weight:900;font-size:19px;line-height:1.45}
-.reason p,.bene p{font-size:14px;margin-top:8px}
-.rno{position:absolute;left:12px;top:-18px;background:var(--yellow);border:var(--bd);border-radius:50%;width:44px;height:44px;display:grid;place-items:center;font-weight:900;font-size:16px;box-shadow:2px 2px 0 var(--ink);transform:rotate(-8deg)}
-.grid3>:nth-child(3n+2) .rno{background:var(--pink)}.grid3>:nth-child(3n) .rno{background:var(--sky)}
-@media(min-width:700px){.grid3{grid-template-columns:repeat(2,1fr);gap:30px 22px}}
-@media(min-width:1000px){.grid3{grid-template-columns:repeat(3,1fr)}}
-/* 一括サポート */
-.sup{list-style:none;display:grid;grid-template-columns:repeat(2,1fr);gap:10px;margin-top:24px}
-.sup li{background:var(--white);border:var(--bd);border-radius:12px 4px 10px 4px;padding:10px 8px;font-weight:800;font-size:13px;line-height:1.45;display:flex;gap:6px;align-items:center;box-shadow:3px 3px 0 var(--ink);word-break:auto-phrase}
-.sup li span{text-wrap:balance}
-.sup i{color:var(--red);width:1.3em;text-align:center;flex:none}
-.sup li:last-child{grid-column:1/-1;background:var(--yellow);justify-content:center}
-@media(max-width:379px){.sup li{font-size:12px}}
-@media(min-width:760px){.sup{grid-template-columns:repeat(3,1fr)}.sup li{font-size:14px}.sup li:last-child{grid-column:auto}}
-@media(min-width:1000px){.sup{grid-template-columns:repeat(4,1fr)}.sup li:last-child{grid-column:1/-1}}
-/* SNS×HP */
-.sns2{display:grid;gap:20px;margin-top:26px}
-.sns-col{background:var(--white);border:var(--bd);border-radius:16px 6px 14px 5px;box-shadow:6px 6px 0 var(--ink);overflow:hidden}
-.sns-col h3{font-weight:900;font-size:18px;padding:10px 16px;border-bottom:var(--bd);background:var(--pink);display:flex;gap:10px;align-items:center}
-.sns-col+.sns-col h3{background:var(--sky)}
-.sns-col ul{list-style:none;padding:14px 16px 16px;display:grid;gap:8px}
-.sns-col li{position:relative;padding-left:20px;font-size:14px;font-weight:700;line-height:1.65}
-.sns-col li::before{content:"";position:absolute;left:2px;top:.6em;width:9px;height:9px;border-radius:50%;background:var(--red);border:2px solid var(--ink)}
-@media(min-width:800px){.sns2{grid-template-columns:1fr 1fr}}
+.vs{margin-top:22px;border:var(--bd);border-radius:16px 6px 14px 5px;box-shadow:6px 6px 0 var(--ink);overflow:hidden;background:var(--white)}
+.vs-row{display:grid;grid-template-columns:minmax(0,.72fr) minmax(0,1fr) minmax(0,1.08fr);border-top:2px solid var(--ink)}
+.vs-row:first-child{border-top:0}
+.vs-row>*{padding:9px 8px;font-size:13px;font-weight:700;line-height:1.45;display:grid;align-items:center;word-break:auto-phrase}
+.vs-row>:first-child{background:var(--ink);color:#fff;font-weight:900;font-size:12px}
+.vs-row>:nth-child(2){background:#f1ead8;border-right:2px dashed var(--ink)}
+.vs-row>:nth-child(3){background:var(--yellow);font-weight:900}
+.vs-head>*{font-weight:900;font-size:12px;text-align:center;justify-items:center}
+.vs-head>:nth-child(3){background:var(--red);color:#fff}
+@media(min-width:760px){.vs-row>*{padding:12px 18px;font-size:15px}.vs-row>:first-child,.vs-head>*{font-size:14px}}
+/* 理由 */
+.whys{list-style:none;display:grid;gap:12px;margin-top:24px}
+.why{position:relative;background:var(--white);border:var(--bd);border-radius:14px 5px 12px 4px;box-shadow:4px 4px 0 var(--ink);padding:10px 12px 10px 62px;min-height:62px;display:grid;align-content:center}
+.why-ic{position:absolute;left:10px;top:50%;translate:0 -50%;width:42px;height:42px;border-radius:50%;border:var(--bd);background:var(--yellow);display:grid;place-items:center;font-size:17px}
+.why:nth-child(3n+2) .why-ic{background:var(--pink)}.why:nth-child(3n) .why-ic{background:var(--sky)}
+.why h3{font-weight:900;font-size:16px;line-height:1.4}
+.why p{font-size:13px;font-weight:700;line-height:1.5;word-break:auto-phrase}
+@media(min-width:760px){.whys{grid-template-columns:repeat(2,minmax(0,1fr));gap:16px 22px}.why h3{font-size:18px}.why p{font-size:14px}}
+@media(min-width:1040px){.whys{grid-template-columns:repeat(3,minmax(0,1fr))}}
+.maker{margin-top:26px;background:var(--sky);border:var(--bd);border-radius:16px 6px 14px 5px;box-shadow:5px 5px 0 var(--ink);padding:14px;display:grid;grid-template-columns:76px 1fr;gap:12px;align-items:center}
+.maker img{width:76px;height:76px;border-radius:50%;border:var(--bd);background:#fff;object-fit:cover}
+.maker b{font-weight:900;font-size:16px;display:block;line-height:1.4}
+.maker p{font-size:13px;font-weight:700;line-height:1.6}
+.maker .chip{margin-top:6px;background:var(--white)}
+@media(min-width:760px){.maker{grid-template-columns:96px 1fr;padding:18px 22px;max-width:760px}.maker img{width:96px;height:96px}.maker p{font-size:14px}}
 /* 制作事例 */
-.work{background:var(--white);border:var(--bd);border-radius:16px 6px 14px 5px;box-shadow:6px 6px 0 var(--ink);overflow:hidden;display:flex;flex-direction:column}
+.work{background:var(--white);border:var(--bd);border-radius:16px 6px 14px 5px;box-shadow:5px 5px 0 var(--ink);overflow:hidden;display:flex;flex-direction:column;flex:0 0 min(80%,300px)}
 .work-img{border-bottom:var(--bd);aspect-ratio:16/10;background:#eee;overflow:hidden}
 .work-img img{width:100%;height:100%;object-fit:cover;object-position:top}
-.work-body{padding:14px 16px 18px;display:flex;flex-direction:column;gap:6px;flex:1}
-.work h3,.work h4{font-weight:900;font-size:19px;line-height:1.4}
-.work p{font-size:14px}
+.work-body{padding:10px 14px 14px;display:flex;flex-direction:column;gap:4px;flex:1}
+.work h3,.work h4{font-weight:900;font-size:17px;line-height:1.4}
+.work p{font-size:13px;font-weight:700;line-height:1.6;word-break:auto-phrase}
 .work .chip{margin-top:auto;align-self:flex-start}
 .work-body p+.chip{margin-top:8px}
-.row .work{flex:0 0 min(80%,300px)}
-.row .work h4{font-size:17px}
+.work--s{flex:0 0 min(56%,210px)}
+.work--s h4{font-size:15px}
 .row--grid{align-items:stretch}
-@media(min-width:1000px){.row--grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;overflow:visible;margin:22px 0 0;padding:0}.row--grid .work{flex:none}.hint--sp{display:none}}
-.sample-head{margin-top:48px;font-weight:900;font-size:clamp(19px,5.2vw,24px)}
-/* デザインの幅 */
-.vari{display:grid;grid-template-columns:repeat(2,1fr);gap:12px;margin-top:24px}
-.vari div{background:var(--white);border:var(--bd);border-radius:14px 5px 12px 4px;box-shadow:4px 4px 0 var(--ink);padding:14px 6px;text-align:center;font-weight:800;font-size:13px;line-height:1.5}
-.vari i{display:grid;place-items:center;width:46px;height:46px;margin:0 auto 6px;border-radius:50%;background:var(--yellow);border:2px solid var(--ink);font-size:19px}
-.vari div:nth-child(3n+2) i{background:var(--pink)}.vari div:nth-child(3n) i{background:var(--sky)}
-.sec--yellow .vari div:nth-child(3n+1) i{background:var(--orange)}
-@media(min-width:800px){.vari{grid-template-columns:repeat(4,1fr);gap:18px}.vari div{font-size:14px}}
+@media(min-width:1000px){.row--grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;overflow:visible;margin:22px 0 0;padding:0}.row--grid .work{flex:none}.row--six{grid-template-columns:repeat(6,1fr);gap:14px}.row--six .work h4{font-size:14px}.row--six .chip{font-size:12px;padding:5px 8px}.hint--sp{display:none}}
+.sample-head{margin-top:40px;font-weight:900;font-size:clamp(19px,5.2vw,24px)}
+.moods{list-style:none;display:flex;flex-wrap:wrap;gap:8px;margin-top:12px}
+.moods li{background:var(--white);border:2px solid var(--ink);border-radius:999px;padding:3px 12px;font-weight:800;font-size:13px;display:flex;gap:6px;align-items:center}
+.moods i{color:var(--red)}
+/* SNS×HP・メリット */
+.pts{list-style:none;display:grid;gap:8px;background:var(--white);border:var(--bd);border-radius:14px 5px 12px 4px;box-shadow:4px 4px 0 var(--ink);padding:14px 16px}
+.pts li{text-wrap:balance;word-break:auto-phrase;position:relative;padding-left:22px;font-size:14px;font-weight:700;line-height:1.6}
+.pts li::before{content:"";position:absolute;left:2px;top:.6em;width:9px;height:9px;border-radius:50%;background:var(--red);border:2px solid var(--ink)}
+.pts li.ng::before{background:#fff}
+.merits{list-style:none;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;margin-top:14px}
+.merits li{background:var(--white);border:var(--bd);border-radius:12px 4px 10px 4px;box-shadow:3px 3px 0 var(--ink);padding:10px 6px;text-align:center;font-weight:800;font-size:13px;line-height:1.45}
+.merits i{display:grid;place-items:center;width:40px;height:40px;margin:0 auto 4px;border-radius:50%;background:var(--yellow);border:2px solid var(--ink);font-size:16px}
+.merits li:nth-child(3n+2) i{background:var(--pink)}.merits li:nth-child(3n) i{background:var(--sky)}
+@media(min-width:800px){.merits{grid-template-columns:repeat(6,minmax(0,1fr))}}
 /* 流れ */
-.steps{list-style:none;display:grid;gap:16px;margin-top:28px;counter-reset:s}
-.step{position:relative;background:var(--white);border:var(--bd);border-radius:16px 6px 14px 5px;box-shadow:5px 5px 0 var(--ink);padding:14px 14px 14px 76px;min-height:84px}
-.step-ic{position:absolute;left:12px;top:14px;width:52px;height:52px;border-radius:50%;border:var(--bd);background:var(--yellow);display:grid;place-items:center;font-size:21px}
+.steps{list-style:none;display:grid;gap:10px;margin-top:24px}
+.step{position:relative;background:var(--white);border:var(--bd);border-radius:14px 5px 12px 4px;box-shadow:4px 4px 0 var(--ink);padding:8px 12px 8px 62px;min-height:60px;display:grid;align-content:center}
+.step-ic{position:absolute;left:10px;top:50%;translate:0 -50%;width:42px;height:42px;border-radius:50%;border:var(--bd);background:var(--yellow);display:grid;place-items:center;font-weight:900;font-size:17px}
 .step:nth-child(3n+2) .step-ic{background:var(--pink)}.step:nth-child(3n) .step-ic{background:var(--sky)}
-.step-no{font-weight:900;font-size:12px;letter-spacing:.12em;color:var(--red);line-height:1.2}
-.step h3{font-weight:900;font-size:18px;line-height:1.4}
-.step p{font-size:14px;margin-top:4px}
-.step:not(:last-child)::after{content:"";position:absolute;left:36px;bottom:-19px;width:4px;height:16px;background:var(--ink)}
-@media(min-width:900px){.steps{grid-template-columns:repeat(2,1fr);gap:18px 22px}.step:not(:last-child)::after{display:none}}
-/* 管理 */
-.checks{list-style:none;display:grid;gap:10px;margin-top:14px}
-.checks li{background:var(--white);border:var(--bd);border-radius:999px;padding:7px 14px 7px 44px;font-weight:800;font-size:14px;position:relative;box-shadow:3px 3px 0 var(--ink)}
-.checks li::before{content:"\f00c";font-family:"Font Awesome 6 Free";font-weight:900;position:absolute;left:10px;top:50%;translate:0 -50%;width:24px;height:24px;border-radius:50%;background:var(--red);color:#fff;display:grid;place-items:center;font-size:12px;border:2px solid var(--ink)}
-.checks-t{margin-top:26px;font-weight:900;font-size:17px}
-@media(min-width:700px){.checks{grid-template-columns:repeat(2,1fr)}}
-@media(min-width:1160px){.checks{grid-template-columns:repeat(4,1fr)}}
-/* エリア */
-.area-card{position:relative;background:var(--white);border:var(--bd);border-radius:16px 6px 14px 5px;box-shadow:6px 6px 0 var(--ink);padding:26px 16px 18px}
-.area-card h3{font-weight:900;font-size:19px;display:flex;gap:8px;align-items:center}
-.area-card h3 i{color:var(--red)}
-.area-card p{font-size:14px;margin-top:8px}
-.area-card .fine{margin-top:8px}
-/* FAQ */
-.faq{margin-top:24px;border:var(--bd);border-radius:16px 6px 14px 5px;box-shadow:6px 6px 0 var(--ink);background:var(--white);overflow:hidden}
-.faq details+details{border-top:2px solid var(--ink)}
-.faq summary{list-style:none;cursor:pointer;display:grid;grid-template-columns:auto 1fr auto;gap:10px;align-items:center;padding:14px 14px;font-weight:800;line-height:1.55;word-break:auto-phrase}
-.faq summary::-webkit-details-marker{display:none}
-.faq summary::before{content:"Q";width:30px;height:30px;border-radius:50%;background:var(--ink);color:var(--yellow);display:grid;place-items:center;font-weight:900;font-size:15px}
-.faq summary::after{content:"+";width:30px;height:30px;border:2px solid var(--ink);border-radius:50%;display:grid;place-items:center;font-weight:900;background:var(--yellow);font-size:18px;line-height:1}
-.faq details[open] summary::after{content:"−";background:var(--red);color:#fff}
-.faq details[open] summary{background:var(--paper)}
-.faq p{padding:4px 16px 18px 54px;font-size:14px}
-@media(min-width:760px){.faq summary{padding:16px 22px;font-size:16px}.faq p{padding:4px 28px 22px 62px}}
+.step h3{font-weight:900;font-size:16px;line-height:1.4;display:flex;gap:8px;align-items:center}
+.step h3 i{color:var(--red);font-size:14px}
+.step p{font-size:13px;font-weight:700;line-height:1.5;word-break:auto-phrase}
+.step:not(:last-child)::after{content:"";position:absolute;left:29px;bottom:-13px;width:4px;height:10px;background:var(--ink)}
+@media(min-width:900px){.steps{grid-template-columns:repeat(2,1fr);gap:14px 22px}.step:not(:last-child)::after{display:none}.step p{font-size:14px}}
 .contact-box--one{grid-template-columns:1fr!important}
-.contact-box small{font-weight:700;font-size:12px}
-.sec-cta{margin-top:30px;text-align:center}
+.sec-cta{margin-top:26px;text-align:center}
 .sec-cta .btn{width:100%;max-width:380px}
-.creator-icon{width:140px;height:140px;border-radius:50%;border:var(--bd);background:#fff;object-fit:cover;margin:0 auto 12px;box-shadow:4px 4px 0 var(--ink)}
 </style>
 </head>
 <body>
@@ -499,7 +516,7 @@ p,li{text-wrap:pretty;line-break:strict}
         <span class="wow" aria-hidden="true"><span>初期制作費</span>0円!</span>
       </div>
       <div class="hero-foot">
-        <p class="hero-lead">店舗や事務所へ直接お伺いし、商品・サービス・店内の雰囲気が伝わる写真を撮影します。打ち合わせ、写真撮影、文章やページ構成の整理、デザイン、ホームページ制作、公開後の管理まで、一括でサポートいたします。個人で活動しているからこそ、小回りの利く対応と、一人ひとりに寄り添ったホームページづくりを大切にしています。</p>
+        <p class="hero-lead">お店へ伺って撮影し、文章・デザイン・公開後の管理まで。私ひとりが一括で担当します。</p>
         <div class="hero-btns">
           <a class="btn" href="https://forms.gle/Ai7gxsnFKvWsfHKQA" target="_blank" rel="noopener noreferrer"><i class="fa-regular fa-envelope" aria-hidden="true"></i>無料で相談する</a>
           <a class="btn btn--white" href="#works">制作イメージを見る <i class="fa-solid fa-arrow-down" aria-hidden="true"></i></a>
@@ -516,7 +533,7 @@ p,li{text-wrap:pretty;line-break:strict}
       <li><i class="fa-solid fa-pen-nib" aria-hidden="true"></i>文章もおまかせ</li>
       <li><i class="fa-solid fa-mobile-screen" aria-hidden="true"></i>スマホ対応</li>
       <li><i class="fa-solid fa-server" aria-hidden="true"></i>サーバー代も込み</li>
-      <li><i class="fa-solid fa-file-pen" aria-hidden="true"></i>公開後の更新も込み</li>
+      <li><i class="fa-solid fa-file-pen" aria-hidden="true"></i>更新も込み</li>
     </ul>
   </div>
   <nav class="crumb" aria-label="パンくずリスト"><ol class="wrap"><li><a href="index.html">ホーム</a></li><li>ホームページ制作</li></ol></nav>
@@ -526,309 +543,166 @@ p,li{text-wrap:pretty;line-break:strict}
       <div class="sec-top"><span>01 / PROBLEMS</span><span>お悩み</span></div>
       <span class="label rv">こんなこと、ありませんか？</span>
       <h2 class="h2 rv">ホームページの<span class="nb">お悩み、</span><br><span class="ul nb">まとめて解決します。</span></h2>
-      <div class="prob">
-        <ul class="prob-list">
-          <li class="rv">ホームページを作りたいけど、何から始めればいいか分からない</li>
-          <li class="rv">制作会社へ依頼すると初期費用が高くて踏み出せない</li>
-          <li class="rv">掲載する写真や文章を自分で用意できない</li>
-          <li class="rv">Instagramはあるけど、営業時間や料金などの情報が散らばっている</li>
-          <li class="rv">古いホームページの<span class="nb">見た目や情報を</span>新しくしたい</li>
-          <li class="rv">制作後に自分で更新できるか不安</li>
-          <li class="rv">誰に相談すればいいか分からない</li>
-        </ul>
-        <div class="prob-fig rv"><img src="img/nk-think.webp" alt="考えこむなべくん" width="520" height="520" loading="lazy"></div>
-      </div>
-      <p class="answer rv">写真、文章、構成、デザイン。<br>必要なものを、<b class="nb">まとめてサポートします。</b></p>
-    </div>
-  </section>
-  <section class="sec sec--yellow" id="zero-plan">
-    <div class="wrap">
-      <div class="sec-top"><span>02 / ZERO PLAN</span><span>初期制作費0円</span></div>
-      <span class="label rv">0円ではじめる</span>
-      <h2 class="h2 rv">はじめやすい、<br><span class="nb">初期制作費0円プラン。</span></h2>
-      <div class="zero">
-        <p class="zero-fig rv"><small>初期制作費</small><b>0<span>円</span></b></p>
-        <div class="body rv">
-          <p>ホームページを持ちたいと思っていても、最初に大きな制作費が必要になると、なかなか一歩を踏み出せない事業者さまも少なくありません。</p>
-          <p>そこで、初期制作時の負担をできるだけ抑えられる<span class="mk">「初期制作費0円プラン」</span>をご用意しています。初期費用を抑えながら、事業に必要な情報を整理し、写真とデザインにこだわったホームページを制作します。</p>
-        </div>
-      </div>
-      <div class="two" style="margin-top:26px">
-        <figure class="sec-img rv"><img src="img/wd-zero.webp" alt="貯金箱を抱えて安心した顔のなべくん" width="1000" height="563" loading="lazy"></figure>
-        <div class="note rv">
-          <p class="note-t"><i class="fa-solid fa-circle-info" aria-hidden="true"></i>月額管理費について</p>
-          <p>初期制作費0円プランでは、公開後のドメイン・サーバー管理、ページの変更、サイトの維持管理などに対応するため、月額管理費をいただきます。</p>
-          <p>月額料金は、ページ数に合わせた3つのプランをご用意しています。詳しくは<a class="inl" href="#price">料金プラン</a>をご覧ください。</p>
-        </div>
-      </div>
-    </div>
-  </section>
-  <section class="sec " id="price">
-    <div class="wrap">
-      <div class="sec-top"><span>03 / PRICE</span><span>料金プラン</span></div>
-      <span class="label rv">月額プラン</span>
-      <h2 class="h2 rv"><span class="nb">撮影も、管理も。</span><br><span class="ul nb">ぜんぶ月額に</span><span class="ul nb">含めています。</span></h2>
-      <div class="two">
-        <div>
-          <p class="sec-lead rv">最初にまとまった制作費をいただくことはありません。店舗へ伺っての写真撮影から、公開後の管理まで、すべて月額の中に含めています。</p>
-        </div>
-        <figure class="sec-img rv"><img src="img/wd-allin.webp" alt="撮影・制作・管理がひとつの箱に入っているイラスト" width="1000" height="563" loading="lazy"></figure>
-      </div>
-      <ul class="flags">
-        <li class="rv"><i class="fa-solid fa-camera" aria-hidden="true"></i>現地での写真撮影も込み</li>
-        <li class="rv"><i class="fa-solid fa-server" aria-hidden="true"></i>ドメイン・サーバー代も込み</li>
-        <li class="rv"><i class="fa-solid fa-file-pen" aria-hidden="true"></i>公開後の更新対応も込み</li>
+      <ul class="wants">
+        <li class="rv">何から始めればいいか分からない</li>
+        <li class="rv">初期費用が高くて踏み出せない</li>
+        <li class="rv">写真や文章を用意できない</li>
+        <li class="rv">Instagramだけで、情報が散らばっている</li>
+        <li class="rv">古いホームページを新しくしたい</li>
+        <li class="rv">作ったあと、更新できるか不安</li>
       </ul>
+      <p class="answer rv">写真、文章、構成、デザイン。<br><b class="nb">まとめてお任せください。</b></p>
+    </div>
+  </section>
+  <section class="sec sec--yellow" id="price">
+    <div class="wrap">
+      <div class="sec-top"><span>02 / PRICE</span><span>料金プラン</span></div>
+      <span class="label rv">初期制作費0円</span>
+      <h2 class="h2 rv"><span class="nb">最初の制作費は、</span><span class="nb">いただきません。</span><br><span class="ul nb">ぜんぶ込みの月額だけ。</span></h2>
+      <div class="two">
+        <figure class="sec-img rv"><img src="img/wd-zero.webp" alt="貯金箱を抱えてほっとした顔のなべくん" width="1000" height="563" loading="lazy"><span class="zero-badge" aria-hidden="true"><small>初期制作費</small><b>0<span>円</span></b></span></figure>
+        <p class="lead2 rv" id="zero-plan">現地での撮影も、<span class="nb">サーバー代も、</span><span class="nb">公開後の更新も。</span><br><span class="mk" style="background:linear-gradient(transparent 58%,#fff 58%)">すべて月額に含まれます。</span></p>
+      </div>
       <div class="plans">
-        <article class="plan rv">
-          <p class="plan-en">SINGLE</p>
-          <p class="plan-pages"><b>1</b>ページ</p>
-          <p class="plan-price"><b>9,800</b><span>円</span></p>
-          <p class="plan-tax">税別 / 月</p>
-          <p class="plan-desc">上から下へ読み進めていく、1枚もののホームページ。お店のことをひと通り伝えられる、いちばん身軽な形です。</p>
-        </article>
-        <article class="plan plan--hot rv"><span class="plan-badge">人気</span>
-          <p class="plan-en">REGULAR</p>
-          <p class="plan-pages"><b>2〜6</b>ページ</p>
-          <p class="plan-price"><b>13,800</b><span>円</span></p>
-          <p class="plan-tax">税別 / 月</p>
-          <p class="plan-desc">メニュー、お店のこだわり、アクセスなどをページごとに分けられます。多くの店舗さまが選ばれている形です。</p>
-        </article>
-        <article class="plan rv">
-          <p class="plan-en">FULL</p>
-          <p class="plan-pages"><b>7〜12</b>ページ</p>
-          <p class="plan-price"><b>18,800</b><span>円</span></p>
-          <p class="plan-tax">税別 / 月</p>
-          <p class="plan-desc">事業内容、施工事例、スタッフ紹介、採用情報まで。伝えたいことが多い会社・事務所さま向けです。</p>
-        </article>
+        <article class="plan rv"><p class="plan-en">SINGLE</p><p class="plan-pages"><b>1</b>ページ</p><p class="plan-price"><b>9,800</b><span>円</span><small>税別 / 月</small></p><p class="plan-desc">1枚でお店をひと通り伝える、いちばん身軽な形。</p></article>
+        <article class="plan plan--hot rv" style="background:var(--white)"><span class="plan-badge">人気</span><p class="plan-en">REGULAR</p><p class="plan-pages"><b>2〜6</b>ページ</p><p class="plan-price"><b>13,800</b><span>円</span><small>税別 / 月</small></p><p class="plan-desc">メニュー・こだわり・アクセスをページごとに。</p></article>
+        <article class="plan rv"><p class="plan-en">FULL</p><p class="plan-pages"><b>7〜12</b>ページ</p><p class="plan-price"><b>18,800</b><span>円</span><small>税別 / 月</small></p><p class="plan-desc">事例・スタッフ・採用まで載せたい会社向け。</p></article>
       </div>
-      <div class="common rv">
-        <p class="common-t">どのプランでも、<span class="nb">ここまで対応します。</span></p>
-        <div class="cols">
-          <div class="col"><p class="col-t"><i class="fa-solid fa-camera" aria-hidden="true"></i>訪問と撮影</p><ul><li>店舗・事務所へお伺い</li><li>商品や料理、店内の撮影</li><li>撮影した写真データのお渡し</li></ul></div>
-          <div class="col"><p class="col-t"><i class="fa-solid fa-palette" aria-hidden="true"></i>構成とデザイン</p><ul><li>業種に合わせたオリジナルデザイン</li><li>スマートフォンでの見え方の調整</li><li>掲載する文章の整理・作成</li></ul></div>
-          <div class="col"><p class="col-t"><i class="fa-solid fa-rocket" aria-hidden="true"></i>公開まわり</p><ul><li>独自ドメインの取得・管理</li><li>サーバーの設定・管理</li><li>通信の暗号化（SSL）対応</li></ul></div>
-          <div class="col"><p class="col-t"><i class="fa-solid fa-comments" aria-hidden="true"></i>公開したあと</p><ul><li>営業時間や料金などの変更</li><li>写真・文章の差し替え</li><li>検索対策とSNSからの導線づくり</li><li>LINEで直接ご相談</li></ul></div>
-        </div>
-        <p class="fine">※現地での撮影は宮崎県・鹿児島県が対象です。それ以外の地域は、出張費を含めて事前にご相談させてください。</p>
+      <div class="acc rv" id="management">
+        <p class="acc-t">全プラン共通で含まれるもの</p>
+        <details><summary><i class="fa-solid fa-camera" aria-hidden="true"></i><span>訪問と撮影<small>お店へ伺って撮影します</small></span></summary><div class="acc-b"><ul><li>店舗・事務所へお伺い</li><li>商品や料理、店内の撮影</li><li>撮影した写真データのお渡し</li></ul><p class="fine">※現地での撮影は宮崎県・鹿児島県が対象です。それ以外の地域は、出張費を含めて事前にご相談させてください。</p></div></details>
+        <details><summary><i class="fa-solid fa-palette" aria-hidden="true"></i><span>構成とデザイン<small>文章づくりもお任せ</small></span></summary><div class="acc-b"><ul><li>業種に合わせたオリジナルデザイン</li><li>スマートフォンでの見え方の調整</li><li>掲載する文章の整理・作成</li></ul></div></details>
+        <details><summary><i class="fa-solid fa-rocket" aria-hidden="true"></i><span>公開まわり<small>ドメイン・サーバーも込み</small></span></summary><div class="acc-b"><ul><li>独自ドメインの取得・管理</li><li>サーバーの設定・管理</li><li>通信の暗号化（SSL）対応</li></ul></div></details>
+        <details><summary><i class="fa-solid fa-comments" aria-hidden="true"></i><span>公開したあと<small>変更・差し替え・相談</small></span></summary><div class="acc-b"><ul><li>営業時間や料金などの変更</li><li>写真・文章の差し替え</li><li>不具合が出たときの確認・対応</li><li>検索対策とSNSからの導線づくり</li><li>LINEで直接ご相談</li></ul></div></details>
       </div>
-      <div class="concl rv">
-        <p class="concl-t"><span class="nb">1ページから始めて、</span><span class="nb">あとから</span><span class="nb">増やしていけます。</span></p>
-        <p>最初から大きなホームページを作る必要はありません。まずは1ページで公開して、お客様の反応を見ながらページを足していく進め方もできます。プランの変更はいつでもご相談いただけますので、<b class="mk">今の事業に必要な分だけ</b>をお選びください。どのプランを選んでいただいても、デザインにかける手間と、公開後の向き合い方を変えることはありません。</p>
-      </div>
+      <p class="banner rv"><span class="nb">まずは1ページから。</span><b class="nb">あとから増やせます。</b></p>
       <div class="sec-cta rv"><a class="btn btn--red" href="https://forms.gle/Ai7gxsnFKvWsfHKQA" target="_blank" rel="noopener noreferrer"><i class="fa-regular fa-envelope" aria-hidden="true"></i>無料で相談する</a></div>
-      <p class="fine rv">※表示価格はすべて税別です。<br>※13ページ以上のホームページも制作できます。ページ数に応じて別途お見積もりしますので、ご相談ください。<br>※更新対応の頻度など、細かい範囲はお打ち合わせの際にすり合わせさせてください。</p>
+      <div class="acc acc--plain rv"><details><summary><span>料金の注意事項</span></summary><div class="acc-b"><p>※表示価格はすべて税別です。</p><p>※13ページ以上も制作できます。ページ数に応じて別途お見積もりします。</p><p>※更新対応の頻度など細かい範囲は、お打ち合わせの際にすり合わせさせてください。</p></div></details></div>
     </div>
   </section>
   <section class="sec sec--white" id="compare">
     <div class="wrap">
-      <div class="sec-top"><span>04 / COMPARISON</span><span>制作会社との違い</span></div>
+      <div class="sec-top"><span>03 / COMPARISON</span><span>制作会社との違い</span></div>
       <span class="label rv">正直にくらべました</span>
-      <h2 class="h2 rv"><span class="nb">たくさんの人が</span><span class="nb">関わるか、</span><br><span class="nb">私ひとりが</span><span class="ul nb">最後まで関わるか。</span></h2>
-      <div class="two">
-        <p class="sec-lead rv">どちらが良い悪いという話ではありません。ただ、関わる人数が変われば、かかる費用も、公開したあとの距離感も変わります。一般的な制作会社へご依頼いただいた場合との違いを、正直にまとめました。</p>
-        <figure class="sec-img rv"><img src="img/wd-solo.webp" alt="カメラとパソコンを持って一人で何役もこなすなべくん" width="1000" height="563" loading="lazy"></figure>
-      </div>
+      <h2 class="h2 rv"><span class="nb">私ひとりが、</span><br><span class="ul nb">最後まで関わります。</span></h2>
       <div class="vs rv">
-        <div class="vs-head" aria-hidden="true"><span></span><span>一般的な制作会社</span><span>なべのだいどころ。</span></div>
-        <div class="vs-row"><h3>初期費用</h3><p class="vs-a"><small>一般的な制作会社</small>数十万円かかることが多い</p><p class="vs-b"><small>なべのだいどころ。</small>0円</p></div>
-        <div class="vs-row"><h3>写真の準備</h3><p class="vs-a"><small>一般的な制作会社</small>ご自身で用意するか、カメラマンを別途手配</p><p class="vs-b"><small>なべのだいどころ。</small>私が店舗へ伺って撮影します</p></div>
-        <div class="vs-row"><h3>関わる人</h3><p class="vs-a"><small>一般的な制作会社</small>営業・ディレクター・デザイナーなど複数人</p><p class="vs-b"><small>なべのだいどころ。</small>打ち合わせから公開後まで私ひとり</p></div>
-        <div class="vs-row"><h3>やり取り</h3><p class="vs-a"><small>一般的な制作会社</small>窓口を通すため、返事に日数がかかることも</p><p class="vs-b"><small>なべのだいどころ。</small>LINEで直接やり取りできます</p></div>
-        <div class="vs-row"><h3>公開後の更新</h3><p class="vs-a"><small>一般的な制作会社</small>別途契約。内容ごとにお見積もり</p><p class="vs-b"><small>なべのだいどころ。</small>月額の中で対応します</p></div>
-        <div class="vs-row"><h3>SNSの相談</h3><p class="vs-a"><small>一般的な制作会社</small>対応の範囲外になることが多い</p><p class="vs-b"><small>なべのだいどころ。</small>総フォロワー61万人の経験からご提案</p></div>
+        <div class="vs-row vs-head"><span></span><span>制作会社</span><span>なべの場合</span></div>
+        <div class="vs-row"><span>初期費用</span><span>数十万円かかることも</span><span>0円</span></div>
+        <div class="vs-row"><span>写真</span><span>自分で用意</span><span>私が伺って撮影</span></div>
+        <div class="vs-row"><span>担当</span><span>営業・制作など複数人</span><span>最後まで私ひとり</span></div>
+        <div class="vs-row"><span>やり取り</span><span>窓口を通して</span><span>LINEで直接</span></div>
+        <div class="vs-row"><span>更新</span><span>内容ごとに見積もり</span><span>月額に込み</span></div>
+        <div class="vs-row"><span>SNSの相談</span><span>範囲外が多い</span><span>61万人の経験でご提案</span></div>
       </div>
-      <p class="vs-note rv">大きな制作会社には、大人数でなければ受けられない規模の仕事があります。反対に、私のように一人で動いているからこそできることもあります。お店に何度でも顔を出せること、写真を撮り直しに伺えること、思いついたときにLINEで相談していただけること。<b class="mk">長くお付き合いしていく前提</b>で、ホームページと事業の両方を見させてください。</p>
+      <p class="fine rv" style="font-size:13px">どちらが良い悪いではありません。<span class="nb">関わる人数が変われば、</span><span class="nb">費用も距離感も変わります。</span></p>
     </div>
   </section>
   <section class="sec " id="features">
     <div class="wrap">
-      <div class="sec-top"><span>05 / WHY ME</span><span>選ばれる理由</span></div>
+      <div class="sec-top"><span>04 / WHY ME</span><span>選ばれる理由</span></div>
       <span class="label rv">選ばれる6つの理由</span>
       <h2 class="h2 rv"><span class="nb">個人だからこそ</span><span class="nb">できる、</span><br><span class="ul nb">一貫した</span><span class="ul nb">ホームページ制作。</span></h2>
-      <div class="grid3">
-        <article class="reason rv"><span class="rno" aria-hidden="true">01</span><h3><span class="nb">初期費用を抑えて</span><span class="nb">始められる</span></h3><p><b class="mk">初期制作費0円プラン</b>により、ホームページ制作を始める際の負担を抑え、公開後は月額管理費をいただく形で、初めに大きな制作費を用意することなく自社のホームページを持つことができます。</p></article>
-        <article class="reason rv"><span class="rno" aria-hidden="true">02</span><h3><span class="nb">店舗や事務所へ</span><span class="nb">直接お伺いします</span></h3><p>実際に店舗や事務所へ伺い、事業の内容、雰囲気、こだわり、伝えたい想いを直接お聞きし、<b class="mk">画面上のやり取りだけでは分からない魅力</b>までホームページへ反映します。</p></article>
-        <article class="reason rv"><span class="rno" aria-hidden="true">03</span><h3><span class="nb">写真撮影から</span><span class="nb">一括で対応</span></h3><p>料理、商品、サービス、スタッフ、店内、外観など、ホームページに必要な写真を撮影し、別のカメラマンへ依頼したり、お客様自身で素材を用意したりする<b class="mk">負担を減らします。</b></p></article>
-        <article class="reason rv"><span class="rno" aria-hidden="true">04</span><h3><span class="nb">業種や希望に</span><span class="nb">合わせたデザイン</span></h3><p>飲食店、カフェ、建設業、美容室、サロン、整骨院、事務所など、業種やターゲットに合わせ、テンプレートに当てはめるだけではなく、希望する雰囲気、色、見せ方に合わせて<b class="mk">柔軟に制作します。</b></p></article>
-        <article class="reason rv"><span class="rno" aria-hidden="true">05</span><h3><span class="nb">公開後も</span><span class="nb">長くサポート</span></h3><p>ホームページは公開して終わりではないため、ドメインやサーバーの管理、営業時間や料金の変更、写真や文章の差し替えなど、公開後の運用もサポートし、SNS運用などのちょっとしたご相談にも対応しながら<b class="mk">長くお付き合いできる関係</b>を大切にします。</p></article>
-        <article class="reason rv"><span class="rno" aria-hidden="true">06</span><h3><span class="nb">SNS総フォロワー</span><span class="nb">61万人以上の</span><span class="nb">運用実績</span></h3><p>YouTube・Instagram・TikTokなど、<b class="mk">SNS総フォロワー61万人以上</b>の運営経験を活かし、ホームページとSNSを組み合わせた集客導線をご提案します。</p></article>
+      <ul class="whys">
+        <li class="why rv"><span class="why-ic" aria-hidden="true"><i class="fa-solid fa-yen-sign"></i></span><h3>初期費用0円で始められる</h3><p>月額だけでホームページを持てます。</p></li>
+        <li class="why rv"><span class="why-ic" aria-hidden="true"><i class="fa-solid fa-location-dot"></i></span><h3>お店へ直接うかがいます</h3><p>画面越しでは分からない魅力まで反映。</p></li>
+        <li class="why rv"><span class="why-ic" aria-hidden="true"><i class="fa-solid fa-camera"></i></span><h3>写真撮影もまとめて</h3><p>カメラマンの手配も、素材の準備も不要。</p></li>
+        <li class="why rv"><span class="why-ic" aria-hidden="true"><i class="fa-solid fa-palette"></i></span><h3>業種に合わせたデザイン</h3><p>テンプレートに当てはめず、一から作ります。</p></li>
+        <li class="why rv"><span class="why-ic" aria-hidden="true"><i class="fa-solid fa-handshake"></i></span><h3>公開後も長くサポート</h3><p>変更・差し替え、SNSの相談まで。</p></li>
+        <li class="why rv"><span class="why-ic" aria-hidden="true"><i class="fa-solid fa-chart-line"></i></span><h3>SNS総フォロワー61万人</h3><p>SNSと組み合わせた集客をご提案。</p></li>
+      </ul>
+      <div class="maker rv" id="creator">
+        <img src="../images/nabe-kitchen-icon.png" alt="NABE'S KITCHEN ロゴアイコン" width="300" height="300" loading="lazy">
+        <div><b><span class="nb">つくる人：</span><span class="nb">なべのだいどころ。</span><span class="nb">（渡辺）</span></b><p>宮崎県都城市が拠点です。料理の動画と写真が本業なので、必要な写真・動画もまとめて作れます。</p><a class="chip" href="index.html">プロフィールを見る <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></a></div>
       </div>
     </div>
   </section>
-  <section class="sec sec--sky" id="creator">
+  <section class="sec sec--sky" id="works">
     <div class="wrap">
-      <div class="sec-top"><span>06 / CREATOR</span><span>制作者</span></div>
-      <span class="label rv">つくる人</span>
-      <h2 class="h2 rv">制作者について</h2>
-      <div class="about">
-        <div class="about-card rv">
-          <img class="creator-icon" src="../images/nabe-kitchen-icon.png" alt="NABE'S KITCHEN ロゴアイコン" width="300" height="300" loading="lazy">
-          <h3>なべのだいどころ。</h3>
-          <small>宮崎県都城市</small>
-          <div class="tags"><span>写真・動画撮影</span><span>ホームページ制作</span><span>SNS運用</span></div>
-        </div>
-        <div class="about-text body rv">
-          <p><b class="mk">宮崎県都城市</b>を拠点に活動している渡辺と申します。ホームページは「作ること」ではなく<b class="mk">「活用すること」</b>が大切です。</p>
-          <p><b class="mk">SNS総フォロワー61万人以上</b>の運営経験を活かし、SNSからホームページへの導線設計までトータルでサポートします。私は料理動画や写真撮影も行っているため、ホームページに必要な写真や動画もまとめて制作可能です。</p>
-          <p>宮崎県内であれば直接店舗へお伺いし、写真撮影や打ち合わせにも対応しております。「写真をどう撮ればいいかわからない」「SNSから集客したい」「ホームページを作った後の運用も相談したい」そんな方でも安心してお任せいただけるよう、<b class="mk">企画・撮影・ホームページ制作・公開後のサポート</b>まで一貫して対応しています。</p>
-          <p style="margin-top:16px"><a class="chip" href="index.html" style="background:var(--white)">プロフィールはこちら <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></a></p>
-        </div>
+      <div class="sec-top"><span>05 / WORKS</span><span>制作事例</span></div>
+      <span class="label rv">つくったサイト</span>
+      <h2 class="h2 rv"><span class="nb">業種に合わせて、</span><br><span class="ul nb">見せ方を変えます。</span></h2>
+      <p class="hint hint--sp" aria-hidden="true">← 横に動かして見られます →</p>
+      <div class="row row--grid">
+        <article class="work rv"><div class="work-img"><img src="img/w-hibinone.webp" alt="ヒビノネ写真館のホームページ" width="1000" height="625" loading="lazy"></div><div class="work-body"><p class="card-en">PHOTO STUDIO</p><h3>ヒビノネ写真館</h3><p>出張撮影スタジオ。写真が主役になる、余白の大きいデザイン。</p><a class="chip" href="https://nabe0096.github.io/hibinone-photo-studio/" target="_blank" rel="noopener noreferrer">サイトを見る <i class="fa-solid fa-arrow-up-right-from-square" aria-hidden="true"></i></a></div></article>
+        <article class="work rv"><div class="work-img"><img src="img/w-burger.webp" alt="BURGER HOUSE U（宮崎県都城市の和のハンバーガー店）のホームページ" width="1000" height="625" loading="lazy"></div><div class="work-body"><p class="card-en">BURGER SHOP</p><h3>BURGER HOUSE U</h3><p>和のハンバーガー店。営業中の表示やメニューを、スマホで迷わず見られます。</p><a class="chip" href="https://burger-house-u.pages.dev/" target="_blank" rel="noopener noreferrer">サイトを見る <i class="fa-solid fa-arrow-up-right-from-square" aria-hidden="true"></i></a></div></article>
+        <article class="work rv"><div class="work-img"><img src="img/w-marushin.webp" alt="丸新ラーメン（宮崎県都城市・昭和38年創業のラーメン店）のホームページ" width="1000" height="625" loading="lazy"></div><div class="work-body"><p class="card-en">RAMEN SHOP</p><h3>丸新ラーメン</h3><p>昭和38年創業のラーメン店。お取り寄せへの入口を大きく置きました。</p><a class="chip" href="https://marushin-ramen.pages.dev/" target="_blank" rel="noopener noreferrer">サイトを見る <i class="fa-solid fa-arrow-up-right-from-square" aria-hidden="true"></i></a></div></article>
+        <article class="work rv"><div class="work-img"><img src="img/w-mj.webp" alt="都城グルメ応援プロジェクトのホームページ" width="1000" height="625" loading="lazy"></div><div class="work-body"><p class="card-en">LOCAL PROJECT</p><h3><span class="nb">都城グルメ</span><span class="nb">応援プロジェクト</span></h3><p>地域の飲食店を、写真を大きく使って紹介するページ。</p><a class="chip" href="https://mj-gourmet.jp/" target="_blank" rel="noopener noreferrer">サイトを見る <i class="fa-solid fa-arrow-up-right-from-square" aria-hidden="true"></i></a></div></article>
+        <article class="work rv"><div class="work-img"><img src="img/w-monaforca.webp" alt="MONAFORCA（モナフォルサ）都城フットサル・サッカークラブのホームページ" width="1000" height="625" loading="lazy"></div><div class="work-body"><p class="card-en">SPORTS CLUB</p><h3>MONAFORCA</h3><p>フットサル・サッカークラブ。無料体験の申し込みまで迷わない構成。</p><a class="chip" href="https://www.monaforca.com/" target="_blank" rel="noopener noreferrer">サイトを見る <i class="fa-solid fa-arrow-up-right-from-square" aria-hidden="true"></i></a></div></article>
       </div>
-    </div>
-  </section>
-  <section class="sec " id="support">
-    <div class="wrap">
-      <div class="sec-top"><span>07 / ALL IN ONE</span><span>一括サポート</span></div>
-      <span class="label rv">ぜんぶおまかせ</span>
-      <h2 class="h2 rv"><span class="nb">写真も、文章も、</span><span class="nb">デザインも。</span><br><span class="ul nb">まとめて</span><span class="ul nb">お任せください。</span></h2>
-      <ul class="sup"><li class="rv"><i class="fa-solid fa-comments" aria-hidden="true"></i><span>ヒアリング</span></li><li class="rv"><i class="fa-solid fa-bullseye" aria-hidden="true"></i><span>目的とターゲットの整理</span></li><li class="rv"><i class="fa-solid fa-sitemap" aria-hidden="true"></i><span>ページ構成の提案</span></li><li class="rv"><i class="fa-solid fa-location-dot" aria-hidden="true"></i><span>店舗・事務所への訪問</span></li><li class="rv"><i class="fa-solid fa-camera" aria-hidden="true"></i><span>写真撮影</span></li><li class="rv"><i class="fa-solid fa-pen-nib" aria-hidden="true"></i><span>掲載文章の整理</span></li><li class="rv"><i class="fa-solid fa-palette" aria-hidden="true"></i><span>デザイン制作</span></li><li class="rv"><i class="fa-solid fa-mobile-screen" aria-hidden="true"></i><span>スマートフォン対応</span></li><li class="rv"><i class="fa-solid fa-code" aria-hidden="true"></i><span>ホームページの構築</span></li><li class="rv"><i class="fa-solid fa-server" aria-hidden="true"></i><span>ドメイン・サーバーの設定</span></li><li class="rv"><i class="fa-solid fa-rocket" aria-hidden="true"></i><span>公開作業</span></li><li class="rv"><i class="fa-solid fa-file-pen" aria-hidden="true"></i><span>公開後のページ変更</span></li><li class="rv"><i class="fa-solid fa-handshake" aria-hidden="true"></i><span>継続的な管理・サポート</span></li></ul>
-      <p class="fine rv">※実際の対応内容は、サイトの規模やご希望に合わせてご提案します。</p>
+      <h3 class="sample-head rv">業種別のデザイン見本</h3>
+      <div class="row row--grid row--six">
+        <article class="work work--s rv"><div class="work-img"><img src="img/w-architecture.webp" alt="建設業ホームページサンプルのトップページ" width="1000" height="625" loading="lazy"></div><div class="work-body"><h4>建設業</h4><a class="chip" href="https://nabe0096.github.io/portfolio-architecture-sample/" target="_blank" rel="noopener noreferrer">見本を見る <i class="fa-solid fa-arrow-up-right-from-square" aria-hidden="true"></i></a></div></article>
+        <article class="work work--s rv"><div class="work-img"><img src="img/w-izakaya.webp" alt="居酒屋ホームページサンプルのトップページ" width="1000" height="625" loading="lazy"></div><div class="work-body"><h4>居酒屋</h4><a class="chip" href="https://nabe0096.github.io/portfolio-izakaya-sample/" target="_blank" rel="noopener noreferrer">見本を見る <i class="fa-solid fa-arrow-up-right-from-square" aria-hidden="true"></i></a></div></article>
+        <article class="work work--s rv"><div class="work-img"><img src="img/w-cafe.webp" alt="カフェホームページサンプルのトップページ" width="1000" height="625" loading="lazy"></div><div class="work-body"><h4>カフェ</h4><a class="chip" href="https://nabe0096.github.io/portfolio-cafe-sample/" target="_blank" rel="noopener noreferrer">見本を見る <i class="fa-solid fa-arrow-up-right-from-square" aria-hidden="true"></i></a></div></article>
+        <article class="work work--s rv"><div class="work-img"><img src="img/w-beauty.webp" alt="美容室ホームページサンプルのトップページ" width="1000" height="625" loading="lazy"></div><div class="work-body"><h4>美容室</h4><a class="chip" href="https://nabe0096.github.io/portfolio-beauty-sample/" target="_blank" rel="noopener noreferrer">見本を見る <i class="fa-solid fa-arrow-up-right-from-square" aria-hidden="true"></i></a></div></article>
+        <article class="work work--s rv"><div class="work-img"><img src="img/w-bakery.webp" alt="パン屋ホームページサンプルのトップページ" width="1000" height="625" loading="lazy"></div><div class="work-body"><h4>パン屋</h4><a class="chip" href="https://nabe0096.github.io/portfolio-bakery-sample/" target="_blank" rel="noopener noreferrer">見本を見る <i class="fa-solid fa-arrow-up-right-from-square" aria-hidden="true"></i></a></div></article>
+        <article class="work work--s rv"><div class="work-img"><img src="img/w-hoikuen.webp" alt="保育園ホームページサンプルのトップページ" width="1000" height="625" loading="lazy"></div><div class="work-body"><h4>保育園</h4><a class="chip" href="https://nabe0096.github.io/portfolio-hoikuen-sample/" target="_blank" rel="noopener noreferrer">見本を見る <i class="fa-solid fa-arrow-up-right-from-square" aria-hidden="true"></i></a></div></article>
+      </div>
+      <ul class="moods rv" aria-label="対応できる雰囲気"><li><i class="fa-solid fa-torii-gate" aria-hidden="true"></i>和モダン</li><li><i class="fa-solid fa-leaf" aria-hidden="true"></i>ナチュラル</li><li><i class="fa-solid fa-building" aria-hidden="true"></i>企業サイト</li><li><i class="fa-solid fa-utensils" aria-hidden="true"></i>飲食店</li><li><i class="fa-solid fa-spa" aria-hidden="true"></i>美容・医療</li><li><i class="fa-solid fa-hammer" aria-hidden="true"></i>建設・職人</li><li><i class="fa-solid fa-scale-balanced" aria-hidden="true"></i>事務所</li><li><i class="fa-solid fa-map-location-dot" aria-hidden="true"></i>イベント</li></ul>
+      <div class="acc acc--plain rv" style="background:var(--white)"><details><summary><span>見本サイトについて</span></summary><div class="acc-b"><p>※「見本」は、デザインのイメージを見ていただくためのサンプルサイトです。店舗名・文章・画像はサンプル用の内容を含みます。</p><p>実際の制作では、私が現地で撮影した写真と、事業者さまの正しい情報で、オリジナルのホームページを作ります。</p></div></details></div>
     </div>
   </section>
   <section class="sec sec--white" id="sns-web">
     <div class="wrap">
-      <div class="sec-top"><span>08 / SNS × WEBSITE</span><span>SNSとホームページ</span></div>
+      <div class="sec-top"><span>06 / SNS × WEBSITE</span><span>SNSとホームページ</span></div>
       <span class="label rv">役割を分ける</span>
       <h2 class="h2 rv"><span class="nb">Instagramで</span><span class="nb">知ってもらい、</span><br><span class="ul nb">ホームページで</span><span class="ul nb">深く伝える。</span></h2>
-      <figure class="sec-img rv"><img src="img/wd-sns.webp" alt="スマホのSNSからホームページへ案内するなべくん" width="1000" height="563" loading="lazy"></figure>
-      <div class="sns2">
-        <div class="sns-col rv">
-          <h3><i class="fa-brands fa-instagram" aria-hidden="true"></i>Instagramの特徴</h3>
-          <ul><li>日々の発信や最新情報に強い</li><li>写真や動画で興味を持ってもらいやすい</li><li>お客様とのコミュニケーションに向いている</li><li>投稿が増えると、必要な情報が埋もれやすい</li><li>営業時間、料金、サービス内容などが散らばりやすい</li></ul>
-        </div>
-        <div class="sns-col rv">
-          <h3><i class="fa-solid fa-globe" aria-hidden="true"></i>ホームページの特徴</h3>
-          <ul><li>営業時間、料金、サービス、アクセスなどを一か所にまとめられる</li><li>初めて見る人へ、事業の特徴や想いを順序立てて伝えられる</li><li>Instagramのプロフィールから案内する受け皿になる</li><li>検索から知ってもらう入り口を増やせる</li><li>問い合わせや予約までの導線を整理できる</li><li>情報を自分たちの資産として蓄積できる</li></ul>
+      <div class="two">
+        <figure class="sec-img rv"><img src="img/wd-sns.webp" alt="スマホのSNSからホームページへ案内するなべくん" width="1000" height="563" loading="lazy"></figure>
+        <div>
+        <div data-tabs class="rv"><div class="tabs-bar" role="tablist" aria-label="Instagramとホームページのちがい"><button class="tab" type="button" role="tab" aria-selected="true" aria-controls="p-insta" id="t-p-insta"><i class="fa-brands fa-instagram" aria-hidden="true"></i>Instagram</button><button class="tab" type="button" role="tab" aria-selected="false" aria-controls="p-web" id="t-p-web" tabindex="-1"><i class="fa-solid fa-globe" aria-hidden="true"></i>ホームページ</button></div><div class="tabp" role="tabpanel" id="p-insta" aria-labelledby="t-p-insta"><ul class="pts"><li>日々の発信・最新情報に強い</li><li>写真や動画で興味を持ってもらえる</li><li class="ng">投稿が増えると、情報が埋もれやすい</li></ul></div><div class="tabp" role="tabpanel" id="p-web" aria-labelledby="t-p-web" hidden><ul class="pts"><li>営業時間・料金・アクセスを一か所に</li><li>想いや特徴を、順序立てて伝えられる</li><li>検索や予約・問い合わせの入口になる</li></ul></div></div>
         </div>
       </div>
-      <p class="answer answer--long rv" style="font-size:15px;text-align:left;font-weight:700">Instagramとホームページは、どちらか一方ではなく、<b>役割を分けて組み合わせることが大切です。</b>Instagramで興味を持ってくれたお客様をホームページへ案内することで、必要な情報をより分かりやすく伝え、問い合わせや来店につながりやすい導線をつくることができます。</p>
-    </div>
-  </section>
-  <section class="sec sec--yellow" id="merits">
-    <div class="wrap">
-      <div class="sec-top"><span>09 / BENEFITS</span><span>ホームページのメリット</span></div>
-      <span class="label rv">あると、こう変わる</span>
-      <h2 class="h2 rv"><span class="nb">ホームページが、</span><br><span class="nb">事業の信頼と魅力を</span><span class="ul nb">伝える場所になる。</span></h2>
-      <div class="grid3">
-        <article class="bene rv"><span class="rno" aria-hidden="true">01</span><h3><span class="nb">必要な情報を</span><span class="nb">一か所に</span><span class="nb">まとめられる</span></h3><p>サービス内容、料金、営業時間、アクセス、問い合わせ先など、お客様が知りたい情報を整理して掲載できます。</p></article>
-        <article class="bene rv"><span class="rno" aria-hidden="true">02</span><h3><span class="nb">事業の信頼感を</span><span class="nb">高められる</span></h3><p>会社や店舗の情報、代表者の想い、実績、サービス内容をきちんと掲載することで、初めてのお客様にも安心感を与えられます。</p></article>
-        <article class="bene rv"><span class="rno" aria-hidden="true">03</span><h3><span class="nb">24時間いつでも</span><span class="nb">情報を見てもらえる</span></h3><p>営業時間外でも、ホームページがお客様に事業内容を伝える役割を果たします。</p></article>
-        <article class="bene rv"><span class="rno" aria-hidden="true">04</span><h3><span class="nb">SNSでは</span><span class="nb">伝えきれない想いを</span><span class="nb">掲載できる</span></h3><p>サービスへのこだわり、店舗の歴史、スタッフの紹介などを、順序立てて詳しく伝えられます。</p></article>
-        <article class="bene rv"><span class="rno" aria-hidden="true">05</span><h3><span class="nb">問い合わせまでの</span><span class="nb">流れを</span><span class="nb">分かりやすくできる</span></h3><p>電話、メール、Instagram、LINE、予約フォームなど、お客様に取ってほしい行動を分かりやすく案内できます。</p></article>
-        <article class="bene rv"><span class="rno" aria-hidden="true">06</span><h3><span class="nb">事業の情報を</span><span class="nb">長く残せる</span></h3><p>SNSの投稿のように情報が流れていかず、必要な内容を蓄積しながら育てていくことができます。</p></article>
-      </div>
-    </div>
-  </section>
-  <section class="sec " id="works">
-    <div class="wrap">
-      <div class="sec-top"><span>10 / WORKS</span><span>制作事例</span></div>
-      <span class="label rv">つくったサイト</span>
-      <h2 class="h2 rv"><span class="nb">業種や目的に合わせて、</span><br><span class="ul nb">さまざまなデザインに</span><span class="ul nb">対応します。</span></h2>
-      <div class="cards">
-        <article class="work rv"><div class="work-img"><img src="img/w-hibinone.webp" alt="ヒビノネ写真館のホームページ" width="1000" height="625" loading="lazy"></div><div class="work-body"><p class="card-en">PHOTO STUDIO</p><h3>ヒビノネ写真館</h3><p>宮崎県都城市の出張撮影スタジオのホームページ。写真そのものが主役になるよう余白を大きく取り、七五三・家族写真・ペットなど撮影シーンごとの案内から料金、お客様の声、予約導線までを整理しました。</p><a class="chip" href="https://nabe0096.github.io/hibinone-photo-studio/" target="_blank" rel="noopener noreferrer">サイトを見る <i class="fa-solid fa-arrow-up-right-from-square" aria-hidden="true"></i></a></div></article>
-        <article class="work rv"><div class="work-img"><img src="img/w-burger.webp" alt="BURGER HOUSE U（宮崎県都城市の和のハンバーガー店）のホームページ" width="1000" height="625" loading="lazy"></div><div class="work-body"><p class="card-en">BURGER SHOP</p><h3>BURGER HOUSE U</h3><p>宮崎県都城市山田町の和のハンバーガー店のホームページ。お店手づくりの看板や暖簾をデザインに取り入れ、鉄板で焼き上げる様子を動画で大きく見せながら、今が営業中かどうかの表示、期間限定メニュー、パーティーBOX、メニュー、アクセスまでを、スマホでも迷わずたどれる順番で整理しました。</p><a class="chip" href="https://burger-house-u.pages.dev/" target="_blank" rel="noopener noreferrer">サイトを見る <i class="fa-solid fa-arrow-up-right-from-square" aria-hidden="true"></i></a></div></article>
-        <article class="work rv"><div class="work-img"><img src="img/w-marushin.webp" alt="丸新ラーメン（宮崎県都城市・昭和38年創業のラーメン店）のホームページ" width="1000" height="625" loading="lazy"></div><div class="work-body"><p class="card-en">RAMEN SHOP</p><h3>丸新ラーメン</h3><p>宮崎県都城市で昭和38年から続く老舗ラーメン店のホームページ。麺を持ち上げる瞬間の映像と縦書きのキャッチで一杯の湯気まで伝わるように見せ、遠方の方もそのまま注文できるお取り寄せ（オンラインショップ）への入口を大きく配置。こだわり、自慢の生餃子、お品書き、店舗案内、持ち帰りまでを一続きで読めるように整理しました。</p><a class="chip" href="https://marushin-ramen.pages.dev/" target="_blank" rel="noopener noreferrer">サイトを見る <i class="fa-solid fa-arrow-up-right-from-square" aria-hidden="true"></i></a></div></article>
-        <article class="work rv"><div class="work-img"><img src="img/w-mj.webp" alt="都城グルメ応援プロジェクトのホームページ" width="1000" height="625" loading="lazy"></div><div class="work-body"><p class="card-en">EVENT / LOCAL PROJECT</p><h3><span class="nb">都城グルメ</span><span class="nb">応援プロジェクト</span></h3><p>地域の飲食店や訪問店舗を紹介するイベント・地域プロジェクトページ。写真を大きく使用し、活動の想いや店舗情報を分かりやすくまとめたデザインです。</p><a class="chip" href="https://mj-gourmet.jp/" target="_blank" rel="noopener noreferrer">サイトを見る <i class="fa-solid fa-arrow-up-right-from-square" aria-hidden="true"></i></a></div></article>
-        <article class="work rv"><div class="work-img"><img src="img/w-monaforca.webp" alt="MONAFORCA（モナフォルサ）都城フットサル・サッカークラブのホームページ" width="1000" height="625" loading="lazy"></div><div class="work-body"><p class="card-en">SPORTS CLUB</p><h3><span class="nb">MONAFORCA</span><span class="nb">（モナフォルサ）</span></h3><p>宮崎県都城市のフットサル・サッカークラブのホームページ。躍動感のある試合写真を大きく使い、チーム紹介、練習日程、クラブ料金、監督紹介、無料体験の申し込みまでを、保護者の方が迷わず読み進められる順番で整理しました。</p><a class="chip" href="https://www.monaforca.com/" target="_blank" rel="noopener noreferrer">サイトを見る <i class="fa-solid fa-arrow-up-right-from-square" aria-hidden="true"></i></a></div></article>
-      </div>
-      <h3 class="sample-head rv">業種別のデザインサンプル</h3>
-      <p class="shoot-cap rv">デザインのイメージを見ていただくための見本です。</p>
-      <p class="hint hint--sp" aria-hidden="true">← 横に動かして見られます →</p>
-      <div class="row row--grid">
-        <article class="work rv"><div class="work-img"><img src="img/w-architecture.webp" alt="建設業ホームページサンプルのトップページ" width="1000" height="625" loading="lazy"></div><div class="work-body"><p class="card-en">CONSTRUCTION</p><h4>建設業<span class="nb">サンプル</span></h4><p>施工事例、事業内容、選ばれる理由、お客様の声、問い合わせ導線を整理した建設業向けのデザイン<span class="nb">サンプルです。</span></p><a class="chip" href="https://nabe0096.github.io/portfolio-architecture-sample/" target="_blank" rel="noopener noreferrer">サンプルを見る <i class="fa-solid fa-arrow-up-right-from-square" aria-hidden="true"></i></a></div></article>
-        <article class="work rv"><div class="work-img"><img src="img/w-izakaya.webp" alt="居酒屋ホームページサンプルのトップページ" width="1000" height="625" loading="lazy"></div><div class="work-body"><p class="card-en">IZAKAYA</p><h4>居酒屋<span class="nb">サンプル</span></h4><p>料理の魅力、メニュー、コース、店内、予約情報を、和モダンで印象的に見せる飲食店向けデザイン<span class="nb">サンプルです。</span></p><a class="chip" href="https://nabe0096.github.io/portfolio-izakaya-sample/" target="_blank" rel="noopener noreferrer">サンプルを見る <i class="fa-solid fa-arrow-up-right-from-square" aria-hidden="true"></i></a></div></article>
-        <article class="work rv"><div class="work-img"><img src="img/w-cafe.webp" alt="カフェホームページサンプルのトップページ" width="1000" height="625" loading="lazy"></div><div class="work-body"><p class="card-en">CAFE</p><h4>カフェ<span class="nb">サンプル</span></h4><p>店舗の世界観、メニュー、こだわり、空間の雰囲気を、やわらかく上品に伝えるカフェ向けデザイン<span class="nb">サンプルです。</span></p><a class="chip" href="https://nabe0096.github.io/portfolio-cafe-sample/" target="_blank" rel="noopener noreferrer">サンプルを見る <i class="fa-solid fa-arrow-up-right-from-square" aria-hidden="true"></i></a></div></article>
-        <article class="work rv"><div class="work-img"><img src="img/w-beauty.webp" alt="美容室ホームページサンプルのトップページ" width="1000" height="625" loading="lazy"></div><div class="work-body"><p class="card-en">HAIR SALON</p><h4>美容室<span class="nb">サンプル</span></h4><p>スタイル、スタッフ紹介、初めての方への案内、予約導線を、清潔感のある上品なデザインでまとめた美容室・サロン向け<span class="nb">サンプルです。</span></p><a class="chip" href="https://nabe0096.github.io/portfolio-beauty-sample/" target="_blank" rel="noopener noreferrer">サンプルを見る <i class="fa-solid fa-arrow-up-right-from-square" aria-hidden="true"></i></a></div></article>
-        <article class="work rv"><div class="work-img"><img src="img/w-bakery.webp" alt="パン屋ホームページサンプルのトップページ" width="1000" height="625" loading="lazy"></div><div class="work-body"><p class="card-en">BAKERY</p><h4>パン屋<span class="nb">サンプル</span></h4><p>焼きたてのパン、こだわり、商品紹介、店舗情報を、あたたかく親しみやすい雰囲気でまとめたベーカリー向け<span class="nb">サンプルです。</span></p><a class="chip" href="https://nabe0096.github.io/portfolio-bakery-sample/" target="_blank" rel="noopener noreferrer">サンプルを見る <i class="fa-solid fa-arrow-up-right-from-square" aria-hidden="true"></i></a></div></article>
-        <article class="work rv"><div class="work-img"><img src="img/w-hoikuen.webp" alt="保育園ホームページサンプルのトップページ" width="1000" height="625" loading="lazy"></div><div class="work-body"><p class="card-en">NURSERY SCHOOL</p><h4>保育園<span class="nb">サンプル</span></h4><p>園の方針、一日の流れ、年間行事、入園案内を、安心感とやさしさが伝わる構成でまとめた保育園向け<span class="nb">サンプルです。</span></p><a class="chip" href="https://nabe0096.github.io/portfolio-hoikuen-sample/" target="_blank" rel="noopener noreferrer">サンプルを見る <i class="fa-solid fa-arrow-up-right-from-square" aria-hidden="true"></i></a></div></article>
-      </div>
-      <div class="note rv" style="margin-top:30px">
-        <p class="fine" style="margin-top:0">※一部の掲載ページは、デザインイメージを確認していただくためのサンプルサイトです。掲載されている店舗名、会社名、文章、画像などはサンプル用の内容を含みます。</p>
-        <p class="fine" style="margin-top:8px">実際の制作では、店舗や事務所へ直接お伺いして撮影した写真と、事業者さまの正しい情報を使用し、希望する雰囲気や目的に合わせてオリジナルのホームページを制作します。</p>
-        <p class="fine" style="margin-top:8px">サンプルサイトに使用している画像はイメージ素材ですが、実際の制作では私自身が現地で撮影するため、より事業の魅力や空気感が伝わるホームページに仕上げることができます。</p>
-      </div>
-    </div>
-  </section>
-  <section class="sec sec--sky" id="variations">
-    <div class="wrap">
-      <div class="sec-top"><span>11 / VARIATIONS</span><span>デザインの幅</span></div>
-      <span class="label rv">見せ方いろいろ</span>
-      <h2 class="h2 rv"><span class="nb">業種や想いに</span><span class="nb">合わせて、</span><br><span class="nb">見せ方を</span><span class="nb">変えます。</span></h2>
-      <div class="vari"><div class="rv"><i class="fa-solid fa-torii-gate" aria-hidden="true"></i>高級感のある<br>和モダン</div><div class="rv"><i class="fa-solid fa-leaf" aria-hidden="true"></i>親しみやすい<br>ナチュラル</div><div class="rv"><i class="fa-solid fa-building" aria-hidden="true"></i>信頼感のある<br>企業サイト</div><div class="rv"><i class="fa-solid fa-utensils" aria-hidden="true"></i>写真を大きく見せる<br>飲食店サイト</div><div class="rv"><i class="fa-solid fa-spa" aria-hidden="true"></i>清潔感のある<br>美容・医療系</div><div class="rv"><i class="fa-solid fa-hammer" aria-hidden="true"></i>力強い<br>建設・職人系</div><div class="rv"><i class="fa-solid fa-scale-balanced" aria-hidden="true"></i>シンプルで見やすい<br>事務所サイト</div><div class="rv"><i class="fa-solid fa-map-location-dot" aria-hidden="true"></i>地域性を伝える<br>イベントサイト</div></div>
-      <p class="note rv body" style="margin-top:26px">色、写真、文字、余白、情報の並べ方まで、事業の内容やターゲットに合わせてご提案します。「このサンプルと同じものを作る」のではなく、<b class="mk">それぞれのお客様の魅力に合わせたホームページ</b>を制作します。</p>
+      <h3 class="sample-head rv" id="merits" style="margin-top:34px">ホームページがあると</h3>
+      <ul class="merits"><li class="rv"><i class="fa-solid fa-layer-group" aria-hidden="true"></i>情報を<br>一か所に</li><li class="rv"><i class="fa-solid fa-shield-heart" aria-hidden="true"></i>信頼感が<br>上がる</li><li class="rv"><i class="fa-solid fa-clock" aria-hidden="true"></i>24時間<br>見てもらえる</li><li class="rv"><i class="fa-solid fa-heart" aria-hidden="true"></i>想いを<br>載せられる</li><li class="rv"><i class="fa-solid fa-route" aria-hidden="true"></i>問い合わせが<br>分かりやすい</li><li class="rv"><i class="fa-solid fa-box-archive" aria-hidden="true"></i>情報が<br>資産になる</li></ul>
     </div>
   </section>
   <section class="sec " id="flow">
     <div class="wrap">
-      <div class="sec-top"><span>12 / FLOW</span><span>制作の流れ</span></div>
+      <div class="sec-top"><span>07 / FLOW</span><span>制作の流れ</span></div>
       <span class="label rv">7つのステップ</span>
       <h2 class="h2 rv"><span class="nb">ご相談から</span><span class="ul nb">公開までの流れ</span></h2>
       <ol class="steps">
-        <li class="step rv"><span class="step-ic" aria-hidden="true"><i class="fa-solid fa-envelope"></i></span><p class="step-no">STEP 01</p><h3>お問い合わせ</h3><p><a class="inl" href="https://forms.gle/Ai7gxsnFKvWsfHKQA" target="_blank" rel="noopener noreferrer">Googleフォーム</a>からご相談ください。まだ内容が決まっていない段階でも構いません。</p></li>
-        <li class="step rv"><span class="step-ic" aria-hidden="true"><i class="fa-solid fa-comments"></i></span><p class="step-no">STEP 02</p><h3>ヒアリング</h3><p>事業内容、ホームページを作る目的、掲載したい情報、ご希望のデザインなどをお伺いします。</p></li>
-        <li class="step rv"><span class="step-ic" aria-hidden="true"><i class="fa-solid fa-camera"></i></span><p class="step-no">STEP 03</p><h3>訪問・写真撮影</h3><p>店舗や事務所へ直接お伺いし、商品、料理、サービス、店内、スタッフなど、ホームページに必要な写真を撮影します。</p></li>
-        <li class="step rv"><span class="step-ic" aria-hidden="true"><i class="fa-solid fa-palette"></i></span><p class="step-no">STEP 04</p><h3>構成・デザイン制作</h3><p>ヒアリング内容と撮影素材をもとに、ページ構成、文章、デザインを制作します。</p></li>
-        <li class="step rv"><span class="step-ic" aria-hidden="true"><i class="fa-solid fa-list-check"></i></span><p class="step-no">STEP 05</p><h3>内容のご確認</h3><p>完成前に内容をご確認いただき、必要な箇所を調整します。</p></li>
-        <li class="step rv"><span class="step-ic" aria-hidden="true"><i class="fa-solid fa-rocket"></i></span><p class="step-no">STEP 06</p><h3>公開</h3><p>ドメインやサーバーを設定し、ホームページを公開します。</p></li>
-        <li class="step rv"><span class="step-ic" aria-hidden="true"><i class="fa-solid fa-handshake"></i></span><p class="step-no">STEP 07</p><h3>管理・サポート</h3><p>公開後も、ドメイン・サーバー管理や、契約内容に応じたページ変更などに対応します。</p></li>
+        <li class="step rv"><span class="step-ic" aria-hidden="true">1</span><h3>お問い合わせ</h3><p><a class="inl" href="https://forms.gle/Ai7gxsnFKvWsfHKQA" target="_blank" rel="noopener noreferrer">フォーム</a>から。内容が未定でも大丈夫です。</p></li>
+        <li class="step rv"><span class="step-ic" aria-hidden="true">2</span><h3>ヒアリング</h3><p>目的・載せたい情報・ご希望を伺います。</p></li>
+        <li class="step rv"><span class="step-ic" aria-hidden="true">3</span><h3>訪問・写真撮影</h3><p>お店へ伺って、必要な写真を撮影します。</p></li>
+        <li class="step rv"><span class="step-ic" aria-hidden="true">4</span><h3>構成・デザイン制作</h3><p>構成・文章・デザインを作ります。</p></li>
+        <li class="step rv"><span class="step-ic" aria-hidden="true">5</span><h3>内容のご確認</h3><p>公開前に見ていただき、調整します。</p></li>
+        <li class="step rv"><span class="step-ic" aria-hidden="true">6</span><h3>公開</h3><p>ドメイン・サーバーを設定して公開します。</p></li>
+        <li class="step rv"><span class="step-ic" aria-hidden="true">7</span><h3>管理・サポート</h3><p>公開後の変更や相談にも対応します。</p></li>
       </ol>
     </div>
   </section>
-  <section class="sec sec--yellow" id="management">
+  <section class="sec sec--yellow" id="area">
     <div class="wrap">
-      <div class="sec-top"><span>13 / MANAGEMENT</span><span>月額管理</span></div>
-      <span class="label rv">公開してからが本番</span>
-      <h2 class="h2 rv"><span class="nb">公開後も、</span><br><span class="nb">安心して</span><span class="nb">使い続けるために。</span></h2>
-      <div class="two">
-        <div class="body rv">
-          <p>ホームページは、制作して終わりではありません。インターネット上で継続して公開するためには、ドメインやサーバーの管理が必要です。</p>
-          <p>また、営業時間、料金、サービス内容、写真など、事業の変化に合わせたページの変更も必要になります。初期制作費0円プランでは、これらの管理や対応を行うため、公開後に<b class="mk" style="background:linear-gradient(transparent 58%,#fff 58%)">月額管理費</b>をいただきます。</p>
-        </div>
-        <figure class="sec-img rv"><img src="img/wd-manage.webp" alt="スパナと盾を持ってホームページを守るなべくん" width="1000" height="563" loading="lazy"></figure>
-      </div>
-      <p class="checks-t rv">月額管理の内容例</p>
-      <ul class="checks"><li class="rv">ドメイン管理</li><li class="rv">サーバー管理</li><li class="rv">ホームページの維持管理</li><li class="rv">契約範囲内での文章変更</li><li class="rv">契約範囲内での写真差し替え</li><li class="rv">営業時間や料金などの情報変更</li><li class="rv">不具合発生時の確認・対応</li><li class="rv">ホームページに関する相談</li></ul>
-      <p class="fine rv">※月額料金はページ数に応じた3つのプランをご用意しています。詳しくは<a class="inl" href="#price">料金プラン</a>をご覧ください。変更回数や対応範囲の詳細は、お打ち合わせの際にご案内します。</p>
-    </div>
-  </section>
-  <section class="sec " id="area">
-    <div class="wrap">
-      <div class="sec-top"><span>14 / AREA</span><span>対応エリア</span></div>
+      <div class="sec-top"><span>08 / AREA</span><span>対応エリア</span></div>
       <span class="label rv">全国OK</span>
-      <h2 class="h2 rv"><span class="nb">宮崎・鹿児島を</span><span class="nb">中心に、</span><br><span class="ul nb">オンライン・遠方にも</span><span class="ul nb">対応します。</span></h2>
+      <h2 class="h2 rv"><span class="nb">宮崎・鹿児島は訪問。</span><br><span class="nb">全国はオンラインで。</span></h2>
       <div class="two">
-        <figure class="sec-img rv"><img src="img/local-visit.webp" alt="黄色い車で宮崎・鹿児島のお客さまのもとへ向かうなべくん" width="1000" height="563" loading="lazy"></figure>
-        <div class="body rv">
-          <p><b class="mk">宮崎県・鹿児島県エリア</b>であれば、店舗や事務所へ直接お伺いし、打ち合わせや写真撮影を行うことが可能です。実際に現地を訪れ、商品やサービス、店内の雰囲気、働く方の人柄まで感じたうえで、<b class="mk">その事業ならではの魅力が伝わるホームページ</b>を制作します。</p>
-          <p>訪問が難しい地域の場合は、LINEやオンラインでの打ち合わせを通して、<b class="mk">全国からホームページ制作をご依頼</b>いただけます。遠方でも現地での写真撮影をご希望の場合は、交通費や宿泊費などの出張費を別途いただくことで対応できる場合があります。地域や撮影内容によって異なりますので、まずはお気軽にご相談ください。</p>
+        <figure class="sec-img rv"><img src="img/local-visit.webp" alt="オープンカーで宮崎・鹿児島のお客さまのもとへ向かうなべくん" width="1000" height="563" loading="lazy"></figure>
+        <div>
+        <div data-tabs class="rv"><div class="tabs-bar" role="tablist" aria-label="対応エリア"><button class="tab" type="button" role="tab" aria-selected="true" aria-controls="a-local" id="t-a-local"><i class="fa-solid fa-location-dot" aria-hidden="true"></i>宮崎・鹿児島</button><button class="tab" type="button" role="tab" aria-selected="false" aria-controls="a-online" id="t-a-online" tabindex="-1"><i class="fa-solid fa-video" aria-hidden="true"></i>全国オンライン</button><button class="tab" type="button" role="tab" aria-selected="false" aria-controls="a-far" id="t-a-far" tabindex="-1"><i class="fa-solid fa-car-side" aria-hidden="true"></i>遠方への訪問</button></div><div class="tabp" role="tabpanel" id="a-local" aria-labelledby="t-a-local"><ul class="pts"><li>お店へ直接うかがいます</li><li>打ち合わせ・撮影・制作まで一括で対応</li></ul><p class="fine">※地域や日程によっては、訪問方法をご相談させていただく場合があります。</p></div><div class="tabp" role="tabpanel" id="a-online" aria-labelledby="t-a-online" hidden><ul class="pts"><li>LINEやオンラインで打ち合わせ</li><li>お持ちの写真や資料で制作できます</li></ul></div><div class="tabp" role="tabpanel" id="a-far" aria-labelledby="t-a-far" hidden><ul class="pts"><li>現地での撮影に対応できる場合があります</li><li>交通費・宿泊費などの出張費は、事前にご案内します</li></ul></div></div>
         </div>
-      </div>
-      <div class="grid3">
-        <article class="area-card rv"><span class="rno" aria-hidden="true">01</span><h3><i class="fa-solid fa-location-dot" aria-hidden="true"></i>宮崎県・鹿児島県</h3><p>店舗や事務所へ<b class="mk">直接訪問</b>し、打ち合わせから写真撮影、ホームページ制作まで<b class="mk">一括で対応</b>します。</p><p class="fine">※地域や日程によっては、訪問方法についてご相談させていただく場合があります。</p></article>
-        <article class="area-card rv"><span class="rno" aria-hidden="true">02</span><h3><i class="fa-solid fa-video" aria-hidden="true"></i>全国オンライン対応</h3><p><b class="mk">LINEやオンラインミーティング</b>を利用して全国からご相談いただけるため、お持ちの写真や資料を共有していただきながら、事業内容やご希望を確認して制作を進めます。</p></article>
-        <article class="area-card rv"><span class="rno" aria-hidden="true">03</span><h3><i class="fa-solid fa-car-side" aria-hidden="true"></i>遠方への訪問・撮影</h3><p>宮崎県・鹿児島県以外でも<b class="mk">現地での撮影や打ち合わせ</b>に対応できる場合があり、交通費・宿泊費などの出張費が別途必要となるため、所在地と撮影内容を確認したうえで<b class="mk">事前にご案内</b>します。</p></article>
       </div>
       <div class="sec-cta rv"><a class="btn btn--red" href="https://forms.gle/Ai7gxsnFKvWsfHKQA" target="_blank" rel="noopener noreferrer"><i class="fa-regular fa-envelope" aria-hidden="true"></i>対応可能か相談する</a></div>
-      <p class="fine rv">※訪問可能な地域、出張費、撮影内容などは、所在地や日程によって異なります。正式なご依頼の前に、<b>必要な費用を含めてご案内</b>します。</p>
     </div>
   </section>
   <section class="sec sec--white" id="faq">
     <div class="wrap">
-      <div class="sec-top"><span>15 / FAQ</span><span>よくあるご質問</span></div>
+      <div class="sec-top"><span>09 / FAQ</span><span>よくあるご質問</span></div>
       <span class="label rv">気になること</span>
       <h2 class="h2 rv">よくあるご質問</h2>
-      <div class="faq rv">
-        <details><summary><span>なぜそんなに安くできるのですか？</span></summary><p>よくいただくご質問です。安いから怪しいのではないか、品質が低いのではないかと心配される方もいらっしゃいます。通常のホームページ制作では、営業、広告、ディレクション、デザイン、制作、写真撮影など、たくさんの人が関わるため、その分の費用が制作費に反映されます。私の場合は、打ち合わせから写真撮影、文章や構成の整理、ホームページ制作、公開後の管理まで一人で一括して対応しています。また、営業や広告に大きな費用をかけていないため、その分を価格に反映しやすくなっています。何より、ただ利益を大きくしたいというよりも、店舗さんの応援につながり、そこでご縁をいただけることを大切にしているため、この金額でご提供しています。</p></details>
-        <details><summary><span>月額料金のほかに費用はかかりますか？</span></summary><p>写真撮影、ドメイン、サーバー、公開後の更新対応まで月額料金に含めているため、通常はほかに費用をいただくことはありません。ただし、宮崎県・鹿児島県以外での現地撮影にかかる出張費や、13ページを超える大きなホームページなど、別途費用が必要になる場合は、必ず事前に金額をお伝えし、ご納得いただいてから進めます。あとから請求することはありません。</p></details>
-        <details><summary><span>飲食店以外でも依頼できますか？</span></summary><p>はい。飲食店はもちろん、整骨院、美容室、サロン、建設業、士業、事務所など、さまざまな業種に対応しています。</p></details>
-        <details><summary><span>掲載する写真を持っていません。</span></summary><p>店舗や事務所へ直接お伺いし、ホームページに必要な写真を撮影します。写真撮影から制作までまとめてご相談いただけます。</p></details>
-        <details><summary><span>文章を用意できません。</span></summary><p>ヒアリングをもとに、伝えたい内容を整理し、ページ構成や文章づくりをサポートします。</p></details>
-        <details><summary><span>デザインの希望を伝えられますか？</span></summary><p>はい。色、雰囲気、参考サイトなどをお伺いし、ご希望と事業内容に合わせてご提案します。</p></details>
-        <details><summary><span>すでにホームページがありますが、作り直せますか？</span></summary><p>現在のホームページの内容や管理状況を確認したうえで、リニューアルについてご相談いただけます。</p></details>
-        <details><summary><span>公開後に内容を変更できますか？</span></summary><p>月額管理の契約内容に応じて、営業時間、料金、文章、写真などの変更に対応します。</p></details>
-        <details><summary><span>制作期間はどれくらいですか？</span></summary><p>ページ数、撮影内容、掲載する情報によって異なります。ヒアリング後に目安をご案内します。</p></details>
-        <details><summary><span>どの地域まで対応できますか？</span></summary><p>訪問可能な地域については、所在地や撮影内容を確認したうえでご案内します。まずはお気軽にご相談ください。</p></details>
+      <div class="acc acc--q rv">
+        <details name="faq"><summary><span>なぜそんなに安くできるのですか？</span></summary><div class="acc-b"><p>打ち合わせから撮影・制作・公開後の管理まで、私ひとりで一括して対応しているからです。営業や広告にも大きな費用をかけていません。お店の応援と、そこでいただくご縁を大切にしたく、この金額でご提供しています。</p></div></details>
+        <details name="faq"><summary><span>月額料金のほかに費用はかかりますか？</span></summary><div class="acc-b"><p>撮影・ドメイン・サーバー・公開後の更新まで月額に含まれます。宮崎県・鹿児島県以外での撮影の出張費や、13ページを超える場合は、必ず事前に金額をお伝えします。あとから請求することはありません。</p></div></details>
+        <details name="faq"><summary><span>飲食店以外でも依頼できますか？</span></summary><div class="acc-b"><p>はい。整骨院、美容室、サロン、建設業、士業、事務所など、さまざまな業種に対応しています。</p></div></details>
+        <details name="faq"><summary><span>掲載する写真を持っていません。</span></summary><div class="acc-b"><p>お店へ直接お伺いして、必要な写真を撮影します。</p></div></details>
+        <details name="faq"><summary><span>文章を用意できません。</span></summary><div class="acc-b"><p>ヒアリングをもとに、構成と文章づくりをサポートします。</p></div></details>
+        <details name="faq"><summary><span>デザインの希望を伝えられますか？</span></summary><div class="acc-b"><p>はい。色、雰囲気、参考サイトなどを伺って、ご提案します。</p></div></details>
+        <details name="faq"><summary><span>すでにホームページがありますが、作り直せますか？</span></summary><div class="acc-b"><p>今のホームページの内容や管理状況を確認したうえで、ご相談いただけます。</p></div></details>
+        <details name="faq"><summary><span>公開後に内容を変更できますか？</span></summary><div class="acc-b"><p>契約内容に応じて、営業時間、料金、文章、写真などの変更に対応します。</p></div></details>
+        <details name="faq"><summary><span>制作期間はどれくらいですか？</span></summary><div class="acc-b"><p>ページ数や撮影内容で変わります。ヒアリング後に目安をご案内します。</p></div></details>
+        <details name="faq"><summary><span>どの地域まで対応できますか？</span></summary><div class="acc-b"><p>所在地と撮影内容を確認してご案内します。まずはお気軽にご相談ください。</p></div></details>
       </div>
     </div>
   </section>
@@ -836,10 +710,9 @@ p,li{text-wrap:pretty;line-break:strict}
   <section class="contact" id="contact">
     <div class="wrap contact-in">
       <h2 class="h2 rv">あなたの想いを、<br><span class="nb">伝わるカタチに。</span></h2>
-      <p class="rv" style="margin-bottom:6px"><span class="nb">「まだ何も決まっていない」</span><span class="nb">「まずは話だけ聞いてみたい」</span><br><span class="nb">そんな段階でも大丈夫です。</span></p>
+      <p class="rv" style="margin-bottom:6px"><span class="nb">「まだ何も決まっていない」</span><br><span class="nb">そんな段階でも大丈夫です。</span></p>
       <div class="contact-box contact-box--one rv">
         <img src="img/contact-talk.webp" alt="テーブル越しに手を振って相談を迎えるなべくん" width="1000" height="563" loading="lazy">
-        <p style="font-weight:700;font-size:14px;text-align:left;text-wrap:pretty"><a class="inl" href="https://forms.gle/Ai7gxsnFKvWsfHKQA" target="_blank" rel="noopener noreferrer">Googleフォーム</a>から内容を送っていただければ、事業の魅力やお悩みを確認し、必要なホームページの形を一緒に考えます。</p>
         <a class="btn btn--red" href="https://forms.gle/Ai7gxsnFKvWsfHKQA" target="_blank" rel="noopener noreferrer"><i class="fa-regular fa-envelope" aria-hidden="true"></i>無料相談フォームへ進む</a>
       </div>
     </div>
@@ -861,6 +734,15 @@ p,li{text-wrap:pretty;line-break:strict}
 (function(){
   var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}})},{rootMargin:'0px 0px -8% 0px'});
   document.querySelectorAll('.rv').forEach(function(el,i){el.style.transitionDelay=(i%4*60)+'ms';io.observe(el)});
+  // タブ
+  document.querySelectorAll('[data-tabs]').forEach(function(t){
+    var bs=[].slice.call(t.querySelectorAll('[role=tab]')),ps=bs.map(function(b){return document.getElementById(b.getAttribute('aria-controls'))});
+    function act(i,focus){bs.forEach(function(b,j){b.setAttribute('aria-selected',j===i?'true':'false');b.tabIndex=j===i?0:-1});ps.forEach(function(p,j){p.hidden=j!==i});if(focus)bs[i].focus()}
+    bs.forEach(function(b,i){b.addEventListener('click',function(){act(i)});b.addEventListener('keydown',function(e){if(e.key==='ArrowRight')act((i+1)%bs.length,true);if(e.key==='ArrowLeft')act((i+bs.length-1)%bs.length,true)})});
+    t._act=function(p){var i=ps.indexOf(p);if(i>-1)act(i)};
+  });
+
+  document.addEventListener('click',function(e){var a=e.target.closest('a[href^="#"]');if(!a)return;var el=document.querySelector(a.getAttribute('href'));if(el&&el.matches('.acc'))el.querySelectorAll('details').forEach(function(d,i){if(i===3)d.open=true})});
   var st=document.getElementById('sticky'),hero=document.querySelector('.hero'),ct=document.getElementById('contact');
   function upd(){var h=innerHeight;st.classList.toggle('on',hero.getBoundingClientRect().bottom<0&&ct.getBoundingClientRect().top>h)}
   addEventListener('scroll',upd,{passive:true});addEventListener('resize',upd);upd();

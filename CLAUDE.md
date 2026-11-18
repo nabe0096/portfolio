@@ -73,6 +73,7 @@ bash deploy.sh
 - **文字を増やさない**（社長「文字量が多すぎる。モジュールを入れて減らして」）。くわしい話はタブ・小窓（サービスの札）・開閉に入れる
 - 下の「トップページの作り」の決まり（相談への近道・動画は最初の3本・メルマガはフッター・WebP・12px未満にしない・名字は残す）はポップ版でも同じ。クラス名は変わった（下の固定ボタン＝`#sticky`、都城グルメの動画＝`.about-video` のまま）
 - `pricing.html`・`naraigoto-app.html` は前のデザインのまま
+- **お問い合わせはトップ一番下のフォーム（2026-11-19〜）**。Web3Forms（アカウント jamaican0906・フォーム「なべのポートフォリオ お問い合わせ」・キーは index.html の `FORM.accessKey`）。届く先は **jamaican09060@gmail.com**（Web3Formsの設定画面の Recipient Emails）。無料プランは月250通をヒビノネ写真館と分け合う。ページ内の相談ボタンは全部 `#contact` へ（サービスの小窓は `data-kind` で札に印）。`web-design.html` の相談は Googleフォームのまま
 
 ---
 

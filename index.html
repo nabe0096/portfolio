@@ -263,6 +263,35 @@ p,li{text-wrap:pretty;line-break:strict}
 .contact-box img{width:100%;border:var(--bd);border-radius:12px 5px 12px 5px;aspect-ratio:16/9;object-fit:cover;background:var(--sky)}
 .contact-box .btn{width:100%}
 @media(min-width:760px){.contact-box{padding:30px 40px;max-width:680px;margin-inline:auto;grid-template-columns:1fr 1fr}.contact-box img,.contact-box p{grid-column:1/-1}}
+.cform{display:grid;gap:16px;text-align:left}
+.hp{position:absolute;left:-9999px;width:1px;height:1px;opacity:0}
+.cf-row{display:grid;gap:7px}
+.cf-label{font-weight:900;font-size:15px;display:flex;align-items:center;gap:8px}
+.cf-label em{font-style:normal;font-size:12px;font-weight:900;background:var(--red);color:#fff;border-radius:999px;padding:2px 9px;line-height:1.4}
+.cf-in{width:100%;font:inherit;font-size:16px;font-weight:700;color:var(--ink);background:#fff;border:var(--bd);border-radius:12px 5px 11px 4px;padding:12px 14px;box-shadow:3px 3px 0 var(--ink);-webkit-appearance:none;appearance:none}
+.cf-in:focus{outline:none;background:#fffbe0;box-shadow:3px 3px 0 var(--red)}
+textarea.cf-in{resize:vertical;min-height:130px;line-height:1.6}
+.cf-in::placeholder{color:#8a8578;font-weight:600}
+.cf-in[aria-invalid=true]{border-color:var(--red);background:#fff2f0}
+.cf-chips{display:flex;flex-wrap:wrap;gap:8px}
+.cf-chips label{cursor:pointer}
+.cf-chips input{position:absolute;opacity:0;width:1px;height:1px}
+.cf-chips span{display:inline-flex;align-items:center;min-height:42px;padding:6px 14px;border:var(--bd);border-radius:999px;background:#fff;font-weight:800;font-size:14px;white-space:nowrap;box-shadow:2px 2px 0 var(--ink);transition:background .15s,transform .1s}
+.cf-chips input:checked+span{background:var(--yellow);transform:translate(1px,1px);box-shadow:1px 1px 0 var(--ink)}
+.cf-chips input:checked+span::before{content:"\f00c";font-family:"Font Awesome 6 Free";font-weight:900;font-size:12px;margin-right:6px;color:var(--red)}
+.cf-chips input:focus-visible+span{outline:3px solid var(--sky);outline-offset:2px}
+.cf-err{color:var(--red);font-weight:900;font-size:13px;min-height:0;margin:0}
+.cf-err:empty{display:none}
+.cf-err--all{text-align:center}
+.contact .cform .cf-send{width:100%;min-height:60px;font-size:17px}
+.cf-send[disabled]{opacity:.6;pointer-events:none}
+.contact .cf-note{text-align:center;font-size:13px;font-weight:800;margin:0;opacity:.8}
+.cf-done{text-align:center;padding:24px 10px;border:var(--bd);border-radius:14px 5px 12px 4px;background:var(--yellow);box-shadow:4px 4px 0 var(--ink)}
+.cf-done:focus{outline:none}
+.contact .cf-done-t{font-size:22px;font-weight:900;margin:0 0 8px;display:flex;justify-content:center;align-items:center;gap:8px}
+.cf-done-t i{color:var(--red)}
+.contact-box .cf-ig{width:100%;font-size:14px}
+@media(min-width:760px){.contact-box{max-width:720px}.contact-box .cform,.contact-box .cf-done,.contact-box .cf-ig{grid-column:1/-1}.cform{grid-template-columns:1fr 1fr;gap:18px 16px}.cform>.cf-row:first-of-type,.cform>.cf-row:last-of-type,.cform>.cf-err--all,.cform>.cf-send,.cform>.cf-note{grid-column:1/-1}}
 
 /* ---------- フッター ---------- */
 .footer{background:var(--ink);color:#fff;padding:36px 0 110px;text-align:center}
@@ -398,7 +427,7 @@ p,li{text-wrap:pretty;line-break:strict}
       <a href="#works">実績</a>
       <a href="#about">私について</a>
     </nav>
-    <a class="btn btn--red" href="https://www.nabenokitchen.com/contact/" target="_blank" rel="noopener noreferrer">相談する <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></a>
+    <a class="btn btn--red" href="#contact">相談する <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></a>
     <button class="menu-btn" type="button" aria-controls="nav" aria-expanded="false" aria-label="メニューを開く"><i class="fa-solid fa-bars" aria-hidden="true"></i></button>
   </div>
 </header>
@@ -420,7 +449,7 @@ p,li{text-wrap:pretty;line-break:strict}
       <div class="hero-foot">
         <p class="hero-lead">料理の魅力、人の想い、地域の価値。企画・撮影・編集・SNS運用まで、一貫してお手伝いしています。</p>
         <div class="hero-btns">
-          <a class="btn" href="https://www.nabenokitchen.com/contact/" target="_blank" rel="noopener noreferrer"><i class="fa-regular fa-envelope" aria-hidden="true"></i>ご依頼・ご相談はこちら</a>
+          <a class="btn" href="#contact"><i class="fa-regular fa-envelope" aria-hidden="true"></i>ご依頼・ご相談はこちら</a>
           <a class="btn btn--white" href="#services">サービスを見る <i class="fa-solid fa-arrow-down" aria-hidden="true"></i></a>
         </div>
       </div>
@@ -518,13 +547,13 @@ p,li{text-wrap:pretty;line-break:strict}
       </div>
       <p class="tiles-hint" aria-hidden="true">押すと、くわしい内容が開きます</p>
       <div class="svc-data">
-        <div id="svc-1"><div class="dlg-img"><img src="images/pop/svc1-video.webp?v=2" alt="" width="1000" height="563"></div><div class="dlg-body"><p class="card-en"><i class="fa-solid fa-video" aria-hidden="true"></i>VIDEO &amp; PHOTO</p><h3>動画・写真撮影</h3><ul><li>HP用・SNS用・広告用など、目的に合わせて撮影</li><li>一度撮れば、SNS投稿に繰り返し使えます</li><li><span class="mk">特に飲食店さんに喜ばれています</span></li></ul><div class="dlg-links"><a class="chip" href="#movies">映像実績を見る <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></a></div><a class="btn btn--red" href="https://www.nabenokitchen.com/contact/" target="_blank" rel="noopener noreferrer"><i class="fa-regular fa-envelope" aria-hidden="true"></i>この内容で相談する</a></div></div>
-        <div id="svc-2"><div class="dlg-img"><img src="images/pop/svc2-recipe.webp?v=2" alt="" width="1000" height="563"></div><div class="dlg-body"><p class="card-en"><i class="fa-solid fa-utensils" aria-hidden="true"></i>RECIPE</p><h3>レシピ開発・監修</h3><ul><li>企業向けのレシピ開発・監修</li><li>商品PR・媒体掲載・SNS用の動画制作まで</li><li><span class="mk">私のSNSへの投稿も可能です</span></li></ul><div class="dlg-links"><a class="chip" href="#pr-reels">PR動画実績を見る <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></a></div><a class="btn btn--red" href="https://www.nabenokitchen.com/contact/" target="_blank" rel="noopener noreferrer"><i class="fa-regular fa-envelope" aria-hidden="true"></i>この内容で相談する</a></div></div>
-        <div id="svc-3"><div class="dlg-img"><img src="images/pop/svc3-sns.webp?v=2" alt="" width="1000" height="563"></div><div class="dlg-body"><p class="card-en"><i class="fa-solid fa-chart-line" aria-hidden="true"></i>SNS CONSULTING</p><h3>SNSコンサルティング</h3><ul><li><span class="mk">総フォロワー61万人以上の実績</span>をもとにサポート</li><li>YouTube・Instagramのアカウント設計、企画、改善提案</li><li>初めての方の初期サポートも</li></ul><a class="btn btn--red" href="https://www.nabenokitchen.com/contact/" target="_blank" rel="noopener noreferrer"><i class="fa-regular fa-envelope" aria-hidden="true"></i>この内容で相談する</a></div></div>
-        <div id="svc-4"><div class="dlg-img"><img src="images/pop/svc4-tieup.webp?v=2" alt="" width="1000" height="563"></div><div class="dlg-body"><p class="card-en"><i class="fa-solid fa-tower-broadcast" aria-hidden="true"></i>SNS TIE-UP</p><h3>SNSタイアップ投稿</h3><ul><li>貴社の商品を使ったレシピ動画を制作</li><li><span class="mk">YouTube21万・Instagram19万・TikTok11万人</span>の<span class="nb">「なべのだいどころ。」</span>で配信</li><li>動画は貴社のSNSやWebでも二次利用できます</li></ul><div class="dlg-links"><a class="chip" href="#pr-reels">PR動画実績を見る <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></a></div><a class="btn btn--red" href="https://www.nabenokitchen.com/contact/" target="_blank" rel="noopener noreferrer"><i class="fa-regular fa-envelope" aria-hidden="true"></i>この内容で相談する</a></div></div>
-        <div id="svc-5"><div class="dlg-img"><img src="images/pop/svc5-web.webp?v=2" alt="" width="1000" height="563"></div><div class="dlg-body"><p class="card-en"><i class="fa-solid fa-globe" aria-hidden="true"></i>WEB DESIGN</p><h3>ホームページ制作</h3><ul><li><span class="mk">初期費用0円プラン</span>をご用意</li><li>出張撮影からホームページ制作まで一括</li><li>制作後もSNSの相談に乗ります</li></ul><div class="dlg-links"><a class="chip" href="web-design.html">詳しく見る <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></a></div><a class="btn btn--red" href="https://www.nabenokitchen.com/contact/" target="_blank" rel="noopener noreferrer"><i class="fa-regular fa-envelope" aria-hidden="true"></i>この内容で相談する</a></div></div>
-        <div id="svc-6"><div class="dlg-img"><img src="images/pop/svc6-class.webp?v=2" alt="" width="1000" height="563"></div><div class="dlg-body"><p class="card-en"><i class="fa-solid fa-utensils" aria-hidden="true"></i>COOKING CLASS</p><h3>料理教室</h3><ul><li>個人・グループ向けの料理教室</li><li>イベントでのフードコーディネート</li><li><span class="mk">テレビ番組のフードコーディネート経験あり</span></li><li>企業・自治体向けの講演・実演も</li></ul><div class="dlg-links"><a class="chip" href="https://www.instagram.com/reels/C7V5NP_xyY8/" target="_blank" rel="noopener noreferrer">料理教室の様子 <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></a><a class="chip" href="#tvcm">フードコーディネート実績 <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></a></div><a class="btn btn--red" href="https://www.nabenokitchen.com/contact/" target="_blank" rel="noopener noreferrer"><i class="fa-regular fa-envelope" aria-hidden="true"></i>この内容で相談する</a></div></div>
-        <div id="svc-7"><div class="dlg-img"><img src="images/pop/svc7-ai.webp?v=2" alt="" width="1000" height="563"></div><div class="dlg-body"><p class="card-en"><i class="fa-solid fa-wand-magic-sparkles" aria-hidden="true"></i>AI SUPPORT</p><h3>AI活用サポート</h3><ul><li>ChatGPTやClaudeなど、生成AIで業務を効率化</li><li>プロンプト作成からワークフロー構築まで対応</li></ul><a class="btn btn--red" href="https://www.nabenokitchen.com/contact/" target="_blank" rel="noopener noreferrer"><i class="fa-regular fa-envelope" aria-hidden="true"></i>この内容で相談する</a></div></div>
+        <div id="svc-1"><div class="dlg-img"><img src="images/pop/svc1-video.webp?v=2" alt="" width="1000" height="563"></div><div class="dlg-body"><p class="card-en"><i class="fa-solid fa-video" aria-hidden="true"></i>VIDEO &amp; PHOTO</p><h3>動画・写真撮影</h3><ul><li>HP用・SNS用・広告用など、目的に合わせて撮影</li><li>一度撮れば、SNS投稿に繰り返し使えます</li><li><span class="mk">特に飲食店さんに喜ばれています</span></li></ul><div class="dlg-links"><a class="chip" href="#movies">映像実績を見る <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></a></div><a class="btn btn--red" href="#contact" data-kind="動画・写真撮影"><i class="fa-regular fa-envelope" aria-hidden="true"></i>この内容で相談する</a></div></div>
+        <div id="svc-2"><div class="dlg-img"><img src="images/pop/svc2-recipe.webp?v=2" alt="" width="1000" height="563"></div><div class="dlg-body"><p class="card-en"><i class="fa-solid fa-utensils" aria-hidden="true"></i>RECIPE</p><h3>レシピ開発・監修</h3><ul><li>企業向けのレシピ開発・監修</li><li>商品PR・媒体掲載・SNS用の動画制作まで</li><li><span class="mk">私のSNSへの投稿も可能です</span></li></ul><div class="dlg-links"><a class="chip" href="#pr-reels">PR動画実績を見る <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></a></div><a class="btn btn--red" href="#contact" data-kind="レシピ開発"><i class="fa-regular fa-envelope" aria-hidden="true"></i>この内容で相談する</a></div></div>
+        <div id="svc-3"><div class="dlg-img"><img src="images/pop/svc3-sns.webp?v=2" alt="" width="1000" height="563"></div><div class="dlg-body"><p class="card-en"><i class="fa-solid fa-chart-line" aria-hidden="true"></i>SNS CONSULTING</p><h3>SNSコンサルティング</h3><ul><li><span class="mk">総フォロワー61万人以上の実績</span>をもとにサポート</li><li>YouTube・Instagramのアカウント設計、企画、改善提案</li><li>初めての方の初期サポートも</li></ul><a class="btn btn--red" href="#contact" data-kind="SNS運用"><i class="fa-regular fa-envelope" aria-hidden="true"></i>この内容で相談する</a></div></div>
+        <div id="svc-4"><div class="dlg-img"><img src="images/pop/svc4-tieup.webp?v=2" alt="" width="1000" height="563"></div><div class="dlg-body"><p class="card-en"><i class="fa-solid fa-tower-broadcast" aria-hidden="true"></i>SNS TIE-UP</p><h3>SNSタイアップ投稿</h3><ul><li>貴社の商品を使ったレシピ動画を制作</li><li><span class="mk">YouTube21万・Instagram19万・TikTok11万人</span>の<span class="nb">「なべのだいどころ。」</span>で配信</li><li>動画は貴社のSNSやWebでも二次利用できます</li></ul><div class="dlg-links"><a class="chip" href="#pr-reels">PR動画実績を見る <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></a></div><a class="btn btn--red" href="#contact" data-kind="タイアップ・PR"><i class="fa-regular fa-envelope" aria-hidden="true"></i>この内容で相談する</a></div></div>
+        <div id="svc-5"><div class="dlg-img"><img src="images/pop/svc5-web.webp?v=2" alt="" width="1000" height="563"></div><div class="dlg-body"><p class="card-en"><i class="fa-solid fa-globe" aria-hidden="true"></i>WEB DESIGN</p><h3>ホームページ制作</h3><ul><li><span class="mk">初期費用0円プラン</span>をご用意</li><li>出張撮影からホームページ制作まで一括</li><li>制作後もSNSの相談に乗ります</li></ul><div class="dlg-links"><a class="chip" href="web-design.html">詳しく見る <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></a></div><a class="btn btn--red" href="#contact" data-kind="ホームページ制作"><i class="fa-regular fa-envelope" aria-hidden="true"></i>この内容で相談する</a></div></div>
+        <div id="svc-6"><div class="dlg-img"><img src="images/pop/svc6-class.webp?v=2" alt="" width="1000" height="563"></div><div class="dlg-body"><p class="card-en"><i class="fa-solid fa-utensils" aria-hidden="true"></i>COOKING CLASS</p><h3>料理教室</h3><ul><li>個人・グループ向けの料理教室</li><li>イベントでのフードコーディネート</li><li><span class="mk">テレビ番組のフードコーディネート経験あり</span></li><li>企業・自治体向けの講演・実演も</li></ul><div class="dlg-links"><a class="chip" href="https://www.instagram.com/reels/C7V5NP_xyY8/" target="_blank" rel="noopener noreferrer">料理教室の様子 <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></a><a class="chip" href="#tvcm">フードコーディネート実績 <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></a></div><a class="btn btn--red" href="#contact" data-kind="料理教室・講演"><i class="fa-regular fa-envelope" aria-hidden="true"></i>この内容で相談する</a></div></div>
+        <div id="svc-7"><div class="dlg-img"><img src="images/pop/svc7-ai.webp?v=2" alt="" width="1000" height="563"></div><div class="dlg-body"><p class="card-en"><i class="fa-solid fa-wand-magic-sparkles" aria-hidden="true"></i>AI SUPPORT</p><h3>AI活用サポート</h3><ul><li>ChatGPTやClaudeなど、生成AIで業務を効率化</li><li>プロンプト作成からワークフロー構築まで対応</li></ul><a class="btn btn--red" href="#contact" data-kind="アプリ・ツール開発"><i class="fa-regular fa-envelope" aria-hidden="true"></i>この内容で相談する</a></div></div>
       </div>
       <div class="local rv">
         <img src="images/pop/local-visit.webp?v=2" alt="黄色い車で宮崎・鹿児島のお客さまのもとへ向かうなべくん" width="1000" height="563" loading="lazy">
@@ -532,7 +561,7 @@ p,li{text-wrap:pretty;line-break:strict}
           <h3>宮崎・鹿児島エリアは<span class="nb">直接うかがいます！</span></h3>
           <p>現地でじっくりお話を聞き、あなたの想いに合ったご提案をします。</p>
         </div>
-        <a class="btn" href="https://www.nabenokitchen.com/contact/" target="_blank" rel="noopener noreferrer">ご依頼・ご相談はこちら</a>
+        <a class="btn" href="#contact">ご依頼・ご相談はこちら</a>
       </div>
     </div>
   </section>
@@ -594,7 +623,7 @@ p,li{text-wrap:pretty;line-break:strict}
 
       <div class="cta rv">
         <p><span class="nb">動画・写真の撮影、</span><span class="nb">商品PR動画の制作も</span><span class="nb">承っています。</span></p>
-        <a class="btn btn--red" href="https://www.nabenokitchen.com/contact/" target="_blank" rel="noopener noreferrer">ご依頼・ご相談はこちら</a>
+        <a class="btn btn--red" href="#contact">ご依頼・ご相談はこちら</a>
       </div>
     </div>
   </section>
@@ -675,7 +704,7 @@ p,li{text-wrap:pretty;line-break:strict}
       </div>
       <div class="cta rv">
         <p><span class="nb">料理教室・イベント講師、</span><span class="nb">レシピ監修、</span><span class="nb">自治体・企業とのコラボ企画も</span><span class="nb">承っています。</span></p>
-        <a class="btn btn--red" href="https://www.nabenokitchen.com/contact/" target="_blank" rel="noopener noreferrer">ご依頼・ご相談はこちら</a>
+        <a class="btn btn--red" href="#contact">ご依頼・ご相談はこちら</a>
       </div>
     </div>
   </section>
@@ -724,12 +753,57 @@ p,li{text-wrap:pretty;line-break:strict}
   <section class="contact" id="contact">
     <div class="wrap contact-in">
       <h2 class="h2 rv">まずは、<span class="nb">お気軽にご相談ください！</span></h2>
-      <p class="rv" style="margin-bottom:6px">動画・写真撮影、レシピ開発、SNS運用、<span class="nb">ホームページ制作、アプリ・ツール開発など。</span></p>
+      <p class="rv" style="margin-bottom:6px"><span class="nb">このページから、</span><span class="nb">そのまま送れます。</span></p>
       <div class="contact-box rv">
         <img src="images/pop/contact-talk.webp?v=2" alt="テーブル越しに手を振って相談を迎えるなべくん" width="1000" height="563" loading="lazy">
-        <p><span class="nb">お仕事のご依頼・ご相談は、</span><span class="nb">こちらからどうぞ。</span></p>
-        <a class="btn btn--red" href="https://www.nabenokitchen.com/contact/" target="_blank" rel="noopener noreferrer"><i class="fa-regular fa-envelope" aria-hidden="true"></i>お問い合わせはこちら</a>
-        <a class="btn btn--white" href="https://www.instagram.com/nabeno_kitchen/" target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-instagram" aria-hidden="true"></i>Instagramはこちら</a>
+        <form class="cform" id="contact-form" novalidate>
+          <input type="text" name="botcheck" class="hp" tabindex="-1" autocomplete="off" aria-hidden="true">
+          <div class="cf-row">
+            <span class="cf-label" id="cf-l-kind">ご相談の内容<em>必須</em></span>
+            <div class="cf-chips" role="group" aria-labelledby="cf-l-kind" id="cf-kind">
+              <label><input type="checkbox" name="ご相談の内容" value="動画・写真撮影"><span>動画・写真撮影</span></label>
+              <label><input type="checkbox" name="ご相談の内容" value="レシピ開発"><span>レシピ開発</span></label>
+              <label><input type="checkbox" name="ご相談の内容" value="SNS運用"><span>SNS運用</span></label>
+              <label><input type="checkbox" name="ご相談の内容" value="タイアップ・PR"><span>タイアップ・PR</span></label>
+              <label><input type="checkbox" name="ご相談の内容" value="ホームページ制作"><span>ホームページ制作</span></label>
+              <label><input type="checkbox" name="ご相談の内容" value="料理教室・講演"><span>料理教室・講演</span></label>
+              <label><input type="checkbox" name="ご相談の内容" value="アプリ・ツール開発"><span>アプリ・ツール開発</span></label>
+              <label><input type="checkbox" name="ご相談の内容" value="その他"><span>その他</span></label>
+            </div>
+            <p class="cf-err" data-err="cf-kind"></p>
+          </div>
+          <div class="cf-row">
+            <label class="cf-label" for="cf-name">お名前<em>必須</em></label>
+            <input class="cf-in" type="text" id="cf-name" name="お名前" autocomplete="name" required>
+            <p class="cf-err" data-err="cf-name"></p>
+          </div>
+          <div class="cf-row">
+            <label class="cf-label" for="cf-org">会社・店舗名</label>
+            <input class="cf-in" type="text" id="cf-org" name="会社・店舗名" autocomplete="organization">
+          </div>
+          <div class="cf-row">
+            <label class="cf-label" for="cf-mail">メールアドレス<em>必須</em></label>
+            <input class="cf-in" type="email" id="cf-mail" name="メールアドレス" autocomplete="email" inputmode="email" required>
+            <p class="cf-err" data-err="cf-mail"></p>
+          </div>
+          <div class="cf-row">
+            <label class="cf-label" for="cf-tel">電話番号</label>
+            <input class="cf-in" type="tel" id="cf-tel" name="電話番号" autocomplete="tel" inputmode="tel">
+          </div>
+          <div class="cf-row">
+            <label class="cf-label" for="cf-msg">ご相談の詳細<em>必須</em></label>
+            <textarea class="cf-in" id="cf-msg" name="ご相談の詳細" rows="5" required placeholder="内容・ご希望の時期・ご予算など、決まっている範囲で大丈夫です。"></textarea>
+            <p class="cf-err" data-err="cf-msg"></p>
+          </div>
+          <p class="cf-err cf-err--all" id="cf-all" role="alert"></p>
+          <button class="btn btn--red cf-send" type="submit"><i class="fa-regular fa-paper-plane" aria-hidden="true"></i><span>この内容で送る</span></button>
+          <p class="cf-note">2〜3日以内に、メールでお返事します。</p>
+        </form>
+        <div class="cf-done" id="cf-done" hidden tabindex="-1">
+          <p class="cf-done-t"><i class="fa-solid fa-circle-check" aria-hidden="true"></i>送信しました！</p>
+          <p>ありがとうございます。2〜3日以内に、メールでお返事します。</p>
+        </div>
+        <a class="btn btn--white cf-ig" href="https://www.instagram.com/nabeno_kitchen/" target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-instagram" aria-hidden="true"></i>InstagramのDMでもOK</a>
       </div>
     </div>
   </section>
@@ -761,7 +835,7 @@ p,li{text-wrap:pretty;line-break:strict}
 
 <div class="lb" id="lb" aria-hidden="true"><button class="lb-x" type="button" aria-label="閉じる">&#10005;</button><button class="lb-p" type="button" aria-label="前へ">&#8249;</button><button class="lb-n" type="button" aria-label="次へ">&#8250;</button><figure><img src="" alt=""><figcaption></figcaption></figure></div>
 
-<div class="sticky" id="sticky"><a class="btn btn--red" href="https://www.nabenokitchen.com/contact/" target="_blank" rel="noopener noreferrer"><i class="fa-regular fa-envelope" aria-hidden="true"></i>ご依頼・ご相談はこちら</a></div>
+<div class="sticky" id="sticky"><a class="btn btn--red" href="#contact"><i class="fa-regular fa-envelope" aria-hidden="true"></i>ご依頼・ご相談はこちら</a></div>
 
 <script>
 (function(){
@@ -863,6 +937,54 @@ document.addEventListener('keydown',function(e){if(e.key==='Escape')set(false)})
     spin(e.target,350+bs.indexOf(e.target)*120);
   })},{threshold:.6});
   bs.forEach(function(b){io.observe(b)});
+})();
+</script>
+<script>
+/* お問い合わせフォーム：Web3Forms に送る（ヒビノネ写真館と同じ仕組み）。キーは受信先メールにひも付く公開用のキー */
+(function(){
+  var FORM={endpoint:'https://api.web3forms.com/submit',accessKey:'2d022cd5-3778-426b-90af-38ecff2f3dab',subjectPrefix:'【ポートフォリオ】'};
+  var f=document.getElementById('contact-form');if(!f)return;
+  var done=document.getElementById('cf-done'),all=document.getElementById('cf-all'),btn=f.querySelector('.cf-send');
+  function err(id,msg){var p=f.querySelector('[data-err="'+id+'"]'),el=document.getElementById(id);if(p)p.textContent=msg;if(el&&el.tagName!=='DIV')el.setAttribute('aria-invalid',msg?'true':'false')}
+  function check(){var ok=true,first=null;
+    var kinds=[].slice.call(f.querySelectorAll('input[name="ご相談の内容"]:checked'));
+    if(!kinds.length){err('cf-kind','ひとつ以上えらんでください');ok=false;first=first||f.querySelector('#cf-kind input')}else err('cf-kind','');
+    var n=f['お名前'];if(!n.value.trim()){err('cf-name','お名前を入れてください');ok=false;first=first||n}else err('cf-name','');
+    var m=f['メールアドレス'];if(!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(m.value.trim())){err('cf-mail',m.value.trim()?'メールアドレスの形を確かめてください':'メールアドレスを入れてください');ok=false;first=first||m}else err('cf-mail','');
+    var t=f['ご相談の詳細'];if(!t.value.trim()){err('cf-msg','ご相談の詳細を入れてください');ok=false;first=first||t}else err('cf-msg','');
+    if(first)first.focus();return ok}
+  f.addEventListener('input',function(e){var t=e.target;if(t.name==='ご相談の内容')err('cf-kind','');else if(t.id)err(t.id,'');all.textContent=''});
+  f.addEventListener('submit',function(e){e.preventDefault();all.textContent='';
+    if(f.botcheck.value)return;
+    if(!check())return;
+    if(!FORM.accessKey){all.textContent='いまフォームの準備中です。お手数ですが InstagramのDM からご連絡ください。';return}
+    var d=new FormData(f),kinds=d.getAll('ご相談の内容').join('・'),name=d.get('お名前').trim();
+    var body={access_key:FORM.accessKey,subject:FORM.subjectPrefix+name+'様／'+kinds,from_name:'なべのポートフォリオ',replyto:d.get('メールアドレス').trim(),botcheck:''};
+    body['ご相談の内容']=kinds;['お名前','会社・店舗名','メールアドレス','電話番号','ご相談の詳細'].forEach(function(k){var v=(d.get(k)||'').trim();if(v)body[k]=v});
+    btn.disabled=true;btn.querySelector('span').textContent='送信中…';
+    fetch(FORM.endpoint,{method:'POST',headers:{'Content-Type':'application/json','Accept':'application/json'},body:JSON.stringify(body)})
+      .then(function(r){return r.json().then(function(j){if(!r.ok||!j.success)throw new Error(j.message||'failed');return j})})
+      .then(function(){f.hidden=true;done.hidden=false;done.focus();done.scrollIntoView({block:'center'})})
+      .catch(function(){all.textContent='うまく送れませんでした。時間をおいてもう一度押すか、InstagramのDM からご連絡ください。';btn.disabled=false;btn.querySelector('span').textContent='この内容で送る'});
+  });
+})();
+</script>
+<script>
+/* 相談ボタン → このページのフォームへ。サービスの小窓から来たら、その内容に最初から印を付ける */
+(function(){
+  var f=document.getElementById('contact-form');if(!f)return;
+  document.addEventListener('click',function(e){
+    var a=e.target.closest('a[href="#contact"]');if(!a)return;
+    e.preventDefault();
+    var d=document.getElementById('dlg');if(d&&d.open)d.close();
+    var h=document.querySelector('.header');if(h)h.classList.remove('open');
+    var k=a.getAttribute('data-kind');
+    if(k){var c=f.querySelector('input[name="ご相談の内容"][value="'+k+'"]');if(c&&!c.checked){c.checked=true;c.dispatchEvent(new Event('input',{bubbles:true}))}}
+    var t=f.hidden?document.getElementById('cf-done'):f;
+    var y=t.getBoundingClientRect().top+scrollY-((h&&h.offsetHeight)||60)-14;
+    window.scrollTo({top:y,behavior:matchMedia('(prefers-reduced-motion:reduce)').matches?'auto':'smooth'});
+    if(history.replaceState)history.replaceState(null,'','#contact');
+  },true);
 })();
 </script>
 </body>

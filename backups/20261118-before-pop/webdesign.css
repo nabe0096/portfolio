@@ -1,0 +1,1968 @@
+/*==================================================
+  WEB DESIGN PAGE - ホームページ制作 詳細ページ専用
+  style.css のデザイントークンを継承し、
+  このページ固有のスタイルのみ定義する（wd- プレフィックス）
+==================================================*/
+
+/* 見出しの泣き別れ防止：文節ごとに <span class="wd-nb"> で囲み、文節の途中では折り返さない */
+.wd-nb {
+    display: inline-block;
+}
+
+/* ---------- ヒーロー ---------- */
+
+.wd-hero {
+    position: relative;
+    min-height: 92svh;
+    display: flex;
+    align-items: center;
+    overflow: hidden;
+    background: var(--ink);
+    color: #fff;
+    padding: 150px 0 90px;
+}
+
+.wd-hero-media,
+.wd-hero-shade {
+    position: absolute;
+    inset: 0;
+}
+
+.wd-hero-media picture {
+    display: block;
+    width: 100%;
+    height: 100%;
+}
+
+.wd-hero-media img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    opacity: 0.55;
+}
+
+.wd-hero-shade {
+    background: linear-gradient(105deg, rgba(12, 11, 9, 0.88) 0%, rgba(12, 11, 9, 0.62) 48%, rgba(12, 11, 9, 0.35) 100%);
+}
+
+.wd-hero-inner {
+    position: relative;
+    z-index: 2;
+    width: var(--container);
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: minmax(0, 1.15fr) minmax(0, 0.85fr);
+    gap: clamp(36px, 5vw, 72px);
+    align-items: center;
+}
+
+.wd-hero-title {
+    margin: 14px 0 18px;
+    font-family: var(--serif);
+    font-size: clamp(1.9rem, 4.6vw, 3.1rem);
+    font-weight: 500;
+    line-height: 1.55;
+    letter-spacing: 0.1em;
+}
+
+.wd-hero-sub {
+    margin: 0 0 22px;
+    font-family: var(--serif);
+    font-size: clamp(1.05rem, 2vw, 1.3rem);
+    line-height: 2;
+    letter-spacing: 0.08em;
+    color: var(--gold-light);
+}
+
+.wd-hero-lead {
+    margin: 0 0 26px;
+    max-width: 34em;
+    font-size: clamp(0.92rem, 1.4vw, 1rem);
+    line-height: 2.1;
+    color: rgba(255, 255, 255, 0.86);
+}
+
+.wd-hero-badge {
+    display: inline-block;
+    margin: 0 0 14px;
+    padding: 10px 26px;
+    border: 1px solid var(--gold);
+    border-radius: 999px;
+    background: rgba(184, 155, 94, 0.14);
+    color: var(--gold-light);
+    font-family: var(--serif);
+    font-size: clamp(1rem, 2vw, 1.25rem);
+    font-weight: 600;
+    letter-spacing: 0.14em;
+}
+
+.wd-hero-note {
+    margin: 0 0 30px;
+    font-size: 0.8rem;
+    line-height: 1.9;
+    color: rgba(255, 255, 255, 0.62);
+}
+
+.wd-hero-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 14px;
+}
+
+.wd-hero-actions .button {
+    width: 270px;
+    padding-left: 0;
+    padding-right: 0;
+}
+
+/* ダーク背景上のライトボタン（トップページのヒーローと同じ扱い） */
+.wd-hero .button-light {
+    color: #fff;
+    border-color: rgba(255, 255, 255, 0.7);
+}
+
+.wd-hero .button-light::before {
+    background: #fff;
+}
+
+.wd-hero .button-light:hover {
+    color: var(--ink);
+    border-color: #fff;
+}
+
+/* ヒーロー内モックアップ（画像が用意できたら .wd-mock-screen 内に img を置くだけで差し替え可能） */
+
+.wd-hero-visual {
+    display: grid;
+    justify-items: center;
+}
+
+.wd-mock-laptop {
+    width: 100%;
+    max-width: 440px;
+    border-radius: 12px 12px 4px 4px;
+    background: #2c2a26;
+    padding: 14px 14px 22px;
+    box-shadow: 0 30px 70px rgba(0, 0, 0, 0.45);
+}
+
+.wd-mock-laptop::after {
+    content: "";
+    display: block;
+    margin: 22px -26px -34px;
+    height: 12px;
+    border-radius: 0 0 14px 14px;
+    background: #211f1c;
+}
+
+.wd-mock-phone {
+    width: 108px;
+    margin: -60px 0 0 auto;
+    transform: translateX(-14px);
+    border-radius: 20px;
+    background: #2c2a26;
+    padding: 8px;
+    box-shadow: 0 18px 44px rgba(0, 0, 0, 0.5);
+    position: relative;
+    z-index: 2;
+}
+
+.wd-mock-screen {
+    position: relative;
+    overflow: hidden;
+    border-radius: 6px;
+    background: linear-gradient(160deg, #f7f4ee 0%, #efe9dd 55%, #e5dcc9 100%);
+}
+
+.wd-mock-laptop .wd-mock-screen { aspect-ratio: 16 / 10; }
+.wd-mock-phone .wd-mock-screen { aspect-ratio: 9 / 19; border-radius: 14px; }
+
+.wd-mock-screen img {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.wd-mock-placeholder {
+    position: absolute;
+    inset: 0;
+    display: grid;
+    place-content: center;
+    gap: 6px;
+    text-align: center;
+    color: var(--muted);
+}
+
+.wd-mock-placeholder i {
+    font-size: 1.5rem;
+    color: var(--gold);
+}
+
+.wd-mock-placeholder span {
+    font-size: 0.62rem;
+    letter-spacing: 0.22em;
+    font-weight: 700;
+}
+
+/* ---------- パンくず ---------- */
+
+.wd-breadcrumb {
+    width: var(--container);
+    margin: 18px auto 0;
+    font-size: 0.78rem;
+    color: var(--muted);
+    letter-spacing: 0.06em;
+}
+
+.wd-breadcrumb ol {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+}
+
+.wd-breadcrumb li + li::before {
+    content: "/";
+    margin-right: 6px;
+    color: rgba(26, 26, 26, 0.3);
+}
+
+.wd-breadcrumb a {
+    text-decoration: none;
+    transition: color 0.3s var(--ease);
+}
+
+.wd-breadcrumb a:hover {
+    color: var(--gold);
+}
+
+/* ---------- 共通：小さめ見出し余白調整 ---------- */
+
+.wd-section-lead {
+    max-width: 680px;
+    margin: -24px auto clamp(38px, 5vw, 60px);
+    text-align: center;
+    color: var(--muted);
+    line-height: 2.1;
+}
+
+.wd-section-photo {
+    max-width: 920px;
+    margin: 0 auto clamp(36px, 5vw, 58px);
+    border-radius: 12px;
+    overflow: hidden;
+    border: 1px solid rgba(26, 26, 26, 0.10);
+    background: var(--card);
+    box-shadow: var(--soft-shadow);
+}
+
+.wd-section-photo img {
+    display: block;
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    object-fit: cover;
+    object-position: center;
+}
+
+.wd-section-photo--zero {
+    max-width: 760px;
+}
+
+
+/* ---------- お悩みセクション ---------- */
+
+/* 温色背景セクション共通：極細ストライプ＋淡い金の光 */
+.wd-problems,
+.wd-variations,
+.wd-manage {
+    background:
+        radial-gradient(ellipse 900px 480px at 88% -5%, rgba(184, 155, 94, 0.10), transparent 62%),
+        radial-gradient(ellipse 700px 420px at 8% 105%, rgba(184, 155, 94, 0.07), transparent 60%),
+        repeating-linear-gradient(-45deg, rgba(184, 155, 94, 0.05) 0 1px, transparent 1px 13px),
+        var(--warm);
+    border-top: 1px solid rgba(184, 155, 94, 0.18);
+    border-bottom: 1px solid rgba(184, 155, 94, 0.18);
+}
+
+.wd-problem-list {
+    list-style: none;
+    max-width: 760px;
+    margin: 0 auto;
+    padding: 0;
+    display: grid;
+    gap: 14px;
+}
+
+.wd-problem-list li {
+    display: flex;
+    gap: 14px;
+    align-items: flex-start;
+    padding: 18px 22px;
+    background: var(--card);
+    border: 1px solid var(--line);
+    border-radius: 10px;
+    box-shadow: var(--soft-shadow);
+    line-height: 1.9;
+}
+
+.wd-problem-list li i {
+    flex: none;
+    margin-top: 7px;
+    color: var(--gold);
+    font-size: 0.85rem;
+}
+
+.wd-problem-close {
+    max-width: 680px;
+    margin: clamp(34px, 5vw, 52px) auto 0;
+    text-align: center;
+    font-family: var(--serif);
+    font-size: clamp(1.05rem, 2vw, 1.3rem);
+    line-height: 2.2;
+    letter-spacing: 0.1em;
+    color: var(--ink);
+}
+
+/* ---------- 初期制作費0円プラン ---------- */
+
+.wd-zero-figure {
+    margin: 0 auto clamp(30px, 4vw, 44px);
+    text-align: center;
+    font-family: var(--serif);
+    color: var(--gold);
+}
+
+.wd-zero-figure strong {
+    font-size: clamp(3.4rem, 9vw, 5.6rem);
+    font-weight: 600;
+    letter-spacing: 0.04em;
+    line-height: 1;
+}
+
+.wd-zero-figure span {
+    font-size: clamp(1.1rem, 2.4vw, 1.5rem);
+    letter-spacing: 0.14em;
+}
+
+.wd-zero-body {
+    max-width: 720px;
+    margin: 0 auto;
+    line-height: 2.15;
+}
+
+.wd-zero-body p {
+    margin: 0 0 1.4em;
+}
+
+.wd-notice {
+    max-width: 720px;
+    margin: clamp(28px, 4vw, 40px) auto 0;
+    padding: 26px 28px;
+    border: 1px solid rgba(184, 155, 94, 0.5);
+    border-radius: 10px;
+    background: rgba(184, 155, 94, 0.07);
+}
+
+.wd-notice-title {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin: 0 0 12px;
+    font-family: var(--serif);
+    font-size: 1.02rem;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    color: var(--ink);
+}
+
+.wd-notice-title i {
+    color: var(--gold);
+}
+
+.wd-notice p {
+    margin: 0 0 0.8em;
+    font-size: 0.92rem;
+    line-height: 2.05;
+    color: var(--text);
+}
+
+.wd-notice p:last-child {
+    margin-bottom: 0;
+}
+
+/* ---------- 選ばれる理由 ---------- */
+
+.wd-reasons {
+    background: var(--warm);
+}
+
+.wd-reason-list {
+    max-width: 820px;
+    margin: 0 auto;
+    display: grid;
+    gap: clamp(20px, 3vw, 28px);
+}
+
+.wd-reason {
+    display: grid;
+    grid-template-columns: 84px 1fr;
+    gap: clamp(18px, 3vw, 30px);
+    padding: clamp(26px, 4vw, 38px);
+    background: var(--card);
+    border: 1px solid var(--line);
+    border-radius: 12px;
+    box-shadow: var(--soft-shadow);
+}
+
+.wd-reason-num {
+    font-family: var(--serif);
+    font-size: clamp(1.9rem, 4vw, 2.6rem);
+    font-weight: 500;
+    line-height: 1;
+    color: rgba(184, 155, 94, 0.55);
+    letter-spacing: 0.04em;
+}
+
+.wd-reason h3 {
+    margin: 0 0 12px;
+    font-family: var(--serif);
+    font-size: clamp(1.1rem, 2.2vw, 1.35rem);
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    color: var(--ink);
+    line-height: 1.7;
+}
+
+.wd-reason p {
+    margin: 0 0 0.9em;
+    line-height: 2.05;
+    color: var(--text);
+}
+
+.wd-reason p:last-child {
+    margin-bottom: 0;
+}
+
+/* ---------- 一括サポート ---------- */
+
+.wd-support-grid {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 0;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 14px;
+}
+
+.wd-support-grid li {
+    list-style: none;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 16px 18px;
+    background: var(--card);
+    border: 1px solid var(--line);
+    border-radius: 10px;
+    font-size: 0.92rem;
+    line-height: 1.7;
+}
+
+.wd-support-grid li i {
+    flex: none;
+    width: 34px;
+    height: 34px;
+    display: grid;
+    place-content: center;
+    border-radius: 50%;
+    background: rgba(184, 155, 94, 0.12);
+    color: var(--gold);
+    font-size: 0.85rem;
+}
+
+.wd-support-note {
+    max-width: 720px;
+    margin: 26px auto 0;
+    text-align: center;
+    font-size: 0.84rem;
+    color: var(--muted);
+    line-height: 2;
+}
+
+/* ---------- Instagram × ホームページ ---------- */
+
+.wd-compare {
+    max-width: 920px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: clamp(18px, 3vw, 28px);
+}
+
+.wd-compare-col {
+    padding: clamp(26px, 4vw, 36px);
+    background: var(--card);
+    border: 1px solid var(--line);
+    border-radius: 12px;
+    box-shadow: var(--soft-shadow);
+}
+
+.wd-compare-col h3 {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin: 0 0 20px;
+    font-family: var(--serif);
+    font-size: 1.15rem;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    color: var(--ink);
+}
+
+.wd-compare-col h3 i {
+    color: var(--gold);
+}
+
+.wd-compare-col ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: grid;
+    gap: 12px;
+}
+
+.wd-compare-col li {
+    position: relative;
+    padding-left: 20px;
+    font-size: 0.93rem;
+    line-height: 1.95;
+}
+
+.wd-compare-col li::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 13px;
+    width: 8px;
+    height: 1px;
+    background: var(--gold);
+}
+
+.wd-compare-conclusion {
+    max-width: 720px;
+    margin: clamp(32px, 5vw, 48px) auto 0;
+    text-align: center;
+    line-height: 2.15;
+}
+
+.wd-compare-conclusion p {
+    margin: 0 0 1.2em;
+}
+
+.wd-compare-conclusion p:last-child {
+    margin-bottom: 0;
+}
+
+/* ---------- メリット ---------- */
+
+.wd-benefits {
+    background: var(--warm);
+}
+
+.wd-benefit-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: clamp(16px, 2.5vw, 24px);
+}
+
+.wd-benefit {
+    padding: clamp(24px, 3.4vw, 32px);
+    background: var(--card);
+    border: 1px solid var(--line);
+    border-radius: 12px;
+    box-shadow: var(--soft-shadow);
+}
+
+.wd-benefit-num {
+    display: block;
+    margin-bottom: 10px;
+    font-family: var(--serif);
+    font-size: 1.5rem;
+    color: rgba(184, 155, 94, 0.55);
+    letter-spacing: 0.06em;
+    line-height: 1;
+}
+
+.wd-benefit h3 {
+    margin: 0 0 10px;
+    font-family: var(--serif);
+    font-size: 1.05rem;
+    font-weight: 600;
+    letter-spacing: 0.06em;
+    line-height: 1.8;
+    color: var(--gold);
+}
+
+.wd-benefit p {
+    margin: 0;
+    font-size: 0.9rem;
+    line-height: 2;
+    color: var(--text);
+}
+
+/* ---------- 制作サンプル ---------- */
+
+.wd-work-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: clamp(20px, 3vw, 30px);
+}
+
+.wd-work {
+    display: flex;
+    flex-direction: column;
+    background: var(--card);
+    border: 1px solid var(--line);
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: var(--soft-shadow);
+    transition: transform 0.5s var(--ease), box-shadow 0.5s var(--ease);
+}
+
+.wd-work:hover {
+    transform: translateY(-6px);
+    box-shadow: var(--shadow);
+}
+
+/* 2列のとき、事例が奇数なら最後の1枚を中央に置く */
+@media (min-width: 901px) {
+    .wd-work:last-child:nth-child(odd) {
+        grid-column: 1 / -1;
+        justify-self: center;
+        width: calc((100% - clamp(20px, 3vw, 30px)) / 2);
+    }
+}
+
+/*
+  サムネイル差し替え方法：
+  .wd-work-shot の中の .wd-mock-placeholder を削除し、
+  <img src="images/webdesign/○○.jpg" alt="..." loading="lazy"> を置くだけ。
+*/
+.wd-work-shot {
+    position: relative;
+    aspect-ratio: 16 / 10;
+    background: linear-gradient(150deg, #f2ede3 0%, #e9e1d1 60%, #ddd2ba 100%);
+    border-bottom: 1px solid var(--line);
+    overflow: hidden;
+}
+
+.wd-work-shot img {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: top center;
+    transition: transform 0.8s ease;
+}
+
+.wd-work:hover .wd-work-shot img {
+    transform: scale(1.03);
+}
+
+.wd-work-body {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    padding: clamp(22px, 3vw, 30px);
+}
+
+.wd-work-cat {
+    margin: 0 0 8px;
+    font-size: 0.68rem;
+    font-weight: 700;
+    letter-spacing: 0.22em;
+    color: var(--gold);
+}
+
+.wd-work h3 {
+    margin: 0 0 12px;
+    font-family: var(--serif);
+    font-size: 1.15rem;
+    font-weight: 600;
+    letter-spacing: 0.06em;
+    color: var(--ink);
+    line-height: 1.7;
+}
+
+.wd-work-body > p:not(.wd-work-cat) {
+    margin: 0 0 20px;
+    font-size: 0.9rem;
+    line-height: 2;
+    color: var(--text);
+    flex: 1;
+}
+
+.wd-work .text-link {
+    align-self: center;
+    color: var(--gold);
+    border-color: var(--gold);
+}
+
+.wd-work .text-link::after {
+    background: var(--gold);
+}
+
+.wd-work .text-link:hover {
+    color: #fff;
+    border-color: var(--gold);
+}
+
+.wd-works-disclaimer {
+    max-width: 800px;
+    margin: clamp(32px, 5vw, 48px) auto 0;
+    padding: 24px 28px;
+    border: 1px solid var(--line);
+    border-radius: 10px;
+    background: var(--warm);
+    font-size: 0.84rem;
+    line-height: 2.05;
+    color: var(--muted);
+}
+
+.wd-works-disclaimer p {
+    margin: 0 0 0.9em;
+}
+
+.wd-works-disclaimer p:last-child {
+    margin-bottom: 0;
+}
+
+/* ---------- 対応できるデザイン ---------- */
+
+.wd-variation-grid {
+    max-width: 900px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 14px;
+}
+
+.wd-variation {
+    padding: 22px 16px;
+    text-align: center;
+    background: var(--card);
+    border: 1px solid var(--line);
+    border-radius: 10px;
+    box-shadow: var(--soft-shadow);
+}
+
+.wd-variation i {
+    display: block;
+    margin: 0 auto 12px;
+    color: var(--gold);
+    font-size: 1.3rem;
+}
+
+.wd-variation span {
+    display: block;
+    font-family: var(--serif);
+    font-size: 0.92rem;
+    font-weight: 600;
+    letter-spacing: 0.06em;
+    line-height: 1.7;
+    color: var(--ink);
+}
+
+.wd-variation-copy {
+    max-width: 680px;
+    margin: clamp(30px, 4vw, 44px) auto 0;
+    text-align: center;
+    line-height: 2.15;
+}
+
+.wd-variation-copy p {
+    margin: 0 0 1.2em;
+}
+
+.wd-variation-copy p:last-child {
+    margin-bottom: 0;
+}
+
+/* ---------- 制作の流れ ---------- */
+
+.wd-flow-heading h2 {
+    max-width: 100%;
+    margin-right: auto;
+    margin-left: auto;
+    overflow-wrap: anywhere;
+    word-break: normal;
+}
+
+.wd-flow-list {
+    width: 100%;
+    max-width: 1120px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 28px 32px;
+}
+
+.wd-step {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    min-height: 100%;
+    min-width: 0;
+    padding: 30px clamp(20px, 2.4vw, 28px) 28px;
+    overflow: visible;
+    border: 1px solid var(--line);
+    border-radius: 8px;
+    background: var(--card);
+    box-shadow: var(--soft-shadow);
+}
+
+.wd-step:not(:last-child)::after {
+    content: "";
+    position: absolute;
+    right: -24px;
+    top: 50%;
+    width: 16px;
+    height: 16px;
+    border-top: 3px solid var(--gold);
+    border-right: 3px solid var(--gold);
+    transform: translateY(-50%) rotate(45deg);
+    opacity: 0.78;
+    z-index: 2;
+}
+
+.wd-step:nth-child(3n)::after,
+.wd-step:last-child::after {
+    display: none;
+}
+
+.wd-step-num {
+    display: block;
+    text-align: center;
+    width: fit-content;
+    margin-bottom: 16px;
+    font-family: var(--serif);
+    color: var(--ink);
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.16em;
+    line-height: 1.1;
+    position: relative;
+    z-index: 1;
+}
+
+.wd-step-num::before {
+    content: "";
+    display: block;
+    width: 58px;
+    height: 8px;
+    margin-bottom: 8px;
+    border-radius: 0 0 999px 999px;
+    background: var(--gold);
+}
+
+.wd-step-num strong {
+    display: block;
+    margin-top: 3px;
+    font-family: var(--sans);
+    font-size: clamp(2.6rem, 5vw, 3.4rem);
+    font-weight: 700;
+    letter-spacing: 0;
+    color: var(--green);
+}
+
+.wd-step-visual {
+    display: grid;
+    place-items: center;
+    min-height: 150px;
+    margin: 0 0 22px;
+}
+
+.wd-step-visual img {
+    width: min(100%, 240px);
+    height: auto;
+    object-fit: contain;
+}
+
+.wd-step h3 {
+    margin: auto 0 12px;
+    font-family: var(--serif);
+    font-size: clamp(1rem, 2vw, 1.18rem);
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    color: var(--ink);
+    overflow-wrap: anywhere;
+}
+
+.wd-step p {
+    margin: 0;
+    font-size: 0.9rem;
+    line-height: 2;
+    color: var(--text);
+    overflow-wrap: anywhere;
+}
+
+/* ---------- 月額管理 ---------- */
+
+.wd-manage-body {
+    max-width: 720px;
+    margin: 0 auto;
+    line-height: 2.15;
+}
+
+.wd-manage-body p {
+    margin: 0 0 1.4em;
+}
+
+.wd-manage-list-label {
+    margin: clamp(28px, 4vw, 40px) 0 16px;
+    font-family: var(--serif);
+    font-size: 1.02rem;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    color: var(--ink);
+    text-align: center;
+}
+
+.wd-manage-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+}
+
+.wd-manage-list li {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 13px 18px;
+    background: var(--card);
+    border: 1px solid var(--line);
+    border-radius: 8px;
+    font-size: 0.9rem;
+    line-height: 1.7;
+}
+
+.wd-manage-list li i {
+    flex: none;
+    color: var(--gold);
+    font-size: 0.8rem;
+}
+
+/* ---------- 対応エリア ---------- */
+
+.wd-area-body {
+    max-width: 720px;
+    margin: 0 auto clamp(38px, 5vw, 56px);
+    line-height: 2.15;
+}
+
+.wd-area-body p {
+    margin: 0 0 1.4em;
+}
+
+.wd-area-body p:last-child {
+    margin-bottom: 0;
+}
+
+.wd-creator-section {
+    background:
+        radial-gradient(ellipse 900px 480px at 88% -5%, rgba(184, 155, 94, 0.10), transparent 62%),
+        radial-gradient(ellipse 700px 420px at 8% 105%, rgba(184, 155, 94, 0.07), transparent 60%),
+        repeating-linear-gradient(-45deg, rgba(184, 155, 94, 0.05) 0 1px, transparent 1px 13px),
+        var(--warm);
+    border-top: 1px solid rgba(184, 155, 94, 0.18);
+    border-bottom: 1px solid rgba(184, 155, 94, 0.18);
+}
+
+.wd-creator-section .section > .section-heading:first-child {
+    margin-bottom: clamp(22px, 3vw, 30px);
+}
+
+.wd-creator-icon {
+    width: clamp(112px, 16vw, 156px);
+    margin: 0 auto clamp(22px, 3vw, 30px);
+}
+
+.wd-creator-icon img {
+    display: block;
+    width: 100%;
+    height: auto;
+    border-radius: 50%;
+    box-shadow: var(--soft-shadow);
+}
+
+.wd-creator-actions {
+    display: flex;
+    justify-content: center;
+    margin-top: clamp(24px, 4vw, 34px);
+}
+
+.wd-inline-form-link {
+    color: var(--gold);
+    text-decoration: underline;
+    text-underline-offset: 0.22em;
+    text-decoration-thickness: 1px;
+}
+
+.contact-media picture {
+    display: block;
+    width: 100%;
+    height: 100%;
+}
+
+.contact-media picture img {
+    display: block;
+}
+
+.wd-area-grid {
+    max-width: 980px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: clamp(16px, 2.5vw, 24px);
+}
+
+.wd-area-card {
+    position: relative;
+    padding: clamp(28px, 3.6vw, 38px) clamp(24px, 3vw, 32px);
+    background: var(--card);
+    border: 1px solid var(--line);
+    border-radius: 12px;
+    box-shadow: var(--soft-shadow);
+}
+
+.wd-area-icon {
+    display: grid;
+    place-content: center;
+    width: 52px;
+    height: 52px;
+    margin-bottom: 16px;
+    border-radius: 50%;
+    background: rgba(184, 155, 94, 0.12);
+    color: var(--gold);
+    font-size: 1.15rem;
+}
+
+.wd-area-num {
+    position: absolute;
+    top: clamp(24px, 3vw, 32px);
+    right: clamp(24px, 3vw, 32px);
+    font-family: var(--serif);
+    font-size: 1.5rem;
+    color: rgba(184, 155, 94, 0.5);
+    letter-spacing: 0.06em;
+    line-height: 1;
+}
+
+.wd-area-card h3 {
+    margin: 0 0 12px;
+    font-family: var(--serif);
+    font-size: 1.12rem;
+    font-weight: 600;
+    letter-spacing: 0.06em;
+    line-height: 1.7;
+    color: var(--ink);
+}
+
+.wd-area-card p {
+    margin: 0 0 0.9em;
+    font-size: 0.9rem;
+    line-height: 2;
+    color: var(--text);
+}
+
+.wd-area-card p:last-child {
+    margin-bottom: 0;
+}
+
+.wd-area-card .wd-area-note {
+    margin-top: 14px;
+    font-size: 0.8rem;
+    color: var(--muted);
+    line-height: 1.9;
+}
+
+.wd-area-cta {
+    display: flex;
+    justify-content: center;
+    margin-top: clamp(36px, 5vw, 52px);
+}
+
+/* ---------- FAQ ---------- */
+
+.wd-faq-list {
+    max-width: 760px;
+    margin: 0 auto;
+    display: grid;
+    gap: 12px;
+}
+
+.wd-faq {
+    background: var(--card);
+    border: 1px solid var(--line);
+    border-radius: 10px;
+    box-shadow: var(--soft-shadow);
+    overflow: hidden;
+}
+
+.wd-faq summary {
+    display: flex;
+    align-items: baseline;
+    gap: 14px;
+    padding: 20px 52px 20px 24px;
+    cursor: pointer;
+    list-style: none;
+    position: relative;
+    font-weight: 500;
+    line-height: 1.9;
+    color: var(--ink);
+    transition: background 0.3s var(--ease);
+}
+
+.wd-faq summary::-webkit-details-marker {
+    display: none;
+}
+
+.wd-faq summary:hover {
+    background: rgba(184, 155, 94, 0.05);
+}
+
+.wd-faq summary:focus-visible {
+    outline: 2px solid var(--gold);
+    outline-offset: -2px;
+}
+
+.wd-faq summary::before {
+    content: "Q";
+    flex: none;
+    font-family: var(--serif);
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: var(--gold);
+}
+
+.wd-faq summary::after {
+    content: "";
+    position: absolute;
+    right: 24px;
+    top: 50%;
+    width: 10px;
+    height: 10px;
+    border-right: 1px solid var(--gold);
+    border-bottom: 1px solid var(--gold);
+    transform: translateY(-70%) rotate(45deg);
+    transition: transform 0.35s var(--ease);
+}
+
+.wd-faq[open] summary::after {
+    transform: translateY(-30%) rotate(-135deg);
+}
+
+.wd-faq-answer {
+    display: flex;
+    gap: 14px;
+    align-items: baseline;
+    padding: 4px 24px 22px;
+    font-size: 0.92rem;
+    line-height: 2.05;
+    color: var(--text);
+}
+
+.wd-faq-answer::before {
+    content: "A";
+    flex: none;
+    font-family: var(--serif);
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: var(--muted);
+}
+
+/* ---------- レスポンシブ ---------- */
+
+@media (max-width: 1024px) {
+    .wd-support-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .wd-variation-grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+
+    .wd-flow-list {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .wd-step:nth-child(3n)::after {
+        display: block;
+    }
+
+    .wd-step:nth-child(2n)::after,
+    .wd-step:last-child::after {
+        display: none;
+    }
+}
+
+@media (max-width: 900px) {
+    .wd-hero {
+        min-height: 0;
+        padding: 140px 0 70px;
+    }
+
+    .wd-hero-inner {
+        grid-template-columns: 1fr;
+    }
+
+    .wd-hero-visual {
+        order: -1;
+    }
+
+    .wd-mock-laptop {
+        max-width: 360px;
+    }
+
+    .wd-benefit-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .wd-area-grid {
+        grid-template-columns: 1fr;
+        max-width: 560px;
+    }
+
+    .wd-work-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 620px) {
+    .wd-hero {
+        padding: 118px 0 56px;
+    }
+
+    .wd-hero-title {
+        font-size: clamp(1.5rem, 8vw, 1.9rem);
+        letter-spacing: 0.05em;
+    }
+
+    .wd-hero-lead {
+        font-size: 0.9rem;
+        line-height: 2;
+    }
+
+    .wd-hero-badge {
+        display: block;
+        text-align: center;
+        padding: 12px 20px;
+    }
+
+    .wd-hero-note {
+        font-size: 0.76rem;
+        margin-bottom: 24px;
+    }
+
+    .wd-hero-actions {
+        flex-direction: column;
+    }
+
+    .wd-hero-actions .button {
+        width: 100%;
+        text-align: center;
+        justify-content: center;
+    }
+
+    .wd-mock-laptop {
+        max-width: 300px;
+    }
+
+    .wd-mock-phone {
+        width: 88px;
+        margin-top: -46px;
+    }
+
+    .wd-breadcrumb {
+        margin-top: 14px;
+    }
+
+    .wd-problem-list li {
+        padding: 15px 16px;
+        font-size: 0.9rem;
+        line-height: 1.9;
+    }
+
+    .wd-zero-body {
+        font-size: 0.93rem;
+    }
+
+    .wd-notice {
+        padding: 20px 18px;
+    }
+
+    .wd-notice p {
+        font-size: 0.88rem;
+    }
+
+    .wd-compare {
+        grid-template-columns: 1fr;
+    }
+
+    .wd-compare-col {
+        padding: 24px 20px;
+    }
+
+    .wd-benefit-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .wd-support-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .wd-support-grid li {
+        padding: 14px 16px;
+    }
+
+    .wd-variation-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 10px;
+    }
+
+    .wd-variation {
+        padding: 18px 12px;
+    }
+
+    .wd-variation span {
+        font-size: 0.86rem;
+    }
+
+    .wd-manage-list {
+        grid-template-columns: 1fr;
+    }
+
+    .wd-reason {
+        grid-template-columns: 1fr;
+        gap: 10px;
+        padding: 22px 20px;
+    }
+
+    .wd-reason-num {
+        font-size: 1.5rem;
+    }
+
+    .wd-reason p {
+        font-size: 0.92rem;
+    }
+
+    .wd-flow-list {
+        grid-template-columns: 1fr;
+        gap: 18px;
+    }
+
+    .wd-flow-heading h2 {
+        max-width: 11.5em;
+        font-size: clamp(1.35rem, 7vw, 1.7rem);
+        letter-spacing: 0.06em;
+        padding-left: 0.06em;
+        line-height: 1.65;
+    }
+
+    .wd-step {
+        padding: 24px 20px;
+    }
+
+    .wd-step:not(:last-child)::after {
+        right: auto;
+        top: auto;
+        left: 50%;
+        bottom: -14px;
+        width: 14px;
+        height: 14px;
+        transform: translateX(-50%) rotate(135deg);
+        display: block;
+    }
+
+    .wd-step:last-child::after {
+        display: none;
+    }
+
+    .wd-step-visual {
+        min-height: 132px;
+        margin-bottom: 18px;
+    }
+
+    .wd-step-visual img {
+        width: min(100%, 210px);
+    }
+
+    .wd-works-disclaimer {
+        padding: 20px 18px;
+        font-size: 0.8rem;
+    }
+
+    .wd-faq summary {
+        padding: 17px 44px 17px 18px;
+        font-size: 0.94rem;
+        gap: 11px;
+    }
+
+    .wd-faq summary::after {
+        right: 18px;
+    }
+
+    .wd-faq-answer {
+        padding: 2px 18px 20px;
+        font-size: 0.88rem;
+        gap: 11px;
+    }
+}
+
+/* ---------- 料金プラン ---------- */
+
+.wd-price-flags {
+    list-style: none;
+    max-width: 880px;
+    margin: 0 auto clamp(34px, 5vw, 50px);
+    padding: 0;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px 12px;
+}
+
+.wd-price-flags li {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 9px 18px;
+    border: 1px solid rgba(184, 155, 94, 0.45);
+    border-radius: 999px;
+    background: rgba(184, 155, 94, 0.08);
+    font-size: 0.84rem;
+    font-weight: 500;
+    letter-spacing: 0.04em;
+    color: var(--ink);
+    line-height: 1.6;
+}
+
+.wd-price-flags li i {
+    flex: none;
+    color: var(--gold);
+    font-size: 0.85rem;
+}
+
+.wd-price-grid {
+    max-width: 980px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: clamp(16px, 2.5vw, 24px);
+    align-items: stretch;
+}
+
+.wd-price-card {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    padding: clamp(30px, 3.8vw, 40px) clamp(22px, 3vw, 30px) clamp(26px, 3.4vw, 34px);
+    background: var(--card);
+    border: 1px solid var(--line);
+    border-top: 3px solid rgba(184, 155, 94, 0.65);
+    border-radius: 12px;
+    box-shadow: var(--soft-shadow);
+    text-align: center;
+}
+
+.wd-price-card--featured {
+    border-color: rgba(184, 155, 94, 0.55);
+    border-top-color: var(--gold);
+    box-shadow: var(--shadow);
+}
+
+.wd-price-badge {
+    position: absolute;
+    top: -13px;
+    left: 50%;
+    transform: translateX(-50%);
+    padding: 5px 18px;
+    border-radius: 999px;
+    background: var(--gold);
+    color: #fff;
+    font-size: 0.7rem;
+    font-weight: 700;
+    letter-spacing: 0.18em;
+    white-space: nowrap;
+}
+
+.wd-price-plan {
+    margin: 0 0 10px;
+    font-size: 0.82rem;
+    font-weight: 700;
+    letter-spacing: 0.28em;
+    text-indent: 0.28em;
+    color: var(--gold);
+}
+
+.wd-price-pages {
+    margin: 0 0 20px;
+    padding-bottom: 18px;
+    border-bottom: 1px solid var(--line);
+    font-family: var(--serif);
+    font-size: 0.92rem;
+    letter-spacing: 0.08em;
+    color: var(--ink);
+}
+
+.wd-price-pages strong {
+    font-size: 1.4rem;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+    margin-right: 2px;
+}
+
+.wd-price-amount {
+    margin: 0;
+    font-family: var(--serif);
+    color: var(--gold);
+    line-height: 1;
+}
+
+.wd-price-amount strong {
+    font-size: clamp(2.5rem, 4.6vw, 3.1rem);
+    font-weight: 600;
+    letter-spacing: 0.01em;
+}
+
+.wd-price-amount span {
+    font-size: clamp(1rem, 2vw, 1.25rem);
+    letter-spacing: 0.1em;
+    margin-left: 2px;
+}
+
+.wd-price-tax {
+    margin: 10px 0 0;
+    font-size: 0.78rem;
+    letter-spacing: 0.12em;
+    color: var(--muted);
+}
+
+.wd-price-desc {
+    flex: 1;
+    margin: 20px 0 0;
+    padding-top: 18px;
+    border-top: 1px solid var(--line);
+    text-align: left;
+    font-size: 0.88rem;
+    line-height: 2;
+    color: var(--text);
+}
+
+/* 全プラン共通 */
+
+.wd-price-common {
+    max-width: 980px;
+    margin: clamp(38px, 5vw, 58px) auto 0;
+    padding: clamp(28px, 4vw, 42px) clamp(22px, 3.4vw, 38px);
+    background:
+        radial-gradient(ellipse 700px 380px at 90% -10%, rgba(184, 155, 94, 0.10), transparent 62%),
+        repeating-linear-gradient(-45deg, rgba(184, 155, 94, 0.05) 0 1px, transparent 1px 13px),
+        var(--warm);
+    border: 1px solid rgba(184, 155, 94, 0.25);
+    border-radius: 14px;
+}
+
+.wd-price-common-title {
+    margin: 0 0 clamp(20px, 3vw, 28px);
+    text-align: center;
+    font-family: var(--serif);
+    font-size: clamp(1.1rem, 2.2vw, 1.3rem);
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    color: var(--ink);
+}
+
+.wd-price-common-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 14px;
+}
+
+.wd-price-common-col {
+    padding: 20px 18px;
+    background: var(--card);
+    border: 1px solid var(--line);
+    border-radius: 10px;
+}
+
+.wd-price-common-cat {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin: 0 0 14px;
+    font-family: var(--serif);
+    font-size: 0.98rem;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    color: var(--ink);
+}
+
+.wd-price-common-cat i {
+    flex: none;
+    width: 32px;
+    height: 32px;
+    display: grid;
+    place-content: center;
+    border-radius: 50%;
+    background: rgba(184, 155, 94, 0.12);
+    color: var(--gold);
+    font-size: 0.82rem;
+}
+
+.wd-price-common-col ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: grid;
+    gap: 10px;
+}
+
+.wd-price-common-col li {
+    position: relative;
+    padding-left: 16px;
+    font-size: 0.86rem;
+    line-height: 1.9;
+    color: var(--text);
+}
+
+.wd-price-common-col li::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 12px;
+    width: 8px;
+    height: 1px;
+    background: var(--gold);
+}
+
+.wd-price-common-note {
+    margin: 18px 0 0;
+    text-align: center;
+    font-size: 0.8rem;
+    line-height: 1.9;
+    color: var(--muted);
+}
+
+/* 締めのコピー・CTA */
+
+.wd-price-conclusion {
+    max-width: 680px;
+    margin: clamp(38px, 5vw, 56px) auto 0;
+    text-align: center;
+}
+
+.wd-price-conclusion-title {
+    margin: 0 0 16px;
+    font-family: var(--serif);
+    font-size: clamp(1.15rem, 2.6vw, 1.5rem);
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    color: var(--ink);
+}
+
+.wd-price-conclusion p:not(.wd-price-conclusion-title) {
+    margin: 0;
+    line-height: 2.15;
+}
+
+.wd-price-cta {
+    display: flex;
+    justify-content: center;
+    margin-top: clamp(30px, 4vw, 44px);
+}
+
+@media (max-width: 1024px) {
+    .wd-price-common-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 900px) {
+    .wd-price-grid {
+        grid-template-columns: 1fr;
+        max-width: 480px;
+        gap: 24px;
+    }
+
+    .wd-price-card {
+        padding: 30px 24px 26px;
+    }
+}
+
+@media (max-width: 620px) {
+    .wd-price-flags {
+        gap: 8px;
+    }
+
+    .wd-price-flags li {
+        padding: 8px 14px;
+        font-size: 0.78rem;
+    }
+
+    .wd-price-common-grid {
+        grid-template-columns: 1fr;
+        gap: 10px;
+    }
+
+    .wd-price-common {
+        padding: 24px 18px;
+    }
+
+    .wd-price-desc {
+        font-size: 0.86rem;
+    }
+}
+
+/* ---------- 制作会社との違い（比較表） ---------- */
+
+.wd-vs-wrap {
+    max-width: 900px;
+    margin: 0 auto;
+    border: 1px solid var(--line);
+    border-radius: 12px;
+    overflow: hidden;
+    background: var(--card);
+    box-shadow: var(--soft-shadow);
+}
+
+.wd-vs {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.9rem;
+}
+
+.wd-vs-corner {
+    width: 22%;
+    background: var(--warm);
+    border-bottom: 1px solid var(--line);
+}
+
+.wd-vs thead th {
+    width: 39%;
+    padding: 15px 20px;
+    background: var(--warm);
+    border-bottom: 1px solid var(--line);
+    text-align: left;
+    font-size: 0.78rem;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    color: var(--muted);
+}
+
+.wd-vs thead th.is-mine {
+    background: var(--gold);
+    border-bottom-color: var(--gold);
+    color: #fff;
+    font-family: var(--serif);
+    font-size: 0.92rem;
+    letter-spacing: 0.08em;
+}
+
+.wd-vs tbody th {
+    padding: 18px 20px;
+    background: rgba(184, 155, 94, 0.05);
+    border-bottom: 1px solid var(--line);
+    text-align: left;
+    white-space: nowrap;
+    font-family: var(--serif);
+    font-size: 0.92rem;
+    font-weight: 600;
+    letter-spacing: 0.06em;
+    color: var(--ink);
+}
+
+.wd-vs tbody td {
+    padding: 18px 20px;
+    border-bottom: 1px solid var(--line);
+    vertical-align: top;
+    line-height: 1.9;
+    color: var(--muted);
+}
+
+.wd-vs tbody td.is-mine {
+    background: rgba(184, 155, 94, 0.08);
+    color: var(--ink);
+    font-weight: 500;
+}
+
+.wd-vs tbody tr:last-child th,
+.wd-vs tbody tr:last-child td {
+    border-bottom: none;
+}
+
+.wd-vs-note {
+    max-width: 720px;
+    margin: clamp(30px, 4vw, 44px) auto 0;
+    line-height: 2.15;
+}
+
+.wd-vs-note p {
+    margin: 0;
+}
+
+@media (max-width: 760px) {
+    .wd-vs-wrap {
+        border: none;
+        border-radius: 0;
+        overflow: visible;
+        background: none;
+        box-shadow: none;
+    }
+
+    .wd-vs,
+    .wd-vs tbody,
+    .wd-vs tr,
+    .wd-vs th,
+    .wd-vs td {
+        display: block;
+        width: auto;
+    }
+
+    .wd-vs thead {
+        display: none;
+    }
+
+    .wd-vs tbody tr {
+        margin-bottom: 14px;
+        background: var(--card);
+        border: 1px solid var(--line);
+        border-radius: 10px;
+        overflow: hidden;
+        box-shadow: var(--soft-shadow);
+    }
+
+    .wd-vs tbody tr:last-child {
+        margin-bottom: 0;
+    }
+
+    .wd-vs tbody th {
+        padding: 12px 18px;
+        background: rgba(184, 155, 94, 0.12);
+        white-space: normal;
+        font-size: 0.95rem;
+    }
+
+    .wd-vs tbody td {
+        padding: 14px 18px;
+        font-size: 0.88rem;
+        line-height: 1.85;
+    }
+
+    .wd-vs tbody td::before {
+        content: attr(data-label);
+        display: block;
+        margin-bottom: 4px;
+        font-size: 0.68rem;
+        font-weight: 700;
+        letter-spacing: 0.1em;
+        color: var(--gold);
+    }
+
+    .wd-vs tbody tr:last-child th,
+    .wd-vs tbody tr:last-child td {
+        border-bottom: 1px solid var(--line);
+    }
+
+    .wd-vs tbody tr td:last-child {
+        border-bottom: none;
+    }
+}
+
+/* ---------- 文字サイズとタップ領域 ----------
+  英字の小見出しは12px以上、スマホの日本語の文字は14px以上、タップできる所は高さ36px以上にそろえる */
+
+.wd-work-cat,
+.wd-price-badge {
+    font-size: 0.75rem;
+}
+
+.wd-breadcrumb a {
+    display: inline-block;
+    padding: 10px 0;
+    margin: -10px 0;
+}
+
+.site-header .site-logo {
+    padding-block: 8px;
+}
+
+@media (max-width: 620px) {
+    .eyebrow,
+    .section-kicker {
+        font-size: 0.75rem;
+        letter-spacing: 0.14em;
+        padding-left: 0.14em;
+    }
+
+    .wd-vs tbody td::before {
+        font-size: 0.75rem;
+    }
+
+    .wd-price-badge {
+        letter-spacing: 0.12em;
+    }
+
+    .wd-price-badge,
+    .wd-price-flags li,
+    .wd-breadcrumb,
+    .wd-support-note,
+    .wd-works-disclaimer,
+    .wd-area-card .wd-area-note,
+    .wd-price-common-note,
+    .wd-price-common-col li,
+    .wd-price-desc,
+    .wd-price-tax,
+    .wd-variation span,
+    .footer-copy {
+        font-size: 0.875rem;
+    }
+
+    .wd-support-note em.gold,
+    .wd-support-note .wd-inline-form-link {
+        font-size: inherit;
+    }
+
+    /* ほかの見出しと同じく画面幅に合わせて縮め、細いスマホで3〜4行に割れないようにする */
+    #zero-plan h2,
+    #features h2,
+    #variations h2,
+    #area h2 {
+        font-size: clamp(1rem, 5.6vw, 1.4rem);
+    }
+}
+
+/* 幅320px前後の小さいスマホで「ホームページ制作まで。」が枠で切れないように */
+@media (max-width: 359px) {
+    .wd-hero-title {
+        font-size: 7.2vw;
+    }
+}
+
+/* ---------- アニメーション抑制 ---------- */
+
+@media (prefers-reduced-motion: reduce) {
+    .wd-work,
+    .wd-work-shot img,
+    .wd-faq summary::after {
+        transition: none;
+    }
+}

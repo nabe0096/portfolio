@@ -1,0 +1,663 @@
+document.addEventListener('DOMContentLoaded', () => {
+
+    // ゴールドパーティクル
+    (function () {
+        const canvas = document.querySelector('.hero-particles');
+        if (!canvas) return;
+        const ctx = canvas.getContext('2d');
+        const isMobile = window.matchMedia('(max-width: 620px)').matches;
+        const COUNT = isMobile ? 20 : 55;
+        let W, H, dpr, particles = [], rafId = null, isVisible = true;
+
+        const GOLD = [[180, 152, 96], [210, 185, 120], [255, 223, 140]];
+
+        const rand = (min, max) => Math.random() * (max - min) + min;
+
+        const make = () => ({
+            x: rand(0, W),
+            y: rand(H * 0.3, H),
+            r: isMobile ? rand(1.2, 2.5) : rand(1.5, 3.5),
+            vy: isMobile ? rand(0.2, 0.5) : rand(0.3, 0.8),
+            vx: rand(-0.1, 0.1),
+            alpha: 0,
+            fadeIn: rand(0.004, 0.01),
+            life: rand(0.4, 0.8),
+            color: GOLD[Math.floor(Math.random() * GOLD.length)],
+        });
+
+        const resize = () => {
+            dpr = window.devicePixelRatio || 1;
+            const newW = canvas.offsetWidth;
+            const newH = canvas.offsetHeight;
+            if (newW === W && newH === H) return;
+            W = newW; H = newH;
+            canvas.width = W * dpr;
+            canvas.height = H * dpr;
+            ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+        };
+
+        const initParticles = () => {
+            particles = [];
+            for (let i = 0; i < COUNT; i++) {
+                const p = make();
+                p.y = rand(0, H);
+                p.alpha = rand(0, 0.6);
+                particles.push(p);
+            }
+        };
+
+        const tick = () => {
+            if (!isVisible) { rafId = null; return; }
+            ctx.clearRect(0, 0, W, H);
+            particles.forEach((p, i) => {
+                p.y -= p.vy;
+                p.x += p.vx;
+                if (p.alpha < p.life) p.alpha += p.fadeIn;
+                else p.alpha = Math.max(0, p.alpha - p.fadeIn * 0.5);
+                if (p.y < -10 || p.alpha <= 0) { particles[i] = make(); return; }
+                ctx.beginPath();
+                ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
+                ctx.fillStyle = `rgba(${p.color[0]},${p.color[1]},${p.color[2]},${p.alpha})`;
+                ctx.fill();
+            });
+            rafId = requestAnimationFrame(tick);
+        };
+
+        // ヒーローが見えないときは停止
+        new IntersectionObserver((entries) => {
+            isVisible = entries[0].isIntersecting;
+            if (isVisible && !rafId) rafId = requestAnimationFrame(tick);
+        }, { threshold: 0 }).observe(canvas.closest('.hero') || canvas);
+
+        // resizeはcanvasサイズ調整のみ（パーティクル再生成しない）
+        let resizeTimer;
+        window.addEventListener('resize', () => {
+            clearTimeout(resizeTimer);
+            resizeTimer = setTimeout(resize, 200);
+        });
+        resize();
+        initParticles();
+        rafId = requestAnimationFrame(tick);
+    })();
+    const header = document.querySelector('[data-header]');
+    const nav = document.querySelector('[data-nav]');
+    const navToggle = document.querySelector('[data-nav-toggle]');
+    const backToTop = document.getElementById('back-to-top');
+    const navLinks = [...document.querySelectorAll('.site-nav a[href^="#"]')];
+    const sections = [...document.querySelectorAll('main section[id]')];
+
+    const closeNav = () => {
+        if (!nav || !navToggle) return;
+        nav.classList.remove('is-open');
+        navToggle.classList.remove('is-open');
+        navToggle.setAttribute('aria-expanded', 'false');
+    };
+
+    if (navToggle && nav) {
+        navToggle.addEventListener('click', () => {
+            const isOpen = nav.classList.toggle('is-open');
+            navToggle.classList.toggle('is-open', isOpen);
+            navToggle.setAttribute('aria-expanded', String(isOpen));
+        });
+    }
+
+    document.querySelectorAll('a[href^="#"]').forEach((link) => {
+        link.addEventListener('click', (event) => {
+            const targetId = link.getAttribute('href');
+            const target = targetId ? document.querySelector(targetId) : null;
+
+            if (!target) return;
+
+            event.preventDefault();
+            closeNav();
+            target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        });
+    });
+
+    const updateChrome = () => {
+        const currentY = window.scrollY;
+        header?.classList.toggle('is-scrolled', currentY > 40);
+        backToTop?.classList.toggle('is-visible', currentY > 650);
+
+        let currentSection = '';
+        sections.forEach((section) => {
+            const top = section.offsetTop - 180;
+            const bottom = top + section.offsetHeight;
+            if (currentY >= top && currentY < bottom) {
+                currentSection = section.id;
+            }
+        });
+
+        navLinks.forEach((link) => {
+            link.classList.toggle('is-active', link.getAttribute('href') === `#${currentSection}`);
+        });
+    };
+
+    let ticking = false;
+    window.addEventListener('scroll', () => {
+        if (ticking) return;
+        window.requestAnimationFrame(() => {
+            updateChrome();
+            ticking = false;
+        });
+        ticking = true;
+    }, { passive: true });
+
+    backToTop?.addEventListener('click', () => {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+
+    const revealObserver = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+            if (!entry.isIntersecting) return;
+            entry.target.classList.add('is-visible');
+            revealObserver.unobserve(entry.target);
+        });
+    }, {
+        rootMargin: '0px 0px 0px 0px',
+        threshold: 0.04
+    });
+
+    document.querySelectorAll('.reveal').forEach((element) => {
+        revealObserver.observe(element);
+    });
+
+    const counterObserver = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+            if (!entry.isIntersecting) return;
+
+            const counter = entry.target;
+            const target = Number(counter.dataset.target || 0);
+            const duration = 1600;
+            const start = performance.now();
+
+            const tick = (now) => {
+                const progress = Math.min((now - start) / duration, 1);
+                const eased = 1 - Math.pow(1 - progress, 4);
+                counter.textContent = Math.floor(target * eased).toLocaleString();
+
+                if (progress < 1) {
+                    requestAnimationFrame(tick);
+                } else {
+                    counter.textContent = target.toLocaleString();
+                }
+            };
+
+            requestAnimationFrame(tick);
+            counterObserver.unobserve(counter);
+        });
+    }, {
+        threshold: 0.35
+    });
+
+    document.querySelectorAll('.counter').forEach((counter) => {
+        counterObserver.observe(counter);
+    });
+
+    const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    const isTouchDevice = window.matchMedia('(hover: none) and (pointer: coarse)').matches;
+
+    const setupAutoCarousel = (carousel, track) => {
+        if (!carousel || !track || prefersReducedMotion || isTouchDevice) return;
+
+        let resumeTimer;
+        let isPaused = false;
+        let lastFrameTime = 0;
+        let autoScrollLeft = track.scrollLeft;
+        const scrollSpeed = 18;
+
+        const stepAutoScroll = (timestamp) => {
+            if (!lastFrameTime) lastFrameTime = timestamp;
+
+            const elapsed = timestamp - lastFrameTime;
+            lastFrameTime = timestamp;
+
+            const maxScrollLeft = track.scrollWidth - track.clientWidth;
+
+            if (!isPaused && maxScrollLeft > 8) {
+                autoScrollLeft += (elapsed / 1000) * scrollSpeed;
+
+                if (autoScrollLeft >= maxScrollLeft - 1) {
+                    autoScrollLeft = 0;
+                }
+
+                track.scrollLeft = autoScrollLeft;
+            }
+
+            requestAnimationFrame(stepAutoScroll);
+        };
+
+        const pauseAutoScroll = () => {
+            isPaused = true;
+            autoScrollLeft = track.scrollLeft;
+            window.clearTimeout(resumeTimer);
+        };
+
+        const resumeAutoScroll = () => {
+            autoScrollLeft = track.scrollLeft;
+            isPaused = false;
+            window.clearTimeout(resumeTimer);
+        };
+
+        const pauseAutoScrollBriefly = () => {
+            pauseAutoScroll();
+            resumeTimer = window.setTimeout(() => {
+                resumeAutoScroll();
+            }, 1200);
+        };
+
+        carousel.addEventListener('mouseenter', pauseAutoScroll);
+        carousel.addEventListener('mouseleave', resumeAutoScroll);
+        carousel.addEventListener('focusin', pauseAutoScroll);
+        carousel.addEventListener('focusout', resumeAutoScroll);
+        track.addEventListener('touchstart', pauseAutoScroll, { passive: true });
+        track.addEventListener('touchend', () => {
+            autoScrollLeft = track.scrollLeft;
+            resumeTimer = window.setTimeout(resumeAutoScroll, 2500);
+        }, { passive: true });
+        track.addEventListener('touchcancel', () => {
+            autoScrollLeft = track.scrollLeft;
+            resumeTimer = window.setTimeout(resumeAutoScroll, 2500);
+        }, { passive: true });
+        track.addEventListener('wheel', pauseAutoScrollBriefly, { passive: true });
+
+        requestAnimationFrame(stepAutoScroll);
+    };
+
+    document.querySelectorAll('[data-auto-carousel]').forEach((carousel) => {
+        setupAutoCarousel(carousel, carousel.querySelector('[data-auto-track]'));
+    });
+
+    setupAutoCarousel(
+        document.querySelector('[data-reel-carousel]'),
+        document.querySelector('[data-reel-track]')
+    );
+
+    // activity-carousel
+    const activityCarousel = document.querySelector('.activity-carousel');
+    const activityTrack = document.querySelector('.activity-track');
+    const activityPrev = document.querySelector('[data-activity-prev]');
+    const activityNext = document.querySelector('[data-activity-next]');
+    if (activityTrack && activityPrev && activityNext) {
+        const isMobileCarousel = () => window.matchMedia('(max-width: 620px)').matches;
+        let currentActivityIndex = 0;
+
+        const getCards = () => [...activityTrack.children];
+
+        const getCardStep = () => {
+            const card = activityTrack.firstElementChild;
+            if (!card) return 300;
+            const gap = parseInt(getComputedStyle(activityTrack).gap) || 14;
+            return card.offsetWidth + gap;
+        };
+
+        const goToActivity = (index) => {
+            const cards = getCards();
+            currentActivityIndex = Math.max(0, Math.min(index, cards.length - 1));
+            if (isMobileCarousel()) {
+                activityTrack.style.transform = '';
+                activityTrack.scrollLeft = currentActivityIndex * getCardStep();
+            } else {
+                activityTrack.style.transform = '';
+                const card = cards[currentActivityIndex];
+                if (card) card.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'start' });
+                else activityTrack.scrollBy({ left: (index - currentActivityIndex) * getCardStep(), behavior: 'smooth' });
+            }
+        };
+
+        activityPrev.addEventListener('click', () => {
+            if (isMobileCarousel()) goToActivity(currentActivityIndex - 1);
+            else activityTrack.scrollBy({ left: -getCardStep(), behavior: 'smooth' });
+        });
+        activityNext.addEventListener('click', () => {
+            if (isMobileCarousel()) goToActivity(currentActivityIndex + 1);
+            else activityTrack.scrollBy({ left: getCardStep(), behavior: 'smooth' });
+        });
+
+        // スワイプ（スマホ用）
+        let touchStartX = 0, touchStartY = 0;
+        activityTrack.addEventListener('touchstart', (e) => {
+            touchStartX = e.touches[0].clientX;
+            touchStartY = e.touches[0].clientY;
+        }, { passive: true });
+        activityTrack.addEventListener('touchend', (e) => {
+            if (!isMobileCarousel()) return;
+            const dx = e.changedTouches[0].clientX - touchStartX;
+            const dy = Math.abs(e.changedTouches[0].clientY - touchStartY);
+            if (Math.abs(dx) > dy && Math.abs(dx) > 40) {
+                goToActivity(currentActivityIndex + (dx < 0 ? 1 : -1));
+            }
+        }, { passive: true });
+
+        window.addEventListener('resize', () => {
+            activityTrack.style.transform = '';
+            if (!isMobileCarousel()) {
+                activityTrack.scrollLeft = 0;
+                currentActivityIndex = 0;
+            }
+        });
+    }
+
+    // 左右ボタン
+    document.querySelectorAll('.movie-carousel, .reel-carousel').forEach((carousel) => {
+        const track = carousel.querySelector('.movie-track, .reel-track');
+        if (!track) return;
+        const prevBtn = carousel.querySelector('[data-carousel-prev]');
+        const nextBtn = carousel.querySelector('[data-carousel-next]');
+        const getCardWidth = () => {
+            const card = track.firstElementChild;
+            if (!card) return 300;
+            return card.offsetWidth + parseInt(getComputedStyle(track).gap || 18);
+        };
+        if (prevBtn) prevBtn.addEventListener('click', () => {
+            track.scrollBy({ left: -getCardWidth(), behavior: 'smooth' });
+        });
+        if (nextBtn) nextBtn.addEventListener('click', () => {
+            track.scrollBy({ left: getCardWidth(), behavior: 'smooth' });
+        });
+    });
+
+    updateChrome();
+
+    // フォトギャラリー ライトボックス
+    const lightbox = document.getElementById('collab-lightbox');
+    const lightboxImg = lightbox?.querySelector('.lightbox-img');
+    const lightboxCaption = lightbox?.querySelector('.lightbox-caption');
+    const lightboxFigure = lightbox?.querySelector('.lightbox-figure');
+    const lightboxStage = lightbox?.querySelector('.lightbox-stage');
+    const lightboxZoom = lightbox?.querySelector('.lightbox-zoom');
+    const galleryButtons = [...document.querySelectorAll('[data-gallery-open]')];
+    const thumbs = [...document.querySelectorAll('.gallery-thumb')];
+    const galleries = new Map();
+    let activeGallery = [];
+    let currentPhoto = 0;
+
+    document.querySelectorAll('[data-gallery-source]').forEach((source) => {
+        const galleryId = source.dataset.gallerySource;
+        if (!galleryId) return;
+        galleries.set(galleryId, [...source.querySelectorAll('img')].map((img) => ({
+            src: img.src,
+            alt: img.alt || '',
+            caption: img.dataset.caption || '',
+        })));
+    });
+
+    thumbs.forEach((thumb) => {
+        const galleryId = thumb.dataset.galleryItem || 'collab';
+        const items = galleries.get(galleryId) || [];
+        items.push({ src: thumb.src, alt: thumb.alt || '', caption: thumb.dataset.caption || '' });
+        galleries.set(galleryId, items);
+    });
+
+    const setZoom = (zoomed) => {
+        if (!lightboxFigure) return;
+        lightboxFigure.classList.toggle('is-zoomed', zoomed);
+        if (lightboxZoom) {
+            lightboxZoom.setAttribute('aria-pressed', String(zoomed));
+            lightboxZoom.setAttribute('aria-label', zoomed ? '拡大をやめる' : '拡大する');
+            const icon = lightboxZoom.querySelector('i');
+            if (icon) icon.className = zoomed
+                ? 'fa-solid fa-magnifying-glass-minus'
+                : 'fa-solid fa-magnifying-glass-plus';
+        }
+        if (lightboxStage && !zoomed) {
+            lightboxStage.scrollTo(0, 0);
+        }
+    };
+
+    const renderPhoto = () => {
+        const photo = activeGallery[currentPhoto];
+        if (!photo) return;
+        setZoom(false);
+        lightboxImg.src = photo.src;
+        lightboxImg.alt = photo.alt;
+        if (lightboxCaption) {
+            lightboxCaption.textContent = photo.caption || '';
+            lightboxCaption.hidden = !photo.caption;
+        }
+    };
+
+    const openLightbox = (galleryId = 'collab', index = 0) => {
+        activeGallery = galleries.get(galleryId) || [];
+        if (!lightbox || !lightboxImg || !activeGallery.length) return;
+        currentPhoto = index;
+        renderPhoto();
+        lightbox.classList.add('is-open');
+        lightbox.setAttribute('aria-hidden', 'false');
+        document.body.style.overflow = 'hidden';
+    };
+
+    const closeLightbox = () => {
+        setZoom(false);
+        lightbox.classList.remove('is-open');
+        lightbox.setAttribute('aria-hidden', 'true');
+        document.body.style.overflow = '';
+    };
+
+    const showPhoto = (index) => {
+        if (!activeGallery.length) return;
+        currentPhoto = (index + activeGallery.length) % activeGallery.length;
+        renderPhoto();
+    };
+
+    thumbs.forEach((thumb, i) => {
+        thumb.addEventListener('click', () => openLightbox(thumb.dataset.galleryItem || 'collab', i));
+    });
+
+    galleryButtons.forEach((button) => {
+        button.addEventListener('click', () => openLightbox(button.dataset.galleryOpen || 'collab', 0));
+    });
+
+    // イベント一覧：開いた行の写真を押すと、その写真から拡大表示する
+    document.querySelectorAll('.event-photos[data-gallery-source]').forEach((source) => {
+        const galleryId = source.dataset.gallerySource;
+        source.querySelectorAll('img').forEach((img, i) => {
+            img.addEventListener('click', () => openLightbox(galleryId, i));
+            img.addEventListener('keydown', (e) => {
+                if (e.key === 'Enter' || e.key === ' ') {
+                    e.preventDefault();
+                    openLightbox(galleryId, i);
+                }
+            });
+        });
+    });
+    lightboxZoom?.addEventListener('click', () => {
+        setZoom(!lightboxFigure.classList.contains('is-zoomed'));
+    });
+    lightboxImg?.addEventListener('click', () => {
+        setZoom(!lightboxFigure.classList.contains('is-zoomed'));
+    });
+
+    lightbox?.querySelector('.lightbox-close')?.addEventListener('click', closeLightbox);
+    lightbox?.querySelector('.lightbox-prev')?.addEventListener('click', () => showPhoto(currentPhoto - 1));
+    lightbox?.querySelector('.lightbox-next')?.addEventListener('click', () => showPhoto(currentPhoto + 1));
+
+    lightbox?.addEventListener('click', (e) => {
+        if (e.target === lightbox) closeLightbox();
+    });
+
+    document.addEventListener('keydown', (e) => {
+        if (!lightbox?.classList.contains('is-open')) return;
+        if (e.key === 'Escape') closeLightbox();
+        if (e.key === 'ArrowLeft') showPhoto(currentPhoto - 1);
+        if (e.key === 'ArrowRight') showPhoto(currentPhoto + 1);
+    });
+});
+
+/* ショートフィルム：スマホ幅で横に自動スクロール（操作したら停止） */
+(function () {
+    const track = document.querySelector('[data-autoscroll]');
+    if (!track) return;
+
+    const items = Array.from(track.querySelectorAll('iframe'));
+    if (items.length < 2) return;
+
+    const mq = window.matchMedia('(max-width: 900px)');
+    const reduce = window.matchMedia('(prefers-reduced-motion: reduce)');
+    let timer = null;
+    let index = 0;
+    let stopped = false;
+
+    function goTo(i) {
+        const el = items[i];
+        if (!el) return;
+        const left = el.offsetLeft - (track.clientWidth - el.clientWidth) / 2;
+        track.scrollTo({ left: left, behavior: 'smooth' });
+    }
+
+    function tick() {
+        if (stopped || document.hidden) return;
+        index = (index + 1) % items.length;
+        goTo(index);
+    }
+
+    let inView = false;
+
+    function start() {
+        if (timer || stopped || reduce.matches || !mq.matches || !inView) return;
+        timer = setInterval(tick, 4500);
+    }
+
+    function stop() {
+        if (timer) {
+            clearInterval(timer);
+            timer = null;
+        }
+    }
+
+    function stopForGood() {
+        stopped = true;
+        stop();
+    }
+
+    ['pointerdown', 'touchstart', 'wheel'].forEach(function (ev) {
+        track.addEventListener(ev, stopForGood, { passive: true });
+    });
+
+    mq.addEventListener('change', function () {
+        if (mq.matches) {
+            start();
+        } else {
+            stop();
+            track.scrollTo({ left: 0 });
+            index = 0;
+        }
+    });
+
+    if ('IntersectionObserver' in window) {
+        new IntersectionObserver(function (entries) {
+            inView = entries[0].isIntersecting;
+            if (inView) {
+                start();
+            } else {
+                stop();
+            }
+        }, { threshold: 0.35 }).observe(track);
+    } else {
+        inView = true;
+    }
+
+    document.addEventListener('visibilitychange', function () {
+        if (document.hidden) {
+            stop();
+        } else {
+            start();
+        }
+    });
+
+    start();
+})();
+
+/* イベント一覧：#tvcm などのリンクで来たら、その行を開く */
+(function () {
+    const openFromHash = () => {
+        if (!location.hash) return;
+        const row = document.getElementById(decodeURIComponent(location.hash.slice(1)));
+        if (row && row.tagName === 'DETAILS') row.open = true;
+    };
+    window.addEventListener('hashchange', openFromHash);
+    document.querySelectorAll('a[href^="#"]').forEach((link) => {
+        link.addEventListener('click', () => setTimeout(openFromHash, 0));
+    });
+    openFromHash();
+})();
+
+/* トップの背景動画：画面の幅で横長／縦長を選び、再生できたら表示。別タブ・画面外では止める */
+(function () {
+    var v = document.querySelector('.hero-video');
+    if (!v) return;
+    var reduce = window.matchMedia('(prefers-reduced-motion: reduce)');
+    var sp = window.matchMedia('(max-width: 700px)');
+
+    var load = function () {
+        var src = sp.matches ? v.dataset.srcSp : v.dataset.srcPc;
+        if (v.getAttribute('src') === src) return;
+        if (sp.matches && v.dataset.posterSp) v.setAttribute('poster', v.dataset.posterSp);
+        v.setAttribute('src', src);
+        v.load();
+        if (!reduce.matches) {
+            var p = v.play();
+            if (p && p.catch) p.catch(function () {});
+        }
+    };
+    v.addEventListener('playing', function () { v.classList.add('is-ready'); });
+    v.addEventListener('loadeddata', function () { if (reduce.matches) v.classList.add('is-ready'); });
+
+    if (reduce.matches) {
+        v.classList.add('is-ready');       // ポスターだけ
+        return;
+    }
+    load();
+    sp.addEventListener('change', load);
+
+    var hero = v.closest('.hero');
+    var inView = true;
+    var apply = function () {
+        if (document.hidden || !inView) { v.pause(); return; }
+        var p = v.play();
+        if (p && p.catch) p.catch(function () {});
+    };
+    document.addEventListener('visibilitychange', apply);
+    if ('IntersectionObserver' in window && hero) {
+        new IntersectionObserver(function (es) {
+            inView = es[0].isIntersecting;
+            apply();
+        }, { threshold: 0.05 }).observe(hero);
+    }
+})();
+
+
+/* 2026-11-10 動画は最初の3本だけ読み込み、ボタンを押したら残りを出す（ページを軽くする） */
+(function () {
+    document.querySelectorAll('[data-more-videos]').forEach(function (btn) {
+        btn.addEventListener('click', function () {
+            var wrap = btn.closest('.more-videos');
+            var carousel = wrap && wrap.previousElementSibling;
+            if (!carousel) return;
+            carousel.querySelectorAll('[data-more-card]').forEach(function (card) {
+                var f = card.querySelector('iframe[data-src]');
+                if (f) { f.setAttribute('src', f.dataset.src); f.removeAttribute('data-src'); }
+                card.hidden = false;
+            });
+            wrap.remove();
+        });
+    });
+})();
+
+/* 2026-11-10 スマホ：最初の画面を過ぎたら相談ボタンを下に出し、お問い合わせの章とフッターでは隠す */
+(function () {
+    var cta = document.getElementById('sticky-cta');
+    var hero = document.getElementById('hero');
+    if (!cta || !hero) return;
+    var pastHero = false, nearEnd = false;
+    var apply = function () { cta.classList.toggle('is-visible', pastHero && !nearEnd); };
+    if (!('IntersectionObserver' in window)) { cta.classList.add('is-visible'); return; }
+    new IntersectionObserver(function (es) { pastHero = !es[0].isIntersecting; apply(); }, { threshold: 0.2 }).observe(hero);
+    var seen = new Set();
+    var endObs = new IntersectionObserver(function (es) {
+        es.forEach(function (e) { if (e.isIntersecting) seen.add(e.target); else seen.delete(e.target); });
+        nearEnd = seen.size > 0; apply();
+    }, { threshold: 0.15 });
+    [document.getElementById('contact'), document.querySelector('.site-footer')].forEach(function (el) { if (el) endObs.observe(el); });
+})();

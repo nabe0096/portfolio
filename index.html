@@ -152,6 +152,10 @@ p,li{text-wrap:pretty;line-break:strict}
 .num span{font-weight:800;font-size:13px;display:flex;justify-content:center;align-items:center;gap:6px}
 .num em{font-style:normal;font-size:12px;font-weight:700;opacity:.8}
 .num:nth-child(4){grid-column:1/-1}
+.num-sns{display:flex;justify-content:center;gap:14px;margin-top:22px}
+.num-sns a{width:60px;height:60px;display:grid;place-items:center;font-size:28px;color:var(--ink);text-decoration:none;background:var(--white);border:var(--bd);border-radius:14px 5px 12px 4px;box-shadow:4px 4px 0 var(--ink);transition:transform .15s,box-shadow .15s}
+.num-sns a:hover,.num-sns a:active{transform:translate(2px,2px);box-shadow:2px 2px 0 var(--ink);background:var(--yellow)}
+@media(min-width:760px){.num-sns{gap:18px;margin-top:26px}.num-sns a{width:68px;height:68px;font-size:32px}}
 .num b .dg{font-size:1em;font-weight:inherit;gap:0;display:inline-block;position:relative;overflow:hidden;height:1.1em;line-height:1.1;vertical-align:top}
 .num b .dg i{font-style:normal;visibility:hidden}
 .num b .dg u{position:absolute;left:50%;top:0;text-decoration:none;display:flex;flex-direction:column;align-items:center;transform:translate(-50%,0);will-change:transform}
@@ -446,6 +450,12 @@ p,li{text-wrap:pretty;line-break:strict}
         <div class="num rv"><span><i class="fa-brands fa-instagram red" aria-hidden="true"></i>Instagram</span><b>197,351<small>人</small></b><em>フォロワー</em></div>
         <div class="num rv"><span><i class="fa-brands fa-tiktok" aria-hidden="true"></i>TikTok</span><b>111,400<small>人</small></b><em>フォロワー</em></div>
       </div>
+      <nav class="num-sns rv" aria-label="SNSを見る">
+        <a href="https://www.youtube.com/c/nabekitchen" target="_blank" rel="noopener noreferrer" aria-label="YouTube"><i class="fa-brands fa-youtube" style="color:#f00" aria-hidden="true"></i></a>
+        <a href="https://www.instagram.com/nabeno_kitchen/" target="_blank" rel="noopener noreferrer" aria-label="Instagram"><i class="fa-brands fa-instagram" style="color:#e4405f" aria-hidden="true"></i></a>
+        <a href="https://www.tiktok.com/@nabekitchen" target="_blank" rel="noopener noreferrer" aria-label="TikTok"><i class="fa-brands fa-tiktok" aria-hidden="true"></i></a>
+        <a href="https://x.com/nabenodaidocolo" target="_blank" rel="noopener noreferrer" aria-label="X"><i class="fa-brands fa-x-twitter" aria-hidden="true"></i></a>
+      </nav>
     </div>
   </section>
 

@@ -64,7 +64,7 @@ p,li{text-wrap:pretty;line-break:strict}
 .logo{white-space:nowrap}
 .logo small{display:block;font-size:12px;font-weight:700;letter-spacing:.12em;line-height:1;color:var(--red)}
 .nav{display:none}
-.nav a{font-weight:800;font-size:14px;text-decoration:none;padding:6px 2px;border-bottom:3px solid transparent}
+.nav a{font-weight:800;font-size:14px;text-decoration:none;white-space:nowrap;padding:6px 2px;border-bottom:3px solid transparent}
 .nav a:hover{border-color:var(--red)}
 .header .btn{white-space:nowrap;min-height:42px;padding:6px 16px;font-size:13px;box-shadow:3px 3px 0 var(--ink)}
 @media(max-width:359px){.logo{font-size:14px;gap:6px}.logo small{letter-spacing:.04em}.logo-mark{width:34px;height:34px}.header .btn{padding:6px 12px}.header .btn i{display:none}}
@@ -114,8 +114,7 @@ p,li{text-wrap:pretty;line-break:strict}
 .sec--white{background:var(--white);border-block:var(--bd)}
 .sec--yellow{background:var(--yellow);border-block:var(--bd)}
 .sec--sky{background:var(--sky);border-block:var(--bd)}
-.sec-top{display:flex;justify-content:space-between;align-items:center;border-bottom:var(--bd);padding-bottom:8px;margin-bottom:26px;font-weight:900;font-size:12px;letter-spacing:.14em}
-.sec-top span:last-child{letter-spacing:.04em}
+.sec-top{display:flex;justify-content:space-between;align-items:center;border-bottom:var(--bd);padding-bottom:8px;margin-bottom:26px;font-weight:900;font-size:clamp(20px,5.6vw,32px);line-height:1.2;letter-spacing:.1em;white-space:nowrap}
 .label{display:inline-block;background:var(--yellow);border:var(--bd);border-radius:10px 4px 9px 3px;padding:3px 12px;font-weight:900;font-size:13px;box-shadow:3px 3px 0 var(--ink);transform:rotate(-1.5deg)}
 .sec--yellow .label{background:var(--white)}
 .h2{font-weight:900;font-size:clamp(27px,7.6vw,44px);line-height:1.35;margin-top:14px}
@@ -373,6 +372,7 @@ p,li{text-wrap:pretty;line-break:strict}
     </a>
     <nav class="nav" aria-label="メニュー">
       <a href="#services">サービス</a>
+      <a href="web-design.html">ホームページ制作</a>
       <a href="#movies">映像</a>
       <a href="#works">実績</a>
       <a href="#about">私について</a>
@@ -401,7 +401,6 @@ p,li{text-wrap:pretty;line-break:strict}
           <a class="btn" href="https://www.nabenokitchen.com/contact/" target="_blank" rel="noopener noreferrer"><i class="fa-regular fa-envelope" aria-hidden="true"></i>ご依頼・ご相談はこちら</a>
           <a class="btn btn--white" href="#services">サービスを見る <i class="fa-solid fa-arrow-down" aria-hidden="true"></i></a>
         </div>
-        <p class="hero-hash"><span># 宮崎県都城市</span><span># 男飯料理研究家</span><span># 出張撮影OK</span></p>
       </div>
     </div>
   </section>
@@ -420,7 +419,7 @@ p,li{text-wrap:pretty;line-break:strict}
   <!-- 数字 -->
   <section class="sec">
     <div class="wrap">
-      <div class="sec-top"><span>01 / NUMBERS</span><span>2026年11月現在</span></div>
+      <div class="sec-top"><span>01 / NUMBERS</span></div>
       <span class="label rv">まずは数字から！</span>
       <h2 class="h2 rv">自分のSNSで、<span class="ul nb">結果を出してきました。</span></h2>
       <div class="nums">
@@ -435,7 +434,7 @@ p,li{text-wrap:pretty;line-break:strict}
   <!-- お悩み -->
   <section class="sec sec--white" id="problems">
     <div class="wrap">
-      <div class="sec-top"><span>02 / PROBLEMS</span><span>こんなお悩みに</span></div>
+      <div class="sec-top"><span>02 / PROBLEMS</span></div>
       <div class="prob">
         <div>
           <span class="label rv">お店・会社のご担当者さまへ</span>
@@ -456,7 +455,7 @@ p,li{text-wrap:pretty;line-break:strict}
   <!-- サービス -->
   <section class="sec" id="services">
     <div class="wrap">
-      <div class="sec-top"><span>03 / SERVICES</span><span>できること</span></div>
+      <div class="sec-top"><span>03 / SERVICES</span></div>
       <span class="label rv">ひとりで7役！</span>
       <h2 class="h2 rv">発信にまつわること、<br><span class="ul">まるごと頼めます。</span></h2>
       <div class="tiles">
@@ -513,7 +512,7 @@ p,li{text-wrap:pretty;line-break:strict}
   <!-- 映像 -->
   <section class="sec sec--sky" id="movies">
     <div class="wrap">
-      <div class="sec-top"><span>04 / MOVIES</span><span>映像実績</span></div>
+      <div class="sec-top"><span>04 / MOVIES</span></div>
       <span class="label rv">これが私の映像です</span>
       <h2 class="h2 rv">一皿の魅力を、<br><span class="ul">最大限に引き出す。</span></h2>
       <p class="sec-lead rv">光・音・動き・シズル感。料理がいちばん美味しく見える瞬間を撮ります。</p>
@@ -575,7 +574,7 @@ p,li{text-wrap:pretty;line-break:strict}
   <!-- 実績 -->
   <section class="sec" id="works">
     <div class="wrap">
-      <div class="sec-top"><span>05 / WORKS</span><span>活動実績</span></div>
+      <div class="sec-top"><span>05 / WORKS</span></div>
       <span class="label rv">発信だけじゃない！</span>
       <h2 class="h2 rv">作って、届けて、<br><span class="ul">使ってもらうまで。</span></h2>
       <p class="hint hint--sp" aria-hidden="true">← 横に動かして見られます →</p>
@@ -656,7 +655,7 @@ p,li{text-wrap:pretty;line-break:strict}
   <!-- 私について -->
   <section class="sec sec--white" id="about">
     <div class="wrap">
-      <div class="sec-top"><span>06 / ABOUT</span><span>私について</span></div>
+      <div class="sec-top"><span>06 / ABOUT</span></div>
       <span class="label rv">どうも、なべです！</span>
       <h2 class="h2 rv">地域の美味しいを、<br><span class="ul">未来に残す。</span></h2>
       <div class="about">

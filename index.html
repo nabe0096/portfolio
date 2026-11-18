@@ -152,6 +152,10 @@ p,li{text-wrap:pretty;line-break:strict}
 .num span{font-weight:800;font-size:13px;display:flex;justify-content:center;align-items:center;gap:6px}
 .num em{font-style:normal;font-size:12px;font-weight:700;opacity:.8}
 .num:nth-child(4){grid-column:1/-1}
+.num b .dg{font-size:1em;font-weight:inherit;gap:0;display:inline-block;position:relative;overflow:hidden;height:1.1em;line-height:1.1;vertical-align:top}
+.num b .dg i{font-style:normal;visibility:hidden}
+.num b .dg u{position:absolute;left:50%;top:0;text-decoration:none;display:flex;flex-direction:column;align-items:center;transform:translate(-50%,0);will-change:transform}
+.num b .dg u span{display:block;height:1.1em;line-height:1.1;font-size:1em;font-weight:inherit;gap:0}
 @media(min-width:760px){.nums{grid-template-columns:repeat(3,minmax(0,1fr))}.num:nth-child(4){grid-column:auto}.num b{font-size:clamp(28px,4.2vw,40px)}.num:first-child b{font-size:clamp(46px,9vw,76px)}}
 @media(min-width:1040px){.nums{grid-template-columns:1.5fr repeat(3,minmax(0,1fr))}.num:first-child{grid-column:auto}.num{display:flex;flex-direction:column;justify-content:center}.num:first-child b{font-size:60px}}
 
@@ -813,6 +817,42 @@ b.addEventListener('click',function(e){e.stopPropagation();set(!h.classList.cont
 h.querySelector('.nav').addEventListener('click',function(e){if(e.target.closest('a'))set(false)});
 document.addEventListener('click',function(e){if(!h.contains(e.target))set(false)});
 document.addEventListener('keydown',function(e){if(e.key==='Escape')set(false)});
+})();
+</script>
+<script>
+/* 数字の札：見えたら数字がスロットのように回って止まる。HTMLの数字はそのまま（毎朝の数字更新が書き換える）。終わったら元の文字に戻す */
+(function(){
+  if(!('IntersectionObserver' in window)||matchMedia('(prefers-reduced-motion:reduce)').matches)return;
+  var bs=[].slice.call(document.querySelectorAll('.nums .num b'));
+  function spin(b,delay){
+    var node=b.firstChild;if(!node||node.nodeType!==3)return;
+    var txt=node.nodeValue,orig=b.innerHTML,frag=document.createDocumentFragment(),reels=[],k=0;
+    b.setAttribute('aria-label',b.textContent);
+    txt.split('').forEach(function(ch){
+      if(!/[0-9]/.test(ch)){frag.appendChild(document.createTextNode(ch));return}
+      var dg=document.createElement('span');dg.className='dg';dg.setAttribute('aria-hidden','true');
+      var sizer=document.createElement('i');sizer.textContent=ch;dg.appendChild(sizer);
+      var u=document.createElement('u'),n=20+k*4,t=+ch,seq=[];
+      for(var j=n;j>=0;j--)seq.push((t-j%10+10)%10);
+      seq.forEach(function(d){var sp=document.createElement('span');sp.textContent=d;u.appendChild(sp)});
+      dg.appendChild(u);frag.appendChild(dg);reels.push({u:u,n:n,k:k});k++;
+    });
+    b.replaceChild(frag,node);
+    var last=0;
+    requestAnimationFrame(function(){requestAnimationFrame(function(){
+      reels.forEach(function(r){
+        var dur=1100+r.k*170;last=Math.max(last,dur);
+        r.u.style.transition='transform '+dur+'ms cubic-bezier(.16,.84,.3,1) '+delay+'ms';
+        r.u.style.transform='translate(-50%,-'+(r.n*1.1)+'em)';
+      });
+      setTimeout(function(){b.innerHTML=orig;b.removeAttribute('aria-label')},last+delay+200);
+    })});
+  }
+  var io=new IntersectionObserver(function(es){es.forEach(function(e){
+    if(!e.isIntersecting)return;io.unobserve(e.target);
+    spin(e.target,350+bs.indexOf(e.target)*120);
+  })},{threshold:.6});
+  bs.forEach(function(b){io.observe(b)});
 })();
 </script>
 </body>

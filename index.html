@@ -195,6 +195,15 @@ p,li{text-wrap:pretty;line-break:strict}
 .local img{width:100%;max-width:440px;margin-inline:auto;border:var(--bd);border-radius:12px 5px 12px 5px;aspect-ratio:16/9;object-fit:cover;background:var(--sky)}
 .local h3{font-weight:900;font-size:clamp(19px,5.4vw,26px);line-height:1.45}
 .local p{font-weight:700;font-size:14px}
+.pkg{position:relative;display:grid;gap:14px;align-items:center;margin-top:34px;background:var(--yellow);border:var(--bd);border-radius:18px 6px 16px 5px;box-shadow:6px 6px 0 var(--red);padding:26px 18px 20px;color:var(--ink);text-decoration:none;text-align:center}
+.pkg img{width:100%;max-width:440px;margin-inline:auto;border:var(--bd);border-radius:12px 5px 12px 5px;aspect-ratio:16/9;object-fit:cover}
+.pkg-tag{position:absolute;top:-14px;left:14px;background:var(--red);color:#fff;border:var(--bd);border-radius:999px;padding:1px 14px;font-weight:900;font-size:13px;transform:rotate(-3deg);box-shadow:2px 2px 0 var(--ink)}
+.pkg-body{display:grid;gap:8px;justify-items:center}
+.pkg-t{font-weight:900;font-size:clamp(21px,5.8vw,28px);line-height:1.35}
+.pkg-c{font-weight:700;font-size:14px;line-height:1.6;text-wrap:balance}
+.pkg-p{font-weight:900;font-size:17px}.pkg-p b{color:var(--red);font-size:1.3em}
+.pkg:hover .btn,.pkg:focus-visible .btn{transform:translate(-1px,-1px)}
+@media (min-width:760px){.pkg{grid-template-columns:1fr 1fr;text-align:left;padding:26px 24px 22px}.pkg-body{justify-items:start}}
 @media(min-width:700px){.cards{grid-template-columns:repeat(2,1fr)}}
 @media(min-width:1000px){.cards{grid-template-columns:repeat(3,1fr)}.card--wide{grid-column:2/3}.local{grid-template-columns:300px 1fr auto;gap:26px;text-align:left;padding:26px 30px}.local img{width:300px}}
 
@@ -424,6 +433,7 @@ textarea.cf-in{resize:vertical;min-height:130px;line-height:1.6}
     <nav class="nav" id="nav" aria-label="メニュー">
       <a href="#services">サービス</a>
       <a href="web-design.html">ホームページ制作</a>
+      <a href="package.html">企業向けパッケージ</a>
       <a href="#movies">映像</a>
       <a href="#works">実績</a>
       <a href="#about">私について</a>
@@ -556,6 +566,17 @@ textarea.cf-in{resize:vertical;min-height:130px;line-height:1.6}
         <div id="svc-6"><div class="dlg-img"><img src="images/pop/svc6-class.webp?v=2" alt="" width="1000" height="563"></div><div class="dlg-body"><p class="card-en"><i class="fa-solid fa-utensils" aria-hidden="true"></i>COOKING CLASS</p><h3>料理教室</h3><ul><li>個人・グループ向けの料理教室</li><li>イベントでのフードコーディネート</li><li><span class="mk">テレビ番組のフードコーディネート経験あり</span></li><li>企業・自治体向けの講演・実演も</li></ul><div class="dlg-links"><a class="chip" href="https://www.instagram.com/reels/C7V5NP_xyY8/" target="_blank" rel="noopener noreferrer">料理教室の様子 <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></a><a class="chip" href="#tvcm">フードコーディネート実績 <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></a></div><a class="btn btn--red" href="#contact" data-kind="料理教室・講演"><i class="fa-regular fa-envelope" aria-hidden="true"></i>この内容で相談する</a></div></div>
         <div id="svc-7"><div class="dlg-img"><img src="images/pop/svc7-ai.webp?v=2" alt="" width="1000" height="563"></div><div class="dlg-body"><p class="card-en"><i class="fa-solid fa-wand-magic-sparkles" aria-hidden="true"></i>AI SUPPORT</p><h3>AI活用サポート</h3><ul><li>ChatGPTやClaudeなど、生成AIで業務を効率化</li><li>プロンプト作成からワークフロー構築まで対応</li></ul><a class="btn btn--red" href="#contact" data-kind="アプリ・ツール開発"><i class="fa-regular fa-envelope" aria-hidden="true"></i>この内容で相談する</a></div></div>
       </div>
+      <!-- 企業向けパッケージ（2026-11-24 社長「ポートフォリオサイトに企業向けパッケージの欄を作って」）。くわしくは package.html -->
+      <a class="pkg rv" href="package.html">
+        <span class="pkg-tag">企業・お店のみなさまへ</span>
+        <img src="images/pop/wd-allin.webp?v=2" alt="道具が入った箱を開けて見せるなべくんのイラスト" width="1000" height="563" loading="lazy">
+        <span class="pkg-body">
+          <span class="pkg-t">半年まるごとパッケージ</span>
+          <span class="pkg-c">ホームページ・写真・SNSの投稿の型・社内の仕組みを、<span class="nb">半年でまとめて。</span></span>
+          <span class="pkg-p"><b>月20万円</b> × 6か月</span>
+          <span class="btn btn--red">くわしく見る <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></span>
+        </span>
+      </a>
       <div class="local rv">
         <img src="images/pop/local-visit.webp?v=2" alt="黄色い車で宮崎・鹿児島のお客さまのもとへ向かうなべくん" width="1000" height="563" loading="lazy">
         <div>
@@ -759,6 +780,7 @@ textarea.cf-in{resize:vertical;min-height:130px;line-height:1.6}
         <img src="images/pop/contact-talk.webp?v=2" alt="テーブル越しに手を振って相談を迎えるなべくん" width="1000" height="563" loading="lazy">
         <form class="cform" id="contact-form" novalidate>
           <input type="text" name="botcheck" class="hp" tabindex="-1" autocomplete="off" aria-hidden="true">
+          <input type="hidden" name="入口" id="cf-src" value="">
           <div class="cf-row">
             <span class="cf-label" id="cf-l-kind">ご相談の内容<em>必須</em></span>
             <div class="cf-chips" role="group" aria-labelledby="cf-l-kind" id="cf-kind">
@@ -769,6 +791,7 @@ textarea.cf-in{resize:vertical;min-height:130px;line-height:1.6}
               <label><input type="checkbox" name="ご相談の内容" value="ホームページ制作"><span>ホームページ制作</span></label>
               <label><input type="checkbox" name="ご相談の内容" value="料理教室・講演"><span>料理教室・講演</span></label>
               <label><input type="checkbox" name="ご相談の内容" value="アプリ・ツール開発"><span>アプリ・ツール開発</span></label>
+              <label><input type="checkbox" name="ご相談の内容" value="半年まるごとパッケージ"><span>半年まるごとパッケージ</span></label>
               <label><input type="checkbox" name="ご相談の内容" value="その他"><span>その他</span></label>
             </div>
             <p class="cf-err" data-err="cf-kind"></p>
@@ -961,13 +984,23 @@ document.addEventListener('keydown',function(e){if(e.key==='Escape')set(false)})
     if(!FORM.accessKey){all.textContent='いまフォームの準備中です。お手数ですが InstagramのDM からご連絡ください。';return}
     var d=new FormData(f),kinds=d.getAll('ご相談の内容').join('・'),name=d.get('お名前').trim();
     var body={access_key:FORM.accessKey,subject:FORM.subjectPrefix+name+'様／'+kinds,from_name:'なべのポートフォリオ',replyto:d.get('メールアドレス').trim(),botcheck:''};
-    body['ご相談の内容']=kinds;['お名前','会社・店舗名','メールアドレス','電話番号','ご相談の詳細'].forEach(function(k){var v=(d.get(k)||'').trim();if(v)body[k]=v});
+    body['ご相談の内容']=kinds;['お名前','会社・店舗名','メールアドレス','電話番号','ご相談の詳細','入口'].forEach(function(k){var v=(d.get(k)||'').trim();if(v)body[k]=v});
     btn.disabled=true;btn.querySelector('span').textContent='送信中…';
     fetch(FORM.endpoint,{method:'POST',headers:{'Content-Type':'application/json','Accept':'application/json'},body:JSON.stringify(body)})
       .then(function(r){return r.json().then(function(j){if(!r.ok||!j.success)throw new Error(j.message||'failed');return j})})
       .then(function(){f.hidden=true;done.hidden=false;done.focus();done.scrollIntoView({block:'center'})})
       .catch(function(){all.textContent='うまく送れませんでした。時間をおいてもう一度押すか、InstagramのDM からご連絡ください。';btn.disabled=false;btn.querySelector('span').textContent='この内容で送る'});
   });
+})();
+</script>
+<script>
+/* 別のページ（package.html）の相談ボタンから来たとき：内容に印を付け、どのページから来たかをメールに残す（2026-11-24） */
+(function(){
+  var f=document.getElementById('contact-form');if(!f)return;
+  var KIND={package:['半年まるごとパッケージ','企業向けパッケージのページ（package.html）']};
+  var k=(new URLSearchParams(location.search)).get('kind');if(!k||!KIND[k])return;
+  var c=f.querySelector('input[name="ご相談の内容"][value="'+KIND[k][0]+'"]');if(c)c.checked=true;
+  var s=document.getElementById('cf-src');if(s)s.value=KIND[k][1];
 })();
 </script>
 <script>

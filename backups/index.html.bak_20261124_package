@@ -1,0 +1,992 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>なべ｜料理動画・写真撮影・SNS運用・ホームページ制作（宮崎県都城市）</title>
+<meta name="description" content="男飯料理研究家・SNSトータルコーディネーター なべのポートフォリオサイト。料理動画制作、レシピ開発、SNS運用支援、YouTubeコンサルティングなど幅広く対応します。">
+<meta name="keywords" content="料理研究家,SNS,YouTube,Instagram,ポートフォリオ,なべ,渡辺,レシピ開発,動画制作,SNSコンサルティング">
+<meta name="author" content="なべ">
+<meta property="og:type" content="website">
+<meta property="og:title" content="なべ｜料理動画・写真撮影・SNS運用・ホームページ制作（宮崎県都城市）">
+<meta property="og:description" content="SNS総フォロワー62万人突破。料理動画制作・レシピ開発・SNSコンサルティングなど、発信にまつわる業務をトータルで支援します。">
+<meta property="og:image" content="https://nabe0096.github.io/portfolio/images/ogp.png">
+<meta property="og:url" content="https://nabe0096.github.io/portfolio/">
+<meta property="og:site_name" content="Nabe's Portfolio">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Nabe's Portfolio | 男飯料理研究家 & SNSトータルコーディネーター">
+<meta name="twitter:description" content="料理とSNSの現場経験を活かし、企画・撮影・編集・運用まで一気通貫で支援します。">
+<meta name="twitter:image" content="https://nabe0096.github.io/portfolio/images/ogp.png">
+<link rel="canonical" href="https://nabe0096.github.io/portfolio/">
+<link rel="icon" type="image/png" href="images/bousi.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@500;700;800;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+<style>
+:root{
+  --ink:#19191b; --paper:#fff9eb; --white:#fffdf7; --yellow:#ffe94a; --red:#f45340;
+  --orange:#ff9a5c; --sky:#6cc5f0; --pink:#ffc2c7; --green:#7ddc9a;
+  --bd:3px solid var(--ink);
+  --sh:5px 5px 0 var(--ink);
+  --wrap:1120px;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{font-family:"M PLUS Rounded 1c","Hiragino Maru Gothic ProN","Hiragino Kaku Gothic ProN",Meiryo,sans-serif;font-weight:500;color:var(--ink);background:var(--paper);line-height:1.8;font-size:15px;overflow-x:hidden;padding-bottom:0}
+img,video{max-width:100%;height:auto;display:block}
+a{color:inherit}
+.wrap{width:min(100% - 32px,var(--wrap));margin-inline:auto}
+.nb{display:inline-block}
+h1,h2,h3,.answer,.cta p,.hero-box,.contact p{text-wrap:balance;word-break:auto-phrase}
+.shoot-cap,.local p{word-break:auto-phrase}
+.local p{text-wrap:balance}
+p,li{text-wrap:pretty;line-break:strict}
+.card p,.feat-body p,.ev-body p,.about-text p,.sub p,.sec-lead,.hero-lead,.mission p,.prob-list li{word-break:auto-phrase}
+.mk{background:linear-gradient(transparent 58%,var(--yellow) 58%);font-weight:800}
+.red{color:var(--red)}
+
+/* ---------- ボタン ---------- */
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;min-height:54px;padding:12px 24px;border:var(--bd);border-radius:999px;background:var(--ink);color:#fff;font-weight:800;font-size:15px;text-decoration:none;box-shadow:4px 4px 0 var(--red);transition:transform .15s,box-shadow .15s;cursor:pointer;font-family:inherit}
+.btn i{font-size:.9em}
+.btn--red{background:var(--red);box-shadow:var(--sh)}
+.btn--white{background:var(--white);color:var(--ink);box-shadow:var(--sh)}
+.btn--yellow{background:var(--yellow);color:var(--ink);box-shadow:var(--sh)}
+@media(hover:hover){.btn:hover{transform:translate(3px,3px);box-shadow:1px 1px 0 var(--ink)}}
+.btn:active{transform:translate(3px,3px);box-shadow:1px 1px 0 var(--ink)}
+
+/* ---------- ヘッダー ---------- */
+.header{position:sticky;top:0;z-index:50;background:var(--white);border-bottom:var(--bd)}
+.header-in{display:flex;align-items:center;justify-content:space-between;gap:12px;height:60px}
+.logo{display:flex;align-items:center;gap:8px;text-decoration:none;font-weight:900;font-size:16px;line-height:1.25;letter-spacing:.02em}
+.logo-mark{width:38px;height:38px;border:var(--bd);border-radius:10px 4px 9px 3px;background:var(--yellow);display:grid;place-items:center;box-shadow:2px 2px 0 var(--ink)}
+.logo-mark img{width:26px;height:26px;object-fit:contain}
+.logo{white-space:nowrap}
+.logo small{display:block;font-size:12px;font-weight:700;letter-spacing:.12em;line-height:1;color:var(--red)}
+.nav{display:none}
+.nav a{font-weight:800;font-size:14px;text-decoration:none;white-space:nowrap;padding:6px 2px;border-bottom:3px solid transparent}
+.nav a:hover{border-color:var(--red)}
+.header .btn{white-space:nowrap;min-height:42px;padding:6px 16px;font-size:13px;box-shadow:3px 3px 0 var(--ink)}
+@media(max-width:359px){.logo{font-size:14px;gap:6px}.logo small{letter-spacing:.04em}.logo-mark{width:34px;height:34px}.header .btn{padding:6px 12px}.header .btn i{display:none}}
+@media(min-width:960px){.nav{display:flex;gap:22px}.header-in{height:70px}}
+.menu-btn{flex:none;width:42px;height:42px;border:var(--bd);border-radius:10px 4px 9px 3px;background:var(--yellow);color:var(--ink);font-size:18px;display:grid;place-items:center;box-shadow:3px 3px 0 var(--ink);cursor:pointer;padding:0;font-family:inherit}
+@media(max-width:959px){
+.header-in{gap:8px}
+.header .btn{margin-left:auto}
+.header.open .nav{display:flex;flex-direction:column;position:absolute;left:0;right:0;top:100%;background:var(--white);border-top:var(--bd);border-bottom:var(--bd);padding:4px 20px 12px;box-shadow:0 6px 0 rgba(25,25,27,.18);max-height:calc(100vh - 70px);overflow:auto}
+.header.open .nav a{display:flex;align-items:center;justify-content:space-between;font-size:16px;font-weight:900;padding:15px 2px;border-bottom:2px dashed var(--ink)}
+.header.open .nav a:last-child{border-bottom:0}
+.header.open .nav a::after{content:"\f061";font-family:"Font Awesome 6 Free";font-weight:900;font-size:13px;color:var(--red)}
+}
+@media(max-width:399px){.logo{font-size:14px;gap:6px}.logo small{letter-spacing:.04em}.logo-mark{width:34px;height:34px}.header .btn{padding:6px 11px}.header .btn i{display:none}.menu-btn{width:40px}}
+@media(max-width:359px){.header-in{gap:6px}.header .btn{padding:6px 9px;font-size:12px}.menu-btn{width:38px}}
+@media(max-width:339px){.header .btn{display:none}.menu-btn{margin-left:auto}}
+@media(min-width:960px){.menu-btn{display:none}}
+
+/* ---------- ヒーロー ---------- */
+.hero{background:var(--sky);border-bottom:var(--bd);position:relative;overflow:hidden}
+.hero::before{content:"";position:absolute;inset:0;background-image:radial-gradient(rgba(25,25,27,.13) 1.6px,transparent 1.7px);background-size:14px 14px;-webkit-mask-image:linear-gradient(120deg,#000 0,transparent 45%);mask-image:linear-gradient(120deg,#000 0,transparent 45%);pointer-events:none}
+.hero-in{position:relative;display:grid;gap:22px;padding:26px 0 34px;grid-template-areas:'head' 'art' 'foot'}
+.hero-head{grid-area:head}.hero-art{grid-area:art}.hero-foot{grid-area:foot}
+.tag{display:inline-flex;align-items:center;gap:8px;background:var(--yellow);border:var(--bd);border-radius:10px 4px 9px 3px;padding:6px 14px;font-weight:900;font-size:14px;box-shadow:4px 4px 0 var(--ink);transform:rotate(-2deg)}
+.tag i{color:var(--red)}
+.hero-sub{margin-top:18px;font-weight:800;font-size:clamp(12px,3.6vw,14px);white-space:nowrap}
+.hero h1{font-weight:900;line-height:1.28;font-size:clamp(34px,10.4vw,66px);letter-spacing:.01em;margin-top:6px;text-shadow:3px 3px 0 #fff}
+.hero h1 .red{-webkit-text-stroke:0}
+.hero-box{display:inline-block;margin-top:16px;background:var(--white);border:var(--bd);border-radius:6px;padding:8px 14px;font-weight:800;font-size:clamp(14px,4vw,18px);line-height:1.6;box-shadow:4px 4px 0 var(--ink)}
+.hero-lead{font-weight:700;font-size:14px;max-width:34em}
+.hero-btns{display:flex;flex-wrap:wrap;gap:14px;margin-top:22px}
+.hero-btns .btn{flex:1 1 220px}
+.hero-hash{display:flex;flex-wrap:wrap;gap:6px 14px;margin-top:18px;font-weight:800;font-size:12px}
+.hero-art{position:relative;margin-inline:auto;width:min(100%,560px)}
+.hero-art img{border:var(--bd);border-width:4px;border-radius:18px 6px 16px 5px;box-shadow:8px 8px 0 var(--ink);background:#fff;aspect-ratio:4/3;object-fit:cover;width:100%}
+.wow{position:absolute;right:-8px;top:-30px;background:var(--red);color:#fff;font-weight:900;font-size:17px;line-height:1.2;text-align:center;width:118px;height:118px;display:grid;place-content:center;clip-path:polygon(50% 0,61% 14%,79% 7%,80% 26%,98% 28%,88% 44%,100% 58%,82% 64%,84% 84%,66% 79%,56% 100%,44% 82%,26% 92%,24% 72%,4% 70%,14% 52%,0 38%,18% 30%,16% 10%,36% 16%);transform:rotate(8deg);animation:pop 2.4s ease-in-out infinite}
+.wow span{font-size:12px;display:block}
+@keyframes pop{0%,100%{transform:rotate(8deg) scale(1)}50%{transform:rotate(4deg) scale(1.08)}}
+@keyframes bob{0%,100%{transform:translateY(0)}50%{transform:translateY(-8px)}}
+@media(min-width:900px){
+  .hero-foot{margin-top:20px}
+  .hero-in{grid-template-columns:1.05fr .95fr;grid-template-areas:'head art' 'foot art';align-items:center;gap:0 36px;padding:48px 0 56px}.hero-head{align-self:end}.hero-foot{align-self:start}
+  .hero-btns .btn{flex:0 0 auto}
+  .hero-lead{font-size:15px}
+  .wow{width:150px;height:150px;font-size:23px;right:-10px;top:-40px}
+  .wow span{font-size:13px}
+}
+
+/* ---------- サービス帯 ---------- */
+.strip{background:var(--white);border-bottom:var(--bd)}
+.strip ul{list-style:none;display:grid;grid-template-columns:repeat(2,1fr)}
+.strip li{display:flex;align-items:center;justify-content:center;gap:8px;padding:12px 6px;font-weight:800;font-size:13px;border-right:2px solid var(--ink);border-bottom:2px solid var(--ink)}
+.strip li:nth-child(2n){border-right:0}
+.strip li:nth-last-child(-n+2){border-bottom:0}
+.strip i{color:var(--red);font-size:15px}
+@media(min-width:1000px){.strip ul{grid-template-columns:repeat(6,1fr)}.strip li{border-bottom:0}.strip li:nth-child(2n){border-right:2px solid var(--ink)}.strip li:last-child{border-right:0}}
+
+/* ---------- セクション共通 ---------- */
+.sec{padding:56px 0}
+.sec--white{background:var(--white);border-block:var(--bd)}
+.sec--yellow{background:var(--yellow);border-block:var(--bd)}
+.sec--sky{background:var(--sky);border-block:var(--bd)}
+.sec-top{display:flex;justify-content:space-between;align-items:center;border-bottom:var(--bd);padding-bottom:8px;margin-bottom:26px;font-weight:900;font-size:clamp(20px,5.6vw,32px);line-height:1.2;letter-spacing:.1em;white-space:nowrap}
+.label{display:inline-block;background:var(--yellow);border:var(--bd);border-radius:10px 4px 9px 3px;padding:3px 12px;font-weight:900;font-size:13px;box-shadow:3px 3px 0 var(--ink);transform:rotate(-1.5deg)}
+.sec--yellow .label{background:var(--white)}
+.h2{font-weight:900;font-size:clamp(27px,7.6vw,44px);line-height:1.35;margin-top:14px}
+.h2 .ul{background:linear-gradient(transparent 62%,var(--yellow) 62%)}
+.sec--yellow .h2 .ul{background:linear-gradient(transparent 62%,#fff 62%)}
+.sec-lead{margin-top:12px;font-weight:700;max-width:40em}
+@media(min-width:900px){.sec{padding:84px 0}}
+
+/* 出現 */
+.js .rv{opacity:0;transform:translateY(22px) scale(.97);transition:opacity .5s,transform .5s cubic-bezier(.2,1.4,.4,1)}
+.js .rv.in{opacity:1;transform:none}
+@media(prefers-reduced-motion:reduce){.js .rv{opacity:1;transform:none;transition:none}.wow,.float{animation:none!important}}
+
+/* ---------- 数字 ---------- */
+.nums{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px;margin-top:26px}
+.num{background:var(--white);border:var(--bd);border-radius:14px 5px 12px 4px;box-shadow:var(--sh);padding:14px 10px 12px;text-align:center}
+.num:first-child{grid-column:1/-1;background:var(--ink);color:#fff;box-shadow:5px 5px 0 var(--red)}
+.num b{display:block;font-weight:900;line-height:1.1;font-size:clamp(24px,7.2vw,44px);letter-spacing:-.01em}
+.num:first-child b{font-size:clamp(46px,14vw,76px);color:var(--yellow)}
+.num b{white-space:nowrap}
+.num b small{font-size:max(12px,.42em);margin-left:2px}
+.num span{font-weight:900;font-size:clamp(15px,4.6vw,20px);line-height:1.3;white-space:nowrap;display:flex;justify-content:center;align-items:center;gap:6px;margin-bottom:4px}
+.num em{display:block;font-style:normal;font-size:clamp(13px,3.9vw,17px);font-weight:800;white-space:nowrap;opacity:.85;margin-top:4px}
+.num:nth-child(4){grid-column:1/-1}
+.num-sns{display:flex;justify-content:center;gap:14px;margin-top:22px}
+.num-sns a{width:60px;height:60px;display:grid;place-items:center;font-size:28px;color:var(--ink);text-decoration:none;background:var(--white);border:var(--bd);border-radius:14px 5px 12px 4px;box-shadow:4px 4px 0 var(--ink);transition:transform .15s,box-shadow .15s}
+.num-sns a:hover,.num-sns a:active{transform:translate(2px,2px);box-shadow:2px 2px 0 var(--ink);background:var(--yellow)}
+@media(min-width:760px){.num-sns{gap:18px;margin-top:26px}.num-sns a{width:68px;height:68px;font-size:32px}}
+.num b .dg{font-size:1em;font-weight:inherit;gap:0;display:inline-block;position:relative;overflow:hidden;height:1.1em;line-height:1.1;vertical-align:top}
+.num b .dg i{font-style:normal;visibility:hidden}
+.num b .dg u{position:absolute;left:50%;top:0;text-decoration:none;display:flex;flex-direction:column;align-items:center;transform:translate(-50%,0);will-change:transform}
+.num b .dg u span{display:block;height:1.1em;line-height:1.1;font-size:1em;font-weight:inherit;gap:0}
+@media(min-width:760px){.nums{grid-template-columns:repeat(3,minmax(0,1fr))}.num:nth-child(4){grid-column:auto}.num b{font-size:clamp(28px,4.2vw,40px)}.num:first-child b{font-size:clamp(46px,9vw,76px)}}
+@media(min-width:1040px){.nums{grid-template-columns:1.5fr repeat(3,minmax(0,1fr))}.num:first-child{grid-column:auto}.num{display:flex;flex-direction:column;justify-content:center}.num:first-child b{font-size:60px}}
+
+/* ---------- お悩み ---------- */
+.prob{display:grid;gap:22px;margin-top:8px}
+.prob-list{list-style:none;display:grid;gap:14px;margin-top:24px}
+.prob-list li{position:relative;background:var(--white);border:var(--bd);border-radius:16px;padding:14px 16px 14px 52px;font-weight:800;box-shadow:4px 4px 0 var(--ink);line-height:1.6}
+.prob-list li::before{content:"？";position:absolute;left:12px;top:50%;translate:0 -50%;width:30px;height:30px;border-radius:50%;background:var(--red);color:#fff;display:grid;place-items:center;font-weight:900;border:2px solid var(--ink)}
+.prob-list li:nth-child(2n){transform:rotate(.6deg)}
+.prob-list li:nth-child(2n+1){transform:rotate(-.6deg)}
+.prob-fig{position:relative;width:min(70%,260px);margin-inline:auto}
+.prob-fig img{animation:bob 3.4s ease-in-out infinite}
+.answer{margin-top:26px;background:var(--ink);color:#fff;border-radius:16px 5px 14px 4px;padding:18px 18px;font-weight:800;font-size:clamp(16px,4.6vw,21px);line-height:1.6;box-shadow:5px 5px 0 var(--red);text-align:center}
+.answer b{color:var(--yellow);font-weight:900}
+@media(min-width:900px){.prob{grid-template-columns:1.2fr .8fr;align-items:center;gap:40px}.prob-fig{width:300px}}
+
+/* ---------- サービス ---------- */
+.cards{display:grid;gap:22px;margin-top:28px}
+.card{background:var(--white);border:var(--bd);border-radius:16px 6px 14px 5px;box-shadow:6px 6px 0 var(--ink);overflow:hidden;display:flex;flex-direction:column}
+.card-img{position:relative;border-bottom:var(--bd);aspect-ratio:16/9;background:var(--sky)}
+.card-img img{width:100%;height:100%;object-fit:cover}
+.card-no{position:absolute;left:10px;top:10px;background:var(--yellow);border:var(--bd);border-radius:50%;width:46px;height:46px;display:grid;place-items:center;font-weight:900;font-size:17px;box-shadow:2px 2px 0 var(--ink);transform:rotate(-8deg)}
+.card:nth-child(3n+2) .card-no{background:var(--pink)}
+.card:nth-child(3n) .card-no{background:var(--sky)}
+.card-body{padding:16px 16px 18px;display:flex;flex-direction:column;gap:8px;flex:1}
+.card-en{font-weight:900;font-size:12px;letter-spacing:.1em;color:var(--red);display:flex;gap:6px;align-items:center}
+.card h3{font-weight:900;font-size:21px;line-height:1.4}
+.card p{font-size:14px;line-height:1.8}
+.card-links{margin-top:auto;padding-top:6px;display:flex;flex-wrap:wrap;gap:8px}
+.chip{display:inline-flex;align-items:center;gap:6px;border:2px solid var(--ink);border-radius:999px;padding:5px 12px;font-weight:800;font-size:13px;text-decoration:none;background:var(--paper);min-height:36px}
+.chip:hover{background:var(--yellow)}
+.local{margin-top:34px;background:var(--pink);border:var(--bd);border-radius:18px 6px 16px 5px;box-shadow:6px 6px 0 var(--ink);padding:22px 18px;display:grid;gap:14px;align-items:center;text-align:center}
+.local img{width:100%;max-width:440px;margin-inline:auto;border:var(--bd);border-radius:12px 5px 12px 5px;aspect-ratio:16/9;object-fit:cover;background:var(--sky)}
+.local h3{font-weight:900;font-size:clamp(19px,5.4vw,26px);line-height:1.45}
+.local p{font-weight:700;font-size:14px}
+@media(min-width:700px){.cards{grid-template-columns:repeat(2,1fr)}}
+@media(min-width:1000px){.cards{grid-template-columns:repeat(3,1fr)}.card--wide{grid-column:2/3}.local{grid-template-columns:300px 1fr auto;gap:26px;text-align:left;padding:26px 30px}.local img{width:300px}}
+
+/* ---------- 映像 ---------- */
+.film{position:relative;margin-top:26px;border:4px solid var(--ink);border-radius:18px 6px 16px 5px;box-shadow:8px 8px 0 var(--ink);overflow:hidden;background:#000;aspect-ratio:16/9}
+.film video{width:100%;height:100%;object-fit:cover}
+.film-tag{position:absolute;left:10px;top:10px;background:var(--red);color:#fff;border:2px solid var(--ink);border-radius:999px;padding:2px 12px;font-weight:900;font-size:12px}
+.yt{display:grid;gap:18px;margin-top:26px}
+.yt-item{position:relative;display:block;border:var(--bd);border-radius:14px 5px 12px 4px;box-shadow:var(--sh);overflow:hidden;aspect-ratio:16/9;background:#000;cursor:pointer;padding:0;width:100%}
+.yt-item img{width:100%;height:100%;object-fit:cover}
+.yt-item iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
+.yt-play{position:absolute;left:50%;top:50%;translate:-50% -50%;width:62px;height:62px;border-radius:50%;background:var(--red);border:var(--bd);display:grid;place-items:center;color:#fff;font-size:22px;box-shadow:3px 3px 0 var(--ink);pointer-events:none}
+.center{text-align:center;margin-top:28px}
+@media(min-width:760px){.yt{grid-template-columns:repeat(3,1fr)}}
+
+/* ---------- 実績 ---------- */
+.feat{display:grid;gap:22px;margin-top:28px}
+.feat-item{background:var(--white);border:var(--bd);border-radius:16px 6px 14px 5px;box-shadow:6px 6px 0 var(--ink);overflow:hidden;display:grid}
+.feat-img{border-bottom:var(--bd);background:#f1ece0;aspect-ratio:16/10;display:grid;place-items:center;overflow:hidden}
+.feat-img{position:relative}
+.feat-img img{position:absolute;inset:0;width:100%;height:100%;object-fit:contain}
+.feat-img--cover{aspect-ratio:4/5;background:#2b2e34}.feat-img--cover img{object-fit:cover;object-position:50% 85%}
+.feat-body{padding:16px 16px 20px}
+.feat-body h3{font-weight:900;font-size:19px;line-height:1.45;margin:4px 0 8px}
+.feat-body p{font-size:14px}
+.feat-body .chip{margin-top:12px}
+@media(min-width:900px){.feat{grid-template-columns:repeat(3,1fr)}.feat-img--cover{aspect-ratio:16/10}.feat-img--cover img{object-fit:contain}}
+
+.ev-head{margin-top:54px}
+.ev{margin-top:18px;border:var(--bd);border-radius:16px 6px 14px 5px;box-shadow:6px 6px 0 var(--ink);background:var(--white);overflow:hidden}
+.ev details+details{border-top:2px solid var(--ink)}
+.ev summary{list-style:none;cursor:pointer;display:grid;grid-template-columns:1fr auto;grid-template-areas:'d b' 't b';gap:6px 12px;align-items:center;padding:14px 14px;font-weight:800;line-height:1.55}
+.ev summary time{grid-area:d;justify-self:start}.ev summary>span{grid-area:t}.ev summary::after{grid-area:b}
+.ev summary::-webkit-details-marker{display:none}
+.ev time{background:var(--ink);color:#fff;border-radius:999px;padding:1px 10px;font-size:12px;font-weight:900;white-space:nowrap}
+.ev summary::after{content:"+";width:30px;height:30px;border:2px solid var(--ink);border-radius:50%;display:grid;place-items:center;font-weight:900;background:var(--yellow);font-size:18px;line-height:1}
+.ev details[open] summary::after{content:"−";background:var(--red);color:#fff}
+.ev details[open] summary{background:var(--paper)}
+.ev-body{padding:4px 14px 18px;display:grid;gap:12px}
+.ev-body img{border:2px solid var(--ink);border-radius:10px;width:100%;max-width:520px;aspect-ratio:3/2;object-fit:cover}
+.ev-body p{font-size:14px}
+@media(min-width:760px){.ev summary{grid-template-columns:auto 1fr auto;grid-template-areas:'d t b';gap:10px 14px;padding:16px 22px;font-size:16px}.ev-body{padding:4px 22px 22px}}
+
+/* ---------- 私について ---------- */
+.about{display:grid;gap:24px;margin-top:26px}
+.about-card{background:var(--white);border:var(--bd);border-radius:18px 6px 16px 5px;box-shadow:6px 6px 0 var(--ink);padding:22px 18px;text-align:center}
+.about-card img.icon{width:150px;height:150px;border-radius:50%;border:var(--bd);margin:0 auto 12px;object-fit:cover;background:#fff}
+.about-card h3{font-weight:900;font-size:20px}
+.about-card small{font-weight:800;font-size:13px;display:block;margin-top:2px}
+.tags{display:flex;flex-wrap:wrap;justify-content:center;gap:6px;margin-top:12px}
+.tags span{background:var(--yellow);border:2px solid var(--ink);border-radius:999px;padding:1px 10px;font-weight:800;font-size:12px}
+.about-text p+p{margin-top:14px}
+.mission{margin-top:22px;background:var(--yellow);border:var(--bd);border-radius:14px 5px 12px 4px;padding:14px 16px;box-shadow:var(--sh)}
+.mission b{white-space:nowrap;font-weight:900;font-size:clamp(15px,4.9vw,24px);display:block;line-height:1.5}
+.mission p{font-size:14px;margin-top:6px}
+.mission .chip{margin-top:10px;background:var(--white)}
+@media(min-width:900px){.about{grid-template-columns:320px 1fr;gap:44px;align-items:start}}
+
+/* ---------- お問い合わせ ---------- */
+.contact{background:var(--red);color:#fff;border-top:var(--bd);padding:56px 0 64px;position:relative;overflow:hidden}
+.contact::before{content:"";position:absolute;inset:0;background-image:radial-gradient(rgba(255,255,255,.22) 1.6px,transparent 1.7px);background-size:14px 14px;pointer-events:none}
+.contact-in{position:relative;display:grid;gap:20px;text-align:center}
+.contact .h2{color:#fff;text-shadow:3px 3px 0 var(--ink)}
+.contact p{font-weight:800}
+.contact-box{background:var(--white);color:var(--ink);border:var(--bd);border-radius:18px 6px 16px 5px;box-shadow:8px 8px 0 var(--ink);padding:22px 18px;display:grid;gap:14px}
+.contact-box img{width:100%;border:var(--bd);border-radius:12px 5px 12px 5px;aspect-ratio:16/9;object-fit:cover;background:var(--sky)}
+.contact-box .btn{width:100%}
+@media(min-width:760px){.contact-box{padding:30px 40px;max-width:680px;margin-inline:auto;grid-template-columns:1fr 1fr}.contact-box img,.contact-box p{grid-column:1/-1}}
+.cform{display:grid;gap:16px;text-align:left}
+.cform[hidden],.cf-done[hidden]{display:none}
+.hp{position:absolute;left:-9999px;width:1px;height:1px;opacity:0}
+.cf-row{display:grid;gap:7px}
+.cf-label{font-weight:900;font-size:15px;display:flex;align-items:center;gap:8px}
+.cf-label em{font-style:normal;font-size:12px;font-weight:900;background:var(--red);color:#fff;border-radius:999px;padding:2px 9px;line-height:1.4}
+.cf-in{width:100%;font:inherit;font-size:16px;font-weight:700;color:var(--ink);background:#fff;border:var(--bd);border-radius:12px 5px 11px 4px;padding:12px 14px;box-shadow:3px 3px 0 var(--ink);-webkit-appearance:none;appearance:none}
+.cf-in:focus{outline:none;background:#fffbe0;box-shadow:3px 3px 0 var(--red)}
+textarea.cf-in{resize:vertical;min-height:130px;line-height:1.6}
+.cf-in::placeholder{color:#8a8578;font-weight:600}
+.cf-in[aria-invalid=true]{border-color:var(--red);background:#fff2f0}
+.cf-chips{display:flex;flex-wrap:wrap;gap:8px}
+.cf-chips label{cursor:pointer}
+.cf-chips input{position:absolute;opacity:0;width:1px;height:1px}
+.cf-chips span{display:inline-flex;align-items:center;min-height:42px;padding:6px 14px;border:var(--bd);border-radius:999px;background:#fff;font-weight:800;font-size:14px;white-space:nowrap;box-shadow:2px 2px 0 var(--ink);transition:background .15s,transform .1s}
+.cf-chips input:checked+span{background:var(--yellow);transform:translate(1px,1px);box-shadow:1px 1px 0 var(--ink)}
+.cf-chips input:checked+span::before{content:"\f00c";font-family:"Font Awesome 6 Free";font-weight:900;font-size:12px;margin-right:6px;color:var(--red)}
+.cf-chips input:focus-visible+span{outline:3px solid var(--sky);outline-offset:2px}
+.cf-err{color:var(--red);font-weight:900;font-size:13px;min-height:0;margin:0}
+.cf-err:empty{display:none}
+.cf-err--all{text-align:center}
+.contact .cform .cf-send{width:100%;min-height:60px;font-size:17px}
+.cf-send[disabled]{opacity:.6;pointer-events:none}
+.contact .cf-note{text-align:center;font-size:13px;font-weight:800;margin:0;opacity:.8}
+.cf-done{text-align:center;padding:24px 10px;border:var(--bd);border-radius:14px 5px 12px 4px;background:var(--yellow);box-shadow:4px 4px 0 var(--ink)}
+.cf-done:focus{outline:none}
+.contact .cf-done-t{font-size:22px;font-weight:900;margin:0 0 8px;display:flex;justify-content:center;align-items:center;gap:8px}
+.cf-done-t i{color:var(--red)}
+.contact-box .cf-ig{width:100%;font-size:14px}
+@media(min-width:760px){.contact-box{max-width:720px}.contact-box .cform,.contact-box .cf-done,.contact-box .cf-ig{grid-column:1/-1}.cform{grid-template-columns:1fr 1fr;gap:18px 16px}.cform>.cf-row:first-of-type,.cform>.cf-row:last-of-type,.cform>.cf-err--all,.cform>.cf-send,.cform>.cf-note{grid-column:1/-1}}
+
+/* ---------- フッター ---------- */
+.footer{background:var(--ink);color:#fff;padding:36px 0 110px;text-align:center}
+.footer-brand{font-weight:900;font-size:20px}
+.sns{display:flex;justify-content:center;gap:12px;margin-top:14px}
+.sns a{width:46px;height:46px;border-radius:50%;border:2px solid #fff;display:grid;place-items:center;font-size:19px;text-decoration:none;background:var(--ink)}
+.sns a:hover{background:var(--red)}
+.sns img{width:24px}
+.nl{margin-top:26px;font-size:13px}
+.nl b{display:block;font-weight:900;color:var(--yellow);margin-bottom:6px}
+.nl ul{list-style:none;display:grid;gap:4px}
+.nl a{text-decoration:underline;text-underline-offset:3px}
+.nl span{opacity:.8;margin-left:6px;font-size:12px}
+.copy{margin-top:22px;font-size:12px;opacity:.7}
+@media(min-width:900px){.footer{padding-bottom:40px}}
+
+/* ---------- スマホ下の固定ボタン ---------- */
+.sticky{position:fixed;left:0;right:0;bottom:0;z-index:60;background:var(--white);border-top:var(--bd);padding:8px 12px calc(8px + env(safe-area-inset-bottom));transform:translateY(110%);transition:transform .3s}
+.sticky.on{transform:none}
+.sticky .btn{width:100%;min-height:50px}
+@media(min-width:900px){.sticky{display:none}}
+
+/* ---------- 横に送る列 ---------- */
+.hint{margin-top:18px;font-weight:800;font-size:12px;text-align:center}
+.row{display:flex;gap:16px;overflow-x:auto;scroll-snap-type:x mandatory;padding:6px 6px 14px;margin:8px -6px 0;-webkit-overflow-scrolling:touch;scrollbar-width:thin}
+.row>*{scroll-snap-align:start;flex:0 0 auto}
+.row .yt-item{flex:0 0 min(82%,420px)}
+.sub{margin-top:54px}
+.sub h3{font-weight:900;font-size:clamp(21px,5.8vw,28px);line-height:1.4;margin-top:12px}
+.sub p{font-weight:700;font-size:14px;margin-top:8px;max-width:44em}
+.sub .chip{margin-top:12px;background:var(--white)}
+.reel{width:min(330px,calc(100vw - 72px));height:620px;border:var(--bd);border-radius:14px 5px 12px 4px;box-shadow:var(--sh);overflow:hidden;background:#fff}
+.reel iframe{width:100%;height:100%;border:0;background:#fff}
+.reel[hidden],.yt-item[hidden]{display:none}
+.shoot{flex:0 0 min(58%,230px);position:relative;aspect-ratio:9/16;border:var(--bd);border-radius:14px 5px 12px 4px;box-shadow:var(--sh);overflow:hidden;background:#000;cursor:pointer;padding:0}
+.shoot img{width:100%;height:100%;object-fit:cover}
+.shoot iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
+.shoot-head{margin-top:40px;font-weight:900;font-size:clamp(19px,5.2vw,24px)}
+.shoot-cap{font-weight:700;font-size:14px;margin-top:6px}
+.cta{margin-top:40px;background:var(--white);border:var(--bd);border-radius:16px 6px 14px 5px;box-shadow:6px 6px 0 var(--ink);padding:20px 18px;text-align:center;display:grid;gap:14px;justify-items:center}
+.cta p{font-weight:800}
+.cta .btn{width:100%;max-width:360px}
+@media(min-width:900px){.row--fit{overflow:visible}.row--fit>*{flex:1 1 0!important;min-width:0}.cta{grid-template-columns:1fr auto;text-align:left;padding:22px 30px}.cta .btn{width:auto}}
+/* 実績の写真 */
+.ev-photos{display:flex;gap:10px;overflow-x:auto;padding-bottom:6px;scroll-snap-type:x proximity}
+.ev-photos button{flex:0 0 min(72%,250px);padding:0;border:2px solid var(--ink);border-radius:10px;overflow:hidden;background:#eee;cursor:zoom-in;scroll-snap-align:start;aspect-ratio:3/2}
+.ev-photos img{width:100%;height:100%;object-fit:cover;border:0;border-radius:0;max-width:none;aspect-ratio:auto}
+.ev-quote{font-weight:900;font-size:clamp(18px,5vw,24px);color:var(--red);line-height:1.5}
+.ev-links{display:flex;flex-wrap:wrap;gap:8px}
+.ev-video{position:relative;aspect-ratio:16/9;max-width:520px;border:2px solid var(--ink);border-radius:10px;overflow:hidden;background:#000;cursor:pointer;padding:0;width:100%}
+.ev-video img{width:100%;height:100%;object-fit:cover;border:0;border-radius:0;max-width:none}
+.ev-video iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
+/* 拡大表示 */
+.lb{position:fixed;inset:0;z-index:100;background:rgba(25,25,27,.92);display:none;place-items:center;padding:16px}
+.lb.on{display:grid}
+.lb figure{max-width:min(100%,900px);display:grid;gap:10px;justify-items:center}
+.lb img{max-height:76vh;width:auto;max-width:100%;border:3px solid #fff;border-radius:10px;background:#fff}
+.lb figcaption{color:#fff;font-weight:800;font-size:14px;text-align:center}
+.lb button{position:absolute;width:48px;height:48px;border-radius:50%;border:var(--bd);background:var(--yellow);font-size:20px;font-weight:900;cursor:pointer;font-family:inherit}
+.lb-x{top:14px;right:14px}.lb-p{left:10px;top:50%;translate:0 -50%}.lb-n{right:10px;top:50%;translate:0 -50%}
+
+/* ===== 文字を減らすための部品（タブ・小窓・開閉） ===== */
+.tabs-bar{display:flex;gap:8px;overflow-x:auto;padding:4px 4px 8px;margin:22px -4px 0;scrollbar-width:none}
+.tabs-bar::-webkit-scrollbar{display:none}
+.tab{flex:0 0 auto;border:var(--bd);border-radius:999px;padding:6px 16px;font-weight:900;font-size:14px;background:var(--white);color:var(--ink);white-space:nowrap;min-height:44px;box-shadow:3px 3px 0 var(--ink);cursor:pointer;font-family:inherit;display:inline-flex;align-items:center;gap:8px}
+.tab[aria-selected="true"]{background:var(--ink);color:#fff;box-shadow:3px 3px 0 var(--red)}
+.tab[aria-selected="true"] i{color:var(--yellow)}
+.tab i{color:var(--red)}
+.tabp{margin-top:14px}
+.tabp[hidden]{display:none}
+.tabp-lead{font-weight:700;font-size:14px;max-width:44em}
+.tabp .chip{margin-top:10px;background:var(--white)}
+/* サービスの札 */
+.tiles{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px;margin-top:26px}
+.tile{position:relative;text-align:left;background:var(--white);border:var(--bd);border-radius:14px 5px 12px 4px;box-shadow:4px 4px 0 var(--ink);overflow:hidden;padding:0;font-family:inherit;color:inherit;cursor:pointer;display:flex;flex-direction:column;transition:transform .15s,box-shadow .15s}
+.tile:active{transform:translate(3px,3px);box-shadow:1px 1px 0 var(--ink)}
+@media(hover:hover){.tile:hover{transform:translate(3px,3px);box-shadow:1px 1px 0 var(--ink)}}
+.tile-img{position:relative;display:block;aspect-ratio:16/9;border-bottom:var(--bd);background:var(--sky)}
+.tile-img img{width:100%;height:100%;object-fit:cover}
+.tile-no{position:absolute;left:6px;top:6px;background:var(--yellow);border:2px solid var(--ink);border-radius:50%;width:32px;height:32px;display:grid;place-items:center;font-weight:900;font-size:13px;transform:rotate(-8deg)}
+.tile:nth-child(3n+2) .tile-no{background:var(--pink)}.tile:nth-child(3n) .tile-no{background:var(--sky)}
+.tile-body{display:flex;flex-direction:column;gap:2px;padding:8px 10px 10px;flex:1}
+.tile-t{font-weight:900;font-size:15px;line-height:1.35}
+@media(max-width:379px){.tile-t{font-size:14px}.tile-body{padding:8px 8px 10px}}
+.tile-c{font-weight:700;font-size:12px;line-height:1.5}
+.tile-more{margin-top:auto;padding-top:4px;font-weight:900;font-size:12px;color:var(--red);display:flex;align-items:center;gap:4px}
+.tile:last-child:nth-child(odd){grid-column:1/-1;flex-direction:row}
+.tile:last-child:nth-child(odd) .tile-img{flex:0 0 50%;border-bottom:0;border-right:var(--bd)}
+.tile:last-child:nth-child(odd) .tile-body{justify-content:center}
+.tiles-hint{margin-top:12px;font-weight:800;font-size:12px;text-align:center}
+@media(min-width:800px){.tiles{grid-template-columns:repeat(4,minmax(0,1fr));gap:20px}.tile-t{font-size:17px}.tile-c{font-size:13px}.tile-body{padding:12px 14px 14px}.tile:last-child:nth-child(odd){grid-column:auto;flex-direction:column}.tile:last-child:nth-child(odd) .tile-img{flex:none;border-right:0;border-bottom:var(--bd)}}
+.svc-data{display:none}
+@media(min-width:900px){.hint--sp{display:none}}
+/* 小窓 */
+.dlg{border:var(--bd);border-radius:18px 6px 16px 5px;padding:0;width:min(92vw,520px);max-height:88vh;box-shadow:8px 8px 0 var(--ink);background:var(--white);color:var(--ink);overflow:auto;margin:auto}
+.dlg::backdrop{background:rgba(25,25,27,.72)}
+.dlg-x{position:absolute;top:8px;right:8px;z-index:2;width:44px;height:44px;border-radius:50%;border:var(--bd);background:var(--yellow);font-size:18px;font-weight:900;cursor:pointer;font-family:inherit;box-shadow:2px 2px 0 var(--ink)}
+.dlg-img{aspect-ratio:16/9;border-bottom:var(--bd);background:var(--sky)}
+.dlg-img img{width:100%;height:100%;object-fit:cover}
+.dlg-body{padding:16px 16px 20px;display:grid;gap:10px}
+.dlg-body h3{font-weight:900;font-size:22px;line-height:1.4}
+.dlg-body p{font-size:15px}
+.dlg-body ul{list-style:none;display:grid;gap:6px}
+.dlg-body li{text-wrap:balance;word-break:auto-phrase;position:relative;padding-left:24px;font-weight:700;font-size:14px;line-height:1.6}
+.dlg-body li::before{content:"\f00c";font-family:"Font Awesome 6 Free";font-weight:900;position:absolute;left:0;top:.1em;color:var(--red);font-size:14px}
+.dlg-links{display:flex;flex-wrap:wrap;gap:8px}
+.dlg-body .btn{width:100%;margin-top:4px}
+/* 実績3つ：スマホは横に送る */
+@media(max-width:899px){.feat{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;gap:16px;padding:6px 6px 14px;margin:20px -6px 0;-webkit-overflow-scrolling:touch}.feat-item{flex:0 0 min(80%,300px);scroll-snap-align:start;display:flex;flex-direction:column}.feat-img--cover{aspect-ratio:16/10}.feat-img--cover img{object-position:50% 78%}}
+/* 経歴の札 */
+.facts{list-style:none;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px}
+.facts li{background:var(--paper);border:var(--bd);border-radius:12px 4px 10px 4px;padding:8px 4px;text-align:center;font-weight:800;font-size:12px;line-height:1.4;box-shadow:3px 3px 0 var(--ink)}
+.facts b{display:block;font-weight:900;font-size:clamp(18px,5.4vw,24px);line-height:1.2;color:var(--red);white-space:nowrap}
+.facts b small{font-size:12px;color:var(--ink);margin-left:1px}
+.about-text .facts+p{margin-top:16px}
+
+.draft{background:var(--ink);color:var(--yellow);text-align:center;font-weight:800;font-size:12px;padding:4px 8px}
+</style>
+</head>
+<body>
+<script>document.documentElement.classList.add('js')</script>
+
+<header class="header">
+  <div class="wrap header-in">
+    <a class="logo" href="#top">
+      <span class="logo-mark"><img src="images/bousi.png" alt=""></span>
+      <span><small>NABE'S PORTFOLIO</small>なべのだいどころ。</span>
+    </a>
+    <nav class="nav" id="nav" aria-label="メニュー">
+      <a href="#services">サービス</a>
+      <a href="web-design.html">ホームページ制作</a>
+      <a href="#movies">映像</a>
+      <a href="#works">実績</a>
+      <a href="#about">私について</a>
+    </nav>
+    <a class="btn btn--red" href="#contact">相談する <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></a>
+    <button class="menu-btn" type="button" aria-controls="nav" aria-expanded="false" aria-label="メニューを開く"><i class="fa-solid fa-bars" aria-hidden="true"></i></button>
+  </div>
+</header>
+
+<main id="top">
+  <!-- ヒーロー -->
+  <section class="hero">
+    <div class="wrap hero-in">
+      <div class="hero-head">
+        <span class="tag"><i class="fa-solid fa-star" aria-hidden="true"></i>飲食店・企業・自治体のみなさまへ</span>
+        <p class="hero-sub">＼ 撮る・作る・届ける、ぜんぶ私がやります ／</p>
+        <h1>料理とSNSで、<br><span class="red nb">想いをカタチに！</span></h1>
+        <p class="hero-box">SNS総フォロワー<span class="red">62万人</span>の実績で、<br>企画から運用までまるごとサポート。</p>
+      </div>
+      <div class="hero-art">
+        <img src="images/pop/hero-nabekun.webp?v=2" alt="カメラを持って指を差すなべくんのイラスト" width="1200" height="900">
+        <span class="wow" aria-hidden="true"><span>総フォロワー</span>62万人!</span>
+      </div>
+      <div class="hero-foot">
+        <p class="hero-lead">料理の魅力、人の想い、地域の価値。企画・撮影・編集・SNS運用まで、一貫してお手伝いしています。</p>
+        <div class="hero-btns">
+          <a class="btn" href="#contact"><i class="fa-regular fa-envelope" aria-hidden="true"></i>ご依頼・ご相談はこちら</a>
+          <a class="btn btn--white" href="#services">サービスを見る <i class="fa-solid fa-arrow-down" aria-hidden="true"></i></a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="strip">
+    <ul class="wrap">
+      <li><i class="fa-solid fa-video" aria-hidden="true"></i>動画・写真撮影</li>
+      <li><i class="fa-solid fa-utensils" aria-hidden="true"></i>レシピ開発</li>
+      <li><i class="fa-solid fa-chart-line" aria-hidden="true"></i>SNS運用</li>
+      <li><i class="fa-solid fa-tower-broadcast" aria-hidden="true"></i>タイアップ投稿</li>
+      <li><i class="fa-solid fa-globe" aria-hidden="true"></i>ホームページ</li>
+      <li><i class="fa-solid fa-mobile-screen" aria-hidden="true"></i>アプリ開発</li>
+    </ul>
+  </div>
+
+  <!-- 数字 -->
+  <section class="sec">
+    <div class="wrap">
+      <div class="sec-top"><span>01 / NUMBERS</span></div>
+      <span class="label rv">まずは数字から！</span>
+      <h2 class="h2 rv">自分のSNSで、<span class="ul nb">結果を出してきました。</span></h2>
+      <div class="nums">
+        <div class="num rv"><span>SNS総フォロワー</span><b>620,319<small>人</small></b></div>
+        <div class="num rv"><span><i class="fa-brands fa-youtube red" aria-hidden="true"></i>YouTube</span><b>211,425<small>人</small></b><em>チャンネル登録者</em></div>
+        <div class="num rv"><span><i class="fa-brands fa-instagram red" aria-hidden="true"></i>Instagram</span><b>197,720<small>人</small></b><em>フォロワー</em></div>
+        <div class="num rv"><span><i class="fa-brands fa-tiktok" aria-hidden="true"></i>TikTok</span><b>111,600<small>人</small></b><em>フォロワー</em></div>
+      </div>
+      <nav class="num-sns rv" aria-label="SNSを見る">
+        <a href="https://www.youtube.com/c/nabekitchen" target="_blank" rel="noopener noreferrer" aria-label="YouTube"><i class="fa-brands fa-youtube" style="color:#f00" aria-hidden="true"></i></a>
+        <a href="https://www.instagram.com/nabeno_kitchen/" target="_blank" rel="noopener noreferrer" aria-label="Instagram"><i class="fa-brands fa-instagram" style="color:#e4405f" aria-hidden="true"></i></a>
+        <a href="https://www.tiktok.com/@nabekitchen" target="_blank" rel="noopener noreferrer" aria-label="TikTok"><i class="fa-brands fa-tiktok" aria-hidden="true"></i></a>
+        <a href="https://x.com/nabenodaidocolo" target="_blank" rel="noopener noreferrer" aria-label="X"><i class="fa-brands fa-x-twitter" aria-hidden="true"></i></a>
+      </nav>
+    </div>
+  </section>
+
+  <!-- お悩み -->
+  <section class="sec sec--white" id="problems">
+    <div class="wrap">
+      <div class="sec-top"><span>02 / PROBLEMS</span></div>
+      <div class="prob">
+        <div>
+          <span class="label rv">お店・会社のご担当者さまへ</span>
+          <h2 class="h2 rv">こんなお悩み、<br><span class="ul">ありませんか？</span></h2>
+          <ul class="prob-list">
+            <li class="rv">SNSを始めたいけど、何から始めればいいかわからない</li>
+            <li class="rv">料理には自信があるのに、写真や動画だとおいしさが伝わらない</li>
+            <li class="rv">ホームページがない。作りたいけど初期費用が心配</li>
+            <li class="rv">商品のPR動画を作りたいけど、頼める人がいない</li>
+          </ul>
+        </div>
+        <div class="prob-fig rv"><img src="images/pop/nk-think.webp" alt="考え中のなべくん" width="520" height="520" loading="lazy"></div>
+      </div>
+      <p class="answer rv"><span class="nb">その悩み、</span><b><span class="nb">撮影・制作・発信を</span><span class="nb">まとめて</span></b><span class="nb">私にお任せください！</span></p>
+    </div>
+  </section>
+
+  <!-- サービス -->
+  <section class="sec" id="services">
+    <div class="wrap">
+      <div class="sec-top"><span>03 / SERVICES</span></div>
+      <span class="label rv">ひとりで7役！</span>
+      <h2 class="h2 rv">発信にまつわること、<br><span class="ul">まるごと頼めます。</span></h2>
+      <div class="tiles">
+        <button class="tile rv" type="button" data-svc="1" aria-haspopup="dialog">
+          <span class="tile-img"><img src="images/pop/svc1-video.webp?v=2" alt="料理を撮影するなべくんのイラスト" width="1000" height="563" loading="lazy"><span class="tile-no">01</span></span>
+          <span class="tile-body"><span class="tile-t"><span class="nb">動画・写真撮影</span></span><span class="tile-c">魅力を引き出す撮影</span><span class="tile-more">くわしく <i class="fa-solid fa-circle-plus" aria-hidden="true"></i></span></span>
+        </button>
+        <button class="tile rv" type="button" data-svc="2" aria-haspopup="dialog">
+          <span class="tile-img"><img src="images/pop/svc2-recipe.webp?v=2" alt="レシピを考えるなべくんのイラスト" width="1000" height="563" loading="lazy"><span class="tile-no">02</span></span>
+          <span class="tile-body"><span class="tile-t"><span class="nb">レシピ開発・監修</span></span><span class="tile-c">企画から納品まで</span><span class="tile-more">くわしく <i class="fa-solid fa-circle-plus" aria-hidden="true"></i></span></span>
+        </button>
+        <button class="tile rv" type="button" data-svc="3" aria-haspopup="dialog">
+          <span class="tile-img"><img src="images/pop/svc3-sns.webp?v=2" alt="右肩上がりの矢印の前で腕を組むなべくんのイラスト" width="1000" height="563" loading="lazy"><span class="tile-no">03</span></span>
+          <span class="tile-body"><span class="tile-t"><span class="nb">SNS</span><span class="nb">コンサルティング</span></span><span class="tile-c">62万人のノウハウ</span><span class="tile-more">くわしく <i class="fa-solid fa-circle-plus" aria-hidden="true"></i></span></span>
+        </button>
+        <button class="tile rv" type="button" data-svc="4" aria-haspopup="dialog">
+          <span class="tile-img"><img src="images/pop/svc4-tieup.webp?v=2" alt="料理を味わって商品を紹介するなべくんのイラスト" width="1000" height="563" loading="lazy"><span class="tile-no">04</span></span>
+          <span class="tile-body"><span class="tile-t"><span class="nb">SNS</span><span class="nb">タイアップ投稿</span></span><span class="tile-c">レシピとして届ける</span><span class="tile-more">くわしく <i class="fa-solid fa-circle-plus" aria-hidden="true"></i></span></span>
+        </button>
+        <button class="tile rv" type="button" data-svc="5" aria-haspopup="dialog">
+          <span class="tile-img"><img src="images/pop/svc5-web.webp?v=2" alt="ホームページを作るなべくんのイラスト" width="1000" height="563" loading="lazy"><span class="tile-no">05</span></span>
+          <span class="tile-body"><span class="tile-t"><span class="nb">ホームページ制作</span></span><span class="tile-c">初期費用0円プラン</span><span class="tile-more">くわしく <i class="fa-solid fa-circle-plus" aria-hidden="true"></i></span></span>
+        </button>
+        <button class="tile rv" type="button" data-svc="6" aria-haspopup="dialog">
+          <span class="tile-img"><img src="images/pop/svc6-class.webp?v=2" alt="料理教室で実演するなべくんのイラスト" width="1000" height="563" loading="lazy"><span class="tile-no">06</span></span>
+          <span class="tile-body"><span class="tile-t">料理教室</span><span class="tile-c">講演・実演もOK</span><span class="tile-more">くわしく <i class="fa-solid fa-circle-plus" aria-hidden="true"></i></span></span>
+        </button>
+        <button class="tile rv" type="button" data-svc="7" aria-haspopup="dialog">
+          <span class="tile-img"><img src="images/pop/svc7-ai.webp?v=2" alt="ロボットとバンザイして喜ぶなべくんのイラスト" width="1000" height="563" loading="lazy"><span class="tile-no">07</span></span>
+          <span class="tile-body"><span class="tile-t"><span class="nb">AI活用サポート</span></span><span class="tile-c">業務をラクに</span><span class="tile-more">くわしく <i class="fa-solid fa-circle-plus" aria-hidden="true"></i></span></span>
+        </button>
+      </div>
+      <p class="tiles-hint" aria-hidden="true">押すと、くわしい内容が開きます</p>
+      <div class="svc-data">
+        <div id="svc-1"><div class="dlg-img"><img src="images/pop/svc1-video.webp?v=2" alt="" width="1000" height="563"></div><div class="dlg-body"><p class="card-en"><i class="fa-solid fa-video" aria-hidden="true"></i>VIDEO &amp; PHOTO</p><h3>動画・写真撮影</h3><ul><li>HP用・SNS用・広告用など、目的に合わせて撮影</li><li>一度撮れば、SNS投稿に繰り返し使えます</li><li><span class="mk">特に飲食店さんに喜ばれています</span></li></ul><div class="dlg-links"><a class="chip" href="#movies">映像実績を見る <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></a></div><a class="btn btn--red" href="#contact" data-kind="動画・写真撮影"><i class="fa-regular fa-envelope" aria-hidden="true"></i>この内容で相談する</a></div></div>
+        <div id="svc-2"><div class="dlg-img"><img src="images/pop/svc2-recipe.webp?v=2" alt="" width="1000" height="563"></div><div class="dlg-body"><p class="card-en"><i class="fa-solid fa-utensils" aria-hidden="true"></i>RECIPE</p><h3>レシピ開発・監修</h3><ul><li>企業向けのレシピ開発・監修</li><li>商品PR・媒体掲載・SNS用の動画制作まで</li><li><span class="mk">私のSNSへの投稿も可能です</span></li></ul><div class="dlg-links"><a class="chip" href="#pr-reels">PR動画実績を見る <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></a></div><a class="btn btn--red" href="#contact" data-kind="レシピ開発"><i class="fa-regular fa-envelope" aria-hidden="true"></i>この内容で相談する</a></div></div>
+        <div id="svc-3"><div class="dlg-img"><img src="images/pop/svc3-sns.webp?v=2" alt="" width="1000" height="563"></div><div class="dlg-body"><p class="card-en"><i class="fa-solid fa-chart-line" aria-hidden="true"></i>SNS CONSULTING</p><h3>SNSコンサルティング</h3><ul><li><span class="mk">総フォロワー62万人以上の実績</span>をもとにサポート</li><li>YouTube・Instagramのアカウント設計、企画、改善提案</li><li>初めての方の初期サポートも</li></ul><a class="btn btn--red" href="#contact" data-kind="SNS運用"><i class="fa-regular fa-envelope" aria-hidden="true"></i>この内容で相談する</a></div></div>
+        <div id="svc-4"><div class="dlg-img"><img src="images/pop/svc4-tieup.webp?v=2" alt="" width="1000" height="563"></div><div class="dlg-body"><p class="card-en"><i class="fa-solid fa-tower-broadcast" aria-hidden="true"></i>SNS TIE-UP</p><h3>SNSタイアップ投稿</h3><ul><li>貴社の商品を使ったレシピ動画を制作</li><li><span class="mk">YouTube21万・Instagram19万・TikTok11万人</span>の<span class="nb">「なべのだいどころ。」</span>で配信</li><li>動画は貴社のSNSやWebでも二次利用できます</li></ul><div class="dlg-links"><a class="chip" href="#pr-reels">PR動画実績を見る <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></a></div><a class="btn btn--red" href="#contact" data-kind="タイアップ・PR"><i class="fa-regular fa-envelope" aria-hidden="true"></i>この内容で相談する</a></div></div>
+        <div id="svc-5"><div class="dlg-img"><img src="images/pop/svc5-web.webp?v=2" alt="" width="1000" height="563"></div><div class="dlg-body"><p class="card-en"><i class="fa-solid fa-globe" aria-hidden="true"></i>WEB DESIGN</p><h3>ホームページ制作</h3><ul><li><span class="mk">初期費用0円プラン</span>をご用意</li><li>出張撮影からホームページ制作まで一括</li><li>制作後もSNSの相談に乗ります</li></ul><div class="dlg-links"><a class="chip" href="web-design.html">詳しく見る <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></a></div><a class="btn btn--red" href="#contact" data-kind="ホームページ制作"><i class="fa-regular fa-envelope" aria-hidden="true"></i>この内容で相談する</a></div></div>
+        <div id="svc-6"><div class="dlg-img"><img src="images/pop/svc6-class.webp?v=2" alt="" width="1000" height="563"></div><div class="dlg-body"><p class="card-en"><i class="fa-solid fa-utensils" aria-hidden="true"></i>COOKING CLASS</p><h3>料理教室</h3><ul><li>個人・グループ向けの料理教室</li><li>イベントでのフードコーディネート</li><li><span class="mk">テレビ番組のフードコーディネート経験あり</span></li><li>企業・自治体向けの講演・実演も</li></ul><div class="dlg-links"><a class="chip" href="https://www.instagram.com/reels/C7V5NP_xyY8/" target="_blank" rel="noopener noreferrer">料理教室の様子 <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></a><a class="chip" href="#tvcm">フードコーディネート実績 <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></a></div><a class="btn btn--red" href="#contact" data-kind="料理教室・講演"><i class="fa-regular fa-envelope" aria-hidden="true"></i>この内容で相談する</a></div></div>
+        <div id="svc-7"><div class="dlg-img"><img src="images/pop/svc7-ai.webp?v=2" alt="" width="1000" height="563"></div><div class="dlg-body"><p class="card-en"><i class="fa-solid fa-wand-magic-sparkles" aria-hidden="true"></i>AI SUPPORT</p><h3>AI活用サポート</h3><ul><li>ChatGPTやClaudeなど、生成AIで業務を効率化</li><li>プロンプト作成からワークフロー構築まで対応</li></ul><a class="btn btn--red" href="#contact" data-kind="アプリ・ツール開発"><i class="fa-regular fa-envelope" aria-hidden="true"></i>この内容で相談する</a></div></div>
+      </div>
+      <div class="local rv">
+        <img src="images/pop/local-visit.webp?v=2" alt="黄色い車で宮崎・鹿児島のお客さまのもとへ向かうなべくん" width="1000" height="563" loading="lazy">
+        <div>
+          <h3>宮崎・鹿児島エリアは<span class="nb">直接うかがいます！</span></h3>
+          <p>現地でじっくりお話を聞き、あなたの想いに合ったご提案をします。</p>
+        </div>
+        <a class="btn" href="#contact">ご依頼・ご相談はこちら</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- 映像 -->
+  <section class="sec sec--sky" id="movies">
+    <div class="wrap">
+      <div class="sec-top"><span>04 / MOVIES</span></div>
+      <span class="label rv">これが私の映像です</span>
+      <h2 class="h2 rv">一皿の魅力を、<br><span class="ul">最大限に引き出す。</span></h2>
+      <p class="sec-lead rv">光・音・動き・シズル感。料理がいちばん美味しく見える瞬間を撮ります。</p>
+      <div class="film rv">
+        <video muted loop playsinline preload="none" poster="movie/hero-poster.jpg" data-film src="movie/hero-sizzle.mp4"></video>
+        <span class="film-tag">実際に撮影した映像</span>
+      </div>
+      <div data-tabs>
+        <div class="tabs-bar" role="tablist" aria-label="映像の種類">
+          <button class="tab" type="button" role="tab" aria-selected="true" aria-controls="yt-videos" id="tab-yt"><i class="fa-brands fa-youtube" aria-hidden="true"></i>YouTube</button>
+          <button class="tab" type="button" role="tab" aria-selected="false" aria-controls="furusato-reels" id="tab-fr" tabindex="-1"><i class="fa-solid fa-gift" aria-hidden="true"></i>ふるさと納税</button>
+          <button class="tab" type="button" role="tab" aria-selected="false" aria-controls="pr-reels" id="tab-pr" tabindex="-1"><i class="fa-solid fa-building" aria-hidden="true"></i>企業のPR動画</button>
+        </div>
+        <div class="tabp" role="tabpanel" id="yt-videos" aria-labelledby="tab-yt">
+          <p class="tabp-lead">自分のチャンネルの料理動画です。</p>
+          <p class="hint" aria-hidden="true">← 横に動かして見られます →</p>
+          <div class="row">
+        <button class="yt-item rv" type="button" data-yt="watjzzYJEGI" aria-label="YouTube動画1を再生"><img src="https://i.ytimg.com/vi/watjzzYJEGI/hqdefault.jpg" alt="" loading="lazy"><span class="yt-play"><i class="fa-solid fa-play" aria-hidden="true"></i></span></button>
+        <button class="yt-item rv" type="button" data-yt="ezq2YW2upjM" aria-label="YouTube動画2を再生"><img src="https://i.ytimg.com/vi/ezq2YW2upjM/hqdefault.jpg" alt="" loading="lazy"><span class="yt-play"><i class="fa-solid fa-play" aria-hidden="true"></i></span></button>
+        <button class="yt-item rv" type="button" data-yt="Sj2yj7oSTYQ" aria-label="YouTube動画3を再生"><img src="https://i.ytimg.com/vi/Sj2yj7oSTYQ/hqdefault.jpg" alt="" loading="lazy"><span class="yt-play"><i class="fa-solid fa-play" aria-hidden="true"></i></span></button>
+        <button class="yt-item rv" type="button" data-yt="FvK8OeoiPvg" aria-label="YouTube動画4を再生"><img src="https://i.ytimg.com/vi/FvK8OeoiPvg/hqdefault.jpg" alt="" loading="lazy"><span class="yt-play"><i class="fa-solid fa-play" aria-hidden="true"></i></span></button>
+        <button class="yt-item rv" type="button" data-yt="BRxr1vT5ag0" aria-label="YouTube動画5を再生"><img src="https://i.ytimg.com/vi/BRxr1vT5ag0/hqdefault.jpg" alt="" loading="lazy"><span class="yt-play"><i class="fa-solid fa-play" aria-hidden="true"></i></span></button>
+      </div>
+        </div>
+        <div class="tabp" role="tabpanel" id="furusato-reels" aria-labelledby="tab-fr" hidden>
+          <p class="tabp-lead">都城市のご依頼で、返礼品のレシピ動画を制作。<span class="nb">公式アカウント内でも</span><span class="nb">トップクラスの再生数です。</span></p>
+          <a class="chip" href="https://www.instagram.com/miyakonojo_furusato/?hl=ja" target="_blank" rel="noopener noreferrer">都城市ふるさと納税【公式】 <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></a>
+          <p class="hint" aria-hidden="true">← 横に動かして見られます →</p>
+          <div class="row" data-reels>
+        <article class="reel"><iframe scrolling="no" data-src="https://www.instagram.com/reel/DZJaeXphoKS/embed" title="都城市ふるさと納税 Instagramリール1" allowtransparency="true" allow="encrypted-media"></iframe></article>
+        <article class="reel"><iframe scrolling="no" data-src="https://www.instagram.com/reel/DX5jHXhSdBO/embed" title="都城市ふるさと納税 Instagramリール2" allowtransparency="true" allow="encrypted-media"></iframe></article>
+        <article class="reel"><iframe scrolling="no" data-src="https://www.instagram.com/reel/DWsTVRyyHfe/embed" title="都城市ふるさと納税 Instagramリール3" allowtransparency="true" allow="encrypted-media"></iframe></article>
+        <article class="reel" hidden data-more><iframe scrolling="no" data-src="https://www.instagram.com/reel/DVcerhiEhzB/embed" title="都城市ふるさと納税 Instagramリール4" allowtransparency="true" allow="encrypted-media"></iframe></article>
+        <article class="reel" hidden data-more><iframe scrolling="no" data-src="https://www.instagram.com/reel/DUUYZIGkQQW/embed" title="都城市ふるさと納税 Instagramリール5" allowtransparency="true" allow="encrypted-media"></iframe></article>
+        <article class="reel" hidden data-more><iframe scrolling="no" data-src="https://www.instagram.com/reel/DTHIwfRkog9/embed" title="都城市ふるさと納税 Instagramリール6" allowtransparency="true" allow="encrypted-media"></iframe></article>
+        <article class="reel" hidden data-more><iframe scrolling="no" data-src="https://www.instagram.com/reel/DR1zzSFErzv/embed" title="都城市ふるさと納税 Instagramリール7" allowtransparency="true" allow="encrypted-media"></iframe></article>
+        <article class="reel" hidden data-more><iframe scrolling="no" data-src="https://www.instagram.com/reel/DQoj8VkEluw/embed" title="都城市ふるさと納税 Instagramリール8" allowtransparency="true" allow="encrypted-media"></iframe></article>
+      </div>
+          <p class="center"><button class="btn btn--white" type="button" data-more-btn>ほかの動画も見る（あと5本）</button></p>
+        </div>
+        <div class="tabp" role="tabpanel" id="pr-reels" aria-labelledby="tab-pr" hidden>
+          <p class="tabp-lead">永谷園・味の素・サントリーなど、<span class="nb">企業の商品PR動画を制作。</span><span class="nb">自社SNSや広告で使える動画にも</span><span class="nb">対応します。</span></p>
+          <p class="hint" aria-hidden="true">← 横に動かして見られます →</p>
+          <div class="row">
+        <article class="reel"><iframe scrolling="no" data-src="https://www.instagram.com/reel/DHSGkjITtyW/embed" title="その他ショート動画案件 Instagramリール1" allowtransparency="true" allow="encrypted-media"></iframe></article>
+        <article class="reel"><iframe scrolling="no" data-src="https://www.instagram.com/reel/DDEJwfmT6Mt/embed" title="その他ショート動画案件 Instagramリール2" allowtransparency="true" allow="encrypted-media"></iframe></article>
+        <article class="reel"><iframe scrolling="no" data-src="https://www.instagram.com/reel/DIyAUh5y9aQ/embed" title="その他ショート動画案件 Instagramリール3" allowtransparency="true" allow="encrypted-media"></iframe></article>
+      </div>
+        </div>
+      </div>
+
+      <div class="cta rv">
+        <p><span class="nb">動画・写真の撮影、</span><span class="nb">商品PR動画の制作も</span><span class="nb">承っています。</span></p>
+        <a class="btn btn--red" href="#contact">ご依頼・ご相談はこちら</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- 実績 -->
+  <section class="sec" id="works">
+    <div class="wrap">
+      <div class="sec-top"><span>05 / WORKS</span></div>
+      <span class="label rv">発信だけじゃない！</span>
+      <h2 class="h2 rv">作って、届けて、<br><span class="ul">使ってもらうまで。</span></h2>
+      <p class="hint hint--sp" aria-hidden="true">← 横に動かして見られます →</p>
+      <div class="feat">
+        <article class="feat-item rv">
+          <div class="feat-img feat-img--cover"><img src="images/gin.webp" alt="YouTube Silver Creator Award" loading="lazy"></div>
+          <div class="feat-body">
+            <p class="card-en">ACHIEVEMENT</p>
+            <h3>YouTube登録者10万人の証</h3>
+            <p>「ちょっとお洒落な男飯」の発信で、登録者10万人を達成しました。</p>
+          </div>
+        </article>
+        <article class="feat-item rv">
+          <div class="feat-img"><img src="images/himitsukichi-screens.jpg" alt="なべの秘密基地。の画面" loading="lazy"></div>
+          <div class="feat-body">
+            <p class="card-en">IN-HOUSE PRODUCT</p>
+            <h3>自社開発のレシピAI「なべの秘密基地。」</h3>
+            <p>冷蔵庫の食材から、今夜の1品が見つかるサービス。企画から開発・運用まで自作です。</p>
+            <a class="chip" href="https://www.nabenokitchen.com/himitsukichi/?src=other" target="_blank" rel="noopener noreferrer">使い方を見る <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></a>
+          </div>
+        </article>
+        <article class="feat-item rv" id="naraigoto-app">
+          <div class="feat-img"><img src="images/naraigoto/cover.jpg" alt="習い事の出欠・連絡アプリの画面" loading="lazy"></div>
+          <div class="feat-body">
+            <p class="card-en">APP DEVELOPMENT</p>
+            <h3>習い事の出欠・連絡アプリ</h3>
+            <p>習い事の連絡と出欠確認を、スマホひとつに。50人以上のクラブで毎日使われています。</p>
+            <a class="chip" href="https://nabe0096.github.io/portfolio/naraigoto-app.html">画面と動画で見る <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></a>
+          </div>
+        </article>
+      </div>
+
+      <div class="ev-head">
+        <span class="label rv">イベント・コラボの実績</span>
+        <p class="tiles-hint" style="text-align:left;margin-top:10px" aria-hidden="true">押すと、写真とくわしい内容が開きます</p>
+      </div>
+      <div class="ev rv">
+        <details name="ev">
+          <summary><time>2026.09</time><span><span class="nb">都城市「肉と焼酎まつり」で</span><span class="nb">料理体験ブースの</span><span class="nb">講師を務めました</span></span></summary>
+          <div class="ev-body"><div class="ev-photos"><button type="button" data-lb data-cap="会場の看板。体験コーナーに掲載していただきました"><img src="images/nikusho-signboard.webp" alt="肉と焼酎まつりの会場看板" loading="lazy"></button><button type="button" data-lb data-cap="事前予約は満席に"><img src="images/nikusho-full.jpg?v=3" alt="最強男飯づくり 事前予約満席のお知らせ" loading="lazy"></button><button type="button" data-lb data-cap="第1部の調理風景"><img src="images/nikusho-lesson1.webp" alt="料理体験ブースの調理風景" loading="lazy"></button><button type="button" data-lb data-cap="まちなかキッチンでマーボーチャーハンづくり"><img src="images/nikusho-lesson2.webp" alt="まちなかキッチンでの調理風景" loading="lazy"></button><button type="button" data-lb data-cap="YouTube登録者10万人の盾も会場へ"><img src="images/nikusho-shield.jpg?v=3" alt="YouTube銀の盾を持ったなべ" loading="lazy"></button></div><p>都城市主催の「肉と焼酎まつり2026」で、体験コーナー<span class="mk">「SNSでバズりまくった最強男飯づくり」</span>の講師を務めました。企画名・メニューの提案から当日の進行までお引き受けし、都城産の鶏ミンチを使ったマーボーチャーハンを参加者の皆さまと調理。<span class="mk">事前予約制の2回とも満席</span>となりました。</p></div>
+        </details>
+        <details name="ev">
+          <summary><time>2026.07</time><span><span class="nb">九州電力送配電様・</span><span class="nb">きりしまフォーラム様の企画で、</span><span class="nb">IH料理教室を</span><span class="nb">開催しました</span></span></summary>
+          <div class="ev-body"><div class="ev-photos"><button type="button" data-lb><img src="images/集合写真.webp" alt="IH料理教室の集合写真" loading="lazy"></button><button type="button" data-lb><img src="images/俯瞰写真.webp" alt="IH料理教室で作った料理" loading="lazy"></button><button type="button" data-lb data-cap="引用：きりしまフォーラム8月号"><img src="images/きりしまフォーラム8月号.webp" alt="IHクッキング教室のイベントレポート紙面" loading="lazy"></button></div><p><span class="mk">IHクッキングヒーターの魅力を体験できる料理教室</span>を開催しました。火を使わない安心感や調理のしやすさをお伝えしながら、参加者の皆さまと楽しくクッキング。事後アンケートでは<span class="mk">満足度100%</span>の評価をいただきました。</p></div>
+        </details>
+        <details name="ev">
+          <summary><time>2026.06</time><span><span class="nb">宝島社</span><span class="nb">『旨い！ 究極の家カレー』に</span><span class="nb">カレーレシピ2品が</span><span class="nb">掲載されました</span></span></summary>
+          <div class="ev-body"><div class="ev-photos"><button type="button" data-lb data-cap="宝島社『旨い！ 究極の家カレー』（2026年6月発売）"><img src="images/takarajima-book.jpg" alt="宝島社『旨い！ 究極の家カレー』の表紙" loading="lazy"></button><button type="button" data-lb data-cap="煮込み0のスピードミンチカレー"><img src="images/takarajima-mince.jpg" alt="スピードミンチカレー" loading="lazy"></button><button type="button" data-lb data-cap="お店超えカレー"><img src="images/takarajima-omise.jpg" alt="お店超えカレー" loading="lazy"></button></div><p>宝島社のレシピムック『旨い！ 究極の家カレー』（2026年6月発売）に、<span class="mk">オリジナルのカレーレシピ2品</span>を提供しました。Instagramの投稿をご覧になった編集部からのご依頼で、「煮込み0のスピードミンチカレー」と「お店超えカレー」を掲載いただいています。</p></div>
+        </details>
+        <details name="ev" id="collab-ikeda">
+          <summary><time>2026.05</time><span><span class="nb">都城市 池田市長との</span><span class="nb">コラボ動画で、</span><span class="nb">企画・構成・出演を</span><span class="nb">担当しました</span></span></summary>
+          <div class="ev-body"><div class="ev-photos"><button type="button" data-lb><img src="images/池田市長炒飯.webp" alt="都城市 池田市長とのコラボ" loading="lazy"></button><button type="button" data-lb><img src="images/池田市長1.webp" alt="池田市長との写真1" loading="lazy"></button><button type="button" data-lb><img src="images/池田市長2.webp" alt="池田市長との写真2" loading="lazy"></button></div><p class="ev-quote"><span class="nb">「えっ、今から</span><span class="nb">私が作るんですか！？」</span></p><p>池田市長をお招きし、事前告知なしで料理に挑戦していただくサプライズ企画。市長のリアルな反応とSNSで話題の男飯が掛け合わさり、多くの反響をいただきました。撮影・編集はクライアントと連携し、チームで作り上げました。</p><p class="ev-links"><a class="chip" href="https://www.instagram.com/reel/Ddc_rYogIVl/" target="_blank" rel="noopener">コラボ動画を見る <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></a></p></div>
+        </details>
+        <details name="ev">
+          <summary><time>2025.09〜</time><span><span class="nb">都城市ふるさと納税の</span><span class="nb">返礼品レシピ動画を、</span><span class="nb">毎月制作しています</span></span></summary>
+          <div class="ev-body"><div class="ev-photos"><button type="button" data-lb><img src="images/ふるさと納税1.webp" alt="都城市ふるさと納税返礼品レシピ" loading="lazy"></button></div><p>地元・都城市のふるさと納税返礼品を使ったレシピ動画を<span class="mk">2025年9月から毎月制作し、都城市公式アカウントに投稿</span>しています。</p><p class="ev-links"><a class="chip" href="https://www.rakuten.co.jp/f452025-miyakonojo/contents/2026/recipe/" target="_blank" rel="noopener noreferrer">紹介ページを見る <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></a><a class="chip" href="#furusato-reels">動画はこちら <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></a></p></div>
+        </details>
+        <details name="ev" id="tvcm">
+          <summary><time>2024.10</time><span><span class="nb">宮崎県「ひなたの恋」</span><span class="nb">TVCMの</span><span class="nb">フードコーディネートを</span><span class="nb">担当しました</span></span></summary>
+          <div class="ev-body"><button class="ev-video" type="button" data-yt="n9-J5edwZfc" aria-label="ひなたの恋 テレビCMを再生"><img src="https://i.ytimg.com/vi/n9-J5edwZfc/hqdefault.jpg" alt="" loading="lazy"><span class="yt-play"><i class="fa-solid fa-play" aria-hidden="true"></i></span></button><p>宮崎県の出逢い・結婚応援事業<span class="mk">「ひなたの恋」のテレビCM（チキン南蛮編）</span>で、フードコーディネートを担当させていただきました。宮崎県公式チャンネルでも公開されています。</p></div>
+        </details>
+        <details name="ev">
+          <summary><time>2024.05</time><span><span class="nb">ママパーティーさんの</span><span class="nb">ご依頼で、</span><span class="nb">料理教室を</span><span class="nb">開催しました</span></span></summary>
+          <div class="ev-body"><div class="ev-photos"><button type="button" data-lb><img src="images/名称未設定のデザイン.webp" alt="料理教室の様子" loading="lazy"></button></div><p>都城市で活動するママパーティーさんからご依頼をいただき料理教室を開催。<span class="mk">たくさんの方にご参加いただき、とても楽しい会になりました。</span></p><p class="ev-links"><a class="chip" href="https://www.instagram.com/reel/C7V5NP_xyY8/" target="_blank" rel="noopener noreferrer">当日の様子はこちら <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></a></p></div>
+        </details>
+        <details name="ev">
+          <summary><time>2024</time><span><span class="nb">大洋図書『実話ナックルズ』</span><span class="nb">「ちょい足しグルメ」の</span><span class="nb">レシピ監修を</span><span class="nb">担当しました</span></span></summary>
+          <div class="ev-body"><div class="ev-photos"><button type="button" data-lb><img src="images/1693880660081-XaaslAnYlG.webp" alt="実話ナックルズ ちょい足しグルメの誌面" loading="lazy"></button></div><p>人気企画<span class="mk">「ちょい足しグルメ」</span>のレシピ監修を担当。決められた商品をもとに複数のアレンジレシピを考案し、商品の新たな楽しみ方を提案しました。限られた食材やテーマの中でも、「作ってみたい」「食べてみたい」と思っていただけるレシピづくりを大切にしています。</p></div>
+        </details>
+      </div>
+      <div class="cta rv">
+        <p><span class="nb">料理教室・イベント講師、</span><span class="nb">レシピ監修、</span><span class="nb">自治体・企業とのコラボ企画も</span><span class="nb">承っています。</span></p>
+        <a class="btn btn--red" href="#contact">ご依頼・ご相談はこちら</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- 私について -->
+  <section class="sec sec--white" id="about">
+    <div class="wrap">
+      <div class="sec-top"><span>06 / ABOUT</span></div>
+      <span class="label rv">どうも、なべです！</span>
+      <h2 class="h2 rv">地域の美味しいを、<br><span class="ul">未来に残す。</span></h2>
+      <div class="about">
+        <div class="about-card rv">
+          <img class="icon" src="images/nabes-kitchen-kasure-icon.webp" alt="NABE'S KITCHEN のアイコン" loading="lazy">
+          <h3>なべのだいどころ。（渡辺）</h3>
+          <small><i class="fa-solid fa-location-dot red" aria-hidden="true"></i> 宮崎県都城市で活動中</small>
+          <div class="tags"><span>男飯料理研究家</span><span>SNSトータルコーディネーター</span><span>映像クリエイター</span></div>
+        </div>
+        <div class="about-text rv">
+          <ul class="facts">
+            <li><b>15<small>年以上</small></b>飲食業界</li>
+            <li><b>約10<small>年</small></b>医療機関の<br>マネジメント</li>
+            <li><b>62<small>万人</small></b>SNS総<br>フォロワー</li>
+          </ul>
+          <p>2019年に「なべのだいどころ。」として発信をスタート。<span class="mk">「見て楽しく、誰が作ってもおいしい。」</span>がコンセプトです。いまは個人・企業・自治体の発信を、まるごとお手伝いしています。</p>
+          <p><a class="chip" href="https://lit.link/nabekitchen" target="_blank" rel="noopener noreferrer">各種SNSリンクを見る <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></a></p>
+          <div class="mission">
+            <b>「都城グルメ応援プロジェクト」</b>
+            <p>地元・都城の、まだ知られていない素敵なお店や料理を、写真と動画で記録して未来へつなぐ活動です。</p>
+            <a class="chip" href="https://mj-gourmet.jp/" target="_blank" rel="noopener noreferrer">プロジェクトを見る <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></a>
+          </div>
+        </div>
+      </div>
+      <h3 class="shoot-head rv">実際の撮影の様子</h3>
+      <p class="shoot-cap rv">撮影した写真・動画は、お店にプレゼントしています。</p>
+      <div class="row row--fit about-video">
+        <button class="shoot rv" type="button" data-yt="P3rc8hzPkiI" aria-label="茶房KUMU（くむ） 撮影の様子を再生"><img src="https://i.ytimg.com/vi/P3rc8hzPkiI/oar2.jpg" alt="" loading="lazy" data-fb="https://i.ytimg.com/vi/P3rc8hzPkiI/hqdefault.jpg"><span class="yt-play"><i class="fa-solid fa-play" aria-hidden="true"></i></span></button>
+        <button class="shoot rv" type="button" data-yt="RIAeL2ByOYk" aria-label="自由料理屋 て 撮影の様子を再生"><img src="https://i.ytimg.com/vi/RIAeL2ByOYk/oar2.jpg" alt="" loading="lazy" data-fb="https://i.ytimg.com/vi/RIAeL2ByOYk/hqdefault.jpg"><span class="yt-play"><i class="fa-solid fa-play" aria-hidden="true"></i></span></button>
+        <button class="shoot rv" type="button" data-yt="8Qsg2FS-OJo" aria-label="Burger House U 撮影の様子を再生"><img src="https://i.ytimg.com/vi/8Qsg2FS-OJo/oar2.jpg" alt="" loading="lazy" data-fb="https://i.ytimg.com/vi/8Qsg2FS-OJo/hqdefault.jpg"><span class="yt-play"><i class="fa-solid fa-play" aria-hidden="true"></i></span></button>
+        <button class="shoot rv" type="button" data-yt="PC9okkUCOKY" aria-label="丸新ラーメン 撮影の様子を再生"><img src="https://i.ytimg.com/vi/PC9okkUCOKY/oar2.jpg" alt="" loading="lazy" data-fb="https://i.ytimg.com/vi/PC9okkUCOKY/hqdefault.jpg"><span class="yt-play"><i class="fa-solid fa-play" aria-hidden="true"></i></span></button>
+        <button class="shoot rv" type="button" data-yt="GsfB5S1q6JM" aria-label="Three L Squad 撮影の様子を再生"><img src="https://i.ytimg.com/vi/GsfB5S1q6JM/oar2.jpg" alt="" loading="lazy" data-fb="https://i.ytimg.com/vi/GsfB5S1q6JM/hqdefault.jpg"><span class="yt-play"><i class="fa-solid fa-play" aria-hidden="true"></i></span></button>
+      </div>
+    </div>
+  </section>
+
+  <!-- お問い合わせ -->
+  <section class="contact" id="contact">
+    <div class="wrap contact-in">
+      <h2 class="h2 rv">まずは、<span class="nb">お気軽にご相談ください！</span></h2>
+      <p class="rv" style="margin-bottom:6px"><span class="nb">このページから、</span><span class="nb">そのまま送れます。</span></p>
+      <div class="contact-box rv">
+        <img src="images/pop/contact-talk.webp?v=2" alt="テーブル越しに手を振って相談を迎えるなべくん" width="1000" height="563" loading="lazy">
+        <form class="cform" id="contact-form" novalidate>
+          <input type="text" name="botcheck" class="hp" tabindex="-1" autocomplete="off" aria-hidden="true">
+          <div class="cf-row">
+            <span class="cf-label" id="cf-l-kind">ご相談の内容<em>必須</em></span>
+            <div class="cf-chips" role="group" aria-labelledby="cf-l-kind" id="cf-kind">
+              <label><input type="checkbox" name="ご相談の内容" value="動画・写真撮影"><span>動画・写真撮影</span></label>
+              <label><input type="checkbox" name="ご相談の内容" value="レシピ開発"><span>レシピ開発</span></label>
+              <label><input type="checkbox" name="ご相談の内容" value="SNS運用"><span>SNS運用</span></label>
+              <label><input type="checkbox" name="ご相談の内容" value="タイアップ・PR"><span>タイアップ・PR</span></label>
+              <label><input type="checkbox" name="ご相談の内容" value="ホームページ制作"><span>ホームページ制作</span></label>
+              <label><input type="checkbox" name="ご相談の内容" value="料理教室・講演"><span>料理教室・講演</span></label>
+              <label><input type="checkbox" name="ご相談の内容" value="アプリ・ツール開発"><span>アプリ・ツール開発</span></label>
+              <label><input type="checkbox" name="ご相談の内容" value="その他"><span>その他</span></label>
+            </div>
+            <p class="cf-err" data-err="cf-kind"></p>
+          </div>
+          <div class="cf-row">
+            <label class="cf-label" for="cf-name">お名前<em>必須</em></label>
+            <input class="cf-in" type="text" id="cf-name" name="お名前" autocomplete="name" required>
+            <p class="cf-err" data-err="cf-name"></p>
+          </div>
+          <div class="cf-row">
+            <label class="cf-label" for="cf-org">会社・店舗名</label>
+            <input class="cf-in" type="text" id="cf-org" name="会社・店舗名" autocomplete="organization">
+          </div>
+          <div class="cf-row">
+            <label class="cf-label" for="cf-mail">メールアドレス<em>必須</em></label>
+            <input class="cf-in" type="email" id="cf-mail" name="メールアドレス" autocomplete="email" inputmode="email" required>
+            <p class="cf-err" data-err="cf-mail"></p>
+          </div>
+          <div class="cf-row">
+            <label class="cf-label" for="cf-tel">電話番号</label>
+            <input class="cf-in" type="tel" id="cf-tel" name="電話番号" autocomplete="tel" inputmode="tel">
+          </div>
+          <div class="cf-row">
+            <label class="cf-label" for="cf-msg">ご相談の詳細<em>必須</em></label>
+            <textarea class="cf-in" id="cf-msg" name="ご相談の詳細" rows="5" required placeholder="内容・ご希望の時期・ご予算など、決まっている範囲で大丈夫です。"></textarea>
+            <p class="cf-err" data-err="cf-msg"></p>
+          </div>
+          <p class="cf-err cf-err--all" id="cf-all" role="alert"></p>
+          <button class="btn btn--red cf-send" type="submit"><i class="fa-regular fa-paper-plane" aria-hidden="true"></i><span>この内容で送る</span></button>
+          <p class="cf-note">2〜3日以内に、メールでお返事します。</p>
+        </form>
+        <div class="cf-done" id="cf-done" hidden tabindex="-1">
+          <p class="cf-done-t"><i class="fa-solid fa-circle-check" aria-hidden="true"></i>送信しました！</p>
+          <p>ありがとうございます。2〜3日以内に、メールでお返事します。</p>
+        </div>
+        <a class="btn btn--white cf-ig" href="https://www.instagram.com/nabeno_kitchen/" target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-instagram" aria-hidden="true"></i>InstagramのDMでもOK</a>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="footer">
+  <div class="wrap">
+    <p class="footer-brand">なべのだいどころ。</p>
+    <nav class="sns" aria-label="SNSリンク">
+      <a href="https://www.youtube.com/c/nabekitchen" target="_blank" rel="noopener noreferrer" aria-label="YouTube"><i class="fa-brands fa-youtube" aria-hidden="true"></i></a>
+      <a href="https://www.instagram.com/nabeno_kitchen/" target="_blank" rel="noopener noreferrer" aria-label="Instagram"><i class="fa-brands fa-instagram" aria-hidden="true"></i></a>
+      <a href="https://www.tiktok.com/@nabekitchen" target="_blank" rel="noopener noreferrer" aria-label="TikTok"><i class="fa-brands fa-tiktok" aria-hidden="true"></i></a>
+      <a href="https://www.nabenokitchen.com/" target="_blank" rel="noopener noreferrer" aria-label="レシピサイト なべのだいどころ。"><img src="images/bousi-white.png" alt=""></a>
+      <a href="https://x.com/nabenodaidocolo" target="_blank" rel="noopener noreferrer" aria-label="X"><i class="fa-brands fa-x-twitter" aria-hidden="true"></i></a>
+    </nav>
+    <div class="nl" id="newsletter">
+      <b>無料メルマガ</b>
+      <ul>
+        <li><a href="https://www.nabenokitchen.com/lp/daidokoro/?src=portfolio" target="_blank" rel="noopener">なべのだいどころ。</a><span>毎日の献立に迷う方へ</span></li>
+        <li><a href="https://nabenoblog.com/lp/ryouri/?src=portfolio" target="_blank" rel="noopener">SNS攻略メルマガ</a><span>料理の発信を伸ばしたい方へ</span></li>
+        <li><a href="https://nabenoblog.com/lp/recook/?src=portfolio" target="_blank" rel="noopener">なべの裏メルマガ</a><span>働き方・生き方を変えたい方へ</span></li>
+      </ul>
+    </div>
+    <p class="copy">&copy; 2026 Nabe's Portfolio. All Rights Reserved.</p>
+  </div>
+</footer>
+
+<dialog class="dlg" id="dlg" aria-label="サービスのくわしい内容"><button class="dlg-x" type="button" aria-label="閉じる">&#10005;</button><div id="dlg-in"></div></dialog>
+
+<div class="lb" id="lb" aria-hidden="true"><button class="lb-x" type="button" aria-label="閉じる">&#10005;</button><button class="lb-p" type="button" aria-label="前へ">&#8249;</button><button class="lb-n" type="button" aria-label="次へ">&#8250;</button><figure><img src="" alt=""><figcaption></figcaption></figure></div>
+
+<div class="sticky" id="sticky"><a class="btn btn--red" href="#contact"><i class="fa-regular fa-envelope" aria-hidden="true"></i>ご依頼・ご相談はこちら</a></div>
+
+<script>
+(function(){
+  var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}})},{rootMargin:'0px 0px -8% 0px'});
+  document.querySelectorAll('.rv').forEach(function(el,i){el.style.transitionDelay=(i%4*60)+'ms';io.observe(el)});
+  // 映像は見えている間だけ再生
+  var film=document.querySelector('[data-film]');
+  if(film&&!matchMedia('(prefers-reduced-motion:reduce)').matches){
+    new IntersectionObserver(function(es){es.forEach(function(e){e.isIntersecting?film.play().catch(function(){}):film.pause()})},{threshold:.3}).observe(film);
+  }
+  // YouTubeは押してから読み込む
+  document.querySelectorAll('[data-yt]').forEach(function(b){b.addEventListener('click',function(){
+    if(b.querySelector('iframe'))return;
+    var f=document.createElement('iframe');f.src='https://www.youtube.com/embed/'+b.dataset.yt+'?autoplay=1&rel=0&playsinline=1';f.allow='autoplay; encrypted-media; picture-in-picture';f.allowFullscreen=true;f.title=b.getAttribute('aria-label')||'YouTube動画';b.innerHTML='';b.appendChild(f);
+  })});
+  // 縦動画の表紙が取れないときは横の表紙にする
+  document.querySelectorAll('img[data-fb]').forEach(function(im){function fb(){if(im.dataset.fb){im.src=im.dataset.fb;delete im.dataset.fb}}im.addEventListener('error',fb);im.addEventListener('load',function(){if(im.naturalWidth<=120)fb()});if(im.complete&&im.naturalWidth<=120)fb()});
+  // Instagramのリールは近づいてから読み込む
+  function loadFrame(f){if(f.dataset.src){f.src=f.dataset.src;f.removeAttribute('data-src')}}
+  var ro=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){loadFrame(e.target);ro.unobserve(e.target)}})},{rootMargin:'400px 200px'});
+  document.querySelectorAll('.reel:not([hidden]) iframe[data-src]').forEach(function(f){ro.observe(f)});
+  var mb=document.querySelector('[data-more-btn]');
+  if(mb)mb.addEventListener('click',function(){document.querySelectorAll('[data-more]').forEach(function(a){a.hidden=false;ro.observe(a.querySelector('iframe'))});mb.parentNode.remove()});
+
+  // タブ
+  document.querySelectorAll('[data-tabs]').forEach(function(t){
+    var bs=[].slice.call(t.querySelectorAll('[role=tab]')),ps=bs.map(function(b){return document.getElementById(b.getAttribute('aria-controls'))});
+    function act(i,focus){bs.forEach(function(b,j){b.setAttribute('aria-selected',j===i?'true':'false');b.tabIndex=j===i?0:-1});ps.forEach(function(p,j){p.hidden=j!==i});if(focus)bs[i].focus()}
+    bs.forEach(function(b,i){b.addEventListener('click',function(){act(i)});b.addEventListener('keydown',function(e){if(e.key==='ArrowRight')act((i+1)%bs.length,true);if(e.key==='ArrowLeft')act((i+bs.length-1)%bs.length,true)})});
+    t._act=function(p){var i=ps.indexOf(p);if(i>-1)act(i)};
+  });
+  // サービスの小窓
+  var dlg=document.getElementById('dlg'),din=document.getElementById('dlg-in');
+  function closeDlg(){if(dlg.open)dlg.close()}
+  if(dlg){
+    document.querySelectorAll('[data-svc]').forEach(function(b){b.addEventListener('click',function(){din.innerHTML=document.getElementById('svc-'+b.dataset.svc).innerHTML;if(dlg.showModal)dlg.showModal();else dlg.setAttribute('open','');dlg.scrollTop=0})});
+    dlg.addEventListener('click',function(e){if(e.target===dlg||e.target.closest('.dlg-x'))closeDlg()});
+  }
+  // ページ内リンク：タブの中・閉じた欄へ飛ぶときは開いてから動かす
+  document.addEventListener('click',function(e){
+    var a=e.target.closest('a[href^="#"]');if(!a)return;var el=document.querySelector(a.getAttribute('href'));if(!el)return;
+    closeDlg();
+    if(el.matches('[role=tabpanel]')){e.preventDefault();var t=el.closest('[data-tabs]');t._act(el);t.scrollIntoView({behavior:'smooth',block:'start'})}
+    else if(el.tagName==='DETAILS'){el.open=true}
+  });
+  // 写真の拡大
+  var lb=document.getElementById('lb'),lim=lb.querySelector('img'),lcap=lb.querySelector('figcaption'),set=[],idx=0;
+  function show(n){idx=(n+set.length)%set.length;var b=set[idx],im=b.querySelector('img');lim.src=im.src;lim.alt=im.alt;lcap.textContent=b.dataset.cap||im.alt;var multi=set.length>1;lb.querySelector('.lb-p').style.display=lb.querySelector('.lb-n').style.display=multi?'':'none'}
+  function close(){lb.classList.remove('on');lb.setAttribute('aria-hidden','true')}
+  document.querySelectorAll('[data-lb]').forEach(function(b){b.addEventListener('click',function(){set=[].slice.call(b.parentNode.querySelectorAll('[data-lb]'));show(set.indexOf(b));lb.classList.add('on');lb.setAttribute('aria-hidden','false')})});
+  lb.addEventListener('click',function(e){if(e.target===lb||e.target.closest('.lb-x'))close();else if(e.target.closest('.lb-p'))show(idx-1);else if(e.target.closest('.lb-n'))show(idx+1)});
+  addEventListener('keydown',function(e){if(!lb.classList.contains('on'))return;if(e.key==='Escape')close();if(e.key==='ArrowLeft')show(idx-1);if(e.key==='ArrowRight')show(idx+1)});
+  // 下の固定ボタン：最初の画面とお問い合わせでは隠す
+  var st=document.getElementById('sticky'),hero=document.querySelector('.hero'),ct=document.getElementById('contact');
+  function upd(){var h=innerHeight;st.classList.toggle('on',hero.getBoundingClientRect().bottom<0&&ct.getBoundingClientRect().top>h)}
+  addEventListener('scroll',upd,{passive:true});addEventListener('resize',upd);upd();
+})();
+</script>
+<script>
+(function(){var h=document.querySelector('.header'),b=document.querySelector('.menu-btn');if(!h||!b)return;
+function set(o){h.classList.toggle('open',o);b.setAttribute('aria-expanded',o);b.setAttribute('aria-label',o?'メニューを閉じる':'メニューを開く');b.firstElementChild.className=o?'fa-solid fa-xmark':'fa-solid fa-bars'}
+b.addEventListener('click',function(e){e.stopPropagation();set(!h.classList.contains('open'))});
+h.querySelector('.nav').addEventListener('click',function(e){if(e.target.closest('a'))set(false)});
+document.addEventListener('click',function(e){if(!h.contains(e.target))set(false)});
+document.addEventListener('keydown',function(e){if(e.key==='Escape')set(false)});
+})();
+</script>
+<script>
+/* 数字の札：見えたら数字がスロットのように回って止まる。HTMLの数字はそのまま（毎朝の数字更新が書き換える）。終わったら元の文字に戻す */
+(function(){
+  if(!('IntersectionObserver' in window)||matchMedia('(prefers-reduced-motion:reduce)').matches)return;
+  var bs=[].slice.call(document.querySelectorAll('.nums .num b'));
+  function spin(b,delay){
+    var node=b.firstChild;if(!node||node.nodeType!==3)return;
+    var txt=node.nodeValue,orig=b.innerHTML,frag=document.createDocumentFragment(),reels=[],k=0;
+    b.setAttribute('aria-label',b.textContent);
+    txt.split('').forEach(function(ch){
+      if(!/[0-9]/.test(ch)){frag.appendChild(document.createTextNode(ch));return}
+      var dg=document.createElement('span');dg.className='dg';dg.setAttribute('aria-hidden','true');
+      var sizer=document.createElement('i');sizer.textContent=ch;dg.appendChild(sizer);
+      var u=document.createElement('u'),n=20+k*4,t=+ch,seq=[];
+      for(var j=n;j>=0;j--)seq.push((t-j%10+10)%10);
+      seq.forEach(function(d){var sp=document.createElement('span');sp.textContent=d;u.appendChild(sp)});
+      dg.appendChild(u);frag.appendChild(dg);reels.push({u:u,n:n,k:k});k++;
+    });
+    b.replaceChild(frag,node);
+    var last=0;
+    requestAnimationFrame(function(){requestAnimationFrame(function(){
+      reels.forEach(function(r){
+        var dur=1100+r.k*170;last=Math.max(last,dur);
+        r.u.style.transition='transform '+dur+'ms cubic-bezier(.16,.84,.3,1) '+delay+'ms';
+        r.u.style.transform='translate(-50%,-'+(r.n*1.1)+'em)';
+      });
+      setTimeout(function(){b.innerHTML=orig;b.removeAttribute('aria-label')},last+delay+200);
+    })});
+  }
+  var io=new IntersectionObserver(function(es){es.forEach(function(e){
+    if(!e.isIntersecting)return;io.unobserve(e.target);
+    spin(e.target,350+bs.indexOf(e.target)*120);
+  })},{threshold:.6});
+  bs.forEach(function(b){io.observe(b)});
+})();
+</script>
+<script>
+/* お問い合わせフォーム：Web3Forms に送る（ヒビノネ写真館と同じ仕組み）。キーは受信先メールにひも付く公開用のキー */
+(function(){
+  var FORM={endpoint:'https://api.web3forms.com/submit',accessKey:'2d022cd5-3778-426b-90af-38ecff2f3dab',subjectPrefix:'【ポートフォリオ】'};
+  var f=document.getElementById('contact-form');if(!f)return;
+  var done=document.getElementById('cf-done'),all=document.getElementById('cf-all'),btn=f.querySelector('.cf-send');
+  function err(id,msg){var p=f.querySelector('[data-err="'+id+'"]'),el=document.getElementById(id);if(p)p.textContent=msg;if(el&&el.tagName!=='DIV')el.setAttribute('aria-invalid',msg?'true':'false')}
+  function check(){var ok=true,first=null;
+    var kinds=[].slice.call(f.querySelectorAll('input[name="ご相談の内容"]:checked'));
+    if(!kinds.length){err('cf-kind','ひとつ以上えらんでください');ok=false;first=first||f.querySelector('#cf-kind input')}else err('cf-kind','');
+    var n=f['お名前'];if(!n.value.trim()){err('cf-name','お名前を入れてください');ok=false;first=first||n}else err('cf-name','');
+    var m=f['メールアドレス'];if(!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(m.value.trim())){err('cf-mail',m.value.trim()?'メールアドレスの形を確かめてください':'メールアドレスを入れてください');ok=false;first=first||m}else err('cf-mail','');
+    var t=f['ご相談の詳細'];if(!t.value.trim()){err('cf-msg','ご相談の詳細を入れてください');ok=false;first=first||t}else err('cf-msg','');
+    if(first)first.focus();return ok}
+  f.addEventListener('input',function(e){var t=e.target;if(t.name==='ご相談の内容')err('cf-kind','');else if(t.id)err(t.id,'');all.textContent=''});
+  f.addEventListener('submit',function(e){e.preventDefault();all.textContent='';
+    if(f.botcheck.value)return;
+    if(!check())return;
+    if(!FORM.accessKey){all.textContent='いまフォームの準備中です。お手数ですが InstagramのDM からご連絡ください。';return}
+    var d=new FormData(f),kinds=d.getAll('ご相談の内容').join('・'),name=d.get('お名前').trim();
+    var body={access_key:FORM.accessKey,subject:FORM.subjectPrefix+name+'様／'+kinds,from_name:'なべのポートフォリオ',replyto:d.get('メールアドレス').trim(),botcheck:''};
+    body['ご相談の内容']=kinds;['お名前','会社・店舗名','メールアドレス','電話番号','ご相談の詳細'].forEach(function(k){var v=(d.get(k)||'').trim();if(v)body[k]=v});
+    btn.disabled=true;btn.querySelector('span').textContent='送信中…';
+    fetch(FORM.endpoint,{method:'POST',headers:{'Content-Type':'application/json','Accept':'application/json'},body:JSON.stringify(body)})
+      .then(function(r){return r.json().then(function(j){if(!r.ok||!j.success)throw new Error(j.message||'failed');return j})})
+      .then(function(){f.hidden=true;done.hidden=false;done.focus();done.scrollIntoView({block:'center'})})
+      .catch(function(){all.textContent='うまく送れませんでした。時間をおいてもう一度押すか、InstagramのDM からご連絡ください。';btn.disabled=false;btn.querySelector('span').textContent='この内容で送る'});
+  });
+})();
+</script>
+<script>
+/* 相談ボタン → このページのフォームへ。サービスの小窓から来たら、その内容に最初から印を付ける */
+(function(){
+  var f=document.getElementById('contact-form');if(!f)return;
+  document.addEventListener('click',function(e){
+    var a=e.target.closest('a[href="#contact"]');if(!a)return;
+    e.preventDefault();
+    var d=document.getElementById('dlg');if(d&&d.open)d.close();
+    var h=document.querySelector('.header');if(h)h.classList.remove('open');
+    var k=a.getAttribute('data-kind');
+    if(k){var c=f.querySelector('input[name="ご相談の内容"][value="'+k+'"]');if(c&&!c.checked){c.checked=true;c.dispatchEvent(new Event('input',{bubbles:true}))}}
+    var t=f.hidden?document.getElementById('cf-done'):f;
+    var y=t.getBoundingClientRect().top+scrollY-((h&&h.offsetHeight)||60)-14;
+    window.scrollTo({top:y,behavior:matchMedia('(prefers-reduced-motion:reduce)').matches?'auto':'smooth'});
+    if(history.replaceState)history.replaceState(null,'','#contact');
+  },true);
+})();
+</script>
+</body>
+</html>

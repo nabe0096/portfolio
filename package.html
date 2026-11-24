@@ -539,11 +539,35 @@ p,li{text-wrap:pretty;line-break:strict}
 .dd li::before{position:absolute;left:0;top:0;width:22px;height:22px;border-radius:50%;border:2px solid var(--ink);display:grid;place-items:center;font-size:12px;font-weight:900}
 .dd--do li::before{content:"✓";background:var(--green)}
 .dd--no li::before{content:"×";background:var(--pink)}
-.ref{margin-top:14px}
+.pricebox{margin-top:26px;background:var(--white);border:var(--bd);border-radius:18px 6px 16px 5px;box-shadow:6px 6px 0 var(--red);overflow:hidden}
+.pb-head{background:var(--ink);color:#fff;padding:18px 16px 16px;text-align:center}
+.pb-name{font-weight:900;font-size:14px;letter-spacing:.08em;color:var(--yellow)}
+.pb-price{font-weight:900;line-height:1.15;font-size:clamp(22px,6.2vw,34px);margin-top:2px}
+.pb-price b{font-size:clamp(60px,19vw,104px);color:var(--yellow);letter-spacing:-.02em;margin:0 4px;font-variant-numeric:tabular-nums}
+.pb-total{display:inline-block;margin-top:8px;background:var(--red);border:2px solid #fff;border-radius:999px;padding:1px 16px;font-weight:900;font-size:16px}
+.pb-body{padding:16px 16px 18px}
+.pb-t{font-weight:900;font-size:16px;margin-bottom:10px;text-align:center}
+.pb-list{list-style:none;display:grid;gap:8px;grid-template-columns:1fr}
+.pb-list li{word-break:auto-phrase;position:relative;padding:9px 10px 9px 36px;border:2px solid var(--ink);border-radius:10px 4px 9px 4px;background:var(--paper);font-weight:800;font-size:14px;line-height:1.4;align-content:center;display:grid}
+.pb-list li::before{content:"\f00c";font-family:"Font Awesome 6 Free";font-weight:900;position:absolute;left:10px;top:11px;color:var(--red);font-size:14px}
+.pb-list small{display:inline-block;margin-left:6px;font-weight:700;font-size:12px;line-height:1.35;opacity:.85}
+@media(min-width:900px){.pb-list small{display:block;margin-left:0}}
+@media(min-width:560px){.pb-list{grid-template-columns:1fr 1fr}}
+@media(min-width:900px){.pb-head{padding:26px 24px 22px}.pb-body{padding:22px 26px 26px}.pb-list{grid-template-columns:repeat(4,1fr);gap:12px}.pb-list li{font-size:15px;padding:12px 10px 12px 38px}.pb-list li::before{left:13px;top:14px}}
+.pnotes{display:grid;gap:14px;margin-top:18px}
+@media(min-width:900px){.pnotes{grid-template-columns:1fr 1fr;gap:20px;align-items:start}}
+.pnote{background:var(--white);border:2px solid var(--ink);border-radius:14px 5px 12px 4px;padding:14px 16px}
+.pnote h3{font-weight:900;font-size:15px;line-height:1.5;margin-bottom:8px}
+.pnote ul{list-style:none;display:grid;gap:8px}
+.pnote li{position:relative;padding-left:18px;font-weight:700;font-size:13px;line-height:1.65}
+.pnote li::before{content:"※";position:absolute;left:0;top:0}
+.pnote-fine{margin-top:10px;font-size:12px;font-weight:700;line-height:1.6;opacity:.85}
+.ref td small{display:block;font-size:12px;font-weight:700;opacity:.8}
+.ref tr.us td{border-bottom:0;font-weight:900;color:var(--red);font-size:16px;padding-top:2px}
 .ref table{width:100%;border-collapse:collapse;font-size:14px;font-variant-numeric:tabular-nums}
 .ref td{padding:6px 4px;border-bottom:2px dashed rgba(25,25,27,.25)}
 .ref td:last-child{text-align:right;font-weight:800;white-space:nowrap}
-.ref tr.sum td{border-bottom:0;font-weight:900}
+.ref tr.sum td{border-bottom:0;font-weight:900;padding-top:10px}
 @media(min-width:1000px){.strip--8 ul{grid-template-columns:repeat(4,1fr)}.strip--8 li{border-bottom:2px solid var(--ink)}.strip--8 li:nth-child(n+5){border-bottom:0}.strip--8 li:nth-child(4n){border-right:0}.strip--8 li:last-child{border-right:0}}
 </style>
 </head>
@@ -559,6 +583,7 @@ p,li{text-wrap:pretty;line-break:strict}
     <nav class="nav" id="nav" aria-label="メニュー">
       <a href="index.html">トップ</a>
       <a href="#deliver">中身</a>
+      <a href="#works">実績</a>
       <a href="#flow">半年の流れ</a>
       <a href="#price">料金</a>
       <a href="#scope">やること</a>
@@ -647,15 +672,30 @@ p,li{text-wrap:pretty;line-break:strict}
       <h2 class="h2 rv"><span class="nb">社員を1人雇ったと</span><span class="nb">思えば、</span><br><span class="ul nb">安いもんです。</span></h2>
       <ul class="whys">
         <li class="why rv"><span class="why-ic" aria-hidden="true"><i class="fa-solid fa-chart-line"></i></span><h3>SNSコンサルも私が直接</h3><p>SNSの総フォロワー60万人以上の私が、投稿の中身・見せ方・数字の読み方まで直接アドバイスします。</p></li>
-        <li class="why rv"><span class="why-ic" aria-hidden="true"><i class="fa-solid fa-user-tie"></i></span><h3>何でもわかる1人が社内にいる感覚</h3><p>ホームページ・撮影・SNS・仕組みづくり。ひとつずつ別の会社に頼まなくても、相談先は私ひとりです。</p></li>
+        <li class="why rv"><span class="why-ic" aria-hidden="true"><i class="fa-solid fa-user-tie"></i></span><h3>採用も、教育も、いりません</h3><p>ホームページ・撮影・SNS・仕組みづくりを、ひとりで担当します。別々の会社に頼む手間もなく、相談先は私ひとりです。</p></li>
         <li class="why rv"><span class="why-ic" aria-hidden="true"><i class="fa-solid fa-chalkboard-user"></i></span><h3>AI活用の社内研修も1回</h3><p>ご希望があれば、AI活用などの社内研修を1回行います。日々の作業をラクにする使い方を、社内のみなさんに。</p></li>
       </ul>
     </div>
   </section>
 
+  <section class="sec sec--white" id="works">
+    <div class="wrap">
+      <div class="sec-top"><span>04 / WORKS</span></div>
+      <span class="label rv">これまでの仕事</span>
+      <h2 class="h2 rv"><span class="nb">実際に作って、</span><br><span class="ul nb">公開しているホームページ。</span></h2>
+      <p class="hint hint--sp" aria-hidden="true">← 横に動かして見られます →</p>
+      <div class="row row--grid">
+        <article class="work rv"><div class="work-img"><img src="images/pop/w-hibinone.webp" alt="ヒビノネ写真館のホームページ" width="1000" height="625" loading="lazy"></div><div class="work-body"><p class="card-en">PHOTO STUDIO</p><h3>ヒビノネ写真館</h3><p>出張撮影スタジオ。写真が主役になる、余白の大きいデザイン。</p><a class="chip" href="https://nabe0096.github.io/hibinone-photo-studio/" target="_blank" rel="noopener noreferrer">サイトを見る <i class="fa-solid fa-arrow-up-right-from-square" aria-hidden="true"></i></a></div></article>
+        <article class="work rv"><div class="work-img"><img src="images/pop/w-monaforca.webp" alt="MONAFORCA（モナフォルサ）都城フットサル・サッカークラブのホームページ" width="1000" height="625" loading="lazy"></div><div class="work-body"><p class="card-en">SPORTS CLUB</p><h3>MONAFORCA</h3><p>フットサル・サッカークラブ。無料体験の申し込みまで迷わない構成。</p><a class="chip" href="https://www.monaforca.com/" target="_blank" rel="noopener noreferrer">サイトを見る <i class="fa-solid fa-arrow-up-right-from-square" aria-hidden="true"></i></a></div></article>
+        <article class="work rv"><div class="work-img"><img src="images/pop/w-mj.webp" alt="都城グルメ応援プロジェクトのホームページ" width="1000" height="625" loading="lazy"></div><div class="work-body"><p class="card-en">LOCAL PROJECT</p><h3><span class="nb">都城グルメ</span><span class="nb">応援プロジェクト</span></h3><p>地域の飲食店を、写真を大きく使って紹介するページ。</p><a class="chip" href="https://mj-gourmet.jp/" target="_blank" rel="noopener noreferrer">サイトを見る <i class="fa-solid fa-arrow-up-right-from-square" aria-hidden="true"></i></a></div></article>
+      </div>
+      <div class="sec-cta rv"><a class="btn btn--white" href="web-design.html#works">ほかの制作事例も見る <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></a></div>
+    </div>
+  </section>
+
   <section class="sec" id="flow">
     <div class="wrap">
-      <div class="sec-top"><span>04 / FLOW</span></div>
+      <div class="sec-top"><span>05 / FLOW</span></div>
       <span class="label rv">月ごとの流れ</span>
       <h2 class="h2 rv"><span class="nb">半年の</span><span class="ul nb">進み方</span></h2>
       <ol class="steps">
@@ -671,25 +711,50 @@ p,li{text-wrap:pretty;line-break:strict}
 
   <section class="sec sec--yellow" id="price">
     <div class="wrap">
-      <div class="sec-top"><span>05 / PRICE</span></div>
+      <div class="sec-top"><span>06 / PRICE</span></div>
       <span class="label rv">料金</span>
-      <h2 class="h2 rv"><span class="nb">まとめて、</span><span class="ul nb">月20万円 × 6か月</span></h2>
-      <div class="plans">
-        <article class="plan plan--hot rv"><span class="plan-badge">まとめて</span><p class="plan-en">6 MONTHS</p><p class="plan-pages"><b>半年</b>まるごと</p><p class="plan-price"><b>20</b><span>万円</span><small>/ 月 × 6か月</small></p><p class="plan-desc">合計120万円。ホームページ・写真・SNSの投稿の型・社内の仕組み・引き継ぎに、SNSコンサルまで。</p></article>
+      <h2 class="h2 rv"><span class="nb">ぜんぶ込みで、</span><br><span class="ul nb">料金はひとつだけ。</span></h2>
+      <div class="pricebox rv">
+        <div class="pb-head">
+          <p class="pb-name">半年まるごとパッケージ</p>
+          <p class="pb-price">月<b>20</b>万円<span class="nb"> × 6か月</span></p>
+          <p class="pb-total">合計 120万円</p>
+        </div>
+        <div class="pb-body">
+          <p class="pb-t">この料金に含まれるもの</p>
+          <ul class="pb-list">
+            <li>ホームページ制作</li>
+            <li>出張撮影<small>2回が目安</small></li>
+            <li>SNSの投稿の型</li>
+            <li>SNSコンサル<small>フォロワー60万人以上の私が直接</small></li>
+            <li>社内の仕組みづくり</li>
+            <li>月1回の打ち合わせ</li>
+            <li>引き継ぎの手引き</li>
+            <li>AI活用の社内研修<small>ご希望があれば1回</small></li>
+          </ul>
+        </div>
       </div>
-      <p class="fine rv" style="margin-top:14px;font-weight:800;font-size:13px">※ホームページは、6か月が終わった後も、サーバー・ドメイン代などの維持管理費用が発生いたします（金額は事前にご案内します）。</p>
-      <div class="acc acc--plain rv">
-        <details><summary><span>料金の注意事項</span></summary><div class="acc-b"><p>※ホームページは、6か月が終わった後も、サーバー・ドメイン代などの維持管理費用が発生いたします。金額はお話を伺うときにご案内します。</p><p>※消費税の扱い・お支払い方法は、お話を伺うときにご案内します。</p><p>※広告費（広告の出稿費用）は含みません。</p></div></details>
-        <details class="ref"><summary><span>参考：同じ中身を別々に頼んだときの一般的な目安</span></summary><div class="acc-b">
+      <div class="pnotes">
+        <div class="pnote rv">
+          <h3>料金の注意事項</h3>
+          <ul>
+            <li>ホームページは、6か月が終わった後も、サーバー・ドメイン代などの維持管理費用が発生いたします。金額は事前にご案内します。</li>
+            <li>消費税の扱い・お支払い方法は、お話を伺うときにご案内します。</li>
+            <li>広告費（広告の出稿費用）は含みません。</li>
+          </ul>
+        </div>
+        <div class="pnote ref rv">
+          <h3>参考：別々に頼んだときの一般的な目安</h3>
           <table><tbody>
             <tr><td>ホームページ制作</td><td>約50万円</td></tr>
-            <tr><td>SNS運用の代行（月15万円 × 6か月）</td><td>約90万円</td></tr>
-            <tr><td>出張撮影（1日9万円 × 2日）</td><td>約18万円</td></tr>
-            <tr><td>仕組みづくりの伴走（月8万円 × 6か月）</td><td>約48万円</td></tr>
-            <tr class="sum"><td>合計</td><td>約206万円</td></tr>
+            <tr><td>SNS運用の代行<small>月15万円 × 6か月</small></td><td>約90万円</td></tr>
+            <tr><td>出張撮影<small>1日9万円 × 2日</small></td><td>約18万円</td></tr>
+            <tr><td>仕組みづくりの伴走<small>月8万円 × 6か月</small></td><td>約48万円</td></tr>
+            <tr class="sum"><td>別々に頼んだ合計</td><td>約206万円</td></tr>
+            <tr class="us"><td>このパッケージ</td><td>120万円</td></tr>
           </tbody></table>
-          <p class="fine" style="font-size:12px">※2026年11月に、公開されている料金の解説記事をもとに当方が計算した目安です。地域・会社・内容によって大きく変わります。特定の会社の料金や、当方の過去の値段ではありません。</p>
-        </div></details>
+          <p class="pnote-fine">※2026年11月に、公開されている料金の解説記事をもとに当方が計算した目安です。地域・会社・内容によって大きく変わります。特定の会社の料金や、当方の過去の値段ではありません。</p>
+        </div>
       </div>
       <div class="sec-cta rv"><a class="btn btn--red" href="index.html?kind=package#contact"><i class="fa-regular fa-envelope" aria-hidden="true"></i>まずは15分、話を聞いてみる</a></div>
     </div>
@@ -697,7 +762,7 @@ p,li{text-wrap:pretty;line-break:strict}
 
   <section class="sec sec--white" id="scope">
     <div class="wrap">
-      <div class="sec-top"><span>06 / SCOPE</span></div>
+      <div class="sec-top"><span>07 / SCOPE</span></div>
       <span class="label rv">最初にお伝えしておくこと</span>
       <h2 class="h2 rv"><span class="nb">やること・</span><span class="ul nb">やらないこと</span></h2>
       <div class="dodont">
@@ -706,14 +771,14 @@ p,li{text-wrap:pretty;line-break:strict}
       </div>
       <div class="maker rv" id="creator">
         <img src="images/nabe-kitchen-icon.png" alt="NABE'S KITCHEN ロゴアイコン" width="300" height="300" loading="lazy">
-        <div><b><span class="nb">担当：</span><span class="nb">なべのだいどころ。</span><span class="nb">（渡辺）</span></b><p>宮崎県都城市が拠点です。SNS総フォロワー62万人の発信と、お店・会社のホームページ制作を、私ひとりが最初から最後まで担当します。</p><a class="chip" href="web-design.html#works">ホームページの制作事例を見る <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></a></div>
+        <div><b><span class="nb">担当：</span><span class="nb">なべのだいどころ。</span><span class="nb">（渡辺）</span></b><p>宮崎県都城市が拠点です。SNS総フォロワー60万人以上の発信と、お店・会社のホームページ制作を、私ひとりが最初から最後まで担当します。</p><a class="chip" href="index.html">プロフィールを見る <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></a></div>
       </div>
     </div>
   </section>
 
   <section class="sec" id="faq">
     <div class="wrap">
-      <div class="sec-top"><span>07 / FAQ</span></div>
+      <div class="sec-top"><span>08 / FAQ</span></div>
       <span class="label rv">気になること</span>
       <h2 class="h2 rv">よくあるご質問</h2>
       <div class="acc acc--q rv">
@@ -732,7 +797,7 @@ p,li{text-wrap:pretty;line-break:strict}
   <section class="contact" id="contact">
     <div class="wrap contact-in">
       <h2 class="h2 rv">まずは15分、<br><span class="nb">今の状態を聞かせてください。</span></h2>
-      <p class="rv" style="margin-bottom:6px"><span class="nb">売り込みはしません。</span><span class="nb">合わなければ、そこで終わりで大丈夫です。</span></p>
+      <p class="rv" style="margin-bottom:6px"><span class="nb">売り込みはしません。</span><span class="nb">合わなければ、そこで終わりで大丈夫です。</span><br><span class="nb">私ひとりで担当するため、</span><span class="nb">同時にお受けできる数には限りがあります。</span></p>
       <div class="contact-box contact-box--one rv">
         <img src="images/pop/contact-talk.webp?v=2" alt="テーブル越しに手を振って相談を迎えるなべくん" width="1000" height="563" loading="lazy">
         <a class="btn btn--red" href="index.html?kind=package#contact"><i class="fa-regular fa-envelope" aria-hidden="true"></i>相談フォームへ進む</a>

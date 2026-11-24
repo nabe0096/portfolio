@@ -1,0 +1,851 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>なべのリンク帳</title>
+<meta name="description" content="なべの活動リンクを一覧にして、押すだけでコピーできるページ。計測つきのリンクは貼る場所ごとに分けてコピーできます。">
+<!-- 社長がリンクをコピーするための道具。検索には出さない -->
+<meta name="robots" content="noindex, nofollow">
+<meta name="theme-color" content="#f6ecd9" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#1e1914" media="(prefers-color-scheme: dark)">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="リンク帳">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<link rel="apple-touch-icon" href="icon-180.png">
+<link rel="icon" href="favicon-32.png" sizes="32x32">
+<link rel="manifest" href="manifest.webmanifest">
+<style>
+:root{
+  --bg:#f6ecd9; --card:#fffaf1; --ink:#2b2118; --muted:#7a6a58; --line:#e6d6bb;
+  --chip:#efe0c4; --chip-on:#2b2118; --chip-on-ink:#fffaf1; --brand:#c8382c; --ok:#2e7d4f;
+  --var-bg:#f8efdf; --shadow:0 1px 2px rgba(60,40,10,.07); --priv-bg:#fff4f2; --priv-line:#f1c9c3;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --bg:#1e1914; --card:#2a231c; --ink:#f3e9da; --muted:#b9a68e; --line:#3d3328;
+    --chip:#3a2f24; --chip-on:#f3e9da; --chip-on-ink:#1e1914; --var-bg:#241e18; --shadow:none; --priv-bg:#2a1a18; --priv-line:#5a2f2a;
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#1e1914; --card:#2a231c; --ink:#f3e9da; --muted:#b9a68e; --line:#3d3328;
+  --chip:#3a2f24; --chip-on:#f3e9da; --chip-on-ink:#1e1914; --var-bg:#241e18; --shadow:none; --priv-bg:#2a1a18; --priv-line:#5a2f2a;
+}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{
+  margin:0; background:var(--bg); color:var(--ink);
+  font-family:-apple-system,BlinkMacSystemFont,"Hiragino Sans","Hiragino Kaku Gothic ProN","Noto Sans JP",sans-serif;
+  font-size:15px; line-height:1.5; -webkit-tap-highlight-color:transparent;
+  padding-bottom:calc(80px + env(safe-area-inset-bottom));
+}
+.wrap{max-width:640px; margin:0 auto; padding:0 16px}
+header{display:flex; align-items:center; gap:12px; padding:20px 0 12px}
+header img{width:52px; height:52px; border-radius:50%; flex:none}
+h1{font-size:21px; margin:0; letter-spacing:.02em}
+.lead{margin:2px 0 0; font-size:13px; color:var(--muted); line-height:1.5}
+.lead b{color:var(--ink)}
+.search{display:block; width:100%; height:42px; border-radius:12px; border:1px solid var(--line); background:var(--card);
+  color:var(--ink); font-size:16px; padding:0 14px; margin:4px 0 0; -webkit-appearance:none; appearance:none}
+.search::placeholder{color:var(--muted)}
+.chips{position:sticky; top:0; z-index:5; background:var(--bg); padding:10px 0 8px; display:flex; gap:5px;
+  overflow-x:auto; scrollbar-width:none}
+.chips::-webkit-scrollbar{display:none}
+.chip{flex:1 0 auto; height:34px; padding:0 9px; border-radius:999px; border:0; background:var(--chip); color:var(--ink);
+  font:inherit; font-size:13px; font-weight:700; letter-spacing:-.01em; white-space:nowrap}
+.chip[aria-pressed="true"]{background:var(--chip-on); color:var(--chip-on-ink)}
+section{margin:14px 0 22px}
+h2{font-size:17px; margin:0; padding-left:10px; border-left:5px solid var(--c,#888); line-height:1.3}
+.sec-sub{margin:4px 0 6px; font-size:12.5px; color:var(--muted)}
+.gt{margin:14px 0 2px; font-size:12px; font-weight:700; color:var(--muted); letter-spacing:.04em}
+.card{background:var(--card); border:1px solid var(--line); border-radius:14px; margin:8px 0; box-shadow:var(--shadow); overflow:hidden}
+.item{display:flex; align-items:center; gap:8px; padding:8px 8px 8px 10px; min-height:60px}
+.main{flex:1; min-width:0; display:flex; align-items:center; gap:10px; background:none; border:0; padding:2px 0;
+  text-align:left; color:inherit; font:inherit; cursor:pointer}
+.badge{flex:none; width:40px; height:40px; border-radius:10px; display:grid; place-items:center; color:#fff;
+  font-size:11px; font-weight:800; letter-spacing:-.02em; line-height:1}
+.tx{min-width:0; display:flex; flex-direction:column}
+.tx b{font-size:15px; line-height:1.35; font-weight:700}
+.tx small{font-size:12px; color:var(--muted); line-height:1.4; white-space:nowrap; overflow:hidden; text-overflow:ellipsis}
+.tag{display:inline-block; font-size:10.5px; font-weight:700; color:var(--brand); border:1px solid currentColor;
+  border-radius:4px; padding:0 4px; margin-left:4px; vertical-align:2px; line-height:1.5}
+.open{flex:none; width:36px; height:36px; border-radius:10px; display:grid; place-items:center; color:var(--muted);
+  border:1px solid var(--line); text-decoration:none}
+.open svg{width:16px; height:16px}
+.cp{flex:none; min-width:64px; height:36px; padding:0 10px; border-radius:10px; background:var(--brand); color:#fff; border:0;
+  font:inherit; font-size:14px; font-weight:700; cursor:pointer}
+.cp.done{background:var(--ok)}
+.pick{flex:none; height:36px; padding:0 10px; border-radius:10px; background:none; color:var(--ink); border:1.5px solid var(--ink);
+  font:inherit; font-size:13px; font-weight:700; cursor:pointer; white-space:nowrap}
+.pick .arr{display:inline-block; transition:transform .15s}
+.card.open-v .pick .arr{transform:rotate(180deg)}
+/* 計測つき：スマホは「名前」と「貼る場所／すぐコピー」の2段（ボタン3つ横並びだと名前が数文字幅になる・10/19） */
+@media (max-width:519px){
+  .item.trk{flex-wrap:wrap; row-gap:6px}
+  .item.trk .main{flex:1 1 calc(100% - 44px)}
+  .item.trk .pick, .item.trk .cp{flex:1 1 0; min-width:0; height:38px; padding:0}
+  .item.trk .cp{border:1.5px solid transparent}
+  .item.trk .pick{margin-left:50px}
+  body.editing .item.trk{flex-wrap:nowrap}
+  body.editing .item.trk .main{flex:1 1 auto}
+}
+.vars{display:none; background:var(--var-bg); border-top:1px solid var(--line); padding:6px 8px 8px 10px}
+.card.open-v .vars{display:block}
+.vnote{margin:4px 0 6px; font-size:12px; color:var(--muted)}
+.vrow{display:flex; align-items:center; gap:8px; padding:6px 0; border-bottom:1px dashed var(--line)}
+.vrow:last-child{border-bottom:0}
+.vrow .tx b{font-size:14px}
+.qrb{flex:none; height:36px; padding:0 9px; border-radius:10px; background:none; color:var(--ink); border:1px solid var(--line);
+  font:inherit; font-size:12px; font-weight:700; cursor:pointer}
+.empty{padding:30px 0; text-align:center; color:var(--muted)}
+footer{margin:28px 0 0; padding-top:14px; border-top:1px solid var(--line); font-size:12.5px; color:var(--muted)}
+footer p{margin:0 0 8px}
+#toast{position:fixed; left:50%; bottom:calc(18px + env(safe-area-inset-bottom)); transform:translate(-50%,20px); opacity:0;
+  width:calc(100% - 32px); max-width:480px; background:#2b2118; color:#fffaf1; border-radius:14px; padding:10px 14px;
+  font-size:14px; transition:opacity .18s, transform .18s; pointer-events:none; z-index:20}
+#toast.on{opacity:1; transform:translate(-50%,0)}
+#toast small{display:block; color:#d9c8ad; font-size:12px; word-break:break-all; line-height:1.4; margin-top:2px}
+.sheet{position:fixed; inset:0; background:rgba(20,14,8,.55); display:flex; align-items:center; justify-content:center; z-index:30; padding:16px}
+.sheet[hidden]{display:none}
+.sheet .box{background:var(--card); color:var(--ink); border-radius:16px; padding:18px; width:100%; max-width:380px; text-align:center}
+.sheet h3{margin:0 0 10px; font-size:16px}
+.sheet .u{font-size:12px; color:var(--muted); word-break:break-all; margin:8px 0}
+.sheet input{width:100%; height:42px; font-size:16px; border-radius:10px; border:1px solid var(--line); padding:0 10px; background:var(--bg); color:var(--ink)}
+#qrimg{display:flex; justify-content:center; background:#fff; padding:12px; border-radius:12px}
+#qrimg img,#qrimg canvas{width:240px; height:240px}
+.close{margin-top:12px; width:100%; height:44px; border-radius:12px; border:0; background:var(--chip-on); color:var(--chip-on-ink); font:inherit; font-weight:700}
+/* 編集（社長の鍵がある端末だけ。2026-10-15） */
+header .hd-tx{flex:1; min-width:0}
+.editbtn{flex:none; height:36px; padding:0 14px; border-radius:999px; border:1.5px solid var(--ink); background:none; color:var(--ink);
+  font:inherit; font-size:14px; font-weight:700; cursor:pointer}
+body.editing .editbtn{background:var(--ink); color:var(--bg)}
+.editbar{display:none; flex-wrap:wrap; gap:8px; margin:6px 0 4px}
+body.editing .editbar{display:flex}
+.editbar p{flex-basis:100%; margin:0; font-size:12.5px; color:var(--muted)}
+.btn{height:40px; padding:0 14px; border-radius:12px; border:1.5px solid var(--ink); background:none; color:var(--ink);
+  font:inherit; font-size:14px; font-weight:700; cursor:pointer}
+.btn.primary{background:var(--brand); border-color:var(--brand); color:#fff}
+.btn:disabled{opacity:.5}
+.del{display:none; flex:none; min-width:64px; height:36px; padding:0 10px; border-radius:10px; border:1.5px solid #c0392b; color:#c0392b;
+  background:none; font:inherit; font-size:13.5px; font-weight:700; cursor:pointer}
+.del.arm{background:#c0392b; color:#fff}
+body.editing .del{display:block}
+body.editing .item .open, body.editing .item .cp, body.editing .item .pick, body.editing .vars{display:none}
+.addhere{display:none; width:100%; height:42px; margin:8px 0 0; border-radius:12px; border:1.5px dashed var(--muted); background:none;
+  color:var(--muted); font:inherit; font-size:14px; font-weight:700; cursor:pointer}
+body.editing .addhere{display:block}
+.newtag{display:inline-block; font-size:10.5px; font-weight:700; color:#fff; background:var(--brand); border-radius:4px; padding:0 4px; margin-left:4px; vertical-align:2px; line-height:1.5}
+/* 2026-10-20 社長だけの「本編（パスワードなし）」。鍵の入った端末にだけ出る */
+.priv{background:var(--priv-bg); border:1px solid var(--priv-line); border-radius:16px; padding:12px 10px 4px}
+.priv .tx small{white-space:normal}
+.trash{display:none}
+body.editing .trash{display:block}
+.trash .item{opacity:.75}
+.form{text-align:left}
+.form label{display:block; font-size:13px; font-weight:700; margin:12px 0 4px}
+.form label small{font-weight:400; color:var(--muted)}
+.form input[type=text], .form input[type=url], .form select{display:block; width:100%; height:44px; font-size:16px; border-radius:10px;
+  border:1px solid var(--line); padding:0 10px; background:var(--bg); color:var(--ink); -webkit-appearance:none; appearance:none}
+.form select{padding-right:36px; background-repeat:no-repeat; background-position:right 12px center; background-size:14px;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 14 14' fill='none' stroke='%238a7a68' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M3 5l4 4 4-4'/%3E%3C/svg%3E")}
+.form .chk{display:flex; gap:8px; align-items:flex-start; font-weight:400; font-size:13px; margin-top:12px}
+.form .chk input{width:20px; height:20px; flex:none; margin:1px 0 0}
+.form .chk[hidden]{display:none}
+.form .err{color:#c0392b; font-size:13px; margin:10px 0 0; min-height:1em}
+.form .row{display:flex; gap:8px; margin-top:14px}
+.form .row .btn{flex:1; height:46px}
+.sheet .box.tall{max-height:calc(100vh - 32px); overflow:auto}
+#toast.act{pointer-events:auto}
+/* 並べ替え・見出しと文字の直し（2026-10-15） */
+.drag{display:none; flex:none; width:24px; height:44px; margin:0 -2px 0 -4px; align-items:center; justify-content:center; color:var(--muted);
+  cursor:grab; touch-action:none; -webkit-user-select:none; user-select:none; -webkit-touch-callout:none}
+.drag svg{width:12px; height:20px}
+body.editing .drag{display:flex}
+.pen{display:none; width:30px; height:30px; margin-left:6px; padding:0; border-radius:8px; border:1px solid var(--line); background:var(--card);
+  color:var(--ink); vertical-align:middle; align-items:center; justify-content:center; cursor:pointer}
+.pen svg{width:14px; height:14px}
+body.editing .pen{display:inline-flex}
+.gt-empty{display:none}
+body.editing .gt-empty{display:block}
+body.editing .items{min-height:8px}
+body.editing .items:empty{min-height:52px; border:1.5px dashed var(--line); border-radius:12px; margin:8px 0}
+body.editing .card{-webkit-user-select:none; user-select:none}
+.ghost{opacity:.3}
+.dragging{opacity:.96 !important; box-shadow:0 10px 28px rgba(40,25,10,.3)}
+#toast .undo{float:right; margin:-2px 0 0 10px; height:30px; padding:0 12px; border-radius:8px; border:1px solid #d9c8ad; background:none; color:#fffaf1; font:inherit; font-size:13px; font-weight:700}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <img src="icon-180.png" alt="">
+    <div class="hd-tx">
+      <h1>なべのリンク帳</h1>
+      <p class="lead">押すとコピー。<b>計測つき</b>は「コピー」で汎用、「貼る場所」で場所ごと。</p>
+    </div>
+    <button type="button" class="editbtn" id="editbtn" hidden>編集</button>
+  </header>
+  <input class="search" id="q" type="search" placeholder="さがす（秘密基地、教科書 など）" aria-label="リンクをさがす" enterkeyhint="search">
+  <nav class="chips" id="chips" aria-label="カテゴリ"></nav>
+  <main id="list"></main>
+  <footer>
+    <p id="upd"></p>
+    <p>計測つきのリンクを使うと、メルマガ登録・秘密基地の登録・教材の購入の通知に「どこから来たか」が出ます。裸のURLは貼らない。</p>
+    <p>①レシピ発信（料理を見たい人）と②SNS攻略発信（発信者）のリンクは混ぜない。</p>
+    <p>ホーム画面に置く：iPhoneはSafariの共有ボタン →「ホーム画面に追加」。</p>
+  </footer>
+</div>
+<div id="toast" role="status" aria-live="polite"></div>
+<div class="sheet" id="sheet" hidden><div class="box" id="sheetbox"></div></div>
+
+<!--
+  リンクの一覧の正本は保存先（Worker nabe-links・D1）。社長がこのページの「編集」で追加・削除する（2026-10-15〜）。
+  ここの sections は、保存先が読めないときに出す控え。そろえるのは 制作部/なべのリンク帳/sync.py（pull＝保存先→ここ）。
+  places = 計測つきリンクの「貼る場所」（ここが正本）。値（src）は必ず登録済みのものを使う（system_audit/checks/link_hub.py が毎朝点検）：
+    bot       → なべの秘密基地。の PLACES（制作部/なべの秘密基地/worker/src/index.mjs）と Rondo の BOT_PLACES（src/bot-login.mjs）
+    daidokoro / sns → Rondo の SUBSCRIBE_SRC_JA（制作部/Rondo/rondo-dist/src/worker.mjs）
+  新しい値を足したら、上の表にも同時に足して公開する。
+-->
+<script type="application/json" id="links-data">
+{
+  "updated": "2026年10月15日",
+  "places": {
+    "bot": [
+      ["insta", "Instagram"],
+      ["yt", "YouTube（長尺の概要欄など）"],
+      ["ytpin", "YouTube（長尺の固定コメント）"],
+      ["ytshort", "YouTubeショート"],
+      ["ytcomm", "YouTubeコミュニティ投稿"],
+      ["tiktok", "TikTok"],
+      ["threads", "Threads"],
+      ["x", "X（投稿）"],
+      ["xprof", "Xのプロフィール"],
+      ["xpin", "Xの固定ポスト"],
+      ["line", "LINE"],
+      ["mail", "だいどころ。メルマガ"],
+      ["card", "レシピカード"],
+      ["site", "レシピサイト"],
+      ["lp", "LP"],
+      ["ryourimail", "SNS攻略メルマガ（発信者向け）"],
+      ["qr", "QRコード（チラシ・店頭）"],
+      ["other", "その他（上にない場所）"]
+    ],
+    "daidokoro": [
+      ["ig", "Instagram"],
+      ["igstory", "Instagramストーリーズ"],
+      ["yt", "YouTube概要欄"],
+      ["ytshort", "YouTubeショート概要欄"],
+      ["ytcomm", "YouTubeコミュニティ投稿"],
+      ["tiktok", "TikTok"],
+      ["threads", "Threads"],
+      ["x", "X"],
+      ["line", "LINE"],
+      ["litlink", "lit.link（SNSリンク集）"],
+      ["portfolio", "ポートフォリオサイト"],
+      ["qr", "QRコード（チラシ・店頭）"],
+      ["other", "その他（上にない場所）"]
+    ],
+    "sns": [
+      ["x", "X（投稿）"],
+      ["xprof", "Xのプロフィール"],
+      ["xart", "X記事の末尾"],
+      ["threads", "Threads"],
+      ["note", "note"],
+      ["substack", "Substackのプロフィール"],
+      ["substacknote", "Substack Notes"],
+      ["blogtop", "ブログの本文の中"],
+      ["mail", "メルマガ本文"],
+      ["line", "LINE"],
+      ["portfolio", "ポートフォリオサイト"],
+      ["qr", "QRコード（チラシ・セミナー）"],
+      ["other", "その他（上にない場所）"]
+    ]
+  },
+  "sections": [
+    {
+      "id": "recipe", "chip": "①レシピ", "title": "①レシピ発信", "color": "#c8382c", "sub": "料理を見たい人向け。②の発信者向けリンクと混ぜない。",
+      "groups": [
+        { "title": "よく貼るもの（計測つき）", "items": [
+          {"id": "recipe01", "name": "なべの秘密基地。", "url": "https://www.nabenokitchen.com/bot/", "sub": "なべ君AI・レシピ相談とお気に入り保存", "badge": "基地", "bg": "#6b4423", "kw": "なべ君ai ボット bot 秘密基地 ひみつきち", "track": "bot"},
+          {"id": "uhimitsulp01", "name": "なべの秘密基地。使い方のページ", "url": "https://www.nabenokitchen.com/himitsukichi/", "sub": "実際の画面で使い方がわかる1枚・説明が要る相手に", "badge": "案内", "bg": "#8a4b3c", "kw": "なべ君ai 秘密基地 使い方 紹介 ページ lp 案内 himitsukichi", "added": "2026-11-06"},
+          {"id": "u6167e99d48", "name": "なべの秘密基地。使い方の動画（1分）", "url": "https://vimeo.com/1240641590/6f57dae45c", "sub": "私がスマホで使って見せる61秒・Vimeo", "badge": "動画", "bg": "#6b4423", "kw": "なべ君ai 秘密基地 使い方 動画 vimeo 生声 紹介", "added": "2026-10-29"},
+          {"id": "recipe03", "name": "YouTube", "url": "https://www.youtube.com/@nabekitchen", "sub": "なべのだいどころ。@nabekitchen", "badge": "YT", "bg": "#e62117"}
+        ]},
+        { "title": "SNS", "items": [
+          {"id": "recipe02", "name": "なべのだいどころ。メルマガ", "url": "https://www.nabenokitchen.com/lp/daidokoro/", "sub": "2日に1回レシピが届く無料メルマガ", "badge": "メール", "bg": "#c8382c", "kw": "メルマガ lp だいどころ 登録", "track": "daidokoro"},
+          {"id": "recipe04", "name": "Instagram", "url": "https://www.instagram.com/nabeno_kitchen/", "sub": "@nabeno_kitchen", "badge": "IG", "bg": "linear-gradient(135deg,#f9a03f,#d62976 55%,#7b3fe4)"},
+          {"id": "recipe05", "name": "TikTok", "url": "https://www.tiktok.com/@nabekitchen", "sub": "@nabekitchen", "badge": "TT", "bg": "#111111"},
+          {"id": "recipe06", "name": "Threads", "url": "https://www.threads.com/@nabeno_kitchen", "sub": "@nabeno_kitchen", "badge": "Th", "bg": "#111111"},
+          {"id": "recipe07", "name": "X（レシピ）", "url": "https://x.com/nabenodaidocolo", "sub": "@nabenodaidocolo", "badge": "X", "bg": "#111111", "kw": "twitter ツイッター"},
+          {"id": "recipe08", "name": "LINE公式", "url": "https://lin.ee/EBX1K4x", "sub": "@244hapgh 友だち追加", "badge": "LINE", "bg": "#06c755", "kw": "ライン"},
+          {"id": "recipe09", "name": "クラシル", "url": "https://www.kurashiru.com/profiles/nabekitchen", "sub": "profiles/nabekitchen", "badge": "クラ", "bg": "#e8961e"},
+          {"id": "recipe10", "name": "Pinterest", "url": "https://jp.pinterest.com/nabenokitchen/", "sub": "nabenokitchen", "badge": "P", "bg": "#e60023", "kw": "ピンタレスト"},
+          {"id": "recipe11", "name": "Yahoo!ニュース エキスパート", "url": "https://news.yahoo.co.jp/expert/creators/nabenodaidokoro", "sub": "なべのだいどころ。の記事一覧", "badge": "Y!", "bg": "#ff0033", "kw": "ヤフー yahoo"}
+        ]},
+        { "title": "サイト", "items": [
+          {"id": "recipe12", "name": "レシピサイト", "url": "https://www.nabenokitchen.com/", "sub": "なべのだいどころ。", "badge": "サイト", "bg": "#c8382c"},
+          {"id": "recipe13", "name": "愛用のキッチングッズ", "url": "https://www.nabenokitchen.com/introduction-of-kitchen-goods/", "sub": "レシピサイトの紹介記事", "badge": "愛用", "bg": "#a0522d", "kw": "包丁 フライパン 道具 amazon"},
+          {"id": "recipe14", "name": "楽天ROOM", "url": "https://room.rakuten.co.jp/room_4cc12692cb/items", "sub": "普段つかっているグッズ", "badge": "ROOM", "bg": "#bf0000", "kw": "楽天"},
+          {"id": "recipe15", "name": "lit.link", "url": "https://lit.link/nabekitchen", "sub": "SNSリンク集（YouTube概要欄から来る入口）", "badge": "lit", "bg": "#2a9fd6", "kw": "リットリンク"}
+        ]}
+      ]
+    },
+    {
+      "id": "sns", "chip": "②SNS攻略", "title": "②SNS攻略発信", "color": "#2f4b7c", "sub": "SNSを伸ばしたい発信者向け。①の視聴者には貼らない。",
+      "groups": [
+        { "title": "よく貼るもの（計測つき）", "items": [
+          {"id": "sns01", "name": "料理系SNS攻略メルマガ", "url": "https://nabenoblog.com/lp/ryouri/", "sub": "料理系の発信者向けの無料メルマガ", "badge": "メール", "bg": "#2f4b7c", "kw": "メルマガ lp ryouri 登録", "track": "sns"},
+          {"id": "sns02", "name": "裏メルマガ RE-COOK", "url": "https://nabenoblog.com/lp/recook/", "sub": "発信者・脱サラ志望向けの無料メルマガ", "badge": "裏", "bg": "#1f2a44", "kw": "メルマガ lp recook うら 登録", "track": "sns"}
+        ]},
+        { "title": "SNS・サイト", "items": [
+          {"id": "sns03", "name": "X（本アカ）", "url": "https://x.com/nabeno_kitchen", "sub": "@nabeno_kitchen", "badge": "X", "bg": "#111111", "kw": "twitter ツイッター"},
+          {"id": "sns04", "name": "なべのぶろぐ。", "url": "https://nabenoblog.com/", "sub": "料理系ユーチュー部", "badge": "ブログ", "bg": "#2f4b7c"},
+          {"id": "sns05", "name": "note", "url": "https://note.com/nabeno_kitchen", "sub": "nabeno_kitchen", "badge": "note", "bg": "#1f9e8a"},
+          {"id": "sns06", "name": "Substack", "url": "https://nabe0906.substack.com/", "sub": "なべ｜SNSと料理が好き", "badge": "S", "bg": "#ff6719"}
+        ]},
+        { "title": "Kindle本", "items": [
+          {"id": "sns07", "name": "Kindle本｜料理チャンネルの伸ばし方", "url": "https://www.amazon.co.jp/dp/B0HR884KCF?tag=nabekindlesns-22", "sub": "半年で78人だった料理チャンネルの伸ばし方（Xに貼るときは #PR）", "badge": "本", "bg": "#b3261e", "kw": "kindle キンドル 本 amazon アマゾン 料理 チャンネル"},
+          {"id": "sns08", "name": "Kindle本｜退職届の本", "url": "https://www.amazon.co.jp/dp/B0HR8N7189?tag=nabekindlesns-22", "sub": "住宅ローンが始まった翌月に、副業月収2,000円で退職届を出した（Xに貼るときは #PR）", "badge": "本", "bg": "#222222", "kw": "kindle キンドル 本 amazon アマゾン 脱サラ 退職"}
+        ]}
+      ]
+    },
+    {
+      "id": "kyouzai", "chip": "教材", "title": "教材（②の商品）", "color": "#3d6b4f", "sub": "販売ページ（計測つき）と本編（パスワードが要るURL）。新しい教材は自動で載ります。",
+      "groups": [
+        { "title": "AIを学ぶ", "items": [
+          {"id": "tb_aikyozai_s", "name": "AI活用の教科書", "url": "https://nabenoblog.com/ai-textbook/", "sub": "販売ページ・動画1本、しゃべるだけ", "badge": "教材", "bg": "#3d6b4f", "kw": "ai 教科書 動画1本 販売", "track": "sns"},
+          {"id": "tb_aikyozai_h1", "name": "AI活用の教科書【本編】", "url": "https://nabenoblog.com/ai-textbook-honpen/", "sub": "本編（パスワードが要る）", "badge": "本編", "bg": "#8a5a2b", "kw": "ai 教科書 動画1本 本編", "added": "2026-10-20"},
+          {"id": "tb_claudecode_s", "name": "はじめてのClaude Codeの教科書", "url": "https://nabenoblog.com/claudecode-textbook/", "sub": "販売ページ", "badge": "教材", "bg": "#3d6b4f", "kw": "claude code クロード 教科書 販売", "track": "sns"},
+          {"id": "tb_claudecode_h1", "name": "はじめてのClaude Codeの教科書【本編】", "url": "https://nabenoblog.com/claudecode-textbook-honpen/", "sub": "本編（パスワードが要る）", "badge": "本編", "bg": "#8a5a2b", "kw": "claude code クロード 教科書 本編", "added": "2026-10-20"}
+        ]},
+        { "title": "SNSを学ぶ", "items": [
+          {"id": "tb_youtube_s", "name": "YouTubeの教科書", "url": "https://nabenoblog.com/youtube-strategy-articles/", "sub": "販売ページ", "badge": "教材", "bg": "#3d6b4f", "kw": "youtube ユーチューブ 教科書 販売", "track": "sns", "added": "2026-10-20"},
+          {"id": "tb_youtube_h1", "name": "YouTubeの教科書【本編】", "url": "https://nabenoblog.com/nabeno-note/", "sub": "本編（パスワードが要る）", "badge": "本編", "bg": "#8a5a2b", "kw": "youtube ユーチューブ 教科書 本編", "added": "2026-10-20"},
+          {"id": "tb_instagram_s", "name": "Instagramの教科書", "url": "https://nabenoblog.com/instagram-textbook-sales-page/", "sub": "販売ページ", "badge": "教材", "bg": "#3d6b4f", "kw": "instagram インスタ 教科書 販売", "track": "sns"},
+          {"id": "tb_instagram_h1", "name": "Instagramの教科書【本編】", "url": "https://nabenoblog.com/instagram-textbook/", "sub": "本編（パスワードが要る）", "badge": "本編", "bg": "#8a5a2b", "kw": "instagram インスタ 教科書 本編", "added": "2026-10-20"},
+          {"id": "tb_ytig_set_s", "name": "Wセット（YouTube・Instagramの教科書）", "url": "https://nabenoblog.com/limited-edition-double-set/", "sub": "販売ページ・本編はYouTube・Instagramの教科書", "badge": "教材", "bg": "#3d6b4f", "kw": "youtube instagram 教科書 セット 販売", "track": "sns"}
+        ]},
+        { "title": "便利ツール", "items": [
+          {"id": "tb_wpkyokasho_s", "name": "AI×WordPressの教科書", "url": "https://nabenoblog.com/ai-wordpress-textbook/", "sub": "販売ページ", "badge": "教材", "bg": "#3d6b4f", "kw": "wordpress ワードプレス 教科書 販売", "track": "sns", "added": "2026-10-20"},
+          {"id": "tb_wpkyokasho_h1", "name": "AI×WordPressの教科書【本編】", "url": "https://nabenoblog.com/ai-wordpress-textbook-honpen/", "sub": "本編（パスワードが要る）", "badge": "本編", "bg": "#8a5a2b", "kw": "wordpress ワードプレス 教科書 本編", "added": "2026-10-20"},
+          {"id": "tb_hanashite_s", "name": "ハナシテ", "url": "https://nabenoblog.com/hanashite/", "sub": "販売ページ・Macの音声入力アプリ", "badge": "教材", "bg": "#3d6b4f", "kw": "ハナシテ 音声入力 アプリ mac 販売", "track": "sns", "added": "2026-10-20"},
+          {"id": "tb_hanashite_h1", "name": "ハナシテ【本編】", "url": "https://nabenoblog.com/hanashite-honpen/", "sub": "本編（パスワードが要る）", "badge": "本編", "bg": "#8a5a2b", "kw": "ハナシテ 音声入力 アプリ mac 本編", "added": "2026-10-20"},
+          {"id": "tb_igcarousel_s", "name": "AI×Instagramカルーセルの教科書", "url": "https://nabenoblog.com/ai-instagram-carousel/", "sub": "販売ページ・撮った素材とメモを渡すだけ", "badge": "教材", "bg": "#3d6b4f", "kw": "instagram インスタ カルーセル 教科書 ai 販売", "track": "sns", "added": "2026-10-20"},
+          {"id": "tb_igcarousel_h1", "name": "AI×Instagramカルーセルの教科書【本編】", "url": "https://nabenoblog.com/ai-instagram-carousel-honpen/", "sub": "本編（パスワードが要る）", "badge": "本編", "bg": "#8a5a2b", "kw": "instagram インスタ カルーセル 教科書 ai 本編", "added": "2026-10-20"},
+          {"id": "tb_videoedit_s", "name": "AI×動画編集の教科書", "url": "https://nabenoblog.com/ai-textbook/", "sub": "販売ページ・AI活用の教科書の特典（非売品）", "badge": "教材", "bg": "#3d6b4f", "kw": "動画編集 長尺 ショート スキル 教科書 ai 販売", "track": "sns"},
+          {"id": "tb_videoedit_h1", "name": "AI×動画編集の教科書【本編】", "url": "https://nabenoblog.com/ai-video-edit-honpen/", "sub": "本編（パスワードが要る）", "badge": "本編", "bg": "#8a5a2b", "kw": "動画編集 長尺 ショート スキル 教科書 ai 本編", "added": "2026-10-23"},
+          {"id": "tb_shorts_opening_h1", "name": "ショートも長尺も、維持率が上がる冒頭の型（料理動画105本の冒頭分析）【本編】", "url": "https://nabenoblog.com/shorts-opening-honpen/", "sub": "本編（パスワードが要る）", "badge": "本編", "bg": "#8a5a2b", "kw": "ショートも長尺も、維持率が上がる冒頭の型（料理動画105本の冒頭分析） 本編", "added": "2026-11-02"},
+          {"id": "tb_cockpit_s", "name": "コックピット一式", "url": "https://nabenoblog.com/cockpit/", "sub": "販売ページ・全SNSの数字を1画面で見る業務ブラウザ（Mac・Windows）", "badge": "教材", "bg": "#3d6b4f", "kw": "コックピット 業務ブラウザ sns 数字 ダッシュボード claude code 販売", "track": "sns", "added": "2026-11-04"},
+          {"id": "tb_cockpit_h1", "name": "コックピット一式【本編】", "url": "https://nabenoblog.com/cockpit-kit/", "sub": "本編（パスワードが要る）", "badge": "本編", "bg": "#8a5a2b", "kw": "コックピット 業務ブラウザ sns 数字 ダッシュボード claude code 本編", "added": "2026-11-04"},
+          {"id": "tb_autopost_s", "name": "AI×動画の自動投稿の教科書", "url": "https://nabenoblog.com/ai-video-autopost/", "sub": "販売ページ・動画を作ったら「投稿して」の一言", "badge": "教材", "bg": "#3d6b4f", "kw": "自動投稿 動画 youtube tiktok instagram x threads 教科書 ai 販売", "track": "sns", "added": "2026-11-06"},
+          {"id": "tb_autopost_h1", "name": "AI×動画の自動投稿の教科書【本編】", "url": "https://nabenoblog.com/ai-video-autopost-honpen/", "sub": "本編（パスワードが要る）", "badge": "本編", "bg": "#8a5a2b", "kw": "自動投稿 動画 youtube tiktok instagram x threads 教科書 ai 本編", "added": "2026-11-06"},
+          {"id": "tb_commentreply_s", "name": "AI×コメント返信の教科書", "url": "https://nabenoblog.com/ai-comment-reply/", "sub": "販売ページ・コメントもDMも1つの画面に。AIの案を見て押すだけ", "badge": "教材", "bg": "#3d6b4f", "kw": "コメント 返信 dm 受信箱 youtube instagram 教科書 ai 販売", "track": "sns", "added": "2026-11-09"},
+          {"id": "tb_commentreply_h1", "name": "AI×コメント返信の教科書【本編】", "url": "https://nabenoblog.com/ai-comment-reply-honpen/", "sub": "本編（パスワードが要る）", "badge": "本編", "bg": "#8a5a2b", "kw": "コメント 返信 dm 受信箱 youtube instagram 教科書 ai 本編", "added": "2026-11-09"}
+        ]},
+        { "title": "Brain", "items": [
+          {"id": "tb_brain_ai_s", "name": "Brain（AI活用）", "url": "https://brain-market.com/u/jamaican0906/a/b5IzM5UjMgoTZsNWa0JXY", "sub": "Brainで販売中の記事", "badge": "Brain", "bg": "#4a4a4a", "kw": "ブレイン ai 販売"}
+        ]}
+      ]
+    },
+    {
+      "id": "work", "chip": "お仕事", "title": "お仕事・実績", "color": "#8a5a2b", "sub": "企業・自治体・お店の方へ。",
+      "groups": [
+        { "title": "", "items": [
+          {"id": "work01", "name": "ポートフォリオ", "url": "https://nabe0096.github.io/portfolio/", "sub": "実績・プロフィール", "badge": "実績", "bg": "#8a5a2b"},
+          {"id": "work02", "name": "Web制作のご案内", "url": "https://nabe0096.github.io/portfolio/web-design.html", "sub": "ホームページ制作", "badge": "Web", "bg": "#8a5a2b", "kw": "ホームページ 制作 0円"},
+          {"id": "work05", "name": "都城グルメ応援プロジェクト", "url": "https://mj-gourmet.jp/", "sub": "mj-gourmet.jp", "badge": "都城", "bg": "#b5651d", "kw": "宮崎 グルメ"}
+        ]}
+      ]
+    }
+  ]
+}
+</script>
+<script>
+(function(){
+  var D = JSON.parse(document.getElementById("links-data").textContent);
+  // 一覧の正本は保存先（社長が「編集」で追加・削除したもの）。読めないときは前回の控え → ページの控え
+  var API = "https://nabe-links.jamaican0906.workers.dev/api/links";
+  if (/^(localhost|127\.0\.0\.1)$/.test(location.hostname)) { var am = /[?&]api=([^&]+)/.exec(location.search); if (am) API = decodeURIComponent(am[1]); } // 手元の検品用（本番の一覧に試験データを入れない）
+  var DOC_KEY = "nabelinks_doc", KEY_KEY = "nabelinks_key", CAT_KEY = "nabelinks_cat";
+  var $ = function(id){ return document.getElementById(id); };
+  var esc = function(s){ return String(s == null ? "" : s).replace(/[&<>"']/g, function(c){ return {"&":"&amp;","<":"&lt;",">":"&gt;","\"":"&quot;","'":"&#39;"}[c]; }); };
+  var short = function(u){ return u.replace(/^https?:\/\/(www\.)?/, "").replace(/\/$/, ""); };
+  var withSrc = function(u, src){ return u + (u.indexOf("?") < 0 ? "?" : "&") + "src=" + encodeURIComponent(src); };
+  var OPEN = '<svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 3H3v10h10v-3"/><path d="M9 2h5v5"/><path d="M14 2L7 9"/></svg>';
+  var DRAG = '<span class="drag" title="つかんで動かす"><svg viewBox="0 0 12 20" fill="currentColor" aria-hidden="true"><circle cx="3" cy="3" r="1.8"/><circle cx="9" cy="3" r="1.8"/><circle cx="3" cy="10" r="1.8"/><circle cx="9" cy="10" r="1.8"/><circle cx="3" cy="17" r="1.8"/><circle cx="9" cy="17" r="1.8"/></svg></span>';
+  var PEN = '<svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M11 2.5l2.5 2.5L5.5 13H3v-2.5z"/></svg>';
+  var store = {
+    get: function(k){ try { return localStorage.getItem(k); } catch (e) { return null; } },
+    set: function(k, v){ try { if (v == null) localStorage.removeItem(k); else localStorage.setItem(k, v); } catch (e) {} }
+  };
+  var cat = store.get(CAT_KEY) || "all";
+  var DOC = { sections: D.sections, deleted: [] };
+  try { var cached = JSON.parse(store.get(DOC_KEY) || "null"); if (cached && cached.sections) DOC = cached; } catch (e) {}
+  // 社長の鍵：編集用のアドレス（#k=…）で開くと、この端末に入る。ホーム画面に置くときに鍵ごと残るよう、アドレスからは消さない
+  var hk = /(?:^#|&)k=([A-Za-z0-9_-]{16,})/.exec(location.hash);
+  if (hk) store.set(KEY_KEY, hk[1]);
+  var KEY = store.get(KEY_KEY);
+  // 社長だけの「本編（パスワードなし）」（2026-10-20 社長「パスワードなしで入れる私用のところ」）。
+  // 鍵のある端末だけが保存先（/api/private）へ取りに行き、この端末の中にだけ控える。鍵の無い人には何も届かない
+  var PRIV_KEY = "nabelinks_priv", PRIV = null, PRIV_API = API.replace(/\/links$/, "/private");
+  if (KEY) { try { PRIV = JSON.parse(store.get(PRIV_KEY) || "null"); } catch (e) {} } else store.set(PRIV_KEY, null);
+  var editing = false;
+
+  var BRANDS = [
+    [/^(m\.)?youtube\.com|^youtu\.be/, "YT", "#e62117", "YouTube"],
+    [/^instagram\.com/, "IG", "linear-gradient(135deg,#f9a03f,#d62976 55%,#7b3fe4)", "Instagram"],
+    [/^tiktok\.com/, "TT", "#111111", "TikTok"],
+    [/^threads\.(net|com)/, "Th", "#111111", "Threads"],
+    [/^(x|twitter)\.com/, "X", "#111111", "X"],
+    [/^(lin\.ee|line\.me|page\.line\.me)/, "LINE", "#06c755", "LINE"],
+    [/^note\.com/, "note", "#1f9e8a", "note"],
+    [/substack\.com/, "S", "#ff6719", "Substack"],
+    [/pinterest\./, "P", "#e60023", "Pinterest"],
+    [/^kurashiru\.com/, "クラ", "#e8961e", "クラシル"],
+    [/^(amazon\.|amzn\.)/, "AMZ", "#232f3e", "Amazon"],
+    [/rakuten\./, "楽天", "#bf0000", "楽天"],
+    [/^brain-market\.com/, "Brain", "#4a4a4a", "Brain"],
+    [/^news\.yahoo\.co\.jp/, "Y!", "#ff0033", "Yahoo!ニュース"],
+    [/^lit\.link/, "lit", "#2a9fd6", "lit.link"],
+    [/^nabenokitchen\.com\/bot/, "基地", "#6b4423", "なべの秘密基地。"],
+    [/^nabenokitchen\.com\/lp\/daidokoro/, "メール", "#c8382c", "なべのだいどころ。メルマガ"],
+    [/^nabenoblog\.com\/lp\/ryouri/, "メール", "#2f4b7c", "SNS攻略メルマガ"],
+    [/^nabenoblog\.com\/lp\/recook/, "裏", "#1f2a44", "裏メルマガ RE-COOK"],
+    [/^nabenokitchen\.com/, "サイト", "#c8382c", "レシピサイト"],
+    [/^nabenoblog\.com/, "ブログ", "#2f4b7c", "なべのぶろぐ。"],
+    [/^nabe0096\.github\.io\/portfolio/, "実績", "#8a5a2b", "ポートフォリオ"]
+  ];
+  function hostPath(u){ return u.replace(/^https?:\/\/(www\.)?/i, "").toLowerCase(); }
+  function brandOf(u){ var h = hostPath(u); for (var i = 0; i < BRANDS.length; i++) if (BRANDS[i][0].test(h)) return BRANDS[i]; return null; }
+  function detectTrack(u){
+    var h = hostPath(u);
+    if (/^nabenokitchen\.com\/bot(\/|\?|$)/.test(h)) return "bot";
+    if (/^nabenokitchen\.com\/lp\/daidokoro/.test(h)) return "daidokoro";
+    if (/^nabenoblog\.com\//.test(h)) return "sns";
+    return "";
+  }
+  var TRACK_NAME = { bot: "なべの秘密基地。の貼る場所", daidokoro: "だいどころ。メルマガの貼る場所", sns: "②（LP・教材）の貼る場所" };
+  function normalizeUrl(v){
+    v = v.trim();
+    if (v && !/^https?:\/\//i.test(v) && /^[\w-]+(\.[\w-]+)+/.test(v)) v = "https://" + v;
+    return v.replace(/^(https?:\/\/)nabenokitchen\.com(?=[\/?#]|$)/i, "$1www.nabenokitchen.com");  // 秘密基地・LPは www 付きが正式
+  }
+  function stripSrc(u){ try { var x = new URL(u); x.searchParams.delete("src"); return x.toString(); } catch (e) { return u; } }
+  function isNew(it){ return it.added && (Date.now() - Date.parse(it.added)) < 7 * 86400000; }
+
+  function badge(it){
+    return '<span class="badge" style="background:' + esc(it.bg || "#888") + '">' + esc(it.badge || "") + "</span>";
+  }
+  // 「【本編】」を行の途中で割らない（スマホで「【本／編】」と泣き別れしないように・2026-10-20）
+  function nm(s){ return esc(s).replace(/【本編】/g, '<span style="white-space:nowrap">【本編】</span>'); }
+  function delBtn(it){ return '<button type="button" class="del" data-del="' + esc(it.id) + '">削除</button>'; }
+  function itemHtml(it){
+    var key = (it.name + " " + (it.sub || "") + " " + it.url + " " + (it.kw || "")).toLowerCase();
+    var nw = isNew(it) ? '<span class="newtag">新</span>' : "";
+    if (!it.track) {
+      return '<div class="card" data-id="' + esc(it.id) + '" data-key="' + esc(key) + '"><div class="item">' + DRAG +
+        '<button type="button" class="main" data-copy="' + esc(it.url) + '">' + badge(it) +
+        '<span class="tx"><b>' + nm(it.name) + nw + "</b><small>" + esc(it.sub ? it.sub + "・" + short(it.url) : short(it.url)) + "</small></span></button>" +
+        '<a class="open" href="' + esc(it.url) + '" target="_blank" rel="noopener" aria-label="' + esc(it.name) + 'を開く">' + OPEN + "</a>" +
+        '<button type="button" class="cp" data-copy="' + esc(it.url) + '">コピー</button>' + delBtn(it) + "</div></div>";
+    }
+    var places = D.places[it.track] || [];
+    var rows = places.map(function(p){
+      var u = withSrc(it.url, p[0]);
+      return '<div class="vrow"><span class="tx" style="flex:1"><b>' + esc(p[1]) + "</b><small>" + esc(short(u)) + "</small></span>" +
+        (p[0] === "qr" ? '<button type="button" class="qrb" data-qr="' + esc(u) + '">QR</button>' : "") +
+        '<button type="button" class="cp" data-copy="' + esc(u) + '">コピー</button></div>';
+    }).join("");
+    return '<div class="card" data-id="' + esc(it.id) + '" data-key="' + esc(key) + '"><div class="item trk">' + DRAG +
+      '<button type="button" class="main" data-toggle="1" aria-expanded="false">' + badge(it) +
+      '<span class="tx"><b>' + nm(it.name) + '<span class="tag">計測つき</span>' + nw + '</b><small>' + esc(it.sub || short(it.url)) + "</small></span></button>" +
+      '<a class="open" href="' + esc(it.url) + '" target="_blank" rel="noopener" aria-label="' + esc(it.name) + 'を開く">' + OPEN + "</a>" +
+      '<button type="button" class="pick" data-toggle="1">貼る場所 <span class="arr">▾</span></button>' +
+      // すぐコピー＝どこにでも貼れる汎用（裸のURLにはせず ?src=other。通知には「その他」と出る・10/19 社長）
+      '<button type="button" class="cp" data-copy="' + esc(withSrc(it.url, "other")) + '" aria-label="' + esc(it.name) + 'をすぐコピー（どこでも使える）">コピー</button>' + delBtn(it) + "</div>" +
+      '<div class="vars"><p class="vnote">貼る場所を選んでコピー。登録・購入の通知に、その場所の名前が出ます。右の「コピー」はどこでも使える汎用（通知には「その他」と出ます）。</p>' + rows + "</div></div>";
+  }
+  function privItemHtml(it){
+    var key = (it.name + " " + (it.sub || "") + " " + it.url + " " + (it.kw || "")).toLowerCase();
+    return '<div class="card" data-key="' + esc(key) + '"><div class="item">' +
+      '<button type="button" class="main" data-copy="' + esc(it.url) + '">' + badge(it) +
+      '<span class="tx"><b>' + nm(it.name) + "</b><small>" + esc(it.sub || "") + "</small></span></button>" +
+      '<a class="open" href="' + esc(it.url) + '" target="_blank" rel="noopener" aria-label="' + esc(it.name) + 'を開く">' + OPEN + "</a>" +
+      '<button type="button" class="cp" data-copy="' + esc(it.url) + '">コピー</button></div></div>';
+  }
+  function privHtml(P){
+    return P.map(function(s){
+      return '<section class="priv" data-cat="' + esc(s.id) + '" style="--c:' + esc(s.color) + '"><h2>' + esc(s.title) + "</h2>" +
+        (s.sub ? '<p class="sec-sub">' + esc(s.sub) + "</p>" : "") +
+        s.groups.map(function(g){
+          return '<div class="grp">' + (g.title ? '<p class="gt">' + esc(g.title) + "</p>" : "") + '<div class="pitems">' + g.items.map(privItemHtml).join("") + "</div></div>";
+        }).join("") + "</section>";
+    }).join("");
+  }
+  function trashHtml(){
+    var del = DOC.deleted || [];
+    if (!del.length) return "";
+    return '<section class="trash" style="--c:#8a8a8a"><h2>削除したリンク</h2><p class="sec-sub">「戻す」で元の場所に戻ります（新しい順に50件まで残ります）。</p>' +
+      del.map(function(d){
+        return '<div class="card"><div class="item"><span class="main">' + badge(d) + '<span class="tx"><b>' + esc(d.name) + "</b><small>" + esc(short(d.url)) + "</small></span></span>" +
+          '<button type="button" class="btn" data-restore="' + esc(d.id) + '">戻す</button></div></div>';
+      }).join("") + "</section>";
+  }
+  function render(){
+    var S = DOC.sections, P = (KEY && PRIV && PRIV.sections) ? PRIV.sections : [];
+    $("chips").innerHTML = [["all", "すべて"]].concat(P.concat(S).map(function(s){ return [s.id, s.chip]; })).map(function(c){
+      return '<button type="button" class="chip" data-cat="' + esc(c[0]) + '" aria-pressed="false">' + esc(c[1]) + "</button>";
+    }).join("");
+    $("list").innerHTML =
+      '<div class="editbar"><button type="button" class="btn primary" data-addform="">＋ リンクを追加</button>' +
+      '<button type="button" class="btn" data-keyqr="1">スマホでも編集する（QR）</button>' +
+      "<p>リンクを押すと名前・ひとこと・URLを直せます。左の点々をつかむと好きな場所へ動かせます。見出しは鉛筆で直せます。削除は「削除」→「本当に削除」の2回押し（一番下の「削除したリンク」から戻せます）。</p></div>" +
+      privHtml(P) + S.map(function(s){
+        return '<section data-cat="' + esc(s.id) + '" style="--c:' + esc(s.color) + '"><h2>' + esc(s.title) +
+          '<button type="button" class="pen" data-editsec="' + esc(s.id) + '" aria-label="見出しを直す">' + PEN + "</button></h2>" +
+          (s.sub ? '<p class="sec-sub">' + esc(s.sub) + "</p>" : "") +
+          s.groups.map(function(g){
+            var pen = '<button type="button" class="pen" data-editgroup="' + esc(s.id + "|" + g.title) + '" aria-label="小見出しを直す">' + PEN + "</button>";
+            return '<div class="grp">' + (g.title ? '<p class="gt">' + esc(g.title) + pen + "</p>" : '<p class="gt gt-empty">（小見出しなし）' + pen + "</p>") +
+              '<div class="items" data-sec="' + esc(s.id) + '" data-group="' + esc(g.title) + '">' + g.items.map(itemHtml).join("") + "</div>" +
+              '<button type="button" class="addhere" data-addform="' + esc(s.id + "|" + g.title) + '">＋ ここに追加</button></div>';
+          }).join("") + "</section>";
+      }).join("") + trashHtml() + '<p class="empty" id="empty" hidden>見つかりませんでした</p>';
+    var up = DOC.updated_at ? new Date(DOC.updated_at) : null;
+    $("upd").textContent = "最終更新 " + (up && !isNaN(up) ? (up.getFullYear() + "年" + (up.getMonth() + 1) + "月" + up.getDate() + "日 " + up.getHours() + ":" + String(up.getMinutes()).padStart(2, "0")) : D.updated);
+    if (!document.querySelector('.chip[data-cat="' + cat + '"]')) cat = "all";
+    if (editing) initSort();
+  }
+  function apply(){
+    var q = $("q").value.trim().toLowerCase(), anyAll = false, keepEmpty = editing && !q;
+    Array.prototype.forEach.call(document.querySelectorAll(".chip"), function(b){ b.setAttribute("aria-pressed", String(b.dataset.cat === cat)); });
+    Array.prototype.forEach.call(document.querySelectorAll("#list section:not(.trash)"), function(sec){
+      var catOk = !!q || cat === "all" || sec.dataset.cat === cat, any = keepEmpty;
+      Array.prototype.forEach.call(sec.querySelectorAll(".grp"), function(g){
+        var gAny = false;
+        Array.prototype.forEach.call(g.querySelectorAll(".card"), function(c){
+          var hit = !q || c.dataset.key.indexOf(q) >= 0; c.hidden = !hit; if (hit) gAny = true;
+        });
+        g.hidden = !(gAny || keepEmpty); if (gAny) any = true;
+      });
+      sec.hidden = !(catOk && any); if (!sec.hidden) anyAll = true;
+    });
+    $("empty").hidden = anyAll;
+  }
+  function setDoc(doc){
+    if (!doc || !doc.sections) return;
+    var s = JSON.stringify(doc);
+    store.set(DOC_KEY, s);
+    if (s === JSON.stringify(DOC)) return;
+    DOC = doc; render(); apply();
+  }
+  function setEditing(on){
+    editing = on;
+    document.body.classList.toggle("editing", on);
+    $("editbtn").textContent = on ? "おわる" : "編集";
+    Array.prototype.forEach.call(document.querySelectorAll(".card.open-v"), function(c){ c.classList.remove("open-v"); });
+    if (on) initSort(); else destroySort();
+    apply();
+  }
+
+  // ---- ドラッグで並べ替え（指でもマウスでも同じ動き。部品は編集を開いたときだけ読む） ----
+  var sorts = [], sortLoading = null;
+  function destroySort(){ sorts.forEach(function(x){ try { x.destroy(); } catch (e) {} }); sorts = []; }
+  function loadSortable(){
+    if (window.Sortable) return Promise.resolve();
+    if (!sortLoading) sortLoading = new Promise(function(ok, ng){
+      var sc = document.createElement("script");
+      sc.src = "https://cdnjs.cloudflare.com/ajax/libs/Sortable/1.15.2/Sortable.min.js";
+      sc.onload = ok; sc.onerror = function(){ sortLoading = null; ng(); };
+      document.head.appendChild(sc);
+    });
+    return sortLoading;
+  }
+  function initSort(){
+    destroySort();
+    loadSortable().then(function(){
+      if (!editing) return;
+      destroySort();
+      Array.prototype.forEach.call(document.querySelectorAll("#list .items"), function(el){
+        sorts.push(new window.Sortable(el, {
+          group: "links", handle: ".drag", draggable: ".card", animation: 160,
+          forceFallback: true, fallbackOnBody: true, fallbackTolerance: 3,
+          ghostClass: "ghost", dragClass: "dragging",
+          scroll: true, bubbleScroll: true, scrollSensitivity: 90, scrollSpeed: 16, emptyInsertThreshold: 30,
+          onEnd: function(ev){
+            if (ev.from === ev.to && ev.oldDraggableIndex === ev.newDraggableIndex) return;
+            var id = ev.item.dataset.id, nm = nameOf(id);
+            post({ op: "move", id: id, sec: ev.to.dataset.sec, group: ev.to.dataset.group, index: ev.newDraggableIndex }).then(function(doc){
+              if (doc) toast("動かしました", nm); else { render(); apply(); }
+            });
+          }
+        }));
+      });
+    }, function(){ toast("並べ替えの部品を読み込めませんでした", "電波のいいところで、編集を開き直してください"); });
+  }
+
+  var toastTimer;
+  function toast(msg, sub, act){
+    var t = $("toast");
+    t.innerHTML = (act ? '<button type="button" class="undo" data-restore="' + esc(act.restore) + '">' + esc(act.label) + "</button>" : "") +
+      esc(msg) + (sub ? "<small>" + esc(sub) + "</small>" : "");
+    t.classList.toggle("act", !!act);
+    t.classList.add("on"); clearTimeout(toastTimer);
+    toastTimer = setTimeout(function(){ t.classList.remove("on", "act"); }, act ? 8000 : 2200);
+  }
+  function legacyCopy(text){
+    var ta = document.createElement("textarea");
+    ta.value = text; ta.setAttribute("readonly", ""); ta.style.position = "fixed"; ta.style.top = "0"; ta.style.opacity = "0";
+    document.body.appendChild(ta); ta.focus(); ta.select(); ta.setSelectionRange(0, text.length);
+    var ok = false; try { ok = document.execCommand("copy"); } catch (e) {}
+    document.body.removeChild(ta); return ok;
+  }
+  function copied(text, el){
+    var btn = el.classList.contains("cp") ? el : (el.closest(".item, .vrow") || el).querySelector(".cp");
+    if (btn) {
+      btn.classList.add("done"); btn.textContent = "コピー済";
+      clearTimeout(btn._t); btn._t = setTimeout(function(){ btn.classList.remove("done"); btn.textContent = "コピー"; }, 1600);
+    }
+    toast("コピーしました", text);
+  }
+  function openSheet(html, tall){ $("sheetbox").className = tall ? "box tall" : "box"; $("sheetbox").innerHTML = html; $("sheet").hidden = false; }
+  function closeSheet(){ $("sheet").hidden = true; $("sheetbox").className = "box"; $("sheetbox").innerHTML = ""; }
+  function manual(text){
+    openSheet("<h3>長押ししてコピーしてください</h3><input id=\"mi\" readonly value=\"" + esc(text) + "\">" +
+      '<button type="button" class="close" data-close="1">閉じる</button>');
+    var mi = $("mi"); mi.focus(); mi.select(); mi.setSelectionRange(0, text.length);
+  }
+  function doCopy(text, el){
+    if (navigator.clipboard && window.isSecureContext) {
+      navigator.clipboard.writeText(text).then(function(){ copied(text, el); }, function(){
+        if (legacyCopy(text)) copied(text, el); else manual(text);
+      });
+    } else if (legacyCopy(text)) copied(text, el); else manual(text);
+  }
+  function showQr(u, title, notes){
+    openSheet("<h3>" + esc(title || "QRコード") + '</h3><div id="qrimg"></div>' +
+      (notes || ['<p class="u">' + esc(u) + "</p>", '<p class="u">長押しで画像を保存できます</p>']).join("") +
+      '<button type="button" class="close" data-close="1">閉じる</button>');
+    var draw = function(){ if ($("qrimg")) new window.QRCode($("qrimg"), { text: u, width: 480, height: 480, correctLevel: window.QRCode.CorrectLevel.M }); };
+    if (window.QRCode) { draw(); return; }
+    var sc = document.createElement("script");
+    sc.src = "https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js";
+    sc.onload = draw;
+    sc.onerror = function(){ if ($("qrimg")) $("qrimg").textContent = "QRコードを作れませんでした。電波のいいところで、もう一度押してください。"; };
+    document.head.appendChild(sc);
+  }
+  function showKeyQr(){
+    showQr(location.origin + location.pathname + "#k=" + KEY, "スマホでも編集できるようにする", [
+      '<p class="u">iPhoneのカメラで読み取って開くと、その端末にも「編集」が出ます。</p>',
+      '<p class="u">ホーム画面に置くときは、読み取って開いたその画面から「ホーム画面に追加」してください。</p>',
+      '<p class="u">このQRは社長専用の鍵です。人に見せないでください。</p>'
+    ]);
+  }
+
+  // ---- 保存先に送る（追加・削除・戻す） ----
+  function post(body, btn){
+    if (btn) btn.disabled = true;
+    return fetch(API, { method: "POST", headers: { "Content-Type": "application/json", "Authorization": "Bearer " + KEY }, body: JSON.stringify(body) })
+      .then(function(r){ return r.json().then(function(j){ j._status = r.status; return j; }, function(){ return { ok: false, _status: r.status }; }); })
+      .then(function(j){
+        if (btn) btn.disabled = false;
+        if (j._status === 401) {
+          store.set(KEY_KEY, null); KEY = null; $("editbtn").hidden = true; setEditing(false);
+          toast("この端末の鍵が使えません", "編集用のQRから開き直してください"); return null;
+        }
+        if (!j.ok) { toast(j.error || "保存できませんでした", j._status >= 500 ? "もう一度押してください" : ""); return null; }
+        setDoc(j.doc); return j.doc;
+      }, function(){
+        if (btn) btn.disabled = false;
+        toast("通信できませんでした", "電波のいいところで、もう一度押してください"); return null;
+      });
+  }
+  function nameOf(id){
+    var hit = null;
+    DOC.sections.forEach(function(s){ s.groups.forEach(function(g){ g.items.forEach(function(it){ if (it.id === id) hit = it.name; }); }); });
+    return hit || "";
+  }
+  function groupOptions(sel){
+    return DOC.sections.map(function(s){
+      return s.groups.map(function(g){
+        var v = s.id + "|" + g.title;
+        return '<option value="' + esc(v) + '"' + (v === sel ? " selected" : "") + ">" + esc(s.title + (g.title ? " › " + g.title : "")) + "</option>";
+      }).join("");
+    }).join("");
+  }
+  function findIt(id){
+    var hit = null;
+    DOC.sections.forEach(function(s){ s.groups.forEach(function(g){ g.items.forEach(function(it){ if (it.id === id) hit = { it: it, sel: s.id + "|" + g.title }; }); }); });
+    return hit;
+  }
+  function openAdd(sel){
+    if (!sel) {
+      var s0 = DOC.sections.filter(function(s){ return s.id === cat; })[0] || DOC.sections[0];
+      sel = s0.id + "|" + s0.groups[s0.groups.length - 1].title;
+    }
+    itemForm(null, sel);
+  }
+  function openEdit(id){ var f = findIt(id); if (f) itemForm(f.it, f.sel); }
+  function itemForm(it, sel){
+    var ed = !!it, v = function(k){ return ed ? esc(it[k] || "") : ""; };
+    openSheet('<form class="form" id="addf" novalidate><h3>' + (ed ? "リンクを直す" : "リンクを追加") + "</h3>" +
+      '<label for="f-url">URL</label><input type="url" id="f-url" inputmode="url" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="https://…" value="' + v("url") + '">' +
+      '<label for="f-name">名前</label><input type="text" id="f-name" maxlength="60" placeholder="例：Instagram（サブ垢）" value="' + v("name") + '">' +
+      '<label for="f-sub">ひとこと <small>なくてもOK</small></label><input type="text" id="f-sub" maxlength="80" placeholder="例：@nabeno_kitchen" value="' + v("sub") + '">' +
+      (ed ? '<label for="f-badge">アイコンの文字 <small>4文字くらいまで</small></label><input type="text" id="f-badge" maxlength="6" value="' + v("badge") + '">' : "") +
+      '<label for="f-where">置く場所</label><select id="f-where">' + groupOptions(sel) + "</select>" +
+      '<label class="chk" id="f-trackrow" hidden><input type="checkbox" id="f-track"' + (!ed || it.track ? " checked" : "") + '><span id="f-tracklabel"></span></label>' +
+      '<p class="err" id="f-err"></p>' +
+      '<div class="row"><button type="button" class="btn" data-close="1">やめる</button><button type="submit" class="btn primary" id="f-go">' + (ed ? "保存する" : "追加する") + "</button></div></form>", true);
+    var form = $("addf");
+    form.dataset.id = ed ? it.id : ""; form.dataset.sel = sel;
+    $("f-url").addEventListener("input", onUrl);
+    $("f-name").addEventListener("input", function(){ $("f-name").dataset.auto = ""; });
+    $("f-name").addEventListener("focus", function(){ var n = $("f-name"); if (n.dataset.auto) setTimeout(function(){ n.select(); }, 0); });  // 自動で入った名前は、押すと全部選ばれて打ち替えられる
+    form.addEventListener("submit", submitAdd);
+    if (ed) onUrl(); else setTimeout(function(){ if ($("f-url")) $("f-url").focus(); }, 60);
+  }
+  function headForm(id, title, fields, onSave){
+    openSheet('<form class="form" id="hdf" novalidate><h3>' + esc(title) + "</h3>" + fields.map(function(f){
+      return '<label for="' + f[0] + '">' + esc(f[1]) + (f[3] ? " <small>" + esc(f[3]) + "</small>" : "") + '</label><input type="text" id="' + f[0] + '" maxlength="' + f[4] + '" value="' + esc(f[2]) + '">';
+    }).join("") + '<p class="err" id="h-err"></p><div class="row"><button type="button" class="btn" data-close="1">やめる</button><button type="submit" class="btn primary" id="h-go">保存する</button></div></form>', true);
+    $("hdf").addEventListener("submit", function(e){
+      e.preventDefault();
+      var body = onSave();
+      if (typeof body === "string") { $("h-err").textContent = body; return; }
+      $("h-go").textContent = "保存しています…";
+      post(body, $("h-go")).then(function(doc){
+        if (doc) { closeSheet(); toast("見出しを直しました"); }
+        else if ($("h-go")) $("h-go").textContent = "保存する";
+      });
+    });
+  }
+  function openSecForm(secId){
+    var s = DOC.sections.filter(function(x){ return x.id === secId; })[0];
+    if (!s) return;
+    headForm(secId, "区分の見出しを直す", [["h-title", "見出し", s.title, "", 40], ["h-chip", "上のボタンの名前", s.chip, "短く", 12], ["h-sub", "説明", s.sub || "", "なくてもOK", 100]], function(){
+      var title = $("h-title").value.trim();
+      if (!title) return "見出しを入れてください";
+      return { op: "section", sec: secId, title: title, chip: $("h-chip").value.trim(), sub: $("h-sub").value.trim() };
+    });
+  }
+  function openGroupForm(val){
+    var p = val.split("|"), secId = p[0], old = p.slice(1).join("|");
+    headForm(secId, "小見出しを直す", [["h-title", "小見出し", old, "空にすると小見出しなし", 40]], function(){
+      return { op: "group", sec: secId, group: old, title: $("h-title").value.trim() };
+    });
+  }
+  function onUrl(){
+    var u = normalizeUrl($("f-url").value), tr = detectTrack(u), b = brandOf(u), nm = $("f-name");
+    $("f-trackrow").hidden = !tr;
+    if (tr) $("f-tracklabel").textContent = "貼る場所ごとの計測リンクを出す（" + TRACK_NAME[tr] + " " + (D.places[tr] || []).length + "か所）";
+    if (b && (!nm.value || nm.dataset.auto)) { nm.value = b[3]; nm.dataset.auto = "1"; }
+  }
+  function submitAdd(e){
+    e.preventDefault();
+    var u = normalizeUrl($("f-url").value), name = $("f-name").value.trim(), sub = $("f-sub").value.trim();
+    var where = $("f-where").value.split("|"), err = $("f-err");
+    if (!/^https?:\/\/[^\s<>"']+$/.test(u)) { err.textContent = "URLを https:// から入れてください"; return; }
+    if (!name) { err.textContent = "名前を入れてください"; return; }
+    err.textContent = "";
+    var tr = !$("f-trackrow").hidden && $("f-track").checked ? detectTrack(u) : "";
+    if (tr) u = stripSrc(u);
+    var sec = DOC.sections.filter(function(s){ return s.id === where[0]; })[0], b = brandOf(u);
+    var eid = $("addf").dataset.id;
+    if (eid) {  // 直す
+      var old = (findIt(eid) || {}).it || {}, bf = $("f-badge").value.trim();
+      if (u !== old.url && b && bf === (old.badge || "")) bf = b[1];  // URLを別のサービスに変えたら、アイコンもそのサービスに
+      var fix = { name: name, url: u, sub: sub, track: tr, badge: bf || (b ? b[1] : name.slice(0, 2)) };
+      if (u !== old.url && b) fix.bg = b[2];
+      var body = { op: "edit", id: eid, item: fix };
+      if (where.join("|") !== $("addf").dataset.sel) { body.sec = where[0]; body.group = where.slice(1).join("|"); }
+      $("f-go").textContent = "保存しています…";
+      post(body, $("f-go")).then(function(doc){
+        if (doc) { closeSheet(); toast("直しました", name); }
+        else if ($("f-go")) $("f-go").textContent = "保存する";
+      });
+      return;
+    }
+    var item = { name: name, url: u, badge: b ? b[1] : name.slice(0, 2), bg: b ? b[2] : (sec ? sec.color : "#888888") };
+    if (sub) item.sub = sub;
+    if (tr) item.track = tr;
+    $("f-go").textContent = "保存しています…";
+    post({ op: "add", sec: where[0], group: where.slice(1).join("|"), item: item }, $("f-go")).then(function(doc){
+      if (doc) { closeSheet(); toast("追加しました", name); }
+      else if ($("f-go")) $("f-go").textContent = "追加する";
+    });
+  }
+
+  document.addEventListener("click", function(e){
+    var t = e.target;
+    if (t.closest("#editbtn")) { setEditing(!editing); return; }
+    if (t.closest("[data-close]") || t === $("sheet")) { closeSheet(); return; }
+    var rs = t.closest("[data-restore]");
+    if (rs) {
+      var rid = rs.dataset.restore;
+      post({ op: "restore", id: rid }, rs).then(function(doc){ if (doc) { $("toast").classList.remove("on", "act"); toast("戻しました"); } });
+      return;
+    }
+    if (editing) {
+      var del = t.closest("[data-del]");
+      if (del) {
+        if (!del.classList.contains("arm")) {
+          del.classList.add("arm"); del.textContent = "本当に削除";
+          clearTimeout(del._t); del._t = setTimeout(function(){ del.classList.remove("arm"); del.textContent = "削除"; }, 3000);
+          return;
+        }
+        var id = del.dataset.del, nm = nameOf(id);
+        del.textContent = "削除中…";
+        post({ op: "delete", id: id }, del).then(function(doc){ if (doc) toast("削除しました", nm, { label: "元に戻す", restore: id }); });
+        return;
+      }
+      var ad = t.closest("[data-addform]"); if (ad) { openAdd(ad.dataset.addform); return; }
+      if (t.closest("[data-keyqr]")) { showKeyQr(); return; }
+      var es = t.closest("[data-editsec]"); if (es) { openSecForm(es.dataset.editsec); return; }
+      var eg = t.closest("[data-editgroup]"); if (eg) { openGroupForm(eg.dataset.editgroup); return; }
+      var mn = t.closest(".main");
+      if (mn) { var cd = mn.closest(".card[data-id]"); if (cd) openEdit(cd.dataset.id); return; }  // 編集中はリンクを押すと直す画面（コピーしない）
+    }
+    var c = t.closest("[data-copy]"); if (c) { doCopy(c.dataset.copy, c); return; }
+    var tg = t.closest("[data-toggle]");
+    if (tg) {
+      var card = tg.closest(".card"), on = !card.classList.contains("open-v");
+      card.classList.toggle("open-v", on);
+      card.querySelector(".main").setAttribute("aria-expanded", String(on));
+      return;
+    }
+    var qr = t.closest("[data-qr]"); if (qr) { showQr(qr.dataset.qr); return; }
+    var ch = t.closest(".chip");
+    if (ch) {
+      cat = ch.dataset.cat; store.set(CAT_KEY, cat);
+      apply(); window.scrollTo({ top: 0, behavior: "smooth" }); return;
+    }
+  });
+  $("q").addEventListener("input", apply);
+
+  render();
+  apply();
+  if (KEY) $("editbtn").hidden = false;
+  // 2026-10-26 社長「最初にこのQRコードが出るのいらない。そのまま普通にサイト表示して」→ 開いたときにはQRを出さない
+  //（QRは編集中の「スマホでも編集する（QR）」から出す）。アドレスに残った印（qr=1）も消す。鍵（k=）は残す
+  if (/(?:^#|&)qr=1/.test(location.hash) && window.history && history.replaceState) {
+    var h2 = location.hash.replace(/^#/, "").split("&").filter(function(x){ return x && x !== "qr=1"; }).join("&");
+    history.replaceState(null, "", location.pathname + location.search + (h2 ? "#" + h2 : ""));
+  }
+  fetch(API, { cache: "no-store" }).then(function(r){ return r.json(); }).then(function(j){ if (j && j.ok && j.doc) setDoc(j.doc); }).catch(function(){});
+  if (KEY) {
+    fetch(PRIV_API, { cache: "no-store", headers: { "Authorization": "Bearer " + KEY } }).then(function(r){
+      if (r.status === 401) { store.set(PRIV_KEY, null); if (PRIV) { PRIV = null; render(); apply(); } return null; }
+      return r.json();
+    }).then(function(j){
+      if (!j || !j.ok) return;
+      var s = JSON.stringify(j.doc || null);
+      store.set(PRIV_KEY, j.doc ? s : null);
+      if (s === JSON.stringify(PRIV)) return;
+      PRIV = j.doc; render(); apply();
+    }).catch(function(){});
+  }
+})();
+</script>
+</body>
+</html>

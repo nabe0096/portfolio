@@ -156,7 +156,7 @@ p,li{text-wrap:pretty;line-break:strict}
 .num-sns a{width:60px;height:60px;display:grid;place-items:center;font-size:28px;color:var(--ink);text-decoration:none;background:var(--white);border:var(--bd);border-radius:14px 5px 12px 4px;box-shadow:4px 4px 0 var(--ink);transition:transform .15s,box-shadow .15s}
 .num-sns a:hover,.num-sns a:active{transform:translate(2px,2px);box-shadow:2px 2px 0 var(--ink);background:var(--yellow)}
 @media(min-width:760px){.num-sns{gap:18px;margin-top:26px}.num-sns a{width:68px;height:68px;font-size:32px}}
-.num b .dg{font-size:1em;font-weight:inherit;gap:0;display:inline-block;position:relative;overflow:hidden;height:1.1em;line-height:1.1;vertical-align:top}
+.num b .dg{font-size:1em;font-weight:inherit;gap:0;display:inline-block;position:relative;height:1.1em;line-height:1.1;vertical-align:top;clip-path:inset(0 -.4em)}
 .num b .dg i{font-style:normal;visibility:hidden}
 .num b .dg u{position:absolute;left:50%;top:0;text-decoration:none;display:flex;flex-direction:column;align-items:center;transform:translate(-50%,0);will-change:transform}
 .num b .dg u span{display:block;height:1.1em;line-height:1.1;font-size:1em;font-weight:inherit;gap:0}
@@ -928,13 +928,13 @@ document.addEventListener('keydown',function(e){if(e.key==='Escape')set(false)})
 })();
 </script>
 <script>
-/* 数字の札：見えたら数字がスロットのように回って止まる。HTMLの数字はそのまま（毎朝の数字更新が書き換える）。終わったら元の文字に戻す */
+/* 数字の札：見えたら数字がスロットのように回って止まる。HTMLの数字はそのまま（毎朝の数字更新が書き換える） */
 (function(){
   if(!('IntersectionObserver' in window)||matchMedia('(prefers-reduced-motion:reduce)').matches)return;
   var bs=[].slice.call(document.querySelectorAll('.nums .num b'));
   function spin(b,delay){
     var node=b.firstChild;if(!node||node.nodeType!==3)return;
-    var txt=node.nodeValue,orig=b.innerHTML,frag=document.createDocumentFragment(),reels=[],k=0;
+    var txt=node.nodeValue,frag=document.createDocumentFragment(),reels=[],k=0;
     b.setAttribute('aria-label',b.textContent);
     txt.split('').forEach(function(ch){
       if(!/[0-9]/.test(ch)){frag.appendChild(document.createTextNode(ch));return}
@@ -946,14 +946,14 @@ document.addEventListener('keydown',function(e){if(e.key==='Escape')set(false)})
       dg.appendChild(u);frag.appendChild(dg);reels.push({u:u,n:n,k:k});k++;
     });
     b.replaceChild(frag,node);
-    var last=0;
+    /* 止まる位置は％で指定（em×行数だと端数がずれて最後にガクッと動く）。終わっても元の文字に差し替えない（差し替えると字間が変わって跳ねる） */
     requestAnimationFrame(function(){requestAnimationFrame(function(){
       reels.forEach(function(r){
-        var dur=1100+r.k*170;last=Math.max(last,dur);
-        r.u.style.transition='transform '+dur+'ms cubic-bezier(.16,.84,.3,1) '+delay+'ms';
-        r.u.style.transform='translate(-50%,-'+(r.n*1.1)+'em)';
+        var dur=1500+r.k*110;
+        r.u.style.transition='transform '+dur+'ms cubic-bezier(.33,1,.68,1) '+delay+'ms';
+        r.u.style.transform='translate(-50%,'+(-100*r.n/(r.n+1))+'%)';
+        r.u.addEventListener('transitionend',function(){r.u.style.willChange='auto'},{once:true});
       });
-      setTimeout(function(){b.innerHTML=orig;b.removeAttribute('aria-label')},last+delay+200);
     })});
   }
   var io=new IntersectionObserver(function(es){es.forEach(function(e){

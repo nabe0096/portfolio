@@ -932,7 +932,7 @@ document.addEventListener('keydown',function(e){if(e.key==='Escape')set(false)})
 (function(){
   if(!('IntersectionObserver' in window)||matchMedia('(prefers-reduced-motion:reduce)').matches)return;
   var bs=[].slice.call(document.querySelectorAll('.nums .num b'));
-  function spin(b,delay){
+  function build(b){
     var node=b.firstChild;if(!node||node.nodeType!==3)return;
     var txt=node.nodeValue,frag=document.createDocumentFragment(),reels=[],k=0;
     b.setAttribute('aria-label',b.textContent);
@@ -946,21 +946,23 @@ document.addEventListener('keydown',function(e){if(e.key==='Escape')set(false)})
       dg.appendChild(u);frag.appendChild(dg);reels.push({u:u,n:n,k:k});k++;
     });
     b.replaceChild(frag,node);
-    /* 止まる位置は％で指定（em×行数だと端数がずれて最後にガクッと動く）。終わっても元の文字に差し替えない（差し替えると字間が変わって跳ねる） */
-    requestAnimationFrame(function(){requestAnimationFrame(function(){
+    /* 止まる位置は％で指定（em×行数だと端数がずれて最後にガクッと動く）。終わっても元の文字に差し替えない（差し替えると字間が変わって跳ねる）
+       リールはページを開いた時点で組んでおき、札が見え始めた瞬間に待ち時間なしで回し始める（待つと止まった数字が一度見える） */
+    b._start=function(extra){requestAnimationFrame(function(){
       reels.forEach(function(r){
-        var dur=1500+r.k*110;
-        r.u.style.transition='transform '+dur+'ms cubic-bezier(.33,1,.68,1) '+delay+'ms';
+        var dur=1700+r.k*120+extra;
+        r.u.style.transition='transform '+dur+'ms cubic-bezier(.33,1,.68,1)';
         r.u.style.transform='translate(-50%,'+(-100*r.n/(r.n+1))+'%)';
         r.u.addEventListener('transitionend',function(){r.u.style.willChange='auto'},{once:true});
       });
-    })});
+    })};
   }
+  bs.forEach(build);
   var io=new IntersectionObserver(function(es){es.forEach(function(e){
     if(!e.isIntersecting)return;io.unobserve(e.target);
-    spin(e.target,350+bs.indexOf(e.target)*120);
-  })},{threshold:.6});
-  bs.forEach(function(b){io.observe(b)});
+    var b=e.target.querySelector('b');if(b&&b._start)b._start(bs.indexOf(b)*150);
+  })},{rootMargin:'0px 0px -8% 0px'});
+  bs.forEach(function(b){io.observe(b.closest('.num')||b)});
 })();
 </script>
 <script>

@@ -374,6 +374,13 @@ textarea.cf-in{resize:vertical;min-height:130px;line-height:1.6}
 .tabp[hidden]{display:none}
 .tabp-lead{font-weight:700;font-size:14px;max-width:44em}
 .tabp .chip{margin-top:10px;background:var(--white)}
+/* 映像の3つ（2026-11-27 社長「タブで分けてると見落とす。全部畳まずに」）。タブをやめて縦に並べる */
+.mvs{margin-top:26px;display:flex;flex-direction:column;gap:44px}
+.mv{scroll-margin-top:84px}
+.mv-h{display:inline-flex;align-items:center;gap:8px;border:var(--bd);border-radius:999px;padding:6px 18px;font-weight:900;font-size:16px;line-height:1.4;background:var(--ink);color:#fff;box-shadow:3px 3px 0 var(--red);margin-bottom:10px}
+.mv-h i{color:var(--yellow)}
+.mv .tabp-lead{margin-top:4px}
+.mv .chip{margin-top:10px;background:var(--white)}
 /* サービスの札 */
 .tiles{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px;margin-top:26px}
 .tile{position:relative;text-align:left;background:var(--white);border:var(--bd);border-radius:14px 5px 12px 4px;box-shadow:4px 4px 0 var(--ink);overflow:hidden;padding:0;font-family:inherit;color:inherit;cursor:pointer;display:flex;flex-direction:column;transition:transform .15s,box-shadow .15s}
@@ -598,13 +605,9 @@ textarea.cf-in{resize:vertical;min-height:130px;line-height:1.6}
         <video muted loop playsinline preload="none" poster="movie/hero-poster.jpg" data-film src="movie/hero-sizzle.mp4"></video>
         <span class="film-tag">実際に撮影した映像</span>
       </div>
-      <div data-tabs>
-        <div class="tabs-bar" role="tablist" aria-label="映像の種類">
-          <button class="tab" type="button" role="tab" aria-selected="true" aria-controls="yt-videos" id="tab-yt"><i class="fa-brands fa-youtube" aria-hidden="true"></i>YouTube</button>
-          <button class="tab" type="button" role="tab" aria-selected="false" aria-controls="furusato-reels" id="tab-fr" tabindex="-1"><i class="fa-solid fa-gift" aria-hidden="true"></i>ふるさと納税</button>
-          <button class="tab" type="button" role="tab" aria-selected="false" aria-controls="pr-reels" id="tab-pr" tabindex="-1"><i class="fa-solid fa-building" aria-hidden="true"></i>企業のPR動画</button>
-        </div>
-        <div class="tabp" role="tabpanel" id="yt-videos" aria-labelledby="tab-yt">
+      <div class="mvs">
+        <div class="mv" id="yt-videos">
+          <h3 class="mv-h"><i class="fa-brands fa-youtube" aria-hidden="true"></i>YouTube</h3>
           <p class="tabp-lead">自分のチャンネルの料理動画です。</p>
           <p class="hint" aria-hidden="true">← 横に動かして見られます →</p>
           <div class="row">
@@ -615,7 +618,8 @@ textarea.cf-in{resize:vertical;min-height:130px;line-height:1.6}
         <button class="yt-item rv" type="button" data-yt="BRxr1vT5ag0" aria-label="YouTube動画5を再生"><img src="https://i.ytimg.com/vi/BRxr1vT5ag0/hqdefault.jpg" alt="" loading="lazy"><span class="yt-play"><i class="fa-solid fa-play" aria-hidden="true"></i></span></button>
       </div>
         </div>
-        <div class="tabp" role="tabpanel" id="furusato-reels" aria-labelledby="tab-fr" hidden>
+        <div class="mv" id="furusato-reels">
+          <h3 class="mv-h"><i class="fa-solid fa-gift" aria-hidden="true"></i>ふるさと納税</h3>
           <p class="tabp-lead">都城市のご依頼で、返礼品のレシピ動画を制作。<span class="nb">公式アカウント内でも</span><span class="nb">トップクラスの再生数です。</span></p>
           <a class="chip" href="https://www.instagram.com/miyakonojo_furusato/?hl=ja" target="_blank" rel="noopener noreferrer">都城市ふるさと納税【公式】 <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></a>
           <p class="hint" aria-hidden="true">← 横に動かして見られます →</p>
@@ -631,7 +635,8 @@ textarea.cf-in{resize:vertical;min-height:130px;line-height:1.6}
       </div>
           <p class="center"><button class="btn btn--white" type="button" data-more-btn>ほかの動画も見る（あと5本）</button></p>
         </div>
-        <div class="tabp" role="tabpanel" id="pr-reels" aria-labelledby="tab-pr" hidden>
+        <div class="mv" id="pr-reels">
+          <h3 class="mv-h"><i class="fa-solid fa-building" aria-hidden="true"></i>企業のPR動画</h3>
           <p class="tabp-lead">永谷園・味の素・サントリーなど、<span class="nb">企業の商品PR動画を制作。</span><span class="nb">自社SNSや広告で使える動画にも</span><span class="nb">対応します。</span></p>
           <p class="hint" aria-hidden="true">← 横に動かして見られます →</p>
           <div class="row">
